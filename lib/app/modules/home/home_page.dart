@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:uruguaiana/app/routes/app_pages.dart';
 
 import '../../core/ui/widgets/custom_drawer.dart';
 import 'home_controller.dart';
@@ -15,15 +17,18 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: const Text('Realtime modelo'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () => searchVisible.toggle(),
-            icon: const Icon(Icons.search),
-          ),
-        ],
+        title: Text(GetStorage().read('sessionId')),
       ),
+      // appBar: AppBar(
+      //   title: const Text('Realtime modelo'),
+      //   centerTitle: true,
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () => searchVisible.toggle(),
+      //       icon: const Icon(Icons.search),
+      //     ),
+      //   ],
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -147,7 +152,7 @@ class HomePage extends GetView<HomeController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed('/home_add'),
+        onPressed: () => Get.toNamed(Routes.home_add),
         child: const Icon(Icons.add),
       ),
     );

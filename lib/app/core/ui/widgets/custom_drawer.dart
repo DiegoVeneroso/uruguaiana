@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:uruguaiana/app/modules/auth/login/login_controller.dart';
+import 'package:uruguaiana/app/modules/home/home_controller.dart';
+import 'package:uruguaiana/app/repository/auth_repository.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = LoginController(AuthRepository());
     return Drawer(
       child: Container(
         child: ListView(
@@ -26,6 +30,14 @@ class CustomDrawer extends StatelessWidget {
               icon: Icons.photo,
               text: "Home add",
               onTap: () => navigate(1),
+              tileColor: Get.currentRoute == '/home_add' ? Colors.blue : null,
+              textIconColor:
+                  Get.currentRoute == '/home_add' ? Colors.white : Colors.black,
+            ),
+            buildDrawerItem(
+              icon: Icons.photo,
+              text: "Sair",
+              onTap: () => loginController.logout(),
               tileColor: Get.currentRoute == '/home_add' ? Colors.blue : null,
               textIconColor:
                   Get.currentRoute == '/home_add' ? Colors.white : Colors.black,

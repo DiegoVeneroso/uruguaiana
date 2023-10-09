@@ -7,7 +7,9 @@ import 'package:uruguaiana/app/modules/auth/register/register_page.dart';
 
 import '../modules/auth/login/login_bindings.dart';
 import '../modules/auth/login/login_page.dart';
+import '../modules/home/home_add_page.dart';
 import '../modules/home/home_binding.dart';
+import '../modules/home/home_edit_page.dart';
 import '../modules/splash/splash_binding.dart';
 import '../modules/splash/splash_page.dart';
 part 'app_routes.dart';
@@ -34,14 +36,29 @@ class AppPages {
       binding: RegisterBindings(),
     ),
     GetPage(
+      name: _Paths.recovery_password,
+      page: () => const RecoveyPasswordPage(),
+      binding: RecoveyPasswordBindings(),
+    ),
+    GetPage(
       name: _Paths.home,
       page: () => HomePage(),
       binding: HomeBindings(),
     ),
     GetPage(
-      name: _Paths.recovery_password,
-      page: () => const RecoveyPasswordPage(),
-      binding: RecoveyPasswordBindings(),
+      name: _Paths.home_add,
+      page: () => const HomeAddPage(),
+      binding: HomeBindings(),
+    ),
+    GetPage(
+      name: _Paths.home_edit,
+      page: () => const HomeEditPage(),
+      binding: HomeBindings(),
+    ),
+    GetPage(
+      name: _Paths.home,
+      page: () => HomePage(),
+      binding: HomeBindings(),
     ),
   ];
 }

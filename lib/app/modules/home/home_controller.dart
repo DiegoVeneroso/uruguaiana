@@ -44,7 +44,7 @@ class HomeController extends GetxController
 
   @override
   onReady() {
-    login();
+    // login();
 
     subscribe();
     loadData();
@@ -95,25 +95,33 @@ class HomeController extends GetxController
     foundItem.value = results;
   }
 
-  login() async {
-    try {
-      _loading.toggle();
-      await ApiClient.account.createAnonymousSession();
-      print('usuario anonimo logado!');
-    } on AppwriteException catch (e) {
-      _loading.toggle();
-      print(e.message);
-    }
-  }
+  // login() async {
+  //   try {
+  //     _loading.toggle();
+  //     await ApiClient.account.createAnonymousSession();
+  //     print('usuario anonimo logado!');
+  //   } on AppwriteException catch (e) {
+  //     _loading.toggle();
+  //     print(e.message);
+  //   }
+  // }
 
   void loadData() async {
     try {
-      _loading.toggle();
+      // _loading.toggle();
       var dataRepository = await repository.loadDataRepository();
 
       itemList.assignAll(dataRepository);
-    } finally {
-      _loading.toggle();
+      // _loading.toggle();
+    } catch (e) {
+      // _loading.toggle();
+      _message(
+        MessageModel(
+          title: 'Parabéns!',
+          message: 'Item adicionado com sucesso!',
+          type: MessageType.success,
+        ),
+      );
     }
   }
 
@@ -121,7 +129,7 @@ class HomeController extends GetxController
     final realtime = Realtime(ApiClient.account.client);
 
     subscription = realtime.subscribe([
-      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_USERS_ID}.documents'
+      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_ITEM_ID}.documents'
     ]);
 
     subscription!.stream.listen((data) {

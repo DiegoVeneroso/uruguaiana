@@ -1,4 +1,5 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:uruguaiana/app/modules/auth/login/login_controller.dart';
 
 import 'package:get/get.dart';
@@ -11,10 +12,16 @@ import '../../../core/mixins/messages_mixin.dart';
 class RegisterController extends GetxController
     with LoaderMixin, MessagesMixin {
   final AuthRepository authRepository;
+  final GetStorage storage;
 
-  RegisterController(this.authRepository);
+  RegisterController(
+    this.authRepository,
+    this.storage,
+  );
 
-  LoginController loginController = LoginController(AuthRepository());
+  LoginController loginController = LoginController(
+    AuthRepository(),
+  );
 
   bool isFormValid = false;
 

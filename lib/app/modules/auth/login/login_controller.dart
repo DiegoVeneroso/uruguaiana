@@ -1,7 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
 import 'package:uruguaiana/app/routes/app_pages.dart';
 
 import '../../../core/mixins/loader_mixin.dart';
@@ -10,8 +13,11 @@ import '../../../repository/auth_repository.dart';
 
 class LoginController extends GetxController with LoaderMixin, MessagesMixin {
   AuthRepository authRepository;
+  GetStorage storage = GetStorage();
 
-  LoginController(this.authRepository);
+  LoginController(
+    this.authRepository,
+  );
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -46,8 +52,9 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
     try {
       _loading.toggle();
 
-      await authRepository.login({"email": email, "password": password});
-
+      var sessionId =
+          await authRepository.login({"email": email, "password": password});
+      await storage.write('sessionId', sessionId.toString());
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -55,7 +62,7 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
           type: MessageType.success,
         ),
       );
-      Get.toNamed(Routes.home);
+      Get.toNamed(Routes.splash);
     } catch (e) {
       _loading.toggle();
 
@@ -85,6 +92,18 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
           type: MessageType.error,
         ),
       );
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      _loading.toggle();
+      await authRepository.logout();
+      await storage.write('sessionId', '');
+      Get.toNamed(Routes.splash);
+    } catch (e) {
+      _loading.toggle();
+      log(e.toString());
     }
   }
 }

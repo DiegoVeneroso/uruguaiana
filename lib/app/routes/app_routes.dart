@@ -9,6 +9,8 @@ abstract class Routes {
   static const code_recovery_password = _Paths.code_recovery_password;
   static const new_password = _Paths.new_password;
   static const home = _Paths.home;
+  static const home_add = _Paths.home_add;
+  static const home_edit = _Paths.home_edit;
 }
 
 abstract class _Paths {
@@ -20,4 +22,6 @@ abstract class _Paths {
   static const code_recovery_password = '/code_recovery_password';
   static const new_password = '/new_password';
   static const home = '/home';
+  static const home_add = '/home_add';
+  static const home_edit = '/home_edit';
 }

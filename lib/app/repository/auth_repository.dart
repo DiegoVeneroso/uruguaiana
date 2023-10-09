@@ -53,18 +53,20 @@ class AuthRepository {
 
   login(Map map) async {
     try {
-      final session = await ApiClient.account.createEmailSession(
+      _session = await ApiClient.account.createEmailSession(
         email: map["email"],
         password: map["password"],
       );
-      _session = session;
-      print('_session');
-      print(_session?.$id);
+      return _session;
     } on AppwriteException catch (e) {
       _session = null;
       log(e.response['type']);
 
       throw (e.response['type']);
+    } catch (e) {
+      _session = null;
+      log(e.toString());
+      throw (e.toString());
     }
   }
 
