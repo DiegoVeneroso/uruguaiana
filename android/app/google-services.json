@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "227766993390",
+    "project_id": "uruguaiana-91d45",
+    "storage_bucket": "uruguaiana-91d45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227766993390:android:1c9989da48c5b4a4a34eff",
+        "android_client_info": {
+          "package_name": "br.com.frontapp.uruguaiana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB646LkbOcGYIWsfL0ETbEqBPVBfq8AtyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
