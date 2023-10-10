@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:uruguaiana/app/repository/auth_repository.dart';
+import 'package:uruguaiana/app/repository/home_repositories.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
 
 import '../../core/ui/widgets/custom_drawer.dart';
@@ -17,7 +19,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: Text(GetStorage().read('sessionId')),
+        title: Text(HomeRepository().getDropdowClasse().toString()),
       ),
       // appBar: AppBar(
       //   title: const Text('Realtime modelo'),

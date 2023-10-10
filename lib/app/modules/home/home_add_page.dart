@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:uruguaiana/app/repository/home_repositories.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../core/ui/app_state.dart';
@@ -124,6 +126,81 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                     const SizedBox(
                       height: 30,
                     ),
+                    FutureBuilder(
+                        future: HomeRepository().getDropdowClasse(),
+                        builder: (context, snapshot) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0, left: 8.0, right: 8.0, bottom: 8.0),
+                            child: DropdownButtonFormField2(
+                              style: const TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold),
+                              decoration: InputDecoration(
+                                isDense: true,
+                                labelStyle: const TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                                errorStyle: const TextStyle(
+                                    color: Colors.redAccent,
+                                    fontWeight: FontWeight.bold),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(23),
+                                  borderSide:
+                                      const BorderSide(color: Colors.blue),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(23),
+                                  borderSide:
+                                      const BorderSide(color: Colors.blue),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(23),
+                                  borderSide:
+                                      const BorderSide(color: Colors.blue),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                              ),
+                              isExpanded: true,
+                              hint: const Text(
+                                'Classe',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: 'mplus1',
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue),
+                              ),
+                              icon: const Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.blue,
+                              ),
+                              iconSize: 30,
+                              buttonHeight: 25,
+                              buttonPadding:
+                                  const EdgeInsets.only(left: 0, right: 10),
+                              dropdownDecoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(23),
+                              ),
+                              items: snapshot.data,
+                              validator: (value) {
+                                if (value == null) {
+                                  return 'Selecione a sua classe';
+                                }
+                                return null;
+                              },
+                              onChanged: (value) {
+                                setState(() {
+                                  controller.valorSelecionadoClasse =
+                                      value.toString();
+                                });
+                              },
+                            ),
+                          );
+                        }),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Center(
                       child: CustomButton(
                         width: double.infinity,
@@ -132,10 +209,16 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                           final formValid =
                               _formKey.currentState?.validate() ?? false;
                           if (formValid) {
-                            controller.itemAdd({
-                              'name': _nameEC.text,
-                              'imagePath': controller.imageFile!.path,
-                            });
+                            if (controller.imageFile != null) {
+                              controller.itemAdd({
+                                'name': _nameEC.text,
+                                'imagePath': controller.imageFile!.path,
+                              });
+                            } else {
+                              controller.itemAdd({
+                                'name': _nameEC.text,
+                              });
+                            }
                           }
                         },
                       ),

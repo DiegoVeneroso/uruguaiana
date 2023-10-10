@@ -28,6 +28,13 @@ class HomeController extends GetxController
   File? get profileImage => pickedFile.value;
   XFile? imageFile;
 
+  final List<String> listaClasse = [
+    'Docente',
+    'TAE',
+    'Discente',
+  ];
+  String? valorSelecionadoClasse;
+
   HomeController({
     required this.repository,
   });

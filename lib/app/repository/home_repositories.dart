@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
 import '../models/item_model.dart';
+import '../models/zone_model.dart';
 
 class HomeRepository {
   RealtimeSubscription? subscription;
@@ -66,7 +68,7 @@ class HomeRepository {
       final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
 
       String fileName = "$idUnique."
-          "${map["imagePath"].split(".").last}";
+          "${map["imagePath"].toString().split(".").last}";
 
       var urlImage =
           '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
@@ -134,7 +136,7 @@ class HomeRepository {
         final idUnique = map["id"];
 
         String fileName = "$idUnique."
-            "${map["imagePath"].split(".").last}";
+            "${map["imagePath"].toString().split(".").last}";
 
         var urlImage =
             '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
@@ -142,7 +144,7 @@ class HomeRepository {
         await ApiClient.storage.createFile(
           bucketId: constants.STORAGE_BUCKETS,
           fileId: idUnique,
-          file: InputFile(
+          file: InputFile.fromPath(
             path: map["imagePath"],
             filename: fileName,
           ),
@@ -157,6 +159,32 @@ class HomeRepository {
               'image': urlImage,
             });
       }
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
+    }
+  }
+
+  Future<List<DropdownMenuItem<String>>> getDropdowClasse() async {
+    try {
+      // var res = await ApiClient.databases.getDocument(
+      //   databaseId: constants.DATABASE_ID,
+      //   collectionId: constants.COLLETION_DROPDOWN_ID,
+      //   documentId: '6525b03feaacb25645ab',
+      // );
+      // print(res.data['value'][0]);
+      // return res.data['value'][0];
+
+      return Future(() => [
+            const DropdownMenuItem(
+              value: "0",
+              child: Text(
+                'Select Zone',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+            )
+          ]);
     } on AppwriteException catch (e) {
       log(e.response['type']);
 
