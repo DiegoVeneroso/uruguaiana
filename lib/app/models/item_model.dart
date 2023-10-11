@@ -5,10 +5,12 @@ class ItemModel {
   String? id;
   String name;
   String image;
+  String cidade;
   ItemModel({
     this.id,
     required this.name,
     required this.image,
+    required this.cidade,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,6 +18,7 @@ class ItemModel {
       'id': id,
       'name': name,
       'image': image,
+      'cidade': cidade,
     };
   }
 
@@ -24,6 +27,7 @@ class ItemModel {
       id: map['id'] != null ? map['id'] as String : null,
       name: map['name'] as String,
       image: map['image'] as String,
+      cidade: map['cidade'] as String,
     );
   }
 

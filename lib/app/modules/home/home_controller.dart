@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart';
@@ -23,17 +24,14 @@ class HomeController extends GetxController
   final _dialog = Rxn<DialogModel>();
   var itemList = <ItemModel>[].obs;
   Rx<List<ItemModel>> foundItem = Rx<List<ItemModel>>([]);
+  RxList<DropdownMenuItem<String>> listDropdownClasse =
+      <DropdownMenuItem<String>>[].obs;
 
   late Rx<File?> pickedFile;
   File? get profileImage => pickedFile.value;
   XFile? imageFile;
 
-  final List<String> listaClasse = [
-    'Docente',
-    'TAE',
-    'Discente',
-  ];
-  String? valorSelecionadoClasse;
+  RxString? valorSelecionadoDropDown = ''.obs;
 
   HomeController({
     required this.repository,
@@ -116,9 +114,9 @@ class HomeController extends GetxController
   void loadData() async {
     try {
       // _loading.toggle();
-      var dataRepository = await repository.loadDataRepository();
+      var result = await repository.loadDataRepository();
 
-      itemList.assignAll(dataRepository);
+      itemList.assignAll(result);
       // _loading.toggle();
     } catch (e) {
       // _loading.toggle();
@@ -251,6 +249,30 @@ class HomeController extends GetxController
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
       Get.offAndToNamed('/home');
+    }
+  }
+
+  Future<List<DropdownMenuItem<String>>> getDropdowValue(
+      {required String labelAndColecctionList}) async {
+    try {
+      var result =
+          await repository.getDropdowValueRepository(labelAndColecctionList);
+
+      for (var res in result.data['value']) {
+        listDropdownClasse.add(DropdownMenuItem(
+          value: res,
+          child: Text(
+            res,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+        ));
+      }
+
+      return listDropdownClasse;
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
     }
   }
 }

@@ -19,18 +19,15 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: Text(HomeRepository().getDropdowClasse().toString()),
+        title: const Text('Realtime modelo'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => searchVisible.toggle(),
+            icon: const Icon(Icons.search),
+          ),
+        ],
       ),
-      // appBar: AppBar(
-      //   title: const Text('Realtime modelo'),
-      //   centerTitle: true,
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () => searchVisible.toggle(),
-      //       icon: const Icon(Icons.search),
-      //     ),
-      //   ],
-      // ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(

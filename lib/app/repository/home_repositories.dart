@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
 import '../models/item_model.dart';
-import '../models/zone_model.dart';
 
 class HomeRepository {
   RealtimeSubscription? subscription;
@@ -28,6 +27,7 @@ class HomeRepository {
                   id: docmodel.data['id'],
                   name: docmodel.data['name'],
                   image: docmodel.data['image'],
+                  cidade: docmodel.data['cidade'],
                 ))
             .toList();
 
@@ -43,6 +43,7 @@ class HomeRepository {
                   id: docmodel.data['id'],
                   name: docmodel.data['name'],
                   image: docmodel.data['image'],
+                  cidade: docmodel.data['cidade'],
                 ))
             .toList();
 
@@ -90,6 +91,7 @@ class HomeRepository {
             'id': idUnique,
             'name': map["name"],
             'image': urlImage,
+            'cidade': map["cidade"],
           });
     } on AppwriteException catch (e) {
       log(e.response['type']);
@@ -157,6 +159,7 @@ class HomeRepository {
             data: {
               'name': map["name"],
               'image': urlImage,
+              'cidade': map["cidade"],
             });
       }
     } on AppwriteException catch (e) {
@@ -166,25 +169,14 @@ class HomeRepository {
     }
   }
 
-  Future<List<DropdownMenuItem<String>>> getDropdowClasse() async {
+  Future getDropdowValueRepository(String labelAndColecctionList) async {
     try {
-      // var res = await ApiClient.databases.getDocument(
-      //   databaseId: constants.DATABASE_ID,
-      //   collectionId: constants.COLLETION_DROPDOWN_ID,
-      //   documentId: '6525b03feaacb25645ab',
-      // );
-      // print(res.data['value'][0]);
-      // return res.data['value'][0];
-
-      return Future(() => [
-            const DropdownMenuItem(
-              value: "0",
-              child: Text(
-                'Select Zone',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-            )
-          ]);
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_DROPDOWN_ID,
+        queries: [Query.equal("name", labelAndColecctionList)],
+      );
+      return result.documents.first;
     } on AppwriteException catch (e) {
       log(e.response['type']);
 
