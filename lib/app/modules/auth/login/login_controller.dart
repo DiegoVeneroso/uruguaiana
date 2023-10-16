@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:uruguaiana/app/models/user_model.dart';
 
 import 'package:uruguaiana/app/routes/app_pages.dart';
 
@@ -52,9 +54,21 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
     try {
       _loading.toggle();
 
-      var sessionId =
+      var session =
           await authRepository.login({"email": email, "password": password});
-      await storage.write('sessionId', sessionId.toString());
+
+      var idUser = session.userId;
+
+      var result = await authRepository.getUserById(idUser.toString());
+
+      await storage.write('id_user', result.id ?? '');
+      await storage.write('name', result.name);
+      await storage.write('email', result.email);
+      await storage.write('url_avatar', result.urlAvatar ?? '');
+      await storage.write('toke_push', result.tokenPush ?? '');
+      await storage.write('phone', result.phone ?? '');
+      await storage.write('profile', result.profile ?? '');
+
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -95,11 +109,30 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
     }
   }
 
+  Future<UserModel> getProfile() async {
+    try {
+      var idUser = await storage.read('id_user');
+      var user = await authRepository.getUserById(idUser);
+
+      return user;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
   Future<void> logout() async {
     try {
       _loading.toggle();
       await authRepository.logout();
-      await storage.write('sessionId', '');
+
+      await storage.write('id_user', '');
+      await storage.write('name', '');
+      await storage.write('email', '');
+      await storage.write('url_avatar', '');
+      await storage.write('toke_push', '');
+      await storage.write('phone', '');
+
       Get.toNamed(Routes.splash);
     } catch (e) {
       _loading.toggle();

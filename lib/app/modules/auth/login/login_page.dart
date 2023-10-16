@@ -1,4 +1,3 @@
-import 'package:uruguaiana/app/core/ui/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -50,7 +49,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Center(
-                            child: Container(
+                            child: SizedBox(
                               width: 200,
                               height: 200,
                               child: Image.asset(
@@ -117,7 +116,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                               const Text('Não possui uma conta?'),
                               TextButton(
                                 style: TextButton.styleFrom(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   tapTargetSize:
                                       MaterialTapTargetSize.shrinkWrap,
                                 ),
@@ -126,7 +125,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                                 },
                                 child: const Text(
                                   'Cadastre-se',
-                                  style: AppTheme.textBold,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ],
@@ -137,7 +136,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                               const Text('Esqueceu a senha?'),
                               TextButton(
                                 style: TextButton.styleFrom(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   tapTargetSize:
                                       MaterialTapTargetSize.shrinkWrap,
                                 ),
@@ -146,7 +145,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                                 },
                                 child: const Text(
                                   'Recupere a senha',
-                                  style: AppTheme.textBold,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ],

@@ -4,7 +4,11 @@ import 'package:get/get.dart';
 import 'package:uruguaiana/app/modules/home/home_page.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_bindigns.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_page.dart';
+import 'package:uruguaiana/app/modules/profile/profile_bindings.dart';
+import 'package:uruguaiana/app/modules/profile/profile_page.dart';
 
+import '../modules/admin/admin_bindings.dart';
+import '../modules/admin/admin_page.dart';
 import '../modules/auth/login/login_bindings.dart';
 import '../modules/auth/login/login_page.dart';
 import '../modules/home/home_add_page.dart';
@@ -59,6 +63,16 @@ class AppPages {
       name: _Paths.home,
       page: () => HomePage(),
       binding: HomeBindings(),
+    ),
+    GetPage(
+      name: _Paths.admin,
+      page: () => const AdminPage(),
+      binding: AdminBindings(),
+    ),
+    GetPage(
+      name: _Paths.profile,
+      page: () => const ProfilePage(),
+      binding: ProfileBindings(),
     ),
   ];
 }

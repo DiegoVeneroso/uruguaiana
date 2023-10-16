@@ -1,24 +1,28 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'app/core/bindings/app_binding.dart';
-import 'app/core/config/app_ui.dart';
+import 'app/core/colors/app_theme.dart';
+import 'app/core/colors/services/theme_service.dart';
 import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await GetStorage.init();
+  await FirebaseMessaging.instance.requestPermission();
 
   runApp(GetMaterialApp(
-    title: 'Auth_appwrite',
+    title: 'Realtime modelo',
     initialRoute: AppPages.initial,
-    theme: AppUi.theme,
-    initialBinding: AppBinding(),
+    theme: Themes.light,
+    darkTheme: Themes.dark,
+    themeMode: ThemeService().theme,
+    // initialBinding: AppBinding(),
     getPages: AppPages.routes,
-    // theme: ThemeData(primarySwatch: Colors.pink),
+    locale: Get.deviceLocale,
     debugShowCheckedModeBanner: false,
   ));
 }

@@ -1,13 +1,9 @@
 import 'dart:io';
-
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_dropdown_button.dart';
-import 'package:uruguaiana/app/repository/home_repositories.dart';
 import 'package:validatorless/validatorless.dart';
-
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
@@ -23,10 +19,12 @@ class HomeAddPage extends StatefulWidget {
 class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
   final _formKey = GlobalKey<FormState>();
   final _nameEC = TextEditingController();
+  final _telefoneEC = TextEditingController();
 
   @override
   void dispose() {
     _nameEC.dispose();
+    _telefoneEC.dispose();
     super.dispose();
   }
 
@@ -87,10 +85,19 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                       children: [
                         IconButton(
                           onPressed: () async {
-                            await controller.pickImageFileFromGalery();
-                            setState(() {
-                              controller.imageFile;
-                            });
+                            Map<Permission, PermissionStatus> statuses = await [
+                              Permission.storage,
+                              Permission.camera,
+                            ].request();
+                            if (statuses[Permission.storage]!.isGranted &&
+                                statuses[Permission.camera]!.isGranted) {
+                              await controller.pickImageFileFromGalery();
+                              setState(() {
+                                controller.imageFile;
+                              });
+                            } else {
+                              print('Permissão negada!');
+                            }
                           },
                           icon: const Icon(
                             Icons.image_outlined,
@@ -103,10 +110,19 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                         ),
                         IconButton(
                           onPressed: () async {
-                            await controller.captureImageFileFromCamera();
-                            setState(() {
-                              controller.imageFile;
-                            });
+                            Map<Permission, PermissionStatus> statuses = await [
+                              Permission.storage,
+                              Permission.camera,
+                            ].request();
+                            if (statuses[Permission.storage]!.isGranted &&
+                                statuses[Permission.camera]!.isGranted) {
+                              await controller.captureImageFileFromCamera();
+                              setState(() {
+                                controller.imageFile;
+                              });
+                            } else {
+                              print('Permissão negada!');
+                            }
                           },
                           icon: const Icon(
                             Icons.camera_alt_outlined,
@@ -128,10 +144,19 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                       height: 10,
                     ),
                     CustomDropdownButton(
-                      label: 'Cidade',
+                      label: 'Selecione a cidade',
                       futureListDropdown: controller.getDropdowValue(
                           labelAndColecctionList: 'Cidade'),
                       validator: Validatorless.required('Cidade é obrigatória'),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextformfield(
+                      label: 'Telefone',
+                      controller: _telefoneEC,
+                      cellMask: true,
+                      validator: Validatorless.required('Telefone Obrigatório'),
                     ),
                     const SizedBox(
                       height: 30,

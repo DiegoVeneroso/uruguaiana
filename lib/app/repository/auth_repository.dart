@@ -5,6 +5,7 @@ import 'package:appwrite/models.dart';
 
 import 'package:uruguaiana/app/core/config/api_client.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:uruguaiana/app/models/user_model.dart';
 import '../core/config/constants.dart' as constants;
 
 class AuthRepository {
@@ -28,6 +29,8 @@ class AuthRepository {
 
       FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
       var token = await firebaseMessaging.getToken();
+      print('token');
+      print(token);
 
       await ApiClient.databases.createDocument(
           databaseId: constants.DATABASE_ID,
@@ -38,7 +41,7 @@ class AuthRepository {
             'name': map["name"],
             'email': map["email"],
             'phone': map["phone"],
-            'admin': map["admin"],
+            'profile': map["profile"],
             'url_avatar': map["url_avatar"],
             'token_push': token,
           });
@@ -92,12 +95,42 @@ class AuthRepository {
     }
   }
 
-  Future<User?> getUserIfExists() async {
+  Future<UserModel> getUserById(String idUser) async {
     try {
-      final user = await ApiClient.account.get();
-      print(user.email);
-      return user;
-    } on AppwriteException {
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_USERS_ID,
+        queries: [Query.equal("user_id", idUser)],
+      );
+
+      var user = result.documents.first.data;
+
+      return UserModel(
+        name: user['name'],
+        email: user['email'],
+        id: user['user_id'],
+        urlAvatar: user['url_avatar'],
+        profile: user['profile'],
+      );
+    } on AppwriteException catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<String> getProfileRepository(String idUser) async {
+    try {
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_USERS_ID,
+        queries: [Query.equal("user_id", idUser)],
+      );
+
+      var profile = result.documents.first.data['profile'];
+
+      return profile;
+    } on AppwriteException catch (e) {
+      print(e);
       rethrow;
     }
   }

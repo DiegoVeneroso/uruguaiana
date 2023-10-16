@@ -8,7 +8,7 @@ import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
 import '../models/item_model.dart';
 
-class HomeRepository {
+class ProfileRepository {
   RealtimeSubscription? subscription;
   RxList<ItemModel> listItem = <ItemModel>[].obs;
   RxString? search = ''.obs;

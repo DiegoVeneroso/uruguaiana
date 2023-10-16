@@ -56,7 +56,7 @@ class RegisterController extends GetxController
         "name": name,
         "email": email,
         "password": password,
-        "admin": false,
+        "profile": '',
         "phone": phone ?? '',
         "url_avatar": url_avatar ?? '',
       });

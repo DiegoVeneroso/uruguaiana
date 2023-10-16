@@ -9,8 +9,8 @@ class SplashController extends GetxController {
   void onReady() async {
     super.onReady();
     Future.delayed(const Duration(seconds: 3), () async {
-      await storage.read('sessionId') == '' ||
-              await storage.read('sessionId') == null
+      await storage.read('id_user') == '' ||
+              await storage.read('id_user') == null
           ? Get.offAllNamed(Routes.login)
           : Get.offAllNamed(Routes.home);
     });

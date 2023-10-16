@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_initicon/flutter_initicon.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:uruguaiana/app/modules/auth/login/login_controller.dart';
-import 'package:uruguaiana/app/modules/home/home_controller.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -9,61 +10,106 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoginController loginController = LoginController(AuthRepository());
+    LoginController controller = LoginController(AuthRepository());
     return Drawer(
       child: Container(
-        child: ListView(
-          children: [
-            buildDrawerHeader(),
-            const Divider(
-              color: Colors.grey,
-            ),
-            buildDrawerItem(
-              icon: Icons.photo,
-              text: "Home",
-              onTap: () => navigate(0),
-              tileColor: Get.currentRoute == '/home' ? Colors.blue : null,
-              textIconColor:
-                  Get.currentRoute == '/home' ? Colors.white : Colors.black,
-            ),
-            buildDrawerItem(
-              icon: Icons.photo,
-              text: "Home add",
-              onTap: () => navigate(1),
-              tileColor: Get.currentRoute == '/home_add' ? Colors.blue : null,
-              textIconColor:
-                  Get.currentRoute == '/home_add' ? Colors.white : Colors.black,
-            ),
-            buildDrawerItem(
-              icon: Icons.photo,
-              text: "Sair",
-              onTap: () => loginController.logout(),
-              tileColor: Get.currentRoute == '/home_add' ? Colors.blue : null,
-              textIconColor:
-                  Get.currentRoute == '/home_add' ? Colors.white : Colors.black,
-            ),
-          ],
-        ),
+        child: FutureBuilder(
+            future: controller.getProfile(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blue,
+                  ),
+                );
+              }
+
+              if (snapshot.hasData) {
+                return ListView(
+                  children: [
+                    buildDrawerHeader(),
+                    const Divider(
+                      color: Colors.grey,
+                    ),
+                    buildDrawerItem(
+                      icon: Icons.home,
+                      text: "Página Inicial",
+                      onTap: () => navigate(0),
+                      tileColor:
+                          Get.currentRoute == '/home' ? Colors.blue : null,
+                      textIconColor: Get.currentRoute == '/home'
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    buildDrawerItem(
+                      icon: Icons.person,
+                      text: "Perfil",
+                      onTap: () => navigate(1),
+                      tileColor:
+                          Get.currentRoute == '/profile' ? Colors.blue : null,
+                      textIconColor: Get.currentRoute == '/profile'
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                    Visibility(
+                      visible: snapshot.data!.profile == 'Administrador',
+                      child: buildDrawerItem(
+                        icon: Icons.settings,
+                        text: 'Administração',
+                        onTap: () => navigate(2),
+                        tileColor:
+                            Get.currentRoute == '/admin' ? Colors.blue : null,
+                        textIconColor: Get.currentRoute == '/admin'
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+                    ),
+                    buildDrawerItem(
+                      icon: Icons.exit_to_app,
+                      text: "Sair",
+                      onTap: () => controller.logout(),
+                      tileColor: null,
+                      textIconColor: Colors.black,
+                    ),
+                  ],
+                );
+              } else {
+                return const Text('');
+              }
+            }),
       ),
     );
   }
 
   Widget buildDrawerHeader() {
-    return const UserAccountsDrawerHeader(
-      accountName: Text("Ripples Code"),
-      accountEmail: Text("ripplescode@gmail.com"),
-      currentAccountPicture: CircleAvatar(
-        backgroundImage: NetworkImage(
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60'),
-      ),
-      currentAccountPictureSize: Size.square(72),
+    var urlAvatar = GetStorage().read('url_avatar');
+    var name = GetStorage().read('name');
+    var email = GetStorage().read('email');
+    var profile = GetStorage().read('profile');
+
+    return UserAccountsDrawerHeader(
+      accountName: Text(name),
+      accountEmail: Text(email),
+      currentAccountPicture: urlAvatar != ''
+          ? CircleAvatar(backgroundImage: NetworkImage(urlAvatar))
+          : Initicon(
+              text: GetStorage().read('name'),
+              elevation: 4,
+              size: 80,
+              backgroundColor: Colors.white,
+              style: const TextStyle(color: Colors.blue),
+            ),
+      currentAccountPictureSize: const Size.square(72),
       otherAccountsPictures: [
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          child: Text("RC"),
-        )
+        Text(
+          profile,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+          ),
+        ),
       ],
-      otherAccountsPicturesSize: Size.square(50),
+      otherAccountsPicturesSize: const Size.square(100),
     );
   }
 
@@ -89,112 +135,10 @@ class CustomDrawer extends StatelessWidget {
     if (index == 0) {
       Get.toNamed('/home');
     } else if (index == 1) {
-      Get.toNamed('/home_add');
+      Get.toNamed('/profile');
     }
     if (index == 2) {
-      Get.toNamed('/home_edit');
+      Get.toNamed('/admin');
     }
   }
 }
-
-
-
-// import 'package:flutter/material.dart';
-
-// import '../../../modules/home/home_page.dart';
-
-// class CustomDrawer extends StatelessWidget {
-//   const CustomDrawer({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Drawer(
-//       child: ListView(
-//         children: [
-//           DrawerHeader(
-//             decoration: const BoxDecoration(
-//               color: Colors.green,
-//             ),
-//             child: Center(
-//               child: Row(
-//                 children: [
-//                   const Expanded(
-//                     child: Icon(
-//                       Icons.account_circle,
-//                       color: Colors.white,
-//                       size: 40,
-//                     ),
-//                     flex: 2,
-//                   ),
-//                   Expanded(
-//                     flex: 6,
-//                     child: Text('fvsf'
-//                         // style: const TextStyle(color: Colors.white, fontSize: 16),
-//                         ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//           ListTile(
-//             title: const Text("Home"),
-//             leading: IconButton(
-//               icon: const Icon(Icons.home),
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//               },
-//             ),
-//             onTap: () {
-//               Navigator.of(context).pop();
-//               Navigator.of(context).push(MaterialPageRoute(
-//                   builder: (BuildContext context) => HomePage()));
-//             },
-//           ),
-//           const Divider(
-//             color: Colors.grey,
-//           ),
-//           ListTile(
-//             title: const Text("Profile"),
-//             leading: IconButton(
-//               icon: const Icon(Icons.account_circle),
-//               onPressed: () {},
-//             ),
-//             onTap: () {
-//               Navigator.of(context).pop();
-//               Navigator.of(context).push(MaterialPageRoute(
-//                   builder: (BuildContext context) => HomePage()));
-//             },
-//           ),
-//           const Divider(
-//             color: Colors.grey,
-//           ),
-//           ListTile(
-//             title: const Text("Contact"),
-//             leading: IconButton(
-//               icon: const Icon(Icons.contact_page),
-//               onPressed: () {},
-//             ),
-//             onTap: () {
-//               Navigator.of(context).pop();
-//               Navigator.of(context).push(MaterialPageRoute(
-//                   builder: (BuildContext context) => HomePage()));
-//             },
-//           ),
-//           const Divider(
-//             color: Colors.grey,
-//           ),
-//           ListTile(
-//             title: const Text("Sair"),
-//             leading: IconButton(
-//               icon: const Icon(Icons.contact_page),
-//               onPressed: () {},
-//             ),
-//             onTap: () {
-//               // Get.find<AuthService>().logout();
-//             },
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }

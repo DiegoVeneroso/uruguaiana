@@ -2,24 +2,23 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:appwrite/appwrite.dart' hide Permission;
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+
 import '../../core/config/api_client.dart';
 import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
 import '../../models/item_model.dart';
-import '../../repository/home_repositories.dart';
+import '../../repository/profile_repositories.dart';
 
-class HomeController extends GetxController
+class ProfileController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
   RealtimeSubscription? subscription;
-  HomeRepository repository;
+  ProfileRepository repository;
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
   final _dialog = Rxn<DialogModel>();
@@ -34,9 +33,7 @@ class HomeController extends GetxController
 
   RxString? valorSelecionadoDropDown = ''.obs;
 
-  var isDarkMode = false.obs;
-
-  HomeController({
+  ProfileController({
     required this.repository,
   });
 
@@ -46,7 +43,7 @@ class HomeController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundItem.value = itemList;
-    notificationPush();
+
     super.onInit();
   }
 
@@ -56,99 +53,25 @@ class HomeController extends GetxController
 
     subscribe();
     loadData();
-
     super.onReady();
   }
 
-  notificationPush() {
-    FirebaseMessaging.onMessage.listen((message) async {
-      print(message.data.values
-          .toString()); //recebe o valor dos dados personalidados da notificação
-
-      if (message.notification != null) {
-        Get.snackbar(
-          onTap: (snack) {
-            // Get.toNamed('/noticias');
-          },
-          message.notification!.title.toString(),
-          message.notification!.body.toString(),
-          backgroundColor: Colors.blue,
-          colorText: Colors.white,
-          margin: const EdgeInsets.all(20),
-        );
-      }
-    });
-  }
-
   pickImageFileFromGalery() async {
-    imageFile = await ImagePicker()
-        .pickImage(source: ImageSource.gallery, imageQuality: 50);
+    imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
-      await _cropImage(File(imageFile!.path));
-      _message(
-        MessageModel(
-          title: 'Parabéns!',
-          message: 'Imagem adicionada!',
-          type: MessageType.success,
-        ),
-      );
+      Get.snackbar(
+          'Imagem de Perfil', 'Sucesso em selecionar imagem da galeria!');
     }
   }
 
   captureImageFileFromCamera() async {
-    imageFile = await ImagePicker()
-        .pickImage(source: ImageSource.camera, imageQuality: 50);
+    imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
     if (imageFile != null) {
-      await _cropImage(File(imageFile!.path));
-      _message(
-        MessageModel(
-          title: 'Parabéns!',
-          message: 'Imagem adicionada!',
-          type: MessageType.success,
-        ),
-      );
+      print(imageFile!.path);
+      Get.snackbar(
+          'Imagem de Perfil', 'Sucesso em selecionar imagem da camera!');
     }
-  }
-
-  _cropImage(File imgFile) async {
-    final croppedFile = await ImageCropper().cropImage(
-        sourcePath: imgFile.path,
-        aspectRatioPresets: Platform.isAndroid
-            ? [
-                // CropAspectRatioPreset.square,
-                // CropAspectRatioPreset.ratio3x2,
-                // CropAspectRatioPreset.original,
-                CropAspectRatioPreset.ratio4x3,
-                // CropAspectRatioPreset.ratio16x9
-              ]
-            : [
-                // CropAspectRatioPreset.original,
-                // CropAspectRatioPreset.square,
-                // CropAspectRatioPreset.ratio3x2,
-                CropAspectRatioPreset.ratio4x3,
-                // CropAspectRatioPreset.ratio5x3,
-                // CropAspectRatioPreset.ratio5x4,
-                // CropAspectRatioPreset.ratio7x5,
-                // CropAspectRatioPreset.ratio16x9
-              ],
-        uiSettings: [
-          AndroidUiSettings(
-            toolbarTitle: "Recortar imagem",
-            toolbarColor: Colors.blue,
-            toolbarWidgetColor: Colors.blue,
-            initAspectRatio: CropAspectRatioPreset.ratio4x3,
-            lockAspectRatio: true,
-            hideBottomControls: true,
-            showCropGrid: false,
-          ),
-          IOSUiSettings(
-            title: "Recortar imagem",
-          )
-        ]);
-    if (croppedFile != null) {
-      imageCache.clear();
-      imageFile = XFile(croppedFile.path);
-    }
+    pickedFile = Rx<File?>(File(imageFile!.path));
   }
 
   getDialog({
@@ -165,10 +88,8 @@ class HomeController extends GetxController
   void filterItem(String itemName) {
     List<ItemModel> results = [];
     if (itemName.isEmpty) {
-      _loading.toggle();
       results = itemList;
     } else {
-      _loading.toggle();
       results = itemList
           .where((element) => element.name
               .toString()
@@ -176,7 +97,6 @@ class HomeController extends GetxController
               .contains(itemName.toLowerCase()))
           .toList();
     }
-    _loading.toggle();
     foundItem.value = results;
   }
 
@@ -193,17 +113,17 @@ class HomeController extends GetxController
 
   void loadData() async {
     try {
-      _loading.toggle();
+      // _loading.toggle();
       var result = await repository.loadDataRepository();
 
       itemList.assignAll(result);
-      _loading.toggle();
+      // _loading.toggle();
     } catch (e) {
-      _loading.toggle();
+      // _loading.toggle();
       _message(
         MessageModel(
-          title: 'Atenção!',
-          message: 'Erro ao adicionar!',
+          title: 'Parabéns!',
+          message: 'Item adicionado com sucesso!',
           type: MessageType.success,
         ),
       );

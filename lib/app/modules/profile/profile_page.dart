@@ -3,23 +3,22 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:uruguaiana/app/modules/profile/profile_controller.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_dropdown_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
-import 'home_controller.dart';
 
-class HomeEditPage extends StatefulWidget {
-  const HomeEditPage({Key? key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<HomeEditPage> createState() => _HomeAddPageState();
+  State<ProfilePage> createState() => _HomeAddPageState();
 }
 
-class _HomeAddPageState extends AppState<HomeEditPage, HomeController> {
+class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
   final _formKey = GlobalKey<FormState>();
   final _nameEC = TextEditingController(text: Get.parameters['name']);
 
@@ -48,7 +47,7 @@ class _HomeAddPageState extends AppState<HomeEditPage, HomeController> {
                   children: [
                     Center(
                       child: Text(
-                        'Atualizar item',
+                        ' Perfil',
                         style: context.textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: context.theme.primaryColorDark),
@@ -86,19 +85,10 @@ class _HomeAddPageState extends AppState<HomeEditPage, HomeController> {
                       children: [
                         IconButton(
                           onPressed: () async {
-                            Map<Permission, PermissionStatus> statuses = await [
-                              Permission.storage,
-                              Permission.camera,
-                            ].request();
-                            if (statuses[Permission.storage]!.isGranted &&
-                                statuses[Permission.camera]!.isGranted) {
-                              await controller.pickImageFileFromGalery();
-                              setState(() {
-                                controller.imageFile;
-                              });
-                            } else {
-                              print('Permissão negada!');
-                            }
+                            await controller.pickImageFileFromGalery();
+                            setState(() {
+                              controller.imageFile;
+                            });
                           },
                           icon: const Icon(
                             Icons.image_outlined,
@@ -111,19 +101,10 @@ class _HomeAddPageState extends AppState<HomeEditPage, HomeController> {
                         ),
                         IconButton(
                           onPressed: () async {
-                            Map<Permission, PermissionStatus> statuses = await [
-                              Permission.storage,
-                              Permission.camera,
-                            ].request();
-                            if (statuses[Permission.storage]!.isGranted &&
-                                statuses[Permission.camera]!.isGranted) {
-                              await controller.captureImageFileFromCamera();
-                              setState(() {
-                                controller.imageFile;
-                              });
-                            } else {
-                              print('Permissão negada!');
-                            }
+                            await controller.captureImageFileFromCamera();
+                            setState(() {
+                              controller.imageFile;
+                            });
                           },
                           icon: const Icon(
                             Icons.camera_alt_outlined,

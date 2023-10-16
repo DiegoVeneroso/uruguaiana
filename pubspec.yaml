@@ -44,8 +44,17 @@ dependencies:
   intl: ^0.17.0
   validatorless: ^1.2.1
   image_picker: ^1.0.4
+  image_cropper: ^5.0.0
+  permission_handler: ^11.0.1
+  flutter_image_compress: ^2.0.4
   dropdown_button2: ^1.4.0
-
+  flutter_initicon: ^3.0.0+1
+  gridview_menu: ^1.0.6
+  auto_size_text: ^3.0.0
+  mask_text_input_formatter: ^2.4.0 
+  animated_theme_switcher: ^2.0.8
+  flutter_local_notifications: ^16.1.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

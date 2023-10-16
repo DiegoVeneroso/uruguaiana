@@ -1,33 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 
 class CustomAppbar extends AppBar {
-  CustomAppbar({
-    Key? key,
-    double elevation = 2,
-  }) : super(
+  bool? IconBackNavigator;
+  Callback? iconBackAction;
+  String? titulo;
+  List<IconButton>? actionsList;
+
+  CustomAppbar({Key? key, double elevation = 2, this.titulo, this.actionsList})
+      : super(
+          toolbarHeight: 70,
           key: key,
-          backgroundColor: Colors.white,
+          backgroundColor: Get.theme.colorScheme.background,
           elevation: elevation,
-          centerTitle: true,
-          title: Row(
-            children: [
-              Center(
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  width: 80,
-                ),
-              ),
-              Text('fdas'
-                  // style: const TextStyle(color: Colors.black, fontSize: 10),
-                  ),
-              // TextButton(
-              //   onPressed: () {
-              //     // Get.find<AuthService>().logout();
-              //   },
-              //   child: Text('Sair'),
-              // ),
-            ],
+          iconTheme: IconThemeData(color: Get.theme.colorScheme.primary),
+          actions: actionsList,
+          title: Image.asset(
+            'assets/images/header.png',
+            fit: BoxFit.contain,
+            height: 80,
           ),
-          iconTheme: const IconThemeData(color: Colors.black),
         );
 }

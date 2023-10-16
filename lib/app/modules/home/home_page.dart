@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/repository/home_repositories.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
 
+import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import 'home_controller.dart';
 
@@ -17,70 +16,108 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Get.theme.colorScheme.background,
       drawer: const CustomDrawer(),
-      appBar: AppBar(
-        title: const Text('Realtime modelo'),
-        centerTitle: true,
-        actions: [
+      appBar: CustomAppbar(
+        actionsList: [
+          IconButton(
+            onPressed: ThemeService().switchTheme,
+            icon: const Icon(Icons.contrast),
+            color: Get.theme.colorScheme.primary,
+          ),
           IconButton(
             onPressed: () => searchVisible.toggle(),
             icon: const Icon(Icons.search),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Visibility(
-              visible: searchVisible.value,
-              child: const SizedBox(
-                height: 20,
-              ),
-            ),
-            Obx(
-              () => Visibility(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Visibility(
                 visible: searchVisible.value,
-                child: TextField(
-                  onChanged: (value) => controller.filterItem(value),
-                  decoration: InputDecoration(
-                    labelText: 'Pesquisar',
-                    suffixIcon: IconButton(
+                child: const SizedBox(
+                  height: 20,
+                ),
+              ),
+              Obx(
+                () => Visibility(
+                  visible: searchVisible.value,
+                  child: TextField(
+                    onChanged: (value) => controller.filterItem(value),
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 28, vertical: 16),
+                      isDense: true,
+                      labelText: 'Pesquisar',
+                      labelStyle:
+                          TextStyle(color: Get.theme.colorScheme.secondary),
+                      errorStyle: TextStyle(color: Get.theme.colorScheme.error),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(23),
+                        borderSide: BorderSide(color: Colors.grey[400]!),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(23),
+                        borderSide: BorderSide(color: Colors.grey[400]!),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(23),
+                        borderSide: BorderSide(color: Colors.grey[400]!),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      suffixIcon: IconButton(
                         onPressed: () => searchVisible.toggle(),
-                        icon: const Icon(Icons.close)),
+                        icon: const Icon(Icons.close),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: Obx(() => ListView.builder(
-                    itemCount: controller.foundItem.value.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: <Widget>[
-                          Row(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 60,
-                                margin: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.network(
-                                    controller.foundItem.value[index].image,
-                                    width: 100,
-                                    height: 60,
-                                    fit: BoxFit.fill,
-                                    // color: AppColor.purpleColor,
-                                    colorBlendMode: BlendMode.color,
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: Obx(() => ListView.builder(
+                      itemCount: controller.foundItem.value.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: <Widget>[
+                            Row(
+                              children: [
+                                Container(
+                                  width: 100,
+                                  height: 60,
+                                  margin:
+                                      const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Stack(
+                                      children: <Widget>[
+                                        SizedBox(
+                                          height: 180,
+                                          child: Center(
+                                            child: CircularProgressIndicator(
+                                              color: Get
+                                                  .theme.colorScheme.secondary,
+                                            ),
+                                          ),
+                                        ),
+                                        Image.network(
+                                          controller
+                                              .foundItem.value[index].image,
+                                          fit: BoxFit.cover,
+                                          width: double.infinity,
+                                          height: 180,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Flexible(
-                                child: Row(
+                                Row(
                                   children: [
                                     Column(
                                       mainAxisAlignment:
@@ -94,10 +131,12 @@ class HomePage extends GetView<HomeController> {
                                           style: const TextStyle(fontSize: 18),
                                         ),
                                         Text(
-                                          controller.itemList[index].id
+                                          controller.itemList[index].cidade
                                               .toString(),
-                                          style: const TextStyle(
-                                              fontSize: 14, color: Colors.grey),
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Get
+                                                  .theme.colorScheme.primary),
                                         ),
                                       ],
                                     ),
@@ -110,9 +149,9 @@ class HomePage extends GetView<HomeController> {
                                             item: controller
                                                 .foundItem.value[index].name);
                                       },
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.delete,
-                                        color: Colors.red,
+                                        color: Get.theme.colorScheme.error,
                                       ),
                                     ),
                                     IconButton(
@@ -126,33 +165,40 @@ class HomePage extends GetView<HomeController> {
                                           'image': controller
                                               .itemList[index].image
                                               .toString(),
+                                          'cidade': controller
+                                              .itemList[index].cidade
+                                              .toString(),
                                         });
                                       },
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.edit,
-                                        color: Colors.blue,
+                                        color: Get.theme.colorScheme.surface,
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            color: Colors.grey[200],
-                            height: 2,
-                          ),
-                        ],
-                      );
-                    },
-                  )),
-            ),
-          ],
+                              ],
+                            ),
+                            Container(
+                              color: Colors.grey[200],
+                              height: 2,
+                            ),
+                          ],
+                        );
+                      },
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Get.theme.colorScheme.primary,
         onPressed: () => Get.toNamed(Routes.home_add),
-        child: const Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Get.theme.colorScheme.background,
+        ),
       ),
     );
   }
