@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -23,13 +24,16 @@ class CustomButton extends StatelessWidget {
       height: height,
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(
-          label,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          primary: color,
+          backgroundColor: Get.theme.colorScheme.primaryContainer,
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Get.theme.colorScheme.onPrimaryContainer),
         ),
       ),
     );

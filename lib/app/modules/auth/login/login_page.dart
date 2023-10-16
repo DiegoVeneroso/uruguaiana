@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:validatorless/validatorless.dart';
 
+import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/app_state.dart';
 
 import '../../../core/ui/widgets/custom_button.dart';
@@ -31,7 +32,18 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.theme.colorScheme.background,
+      appBar: AppBar(
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: ThemeService().switchTheme,
+            icon: const Icon(Icons.contrast),
+            color: Get.theme.colorScheme.primary,
+          ),
+        ],
+        backgroundColor: Get.theme.colorScheme.background,
+      ),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (_, constraints) {
@@ -61,8 +73,9 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                           Text(
                             'Entrar',
                             style: context.textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: context.theme.primaryColorDark),
+                              fontWeight: FontWeight.bold,
+                              color: Get.theme.colorScheme.surface,
+                            ),
                           ),
                           const SizedBox(
                             height: 30,
@@ -81,6 +94,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                           CustomTextformfield(
                             label: 'Senha',
                             obscureText: true,
+                            visibility: true,
                             controller: _passwordEC,
                             validator: Validatorless.multiple([
                               Validatorless.required('Senha obrigatório'),
@@ -113,7 +127,11 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text('Não possui uma conta?'),
+                              Text(
+                                'Não possui uma conta?',
+                                style: TextStyle(
+                                    color: Get.theme.colorScheme.surface),
+                              ),
                               TextButton(
                                 style: TextButton.styleFrom(
                                   padding: const EdgeInsets.all(5),
@@ -123,9 +141,11 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                                 onPressed: () {
                                   controller.moveToRegister();
                                 },
-                                child: const Text(
+                                child: Text(
                                   'Cadastre-se',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Get.theme.colorScheme.surface),
                                 ),
                               ),
                             ],
@@ -133,7 +153,11 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text('Esqueceu a senha?'),
+                              Text(
+                                'Esqueceu a senha?',
+                                style: TextStyle(
+                                    color: Get.theme.colorScheme.surface),
+                              ),
                               TextButton(
                                 style: TextButton.styleFrom(
                                   padding: const EdgeInsets.all(5),
@@ -143,9 +167,11 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                                 onPressed: () {
                                   controller.moveToRecoveryPassword();
                                 },
-                                child: const Text(
+                                child: Text(
                                   'Recupere a senha',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Get.theme.colorScheme.surface),
                                 ),
                               ),
                             ],

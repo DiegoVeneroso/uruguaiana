@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import 'package:validatorless/validatorless.dart';
-
+import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/app_state.dart';
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/custom_textformfield.dart';
@@ -33,7 +31,21 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.theme.colorScheme.background,
+      appBar: AppBar(
+        backgroundColor: Get.theme.colorScheme.background,
+        iconTheme: IconThemeData(
+          color: Get.theme.colorScheme.surface,
+        ),
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: ThemeService().switchTheme,
+            icon: const Icon(Icons.contrast),
+            color: Get.theme.colorScheme.surface,
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: IntrinsicHeight(
           child: Padding(
@@ -56,9 +68,10 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
                   Center(
                     child: Text(
                       'Cadastre-se',
-                      style: context.textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.theme.primaryColorDark),
+                      style: Get.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Get.theme.colorScheme.surface,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -87,6 +100,7 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
                     label: 'Senha',
                     controller: _passwordEC,
                     obscureText: true,
+                    visibility: true,
                     validator: Validatorless.multiple([
                       Validatorless.required('Senha obrigatório'),
                       Validatorless.min(
@@ -99,6 +113,7 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
                   CustomTextformfield(
                     label: 'Confirma senha',
                     obscureText: true,
+                    visibility: true,
                     validator: Validatorless.multiple([
                       Validatorless.required('Confirma senha obrigatória'),
                       Validatorless.compare(
@@ -122,18 +137,6 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
                             name: _nameEC.text,
                           );
                         }
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Center(
-                    child: CustomButton(
-                      width: double.infinity,
-                      label: 'VOLTAR',
-                      onPressed: () {
-                        Get.back();
                       },
                     ),
                   ),

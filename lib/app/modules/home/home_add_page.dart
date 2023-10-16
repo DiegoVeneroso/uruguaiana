@@ -48,7 +48,7 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                     Center(
                       child: Text(
                         'Adicionar item',
-                        style: context.textTheme.titleLarge?.copyWith(
+                        style: Get.textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: context.theme.primaryColorDark),
                       ),

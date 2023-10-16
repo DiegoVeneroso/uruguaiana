@@ -49,7 +49,7 @@ class _HomeAddPageState extends AppState<HomeEditPage, HomeController> {
                     Center(
                       child: Text(
                         'Atualizar item',
-                        style: context.textTheme.titleLarge?.copyWith(
+                        style: Get.textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: context.theme.primaryColorDark),
                       ),

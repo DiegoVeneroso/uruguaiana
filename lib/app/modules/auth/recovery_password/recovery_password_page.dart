@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:validatorless/validatorless.dart';
 
+import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/app_state.dart';
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/custom_textformfield.dart';
@@ -31,7 +32,22 @@ class _RecoveyPasswordPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.theme.colorScheme.background,
+      appBar: AppBar(
+        backgroundColor: Get.theme.colorScheme.background,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Get.theme.colorScheme.surface,
+        ),
+        actions: [
+          IconButton(
+            onPressed: ThemeService().switchTheme,
+            icon: const Icon(Icons.contrast),
+            color: Get.theme.colorScheme.surface,
+          ),
+        ],
+      ),
+      //
       body: LayoutBuilder(
         builder: (_, constraints) {
           return SingleChildScrollView(
@@ -60,9 +76,9 @@ class _RecoveyPasswordPageState
                         Center(
                           child: Text(
                             'Recuperar a senha',
-                            style: context.textTheme.titleLarge?.copyWith(
+                            style: Get.textTheme.titleLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
-                                color: context.theme.primaryColorDark),
+                                color: Get.theme.colorScheme.surface),
                           ),
                         ),
                         const SizedBox(
@@ -90,18 +106,6 @@ class _RecoveyPasswordPageState
                                 controller.recoveryPassword(
                                     email: _emailEC.text);
                               }
-                            },
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Center(
-                          child: CustomButton(
-                            width: double.infinity,
-                            label: 'VOLTAR',
-                            onPressed: () {
-                              Get.back();
                             },
                           ),
                         ),
