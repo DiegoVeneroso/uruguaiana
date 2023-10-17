@@ -9,11 +9,11 @@ class Themes {
       secondary: Colors.green,
       onSecondary: Colors.black,
       error: Colors.redAccent,
-      onError: Color(0xFFF32424),
+      onError: Colors.redAccent, //messages_error
       background: Color(0xFFF1F2F3),
       onBackground: Colors.white,
       surface: Colors.green,
-      onSurface: Color(0xFF54B435),
+      onSurface: Colors.green, //messages_success
       primaryContainer: Colors.green,
       onPrimaryContainer: Colors.white,
     ),
@@ -27,11 +27,11 @@ class Themes {
       secondary: Colors.green,
       onSecondary: Color(0xFFEAEAEA),
       error: Colors.yellowAccent,
-      onError: Color(0xFFF32424),
+      onError: Colors.redAccent, //messages_error
       background: Color(0xFF202020),
       onBackground: Colors.white,
       surface: Colors.white,
-      onSurface: Color(0xFF54B435),
+      onSurface: Colors.green, //messages_success
       primaryContainer: Colors.green,
       onPrimaryContainer: Colors.white,
     ),

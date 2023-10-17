@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
 
 import '../../core/colors/services/theme_service.dart';
@@ -9,25 +10,24 @@ import '../../core/ui/widgets/custom_drawer.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
-  RxBool searchVisible = false.obs;
-
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Get.theme.colorScheme.background,
+      backgroundColor: context.theme.colorScheme.background,
       drawer: const CustomDrawer(),
       appBar: CustomAppbar(
         actionsList: [
           IconButton(
             onPressed: ThemeService().switchTheme,
             icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.primary,
+            color: Get.theme.colorScheme.onBackground,
           ),
           IconButton(
-            onPressed: () => searchVisible.toggle(),
+            onPressed: () => controller.searchVisible.toggle(),
             icon: const Icon(Icons.search),
+            color: Get.theme.colorScheme.onBackground,
           ),
         ],
       ),
@@ -36,44 +36,20 @@ class HomePage extends GetView<HomeController> {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              Visibility(
-                visible: searchVisible.value,
-                child: const SizedBox(
-                  height: 20,
+              Obx(
+                () => Visibility(
+                  visible: controller.searchVisible.value,
+                  child: const SizedBox(
+                    height: 20,
+                  ),
                 ),
               ),
               Obx(
                 () => Visibility(
-                  visible: searchVisible.value,
-                  child: TextField(
+                  visible: controller.searchVisible.value,
+                  child: CustomSearchformfield(
                     onChanged: (value) => controller.filterItem(value),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 28, vertical: 16),
-                      isDense: true,
-                      labelText: 'Pesquisar',
-                      labelStyle:
-                          TextStyle(color: Get.theme.colorScheme.secondary),
-                      errorStyle: TextStyle(color: Get.theme.colorScheme.error),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23),
-                        borderSide: BorderSide(color: Colors.grey[400]!),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23),
-                        borderSide: BorderSide(color: Colors.grey[400]!),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(23),
-                        borderSide: BorderSide(color: Colors.grey[400]!),
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      suffixIcon: IconButton(
-                        onPressed: () => searchVisible.toggle(),
-                        icon: const Icon(Icons.close),
-                      ),
-                    ),
+                    onPressed: () => controller.searchVisible.toggle(),
                   ),
                 ),
               ),

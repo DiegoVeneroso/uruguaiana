@@ -35,22 +35,22 @@ extension MessageTypeColorExt on MessageType {
   Color color() {
     switch (this) {
       case MessageType.error:
-        return Colors.red[800]!;
+        return Get.theme.colorScheme.onError;
       case MessageType.info:
-        return Colors.blue[200]!;
+        return Get.theme.colorScheme.onError;
       case MessageType.success:
-        return Color.fromARGB(255, 23, 206, 154);
+        return Get.theme.colorScheme.onSurface;
     }
   }
 
   Color textColor() {
     switch (this) {
       case MessageType.error:
-        return Colors.white;
+        return Get.theme.colorScheme.onPrimaryContainer;
       case MessageType.success:
-        return Colors.white;
+        return Get.theme.colorScheme.onPrimaryContainer;
       case MessageType.info:
-        return Colors.black;
+        return Get.theme.colorScheme.onPrimaryContainer;
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
 
 import '../../modules/home/home_controller.dart';
 import '../../repository/home_repositories.dart';
@@ -10,21 +11,21 @@ mixin DialogMixin on GetxController {
       HomeController controller = HomeController(repository: HomeRepository());
       if (model != null) {
         Get.defaultDialog(
+          titlePadding: const EdgeInsets.only(top: 10),
+          contentPadding: const EdgeInsets.only(top: 30, bottom: 20),
           title: model.title,
           middleText: model.message,
-          backgroundColor: Colors.teal,
-          titleStyle: const TextStyle(color: Colors.white),
-          middleTextStyle: const TextStyle(color: Colors.white),
+          backgroundColor: Get.theme.colorScheme.onPrimaryContainer,
+          titleStyle: TextStyle(color: Get.theme.colorScheme.onSurface),
+          middleTextStyle: TextStyle(color: Get.theme.colorScheme.onSurface),
           radius: 30,
-          confirm: ElevatedButton(
+          confirm: CustomButton(
+            height: 40,
+            width: 100,
+            label: 'Excluir',
             onPressed: () async {
               await controller.itemDelete(model.id.toString());
             },
-            child: const Text('Excluir'),
-          ),
-          cancel: ElevatedButton(
-            onPressed: () => Get.back(),
-            child: const Text('Voltar'),
           ),
         );
       }

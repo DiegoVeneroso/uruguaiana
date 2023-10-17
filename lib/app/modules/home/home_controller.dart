@@ -34,6 +34,8 @@ class HomeController extends GetxController
 
   RxString? valorSelecionadoDropDown = ''.obs;
 
+  RxBool searchVisible = false.obs;
+
   var isDarkMode = false.obs;
 
   HomeController({
@@ -165,10 +167,10 @@ class HomeController extends GetxController
   void filterItem(String itemName) {
     List<ItemModel> results = [];
     if (itemName.isEmpty) {
-      _loading.toggle();
+      // _loading.toggle();
       results = itemList;
     } else {
-      _loading.toggle();
+      // _loading.toggle();
       results = itemList
           .where((element) => element.name
               .toString()
@@ -176,7 +178,7 @@ class HomeController extends GetxController
               .contains(itemName.toLowerCase()))
           .toList();
     }
-    _loading.toggle();
+    // _loading.toggle();
     foundItem.value = results;
   }
 
@@ -193,11 +195,9 @@ class HomeController extends GetxController
 
   void loadData() async {
     try {
-      _loading.toggle();
       var result = await repository.loadDataRepository();
 
       itemList.assignAll(result);
-      _loading.toggle();
     } catch (e) {
       _loading.toggle();
       _message(

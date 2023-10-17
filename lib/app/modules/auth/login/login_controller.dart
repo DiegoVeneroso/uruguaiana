@@ -68,7 +68,6 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
       await storage.write('toke_push', result.tokenPush ?? '');
       await storage.write('phone', result.phone ?? '');
       await storage.write('profile', result.profile ?? '');
-
       _message(
         MessageModel(
           title: 'Parabéns!',

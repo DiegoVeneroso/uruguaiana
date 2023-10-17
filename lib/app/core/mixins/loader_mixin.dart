@@ -8,9 +8,9 @@ mixin LoaderMixin on GetxController {
         await Get.dialog(
           WillPopScope(
             onWillPop: () async => false,
-            child: const Center(
+            child: Center(
               child: CircularProgressIndicator(
-                color: Colors.red,
+                color: Get.theme.colorScheme.primary,
               ),
             ),
           ),

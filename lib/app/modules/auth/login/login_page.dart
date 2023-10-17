@@ -39,7 +39,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
           IconButton(
             onPressed: ThemeService().switchTheme,
             icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.primary,
+            color: Get.theme.colorScheme.surface,
           ),
         ],
         backgroundColor: Get.theme.colorScheme.background,
