@@ -17,6 +17,7 @@ class CustomSearchformfield extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: TextStyle(color: Get.theme.colorScheme.primary),
       onChanged: onChanged,
       decoration: InputDecoration(
         contentPadding:
