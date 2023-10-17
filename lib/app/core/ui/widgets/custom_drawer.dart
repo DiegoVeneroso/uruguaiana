@@ -12,14 +12,15 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginController controller = LoginController(AuthRepository());
     return Drawer(
+      backgroundColor: context.theme.colorScheme.background,
       child: Container(
         child: FutureBuilder(
             future: controller.getProfile(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
+                return Center(
                   child: CircularProgressIndicator(
-                    color: Colors.blue,
+                    color: Get.theme.colorScheme.primary,
                   ),
                 );
               }
@@ -28,28 +29,30 @@ class CustomDrawer extends StatelessWidget {
                 return ListView(
                   children: [
                     buildDrawerHeader(),
-                    const Divider(
-                      color: Colors.grey,
+                    Divider(
+                      color: Get.theme.colorScheme.secondary,
                     ),
                     buildDrawerItem(
                       icon: Icons.home,
                       text: "Página Inicial",
                       onTap: () => navigate(0),
-                      tileColor:
-                          Get.currentRoute == '/home' ? Colors.blue : null,
+                      tileColor: Get.currentRoute == '/home'
+                          ? Get.theme.colorScheme.primary
+                          : null,
                       textIconColor: Get.currentRoute == '/home'
-                          ? Colors.white
-                          : Colors.black,
+                          ? Get.theme.colorScheme.onPrimaryContainer
+                          : Get.theme.colorScheme.primary,
                     ),
                     buildDrawerItem(
                       icon: Icons.person,
                       text: "Perfil",
                       onTap: () => navigate(1),
-                      tileColor:
-                          Get.currentRoute == '/profile' ? Colors.blue : null,
+                      tileColor: Get.currentRoute == '/profile'
+                          ? Get.theme.colorScheme.primary
+                          : null,
                       textIconColor: Get.currentRoute == '/profile'
-                          ? Colors.white
-                          : Colors.black,
+                          ? Get.theme.colorScheme.onPrimaryContainer
+                          : Get.theme.colorScheme.primary,
                     ),
                     Visibility(
                       visible: snapshot.data!.profile == 'Administrador',
@@ -57,11 +60,12 @@ class CustomDrawer extends StatelessWidget {
                         icon: Icons.settings,
                         text: 'Administração',
                         onTap: () => navigate(2),
-                        tileColor:
-                            Get.currentRoute == '/admin' ? Colors.blue : null,
+                        tileColor: Get.currentRoute == '/admin'
+                            ? Get.theme.colorScheme.primary
+                            : null,
                         textIconColor: Get.currentRoute == '/admin'
-                            ? Colors.white
-                            : Colors.black,
+                            ? Get.theme.colorScheme.onPrimaryContainer
+                            : Get.theme.colorScheme.primary,
                       ),
                     ),
                     buildDrawerItem(
@@ -69,7 +73,7 @@ class CustomDrawer extends StatelessWidget {
                       text: "Sair",
                       onTap: () => controller.logout(),
                       tileColor: null,
-                      textIconColor: Colors.black,
+                      textIconColor: Get.theme.colorScheme.primary,
                     ),
                   ],
                 );

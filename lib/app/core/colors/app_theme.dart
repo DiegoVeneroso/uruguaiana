@@ -4,7 +4,7 @@ class Themes {
   static final light = ThemeData.light().copyWith(
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
-      primary: Colors.green,
+      primary: Colors.green, //loader
       onPrimary: Colors.grey,
       secondary: Colors.green,
       onSecondary: Colors.black,
@@ -22,7 +22,7 @@ class Themes {
   static final dark = ThemeData.dark().copyWith(
     colorScheme: const ColorScheme(
       brightness: Brightness.dark,
-      primary: Colors.green,
+      primary: Colors.green, //loader
       onPrimary: Color(0xFFFFFFFF),
       secondary: Colors.green,
       onSecondary: Color(0xFFEAEAEA),
