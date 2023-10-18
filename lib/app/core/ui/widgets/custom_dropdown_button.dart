@@ -37,25 +37,22 @@ class CustomDropdownButton extends GetView<HomeController> {
               //   color: Colors.black,
               // ),
               decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
                 isDense: true,
-                // labelStyle: const TextStyle(
-                //   color: Colors.red,
-                // ),
-                // floatingLabelStyle: const TextStyle(color: Colors.red),
-
-                errorStyle: const TextStyle(
-                    color: Colors.redAccent, fontWeight: FontWeight.bold),
+                labelStyle: TextStyle(color: Get.theme.colorScheme.secondary),
+                errorStyle: TextStyle(color: Get.theme.colorScheme.error),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(23),
+                  borderSide: BorderSide(color: Get.theme.colorScheme.primary),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(23),
+                  borderSide: BorderSide(color: Get.theme.colorScheme.primary),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(23),
+                  borderSide: BorderSide(color: Get.theme.colorScheme.primary),
                 ),
                 filled: true,
                 fillColor: Colors.white,
@@ -63,11 +60,12 @@ class CustomDropdownButton extends GetView<HomeController> {
               isExpanded: true,
               hint: Text(
                 label ?? value.toString(),
-                style: const TextStyle(fontSize: 16, color: Colors.black),
+                style: TextStyle(
+                    fontSize: 16, color: Get.theme.colorScheme.primary),
               ),
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_drop_down,
-                color: Colors.black54,
+                color: Get.theme.colorScheme.primary,
               ),
               iconSize: 25,
               buttonHeight: 20,

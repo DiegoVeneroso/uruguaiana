@@ -135,16 +135,19 @@ class HomeController extends GetxController
               ],
         uiSettings: [
           AndroidUiSettings(
-            toolbarTitle: "Recortar imagem",
-            toolbarColor: Colors.blue,
-            toolbarWidgetColor: Colors.blue,
+            toolbarTitle: "Ajustar imagem",
+            toolbarColor: Get.theme.colorScheme.primary,
+            toolbarWidgetColor: Get.theme.colorScheme.onPrimaryContainer,
             initAspectRatio: CropAspectRatioPreset.ratio4x3,
             lockAspectRatio: true,
-            hideBottomControls: true,
+            // hideBottomControls: true,
+            // statusBarColor: Get.theme.colorScheme.primary,
+            activeControlsWidgetColor: Get.theme.colorScheme.primary,
+            dimmedLayerColor: Get.theme.colorScheme.primary,
             showCropGrid: false,
           ),
           IOSUiSettings(
-            title: "Recortar imagem",
+            title: "Ajustar imagem",
           )
         ]);
     if (croppedFile != null) {
@@ -344,7 +347,10 @@ class HomeController extends GetxController
           value: res,
           child: Text(
             res,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 14,
+              color: Get.theme.colorScheme.surface,
+            ),
           ),
         ));
       }

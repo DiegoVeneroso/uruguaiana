@@ -1,6 +1,7 @@
 import 'package:uruguaiana/app/modules/auth/recovery_password/recovery_password_bindings.dart';
 import 'package:uruguaiana/app/modules/auth/recovery_password/recovery_password_page.dart';
 import 'package:get/get.dart';
+import 'package:uruguaiana/app/modules/home/home_detail_page.dart';
 import 'package:uruguaiana/app/modules/home/home_page.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_bindigns.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_page.dart';
@@ -46,7 +47,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.home,
-      page: () => HomePage(),
+      page: () => const HomePage(),
       binding: HomeBindings(),
     ),
     GetPage(
@@ -60,8 +61,8 @@ class AppPages {
       binding: HomeBindings(),
     ),
     GetPage(
-      name: _Paths.home,
-      page: () => HomePage(),
+      name: _Paths.home_detail,
+      page: () => const HomeDetailPage(),
       binding: HomeBindings(),
     ),
     GetPage(

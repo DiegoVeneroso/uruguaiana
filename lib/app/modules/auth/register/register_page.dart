@@ -125,6 +125,7 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
                   ),
                   Center(
                     child: CustomButton(
+                      color: Get.theme.colorScheme.onPrimaryContainer,
                       width: double.infinity,
                       label: 'CADASTRAR',
                       onPressed: () {

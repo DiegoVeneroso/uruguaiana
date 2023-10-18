@@ -39,7 +39,7 @@ class CustomSearchformfield extends GetView<HomeController> {
           borderSide: BorderSide(color: Get.theme.colorScheme.primary),
         ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: context.theme.colorScheme.onPrimaryContainer,
         suffixIcon: IconButton(
           onPressed: onPressed,
           icon: const Icon(Icons.close),

@@ -20,6 +20,7 @@ mixin DialogMixin on GetxController {
           middleTextStyle: TextStyle(color: Get.theme.colorScheme.onSurface),
           radius: 30,
           confirm: CustomButton(
+            color: Get.theme.colorScheme.onError,
             height: 40,
             width: 100,
             label: 'Excluir',

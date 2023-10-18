@@ -39,127 +39,129 @@ class HomePage extends GetView<HomeController> {
               Obx(
                 () => Visibility(
                   visible: controller.searchVisible.value,
-                  child: const SizedBox(
-                    height: 20,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: CustomSearchformfield(
+                      onChanged: (value) => controller.filterItem(value),
+                      onPressed: () => controller.searchVisible.toggle(),
+                    ),
                   ),
                 ),
-              ),
-              Obx(
-                () => Visibility(
-                  visible: controller.searchVisible.value,
-                  child: CustomSearchformfield(
-                    onChanged: (value) => controller.filterItem(value),
-                    onPressed: () => controller.searchVisible.toggle(),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
               ),
               Expanded(
                 child: Obx(() => ListView.builder(
                       itemCount: controller.foundItem.value.length,
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: <Widget>[
-                            Row(
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 60,
-                                  margin:
-                                      const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Stack(
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 180,
-                                          child: Center(
-                                            child: CircularProgressIndicator(
-                                              color: Get
-                                                  .theme.colorScheme.secondary,
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 100,
+                                    height: 60,
+                                    margin:
+                                        const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Stack(
+                                        children: <Widget>[
+                                          SizedBox(
+                                            height: 180,
+                                            child: Center(
+                                              child: CircularProgressIndicator(
+                                                color: Get.theme.colorScheme
+                                                    .secondary,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Image.network(
-                                          controller
-                                              .foundItem.value[index].image,
-                                          fit: BoxFit.cover,
-                                          width: double.infinity,
-                                          height: 180,
-                                        ),
-                                      ],
+                                          Image.network(
+                                            controller
+                                                .foundItem.value[index].image,
+                                            fit: BoxFit.cover,
+                                            width: double.infinity,
+                                            height: 180,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          controller
-                                              .foundItem.value[index].name,
-                                          style: const TextStyle(fontSize: 18),
-                                        ),
-                                        Text(
-                                          controller.itemList[index].cidade
-                                              .toString(),
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Get
-                                                  .theme.colorScheme.primary),
-                                        ),
-                                      ],
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        controller.getDialog(
-                                            idItem: controller
-                                                .itemList[index].id
-                                                .toString(),
-                                            item: controller
-                                                .foundItem.value[index].name);
-                                      },
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color: Get.theme.colorScheme.error,
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        controller.foundItem.value[index].name,
+                                        style: const TextStyle(fontSize: 18),
                                       ),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        Get.toNamed('/home_edit', parameters: {
-                                          'name': controller
-                                              .itemList[index].name
-                                              .toString(),
-                                          'id': controller.itemList[index].id
-                                              .toString(),
-                                          'image': controller
-                                              .itemList[index].image
-                                              .toString(),
-                                          'cidade': controller
-                                              .itemList[index].cidade
-                                              .toString(),
-                                        });
-                                      },
-                                      icon: Icon(
-                                        Icons.edit,
-                                        color: Get.theme.colorScheme.surface,
+                                      Text(
+                                        controller.itemList[index].cidade
+                                            .toString(),
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color:
+                                                Get.theme.colorScheme.primary),
                                       ),
+                                    ],
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      controller.getDialog(
+                                          idItem: controller.itemList[index].id
+                                              .toString(),
+                                          item: controller
+                                              .foundItem.value[index].name);
+                                    },
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Get.theme.colorScheme.error,
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Container(
-                              color: Colors.grey[200],
-                              height: 2,
-                            ),
-                          ],
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      Get.toNamed('/home_edit', parameters: {
+                                        'name': controller.itemList[index].name
+                                            .toString(),
+                                        'id': controller.itemList[index].id
+                                            .toString(),
+                                        'image': controller
+                                            .itemList[index].image
+                                            .toString(),
+                                        'cidade': controller
+                                            .itemList[index].cidade
+                                            .toString(),
+                                      });
+                                    },
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Get.theme.colorScheme.surface,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      Get.toNamed('/home_detail', parameters: {
+                                        'name': controller.itemList[index].name
+                                            .toString(),
+                                        'id': controller.itemList[index].id
+                                            .toString(),
+                                        'image': controller
+                                            .itemList[index].image
+                                            .toString(),
+                                        'cidade': controller
+                                            .itemList[index].cidade
+                                            .toString(),
+                                      });
+                                    },
+                                    icon: Icon(
+                                      Icons.visibility,
+                                      color: Get.theme.colorScheme.surface,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         );
                       },
                     )),

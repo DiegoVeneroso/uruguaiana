@@ -97,6 +97,7 @@ class _RecoveyPasswordPageState
                         ),
                         Center(
                           child: CustomButton(
+                            color: Get.theme.colorScheme.onPrimaryContainer,
                             width: double.infinity,
                             label: 'RECUPERAR SENHA',
                             onPressed: () {

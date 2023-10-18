@@ -133,6 +133,7 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                     ),
                     Center(
                       child: CustomButton(
+                        color: Get.theme.colorScheme.onPrimaryContainer,
                         width: double.infinity,
                         label: 'ATUALIZAR',
                         onPressed: () {
@@ -158,6 +159,7 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                     ),
                     Center(
                       child: CustomButton(
+                        color: Get.theme.colorScheme.onPrimaryContainer,
                         width: double.infinity,
                         label: 'VOLTAR',
                         onPressed: () {
