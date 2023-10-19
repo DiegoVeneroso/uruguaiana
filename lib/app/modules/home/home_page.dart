@@ -31,143 +31,183 @@ class HomePage extends GetView<HomeController> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Obx(
-                () => Visibility(
-                  visible: controller.searchVisible.value,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: CustomSearchformfield(
-                      onChanged: (value) => controller.filterItem(value),
-                      onPressed: () => controller.searchVisible.toggle(),
-                    ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Obx(
+              () => Visibility(
+                visible: controller.searchVisible.value,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: CustomSearchformfield(
+                    onChanged: (value) => controller.filterItem(value),
+                    onPressed: () => controller.searchVisible.toggle(),
                   ),
                 ),
               ),
-              Expanded(
-                child: Obx(() => ListView.builder(
-                      itemCount: controller.foundItem.value.length,
-                      itemBuilder: (context, index) {
-                        return SingleChildScrollView(
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 60,
-                                    margin:
-                                        const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Stack(
-                                        children: <Widget>[
-                                          SizedBox(
-                                            height: 180,
-                                            child: Center(
-                                              child: CircularProgressIndicator(
-                                                color: Get.theme.colorScheme
-                                                    .secondary,
-                                              ),
-                                            ),
-                                          ),
-                                          Image.network(
-                                            controller
-                                                .foundItem.value[index].image,
-                                            fit: BoxFit.cover,
-                                            width: double.infinity,
-                                            height: 180,
-                                          ),
-                                        ],
+            ),
+            Expanded(
+              child: Obx(() => ListView.builder(
+                    itemCount: controller.foundItem.value.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/home_detail', parameters: {
+                              'name':
+                                  controller.itemList[index].name.toString(),
+                              'id': controller.itemList[index].id.toString(),
+                              'image':
+                                  controller.itemList[index].image.toString(),
+                              'cidade':
+                                  controller.itemList[index].cidade.toString(),
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(8.0),
+                            width: double.infinity,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    controller.foundItem.value[index].image),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors.white24,
+                                      ),
+                                      child: Icon(
+                                        Icons.share,
+                                        color: Get.theme.colorScheme.background,
+                                        size: 18,
                                       ),
                                     ),
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Text(
-                                        controller.foundItem.value[index].name,
-                                        style: const TextStyle(fontSize: 18),
-                                      ),
-                                      Text(
-                                        controller.itemList[index].cidade
-                                            .toString(),
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            color:
-                                                Get.theme.colorScheme.primary),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Get.toNamed('/home_edit',
+                                              parameters: {
+                                                'name': controller
+                                                    .itemList[index].name
+                                                    .toString(),
+                                                'id': controller
+                                                    .itemList[index].id
+                                                    .toString(),
+                                                'image': controller
+                                                    .itemList[index].image
+                                                    .toString(),
+                                                'cidade': controller
+                                                    .itemList[index].cidade
+                                                    .toString(),
+                                              });
+                                        },
+                                        child: Container(
+                                          width: 30,
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors.white24,
+                                          ),
+                                          child: Icon(
+                                            Icons.edit,
+                                            color: Get
+                                                .theme.colorScheme.background,
+                                            size: 18,
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  IconButton(
-                                    onPressed: () {
-                                      controller.getDialog(
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        controller.getDialog(
                                           idItem: controller.itemList[index].id
                                               .toString(),
                                           item: controller
-                                              .foundItem.value[index].name);
-                                    },
-                                    icon: Icon(
-                                      Icons.delete,
-                                      color: Get.theme.colorScheme.error,
+                                              .foundItem.value[index].name,
+                                        );
+                                      },
+                                      child: Container(
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white24,
+                                        ),
+                                        child: Icon(
+                                          Icons.delete,
+                                          color:
+                                              Get.theme.colorScheme.background,
+                                          size: 18,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      Get.toNamed('/home_edit', parameters: {
-                                        'name': controller.itemList[index].name
-                                            .toString(),
-                                        'id': controller.itemList[index].id
-                                            .toString(),
-                                        'image': controller
-                                            .itemList[index].image
-                                            .toString(),
-                                        'cidade': controller
-                                            .itemList[index].cidade
-                                            .toString(),
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.edit,
-                                      color: Get.theme.colorScheme.surface,
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 90,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors.white24,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10.0, vertical: 5.0),
+                                        child: Text(
+                                          controller
+                                              .foundItem.value[index].name,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Get
+                                                .theme.colorScheme.background,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      Get.toNamed('/home_detail', parameters: {
-                                        'name': controller.itemList[index].name
-                                            .toString(),
-                                        'id': controller.itemList[index].id
-                                            .toString(),
-                                        'image': controller
-                                            .itemList[index].image
-                                            .toString(),
-                                        'cidade': controller
-                                            .itemList[index].cidade
-                                            .toString(),
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.visibility,
-                                      color: Get.theme.colorScheme.surface,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        );
-                      },
-                    )),
-              ),
-            ],
-          ),
+                        ),
+                      );
+                    },
+                  )),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

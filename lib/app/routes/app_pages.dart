@@ -5,6 +5,8 @@ import 'package:uruguaiana/app/modules/home/home_detail_page.dart';
 import 'package:uruguaiana/app/modules/home/home_page.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_bindigns.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_page.dart';
+import 'package:uruguaiana/app/modules/news/news_bindings.dart';
+import 'package:uruguaiana/app/modules/news/news_page.dart';
 import 'package:uruguaiana/app/modules/profile/profile_bindings.dart';
 import 'package:uruguaiana/app/modules/profile/profile_page.dart';
 
@@ -74,6 +76,12 @@ class AppPages {
       name: _Paths.profile,
       page: () => const ProfilePage(),
       binding: ProfileBindings(),
+    ),
+    //news
+    GetPage(
+      name: _Paths.news,
+      page: () => const NewsPage(),
+      binding: NewsBindings(),
     ),
   ];
 }
