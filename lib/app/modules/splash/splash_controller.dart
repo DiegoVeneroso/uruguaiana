@@ -12,8 +12,8 @@ class SplashController extends GetxController {
       await storage.read('id_user') == '' ||
               await storage.read('id_user') == null
           ? Get.offAllNamed(Routes.login)
-          : Get.offAllNamed(Routes.home);
-      // : Get.offAllNamed(Routes.news);
+          // : Get.offAllNamed(Routes.home);
+          : Get.offAllNamed(Routes.news);
     });
   }
 }

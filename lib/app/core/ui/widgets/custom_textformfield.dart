@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -11,16 +12,22 @@ class CustomTextformfield extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChange;
   final RxBool isVisible = false.obs;
+  final int? maxlines;
+  final int? minlines;
+  final TextInputType? keyboardType;
 
   CustomTextformfield({
     Key? key,
     required this.label,
     this.controller,
-    this.validator,
-    this.cellMask = false,
-    this.onChange,
     this.obscureText = false,
     this.visibility = false,
+    this.cellMask = false,
+    this.validator,
+    this.onChange,
+    this.maxlines,
+    this.minlines,
+    this.keyboardType,
   }) : super(key: key);
 
   var maskFormatter = MaskTextInputFormatter(
@@ -75,6 +82,9 @@ class CustomTextformfield extends StatelessWidget {
           filled: true,
           fillColor: Get.theme.colorScheme.onBackground,
         ),
+        maxLines: maxlines,
+        minLines: minlines,
+        keyboardType: keyboardType,
       ),
     );
   }

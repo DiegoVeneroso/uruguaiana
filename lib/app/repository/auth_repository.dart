@@ -118,6 +118,51 @@ class AuthRepository {
     }
   }
 
+  Future<DocumentList> getContactFacebookRepository() async {
+    try {
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_CONTACT,
+        queries: [Query.equal("name", 'facebook')],
+      );
+
+      return result;
+    } on AppwriteException catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<DocumentList> getContactInstagramRepository() async {
+    try {
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_CONTACT,
+        queries: [Query.equal("name", 'instagram')],
+      );
+
+      return result;
+    } on AppwriteException catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<DocumentList> getContactWhatsappRepository() async {
+    try {
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_CONTACT,
+        queries: [Query.equal("name", 'whatsapp')],
+      );
+
+      return result;
+    } on AppwriteException catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   Future<String> getProfileRepository(String idUser) async {
     try {
       var result = await ApiClient.databases.listDocuments(

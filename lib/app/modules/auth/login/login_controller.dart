@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -114,6 +115,39 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
       var user = await authRepository.getUserById(idUser);
 
       return user;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<DocumentList> getContactFacebook() async {
+    try {
+      var res = await authRepository.getContactFacebookRepository();
+
+      return res;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<DocumentList> getContactInstagram() async {
+    try {
+      var res = await authRepository.getContactInstagramRepository();
+
+      return res;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<DocumentList> getContactWhatsapp() async {
+    try {
+      var res = await authRepository.getContactWhatsappRepository();
+
+      return res;
     } catch (e) {
       log(e.toString());
       rethrow;

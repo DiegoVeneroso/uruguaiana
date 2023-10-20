@@ -1,33 +1,32 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_dropdown_button.dart';
+import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import 'package:validatorless/validatorless.dart';
-
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
-import '../../core/ui/widgets/custom_dropdown_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
-import 'profile_controller.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class NewsAddPage extends StatefulWidget {
+  const NewsAddPage({Key? key}) : super(key: key);
 
   @override
-  State<ProfilePage> createState() => _HomeAddPageState();
+  State<NewsAddPage> createState() => _NewsAddPageState();
 }
 
-class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
+class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
   final _formKey = GlobalKey<FormState>();
-  final _nameEC = TextEditingController(text: Get.parameters['name']);
+  final _nameEC = TextEditingController();
+  final _telefoneEC = TextEditingController();
 
   @override
   void dispose() {
     _nameEC.dispose();
+    _telefoneEC.dispose();
     super.dispose();
   }
 
@@ -55,7 +54,7 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                 children: [
                   Center(
                     child: Text(
-                      'Atualizar item',
+                      'Adicionar notícia',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Get.theme.colorScheme.surface,
@@ -67,26 +66,31 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                   ),
                   controller.imageFile == null
                       ? Center(
-                          child: CircleAvatar(
-                            radius: 80,
-                            backgroundImage: NetworkImage(
-                                Get.parameters['image'].toString()),
-                            backgroundColor: Get.theme.colorScheme.primary,
+                          child: Container(
+                            width: double.infinity,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: const DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/profile_avatar.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         )
                       : Center(
                           child: Container(
-                            width: 180,
-                            height: 180,
+                            width: double.infinity,
+                            height: 250,
                             decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Get.theme.colorScheme.primary,
-                                image: DecorationImage(
-                                  fit: BoxFit.fitHeight,
-                                  image: FileImage(
-                                    File(controller.imageFile!.path),
-                                  ),
-                                )),
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: FileImage(
+                                  File(controller.imageFile!.path),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                   Row(
@@ -142,21 +146,23 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                     ],
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   CustomTextformfield(
-                    label: 'Nome',
+                    label: 'Título',
                     controller: _nameEC,
-                    validator: Validatorless.required('Nome Obrigatório'),
+                    validator: Validatorless.required('Título é obrigatório'),
+                    maxlines: 2,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  CustomDropdownButton(
-                    value: Get.parameters['cidade'].toString(),
-                    futureListDropdown: controller.getDropdowValue(
-                        labelAndColecctionList: 'Cidade'),
-                    validator: Validatorless.required('Cidade é obrigatória'),
+                  CustomTextformfield(
+                    label: 'Descrição',
+                    controller: _telefoneEC,
+                    validator:
+                        Validatorless.required('Descrição é obrigatório'),
+                    maxlines: 6,
                   ),
                   const SizedBox(
                     height: 30,
@@ -165,21 +171,25 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                     child: CustomButton(
                       color: Get.theme.colorScheme.primaryContainer,
                       width: double.infinity,
-                      label: 'ATUALIZAR',
+                      label: 'ADICIONAR',
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
                         if (formValid) {
-                          controller.itemUpdate({
-                            'id': Get.parameters['id'],
-                            'name': _nameEC.text,
-                            'imagePath': controller.imageFile == null
-                                ? ''
-                                : controller.imageFile!.path,
-                            'cidade':
-                                controller.valorSelecionadoDropDown?.value ??
-                                    Get.parameters['cidade'],
-                          });
+                          if (controller.imageFile != null) {
+                            controller.itemAdd({
+                              'name': _nameEC.text,
+                              'imagePath': controller.imageFile!.path,
+                              'cidade':
+                                  controller.valorSelecionadoDropDown?.value,
+                            });
+                          } else {
+                            controller.itemAdd({
+                              'name': _nameEC.text,
+                              'dropdownCidade':
+                                  controller.valorSelecionadoDropDown?.value,
+                            });
+                          }
                         }
                       },
                     ),

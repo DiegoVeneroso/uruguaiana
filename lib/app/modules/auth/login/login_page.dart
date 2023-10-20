@@ -107,7 +107,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                           ),
                           Center(
                             child: CustomButton(
-                              color: Get.theme.colorScheme.onPrimaryContainer,
+                              color: Get.theme.colorScheme.primaryContainer,
                               width: double.infinity,
                               label: 'ENTRAR',
                               onPressed: () {

@@ -15,6 +15,11 @@ abstract class Routes {
   static const admin = _Paths.admin;
   static const profile = _Paths.profile;
   static const news = _Paths.news;
+  static const news_add = _Paths.news_add;
+  static const news_edit = _Paths.news_edit;
+  static const news_detail = _Paths.news_detail;
+  static const about = _Paths.about;
+  static const collaborate = _Paths.collaborate;
 }
 
 abstract class _Paths {
@@ -32,4 +37,9 @@ abstract class _Paths {
   static const admin = '/admin';
   static const profile = '/profile';
   static const news = '/news';
+  static const news_add = '/news_add';
+  static const news_edit = '/news_edit';
+  static const news_detail = '/news_detail';
+  static const about = '/about';
+  static const collaborate = '/collaborate';
 }
