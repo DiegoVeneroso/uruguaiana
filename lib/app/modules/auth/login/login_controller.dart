@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
-import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -32,6 +31,7 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
   void onInit() {
     loaderListener(_loading);
     messageListener(_message);
+
     super.onInit();
   }
 

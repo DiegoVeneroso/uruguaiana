@@ -6,8 +6,10 @@ import 'package:appwrite/appwrite.dart' hide Permission;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uruguaiana/app/repository/auth_repository.dart';
 import '../../core/config/api_client.dart';
 import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
@@ -20,6 +22,7 @@ class HomeController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
   RealtimeSubscription? subscription;
   HomeRepository repository;
+  AuthRepository authRepository;
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
   final _dialog = Rxn<DialogModel>();
@@ -38,8 +41,12 @@ class HomeController extends GetxController
 
   var isDarkMode = false.obs;
 
+  GetStorage storage = GetStorage();
+  RxBool isAdmin = false.obs;
+
   HomeController({
     required this.repository,
+    required this.authRepository,
   });
 
   @override
@@ -49,6 +56,7 @@ class HomeController extends GetxController
     dialogListener(_dialog);
     foundItem.value = itemList;
     notificationPush();
+    getIsAdmin();
     super.onInit();
   }
 
@@ -60,6 +68,23 @@ class HomeController extends GetxController
     loadData();
 
     super.onReady();
+  }
+
+  Future<void> getIsAdmin() async {
+    try {
+      var idUser = await storage.read('id_user');
+      var user = await authRepository.getUserById(idUser);
+      print(user.profile);
+
+      if (user.profile == 'Administrador') {
+        isAdmin.value = true;
+      } else {
+        isAdmin.value = false;
+      }
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
   }
 
   notificationPush() {
