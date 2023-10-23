@@ -60,11 +60,12 @@
 
         <provider android:name="androidx.core.content.FileProvider" 
                 android:authorities="${applicationId}.provider"
-            android:exported="false" android:grantUriPermissions="true">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provedor_paths_app" />
         </provider>
 
-        <provider android:name="com.facebook.FacebookContentProvider" android:authorities="com.facebook.app.FacebookContentProvider[facebook_app_id]"
+        <provider android:name="com.facebook.FacebookContentProvider" android:authorities="com.facebook.app.FacebookContentProvider345525004673540"
             android:exported="true" />
             <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
             <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token" />

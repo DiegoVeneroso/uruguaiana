@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,55 +66,61 @@ class _AboutAddPageState extends AppState<AboutAddPage, AboutController> {
                     height: 20,
                   ),
                   controller.imageFile == null
-                      ? Center(
-                          child: Container(
-                            width: double.infinity,
-                            height: 250,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: imageValidate.value
-                                    ? Get.theme.colorScheme.error
-                                    : Get.theme.colorScheme.primary,
+                      ? Obx(
+                          () => Center(
+                            child: Container(
+                              width: double.infinity,
+                              height: 250,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: imageValidate.value
+                                      ? Get.theme.colorScheme.error
+                                      : Get.theme.colorScheme.primary,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                                color: Get.theme.colorScheme.onPrimaryContainer,
                               ),
-                              borderRadius: BorderRadius.circular(20),
-                              color: Get.theme.colorScheme.onPrimaryContainer,
-                            ),
-                            child: Icon(
-                              Icons.image_not_supported,
-                              color: Get.theme.colorScheme.primary,
-                              size: 130,
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: Get.theme.colorScheme.primary,
+                                size: 130,
+                              ),
                             ),
                           ),
                         )
-                      : Center(
-                          child: Container(
-                            width: double.infinity,
-                            height: 250,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: FileImage(
-                                  File(controller.imageFile!.path),
+                      : Obx(
+                          () => Center(
+                            child: Container(
+                              width: double.infinity,
+                              height: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                  image: FileImage(
+                                    File(controller.imageFile!.path),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                  Visibility(
-                    visible: imageValidate.value,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Imagem é obrigatória',
-                            style: TextStyle(
-                              color: Get.theme.colorScheme.error,
-                              fontSize: 12,
-                            ),
-                          )
-                        ],
+                  Obx(
+                    () => Visibility(
+                      visible: imageValidate.value,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 8.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Imagem é obrigatória',
+                              style: TextStyle(
+                                color: Get.theme.colorScheme.error,
+                                fontSize: 12,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -199,7 +206,10 @@ class _AboutAddPageState extends AppState<AboutAddPage, AboutController> {
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
-                        if (formValid) {
+
+                        imageValidate.value =
+                            controller.imageFile == null ? true : false;
+                        if (formValid && imageValidate.value) {
                           if (controller.imageFile != null) {
                             controller.aboutAdd({
                               'title': _titleEC.text,

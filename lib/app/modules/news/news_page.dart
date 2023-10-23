@@ -171,11 +171,18 @@ class NewsPage extends GetView<NewsController> {
                                         // var teste = controller.imageFile =
                                         //     controller.newsList[index].urlImage ;
 
-                                        print(controller.imageFile);
-                                        AppinioSocialShare().shareToWhatsapp(
-                                            'message',
-                                            filePath: controller.imageFile?.path
-                                                .toString());
+                                        print(controller.imageFile!.path
+                                            .toString());
+                                        // AppinioSocialShare().shareToWhatsapp(
+                                        //     'message',
+                                        //     filePath: controller.imageFile?.path
+                                        //         .toString());
+                                        // AppinioSocialShare().shareToFacebook(
+                                        //     'teste',
+                                        //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
+
+                                        // AppinioSocialShare().shareToInstagramFeed(
+                                        //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
                                       },
                                       child: Container(
                                         width: 40,
