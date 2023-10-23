@@ -231,7 +231,7 @@ class HomeController extends GetxController
       _message(
         MessageModel(
           title: 'Atenção!',
-          message: 'Erro ao adicionar!',
+          message: 'Erro carregar!',
           type: MessageType.success,
         ),
       );

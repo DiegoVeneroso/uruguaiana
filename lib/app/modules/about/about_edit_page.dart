@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:uruguaiana/app/modules/news/news_controller.dart';
+import 'package:uruguaiana/app/modules/about/about_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
@@ -10,14 +10,14 @@ import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 
-class NewsEditPage extends StatefulWidget {
-  const NewsEditPage({Key? key}) : super(key: key);
+class AboutEditPage extends StatefulWidget {
+  const AboutEditPage({Key? key}) : super(key: key);
 
   @override
-  State<NewsEditPage> createState() => _NewsAddPageState();
+  State<AboutEditPage> createState() => _AboutAddPageState();
 }
 
-class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
+class _AboutAddPageState extends AppState<AboutEditPage, AboutController> {
   final _formKey = GlobalKey<FormState>();
   final _titleEC = TextEditingController(text: Get.parameters['title']);
   final _descriptionEC =
@@ -176,8 +176,8 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
                         if (formValid) {
-                          controller.newsUpdate({
-                            'idNews': Get.parameters['idNews'],
+                          controller.aboutUpdate({
+                            'idAbout': Get.parameters['idAbout'],
                             'title': _titleEC.text,
                             'url_image': controller.imageFile == null
                                 ? ''

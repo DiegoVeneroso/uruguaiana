@@ -46,7 +46,7 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
       body: SingleChildScrollView(
         child: IntrinsicHeight(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(10.0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -62,7 +62,7 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   controller.imageFile == null
                       ? Center(

@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'app/core/colors/app_theme.dart';
 import 'app/core/colors/services/theme_service.dart';
 import 'app/routes/app_pages.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await GetStorage.init();
   await FirebaseMessaging.instance.requestPermission();
+  await initializeDateFormatting('pt_BR');
 
   runApp(GetMaterialApp(
     title: 'Realtime modelo',

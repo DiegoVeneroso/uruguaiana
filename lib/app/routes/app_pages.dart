@@ -4,6 +4,7 @@ import 'package:uruguaiana/app/modules/auth/recovery_password/recovery_password_
 import 'package:uruguaiana/app/modules/auth/recovery_password/recovery_password_page.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/modules/collaborate/collaborate_bindings.dart';
+import 'package:uruguaiana/app/modules/collaborate/collaborate_detail_page.dart';
 import 'package:uruguaiana/app/modules/collaborate/collaborate_page.dart';
 import 'package:uruguaiana/app/modules/home/home_detail_page.dart';
 import 'package:uruguaiana/app/modules/home/home_page.dart';
@@ -15,10 +16,13 @@ import 'package:uruguaiana/app/modules/news/news_page.dart';
 import 'package:uruguaiana/app/modules/profile/profile_bindings.dart';
 import 'package:uruguaiana/app/modules/profile/profile_page.dart';
 
+import '../modules/about/about_add_page.dart';
+import '../modules/about/about_edit_page.dart';
 import '../modules/admin/admin_bindings.dart';
 import '../modules/admin/admin_page.dart';
 import '../modules/auth/login/login_bindings.dart';
 import '../modules/auth/login/login_page.dart';
+import '../modules/collaborate/collaborate_add_page.dart';
 import '../modules/home/home_add_page.dart';
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_edit_page.dart';
@@ -110,12 +114,34 @@ class AppPages {
     //about
     GetPage(
       name: _Paths.about,
-      page: () => const AboutPage(),
+      page: () => AboutPage(),
       binding: AboutBindings(),
-    ), //about
+    ),
+    GetPage(
+      name: _Paths.about_add,
+      page: () => const AboutAddPage(),
+      binding: AboutBindings(),
+    ),
+    GetPage(
+      name: _Paths.about_edit,
+      page: () => const AboutEditPage(),
+      binding: AboutBindings(),
+    ),
+
+    //collaborate
     GetPage(
       name: _Paths.collaborate,
-      page: () => const CollaboratePage(),
+      page: () => CollaboratePage(),
+      binding: CollaborateBindings(),
+    ),
+    GetPage(
+      name: _Paths.collaborate_add,
+      page: () => const CollaborateAddPage(),
+      binding: CollaborateBindings(),
+    ),
+    GetPage(
+      name: _Paths.collaborate_detail,
+      page: () => const collaborateDetailPage(),
       binding: CollaborateBindings(),
     ),
   ];

@@ -1,8 +1,26 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="br.com.frontapp.uruguaiana">
+
+    <queries>
+    <!-- Explicit apps you know in advance about: -->
+          
+    <package android:name="com.instagram.android" />
+    <package android:name="com.zhiliaoapp.musically" />
+    <package android:name="com.facebook.katana" />
+    <package android:name="com.facebook.orca" />
+    <package android:name="org.telegram.messenger" />
+    <package android:name="com.whatsapp" />
+    <package android:name="com.twitter.android" />
+  
+    <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
+    <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
+</queries>
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     
     <application
@@ -39,5 +57,16 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
+
+        <provider android:name="androidx.core.content.FileProvider" 
+                android:authorities="${applicationId}.provider"
+            android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provedor_paths_app" />
+        </provider>
+
+        <provider android:name="com.facebook.FacebookContentProvider" android:authorities="com.facebook.app.FacebookContentProvider[facebook_app_id]"
+            android:exported="true" />
+            <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+            <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token" />
+        </application>
 </manifest>

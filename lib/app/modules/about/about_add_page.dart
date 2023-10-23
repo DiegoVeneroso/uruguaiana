@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:uruguaiana/app/modules/news/news_controller.dart';
+import 'package:uruguaiana/app/modules/about/about_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
@@ -10,18 +10,18 @@ import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 
-class NewsEditPage extends StatefulWidget {
-  const NewsEditPage({Key? key}) : super(key: key);
+class AboutAddPage extends StatefulWidget {
+  const AboutAddPage({Key? key}) : super(key: key);
 
   @override
-  State<NewsEditPage> createState() => _NewsAddPageState();
+  State<AboutAddPage> createState() => _AboutAddPageState();
 }
 
-class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
+class _AboutAddPageState extends AppState<AboutAddPage, AboutController> {
   final _formKey = GlobalKey<FormState>();
-  final _titleEC = TextEditingController(text: Get.parameters['title']);
-  final _descriptionEC =
-      TextEditingController(text: Get.parameters['description']);
+  final _titleEC = TextEditingController();
+  final _descriptionEC = TextEditingController();
+  RxBool imageValidate = false.obs;
 
   @override
   void dispose() {
@@ -54,7 +54,7 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                 children: [
                   Center(
                     child: Text(
-                      'Atualizar notícia',
+                      'Adicionar quem somos',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Get.theme.colorScheme.surface,
@@ -70,12 +70,18 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                             width: double.infinity,
                             height: 250,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    Get.parameters['urlImage'].toString()),
-                                fit: BoxFit.cover,
+                              border: Border.all(
+                                color: imageValidate.value
+                                    ? Get.theme.colorScheme.error
+                                    : Get.theme.colorScheme.primary,
                               ),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Get.theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Icon(
+                              Icons.image_not_supported,
+                              color: Get.theme.colorScheme.primary,
+                              size: 130,
                             ),
                           ),
                         )
@@ -93,6 +99,24 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                             ),
                           ),
                         ),
+                  Visibility(
+                    visible: imageValidate.value,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Imagem é obrigatória',
+                            style: TextStyle(
+                              color: Get.theme.colorScheme.error,
+                              fontSize: 12,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -151,7 +175,7 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                   CustomTextformfield(
                     label: 'Título',
                     controller: _titleEC,
-                    validator: Validatorless.required('Titulo é obrigatório'),
+                    validator: Validatorless.required('Título é obrigatório'),
                     maxlines: 2,
                   ),
                   const SizedBox(
@@ -161,7 +185,7 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                     label: 'Descrição',
                     controller: _descriptionEC,
                     validator:
-                        Validatorless.required('Descrição é obrigatória'),
+                        Validatorless.required('Descrição é obrigatório'),
                     maxlines: 10,
                   ),
                   const SizedBox(
@@ -171,19 +195,23 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                     child: CustomButton(
                       color: Get.theme.colorScheme.primaryContainer,
                       width: double.infinity,
-                      label: 'ATUALIZAR',
+                      label: 'ADICIONAR',
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
                         if (formValid) {
-                          controller.newsUpdate({
-                            'idNews': Get.parameters['idNews'],
-                            'title': _titleEC.text,
-                            'url_image': controller.imageFile == null
-                                ? ''
-                                : controller.imageFile!.path,
-                            'description': _descriptionEC.text,
-                          });
+                          if (controller.imageFile != null) {
+                            controller.aboutAdd({
+                              'title': _titleEC.text,
+                              'url_image': controller.imageFile!.path,
+                              'description': _descriptionEC.text,
+                            });
+                          } else {
+                            controller.aboutAdd({
+                              'title': _titleEC.text,
+                              'description': _descriptionEC.text,
+                            });
+                          }
                         }
                       },
                     ),

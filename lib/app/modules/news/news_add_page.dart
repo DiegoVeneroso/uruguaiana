@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_dropdown_button.dart';
 import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
@@ -20,13 +21,13 @@ class NewsAddPage extends StatefulWidget {
 
 class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
   final _formKey = GlobalKey<FormState>();
-  final _nameEC = TextEditingController();
-  final _telefoneEC = TextEditingController();
+  final _titleEC = TextEditingController();
+  final _descriptionEC = TextEditingController();
 
   @override
   void dispose() {
-    _nameEC.dispose();
-    _telefoneEC.dispose();
+    _titleEC.dispose();
+    _descriptionEC.dispose();
     super.dispose();
   }
 
@@ -46,7 +47,7 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
       body: SingleChildScrollView(
         child: IntrinsicHeight(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(10.0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -62,7 +63,7 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   controller.imageFile == null
                       ? Center(
@@ -71,11 +72,12 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
                             height: 250,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              image: const DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/profile_avatar.png'),
-                                fit: BoxFit.cover,
-                              ),
+                              color: Get.theme.colorScheme.primary,
+                            ),
+                            child: Icon(
+                              Icons.image_not_supported,
+                              color: Get.theme.colorScheme.onPrimaryContainer,
+                              size: 130,
                             ),
                           ),
                         )
@@ -146,11 +148,11 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
                     ],
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   CustomTextformfield(
                     label: 'Título',
-                    controller: _nameEC,
+                    controller: _titleEC,
                     validator: Validatorless.required('Título é obrigatório'),
                     maxlines: 2,
                   ),
@@ -159,13 +161,13 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
                   ),
                   CustomTextformfield(
                     label: 'Descrição',
-                    controller: _telefoneEC,
+                    controller: _descriptionEC,
                     validator:
                         Validatorless.required('Descrição é obrigatório'),
-                    maxlines: 6,
+                    maxlines: 10,
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Center(
                     child: CustomButton(
@@ -177,17 +179,15 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
                             _formKey.currentState?.validate() ?? false;
                         if (formValid) {
                           if (controller.imageFile != null) {
-                            controller.itemAdd({
-                              'name': _nameEC.text,
-                              'imagePath': controller.imageFile!.path,
-                              'cidade':
-                                  controller.valorSelecionadoDropDown?.value,
+                            controller.newsAdd({
+                              'title': _titleEC.text,
+                              'url_image': controller.imageFile!.path,
+                              'description': _descriptionEC.text,
                             });
                           } else {
-                            controller.itemAdd({
-                              'name': _nameEC.text,
-                              'dropdownCidade':
-                                  controller.valorSelecionadoDropDown?.value,
+                            controller.newsAdd({
+                              'title': _titleEC.text,
+                              'description': _descriptionEC.text,
                             });
                           }
                         }

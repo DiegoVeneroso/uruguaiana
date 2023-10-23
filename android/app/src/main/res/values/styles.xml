@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="facebook_app_id">345525004673540</string>
+    <string name="facebook_client_token">77a7c56c53593a080aeb98013837a7ae</string>
     <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when
@@ -16,3 +18,4 @@
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
 </resources>
+

@@ -8,7 +8,8 @@ import 'package:uruguaiana/app/modules/auth/login/login_controller.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  GetStorage storage = GetStorage();
+  CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +27,156 @@ class CustomDrawer extends StatelessWidget {
               );
             }
 
-            if (snapshot.hasData) {
+            if (storage.read('id_user') == null ||
+                storage.read('id_user') == '') {
               return ListView(
                 children: [
-                  buildDrawerHeader(),
+                  buildDrawerHeaderNotLogged(),
+                  Divider(
+                    color: Get.theme.colorScheme.secondary,
+                  ),
+                  buildDrawerItem(
+                    icon: Icons.home,
+                    text: "Notícias",
+                    onTap: () => navigate(5),
+                    tileColor: Get.currentRoute == '/news'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/news'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
+                    icon: Icons.question_mark,
+                    text: "Quem somos",
+                    onTap: () => navigate(3),
+                    tileColor: Get.currentRoute == '/about'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/about'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
+                    icon: Icons.lightbulb_outline,
+                    text: "Repense e colabore",
+                    onTap: () => navigate(4),
+                    tileColor: Get.currentRoute == '/collaborate_add'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/collaborate_add'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
+                    icon: Icons.settings,
+                    text: 'Administração',
+                    onTap: () => navigate(6),
+                    tileColor: Get.currentRoute == '/login'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/login'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FutureBuilder(
+                        future: controller.getContactFacebook(),
+                        builder: (context, snap2) {
+                          print(snap2.data?.documents.first.data['url']);
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Uri url = Uri.parse(
+                                      snap2.data?.documents.first.data['url'] ??
+                                          '');
+                                  launchUrl(url);
+                                },
+                                icon: const Icon(FontAwesomeIcons.facebook),
+                                iconSize: 40,
+                                color: Get.theme.colorScheme.primary,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                      FutureBuilder(
+                        future: controller.getContactInstagram(),
+                        builder: (context, snap3) {
+                          print(snap3.data?.documents.first.data['url']);
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Uri url = Uri.parse(
+                                      snap3.data?.documents.first.data['url'] ??
+                                          '');
+                                  launchUrl(url);
+                                },
+                                icon: const Icon(FontAwesomeIcons.instagram),
+                                iconSize: 40,
+                                color: Get.theme.colorScheme.primary,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                      FutureBuilder(
+                        future: controller.getContactWhatsapp(),
+                        builder: (context, snap4) {
+                          print(snap4.data?.documents.first.data['url']);
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Uri url = Uri.parse(
+                                      snap4.data?.documents.first.data['url'] ??
+                                          '');
+                                  launchUrl(url);
+                                },
+                                icon: const Icon(FontAwesomeIcons.whatsapp),
+                                iconSize: 40,
+                                color: Get.theme.colorScheme.primary,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Uri url = Uri.parse('');
+                          launchUrl(url);
+                        },
+                        child: const Text(
+                          '2023\u00a9FrontApp',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 133, 3, 81)),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              );
+            } else {
+              return ListView(
+                children: [
+                  buildDrawerHeaderLogged(),
                   Divider(
                     color: Get.theme.colorScheme.secondary,
                   ),
@@ -77,19 +224,16 @@ class CustomDrawer extends StatelessWidget {
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
-                  Visibility(
-                    visible: snapshot.data!.profile == 'Administrador',
-                    child: buildDrawerItem(
-                      icon: Icons.settings,
-                      text: 'Administração',
-                      onTap: () => navigate(2),
-                      tileColor: Get.currentRoute == '/admin'
-                          ? Get.theme.colorScheme.primary
-                          : null,
-                      textIconColor: Get.currentRoute == '/admin'
-                          ? Get.theme.colorScheme.onPrimaryContainer
-                          : Get.theme.colorScheme.primary,
-                    ),
+                  buildDrawerItem(
+                    icon: Icons.settings,
+                    text: 'Administração',
+                    onTap: () => navigate(2),
+                    tileColor: Get.currentRoute == '/admin'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/admin'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
                   ),
                   buildDrawerItem(
                     icon: Icons.exit_to_app,
@@ -192,14 +336,12 @@ class CustomDrawer extends StatelessWidget {
                   )
                 ],
               );
-            } else {
-              return const Text('');
             }
           }),
     );
   }
 
-  Widget buildDrawerHeader() {
+  Widget buildDrawerHeaderLogged() {
     var urlAvatar = GetStorage().read('url_avatar');
     var name = GetStorage().read('name');
     var email = GetStorage().read('email');
@@ -211,23 +353,41 @@ class CustomDrawer extends StatelessWidget {
       currentAccountPicture: urlAvatar != ''
           ? CircleAvatar(backgroundImage: NetworkImage(urlAvatar))
           : Initicon(
-              text: GetStorage().read('name'),
+              text: name,
               elevation: 4,
               size: 80,
-              backgroundColor: Colors.white,
-              style: const TextStyle(color: Colors.blue),
+              backgroundColor: Get.theme.colorScheme.onPrimaryContainer,
+              style: TextStyle(color: Get.theme.colorScheme.primary),
             ),
       currentAccountPictureSize: const Size.square(72),
       otherAccountsPictures: [
         Text(
           profile,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Get.theme.colorScheme.onPrimaryContainer,
             fontSize: 14,
           ),
         ),
       ],
       otherAccountsPicturesSize: const Size.square(100),
+    );
+  }
+
+  Widget buildDrawerHeaderNotLogged() {
+    return UserAccountsDrawerHeader(
+      accountName: const Text('Convidado'),
+      accountEmail: null,
+      currentAccountPicture: Initicon(
+        text: 'Convidado',
+        elevation: 4,
+        size: 80,
+        backgroundColor: Get.theme.colorScheme.onPrimaryContainer,
+        style: TextStyle(
+          color: Get.theme.colorScheme.primary,
+          fontSize: 40,
+        ),
+      ),
+      currentAccountPictureSize: const Size.square(80),
     );
   }
 
@@ -259,9 +419,11 @@ class CustomDrawer extends StatelessWidget {
     } else if (index == 3) {
       Get.toNamed('/about');
     } else if (index == 4) {
-      Get.toNamed('/collaborate');
+      Get.toNamed('/collaborate_add');
     } else if (index == 5) {
       Get.toNamed('/news');
+    } else if (index == 6) {
+      Get.toNamed('/login');
     }
   }
 }

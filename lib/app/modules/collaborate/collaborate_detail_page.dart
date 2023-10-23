@@ -1,19 +1,21 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
 
-class NewsDetailPage extends StatefulWidget {
-  const NewsDetailPage({Key? key}) : super(key: key);
+class collaborateDetailPage extends StatefulWidget {
+  const collaborateDetailPage({Key? key}) : super(key: key);
 
   @override
-  State<NewsDetailPage> createState() => _NewsDetailPageState();
+  State<collaborateDetailPage> createState() => _NewsDetailPageState();
 }
 
-class _NewsDetailPageState extends AppState<NewsDetailPage, NewsController> {
+class _NewsDetailPageState
+    extends AppState<collaborateDetailPage, NewsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,16 +36,19 @@ class _NewsDetailPageState extends AppState<NewsDetailPage, NewsController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Container(
-                    width: double.infinity,
-                    height: 250,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                        image:
-                            NetworkImage(Get.parameters['urlImage'].toString()),
-                        fit: BoxFit.cover,
+                Visibility(
+                  visible: Get.parameters['url_image'] == '' ? false : true,
+                  child: Center(
+                    child: Container(
+                      width: double.infinity,
+                      height: 250,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              Get.parameters['url_image'].toString()),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -67,7 +72,14 @@ class _NewsDetailPageState extends AppState<NewsDetailPage, NewsController> {
                               ),
                               child: RichText(
                                 text: TextSpan(
-                                  text: Get.parameters['date'].toString(),
+                                  text: DateFormat(
+                                          DateFormat.YEAR_MONTH_DAY, 'pt_Br')
+                                      .format(
+                                    DateTime.parse(
+                                      Get.parameters['date_time_created']
+                                          .toString(),
+                                    ),
+                                  ),
                                   style: TextStyle(
                                     color: Get.theme.colorScheme.surface,
                                     fontSize: 12,
@@ -92,7 +104,7 @@ class _NewsDetailPageState extends AppState<NewsDetailPage, NewsController> {
                               padding: const EdgeInsets.all(8.0),
                               child: RichText(
                                 text: TextSpan(
-                                  text: Get.parameters['title'].toString(),
+                                  text: Get.parameters['name'].toString(),
                                   style: TextStyle(
                                     color: Get.theme.colorScheme.surface,
                                     fontSize: 18,

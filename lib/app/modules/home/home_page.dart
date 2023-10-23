@@ -18,7 +18,7 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(),
       appBar: CustomAppbar(
         actionsList: [
           IconButton(

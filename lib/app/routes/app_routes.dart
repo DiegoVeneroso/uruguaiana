@@ -19,7 +19,11 @@ abstract class Routes {
   static const news_edit = _Paths.news_edit;
   static const news_detail = _Paths.news_detail;
   static const about = _Paths.about;
+  static const about_add = _Paths.about_add;
+  static const about_edit = _Paths.about_edit;
   static const collaborate = _Paths.collaborate;
+  static const collaborate_add = _Paths.collaborate_add;
+  static const collaborate_detail = _Paths.collaborate_detail;
 }
 
 abstract class _Paths {
@@ -41,5 +45,9 @@ abstract class _Paths {
   static const news_edit = '/news_edit';
   static const news_detail = '/news_detail';
   static const about = '/about';
+  static const about_add = '/about_add';
+  static const about_edit = '/about_edit';
   static const collaborate = '/collaborate';
+  static const collaborate_add = '/collaborate_add';
+  static const collaborate_detail = '/collaborate_detail';
 }

@@ -1,3 +1,4 @@
+import 'package:appinio_social_share/appinio_social_share.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
@@ -19,7 +20,7 @@ class NewsPage extends GetView<NewsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(),
       appBar: CustomAppbar(
         actionsList: [
           IconButton(
@@ -44,7 +45,7 @@ class NewsPage extends GetView<NewsController> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: CustomSearchformfield(
-                    onChanged: (value) => controller.filterItem(value),
+                    onChanged: (value) => controller.filterNews(value),
                     onPressed: () => controller.searchVisible.toggle(),
                   ),
                 ),
@@ -52,20 +53,24 @@ class NewsPage extends GetView<NewsController> {
             ),
             Expanded(
               child: Obx(() => ListView.builder(
-                    itemCount: controller.foundItem.value.length,
+                    itemCount: controller.foundNews.value.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: GestureDetector(
                           onTap: () {
                             Get.toNamed('/news_detail', parameters: {
-                              'name':
-                                  controller.itemList[index].name.toString(),
-                              'id': controller.itemList[index].id.toString(),
-                              'image':
-                                  controller.itemList[index].image.toString(),
-                              'cidade':
-                                  controller.itemList[index].cidade.toString(),
+                              'idNews':
+                                  controller.newsList[index].idNews.toString(),
+                              'date':
+                                  controller.newsList[index].date.toString(),
+                              'title':
+                                  controller.newsList[index].title.toString(),
+                              'urlImage': controller.newsList[index].urlImage
+                                  .toString(),
+                              'description': controller
+                                  .newsList[index].description
+                                  .toString(),
                             });
                           },
                           child: Container(
@@ -76,7 +81,7 @@ class NewsPage extends GetView<NewsController> {
                               borderRadius: BorderRadius.circular(10),
                               image: DecorationImage(
                                 image: NetworkImage(
-                                    controller.foundItem.value[index].image),
+                                    controller.foundNews.value[index].urlImage),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -91,11 +96,11 @@ class NewsPage extends GetView<NewsController> {
                                       child: GestureDetector(
                                         onTap: () {
                                           controller.getDialog(
-                                            idItem: controller
-                                                .itemList[index].id
+                                            idNews: controller
+                                                .newsList[index].idNews
                                                 .toString(),
-                                            item: controller
-                                                .foundItem.value[index].name,
+                                            news: controller
+                                                .foundNews.value[index].title,
                                           );
                                         },
                                         child: Container(
@@ -122,55 +127,38 @@ class NewsPage extends GetView<NewsController> {
                                       visible: controller.isAdmin(),
                                       child: GestureDetector(
                                         onTap: () {
-                                          Get.toNamed('/news_edit',
+                                          Get.toNamed('/colaborate_detail',
                                               parameters: {
-                                                'name': controller
-                                                    .itemList[index].name
+                                                'idNews': controller
+                                                    .newsList[index].idNews
                                                     .toString(),
-                                                'id': controller
-                                                    .itemList[index].id
+                                                'date': controller
+                                                    .newsList[index].date
                                                     .toString(),
-                                                'image': controller
-                                                    .itemList[index].image
+                                                'title': controller
+                                                    .newsList[index].title
                                                     .toString(),
-                                                'cidade': controller
-                                                    .itemList[index].cidade
+                                                'urlImage': controller
+                                                    .newsList[index].urlImage
+                                                    .toString(),
+                                                'description': controller
+                                                    .newsList[index].description
                                                     .toString(),
                                               });
                                         },
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Get.toNamed('/news_edit',
-                                                parameters: {
-                                                  'name': controller
-                                                      .itemList[index].name
-                                                      .toString(),
-                                                  'id': controller
-                                                      .itemList[index].id
-                                                      .toString(),
-                                                  'image': controller
-                                                      .itemList[index].image
-                                                      .toString(),
-                                                  'cidade': controller
-                                                      .itemList[index].cidade
-                                                      .toString(),
-                                                });
-                                          },
-                                          child: Container(
-                                            width: 40,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color:
-                                                  Get.theme.colorScheme.shadow,
-                                            ),
-                                            child: Icon(
-                                              Icons.edit,
-                                              color:
-                                                  Get.theme.colorScheme.surface,
-                                              size: 22,
-                                            ),
+                                        child: Container(
+                                          width: 40,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Get.theme.colorScheme.shadow,
+                                          ),
+                                          child: Icon(
+                                            Icons.edit,
+                                            color:
+                                                Get.theme.colorScheme.surface,
+                                            size: 22,
                                           ),
                                         ),
                                       ),
@@ -179,7 +167,16 @@ class NewsPage extends GetView<NewsController> {
                                       width: 10,
                                     ),
                                     GestureDetector(
-                                      onTap: () {},
+                                      onTap: () async {
+                                        // var teste = controller.imageFile =
+                                        //     controller.newsList[index].urlImage ;
+
+                                        print(controller.imageFile);
+                                        AppinioSocialShare().shareToWhatsapp(
+                                            'message',
+                                            filePath: controller.imageFile?.path
+                                                .toString());
+                                      },
                                       child: Container(
                                         width: 40,
                                         height: 40,
@@ -215,7 +212,7 @@ class NewsPage extends GetView<NewsController> {
                                           child: RichText(
                                             text: TextSpan(
                                               text: controller
-                                                  .foundItem.value[index].name,
+                                                  .foundNews.value[index].title,
                                               style: TextStyle(
                                                 color: Get
                                                     .theme.colorScheme.surface,
@@ -247,7 +244,9 @@ class NewsPage extends GetView<NewsController> {
                 padding: const EdgeInsets.all(8.0),
                 child: FloatingActionButton(
                   backgroundColor: Get.theme.colorScheme.primary,
-                  onPressed: () => Get.toNamed(Routes.news_add),
+                  onPressed: () {
+                    Get.toNamed(Routes.news_add);
+                  },
                   child: Icon(
                     Icons.add,
                     color: Get.theme.colorScheme.background,

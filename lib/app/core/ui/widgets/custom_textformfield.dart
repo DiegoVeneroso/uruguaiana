@@ -25,7 +25,7 @@ class CustomTextformfield extends StatelessWidget {
     this.cellMask = false,
     this.validator,
     this.onChange,
-    this.maxlines,
+    this.maxlines = 1,
     this.minlines,
     this.keyboardType,
   }) : super(key: key);

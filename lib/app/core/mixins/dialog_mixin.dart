@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
+import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
-
-import '../../modules/home/home_controller.dart';
-import '../../repository/home_repositories.dart';
+import 'package:uruguaiana/app/repository/news_repositories.dart';
 
 mixin DialogMixin on GetxController {
   void dialogListener(Rxn<DialogModel> dialog) {
     ever<DialogModel?>(dialog, (model) async {
-      HomeController controller = HomeController(
-        repository: HomeRepository(),
+      NewsController controller = NewsController(
+        repository: NewsRepository(),
         authRepository: AuthRepository(),
       );
       if (model != null) {
@@ -29,7 +28,7 @@ mixin DialogMixin on GetxController {
             width: 100,
             label: 'Excluir',
             onPressed: () async {
-              await controller.itemDelete(model.id.toString());
+              await controller.newsDelete(model.id.toString());
             },
           ),
         );

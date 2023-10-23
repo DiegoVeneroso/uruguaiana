@@ -7,32 +7,31 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
-import '../models/news_model.dart';
+import '../models/about_model.dart';
 
-class NewsRepository {
+class AboutRepository {
   RealtimeSubscription? subscription;
-  RxList<NewsModel> listItem = <NewsModel>[].obs;
+  RxList<AboutModel> aboutItem = <AboutModel>[].obs;
   RxString? search = ''.obs;
   GetStorage storage = GetStorage();
 
-  Future<List<NewsModel>> loadDataRepository() async {
+  Future<List<AboutModel>> loadDataRepository() async {
     try {
       DocumentList response;
 
       if (search?.value != '') {
         response = await ApiClient.databases.listDocuments(
           databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
+          collectionId: constants.COLLETION_ABOUT_ID,
           queries: [Query.search("title", search!.value.toString())],
         );
 
         var items = response.documents.reversed
-            .map((docmodel) => NewsModel(
-                  idNews: docmodel.data['idNews'],
+            .map((docmodel) => AboutModel(
+                  idAbout: docmodel.data['idAbout'],
                   title: docmodel.data['title'],
                   urlImage: docmodel.data['url_image'],
                   description: docmodel.data['description'],
-                  date: docmodel.data['date'],
                 ))
             .toList();
 
@@ -40,16 +39,15 @@ class NewsRepository {
       } else {
         response = await ApiClient.databases.listDocuments(
           databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
+          collectionId: constants.COLLETION_ABOUT_ID,
         );
 
         var items = response.documents.reversed
-            .map((docmodel) => NewsModel(
-                  idNews: docmodel.data['idNews'],
+            .map((docmodel) => AboutModel(
+                  idAbout: docmodel.data['idAbout'],
                   title: docmodel.data['title'],
                   urlImage: docmodel.data['url_image'],
                   description: docmodel.data['description'],
-                  date: docmodel.data['date'],
                 ))
             .toList();
 
@@ -70,7 +68,7 @@ class NewsRepository {
     return response;
   }
 
-  newsAddRepository(Map map) async {
+  aboutAddRepository(Map map) async {
     try {
       final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -91,18 +89,17 @@ class NewsRepository {
 
       await ApiClient.databases.createDocument(
           databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
+          collectionId: constants.COLLETION_ABOUT_ID,
           documentId: idUnique,
           data: {
-            'idNews': idUnique,
+            'idAbout': idUnique,
             'title': map["title"],
             'url_image': urlImage,
             'description': map["description"],
-            'date': DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br')
-                .format(DateTime.now())
-                .toString(),
             'created_by': storage.read('id_user').toString(),
             'date_time_created': DateTime.now().toString(),
+            'update_by': storage.read('id_user').toString(),
+            'date_time_updated': DateTime.now().toString(),
           });
     } on AppwriteException catch (e) {
       log(e.response['type']);
@@ -111,17 +108,17 @@ class NewsRepository {
     }
   }
 
-  newsDeleteRepository(String idNews) async {
+  aboutDeleteRepository(String idAbout) async {
     try {
       await ApiClient.storage.deleteFile(
         bucketId: constants.STORAGE_BUCKETS,
-        fileId: idNews,
+        fileId: idAbout,
       );
 
       await ApiClient.databases.deleteDocument(
         databaseId: constants.DATABASE_ID,
-        collectionId: constants.COLLETION_NEWS_ID,
-        documentId: idNews,
+        collectionId: constants.COLLETION_ABOUT_ID,
+        documentId: idAbout,
       );
     } on AppwriteException catch (e) {
       log(e.response['type']);
@@ -130,13 +127,13 @@ class NewsRepository {
     }
   }
 
-  newsUpdateRepository(Map map) async {
+  aboutUpdateRepository(Map map) async {
     try {
       if (map["url_image"] == '') {
         await ApiClient.databases.updateDocument(
             databaseId: constants.DATABASE_ID,
-            collectionId: constants.COLLETION_NEWS_ID,
-            documentId: map["idNews"],
+            collectionId: constants.COLLETION_ABOUT_ID,
+            documentId: map["idAbout"],
             data: {
               'title': map["title"],
               'description': map["description"],
@@ -146,10 +143,10 @@ class NewsRepository {
       } else {
         await ApiClient.storage.deleteFile(
           bucketId: constants.STORAGE_BUCKETS,
-          fileId: map["idNews"],
+          fileId: map["idAbout"],
         );
 
-        final idUnique = map["idNews"];
+        final idUnique = map["idAbout"];
 
         String fileName = "$idUnique."
             "${map["url_image"].toString().split(".").last}";
@@ -168,8 +165,8 @@ class NewsRepository {
 
         await ApiClient.databases.updateDocument(
             databaseId: constants.DATABASE_ID,
-            collectionId: constants.COLLETION_NEWS_ID,
-            documentId: map["idNews"],
+            collectionId: constants.COLLETION_ABOUT_ID,
+            documentId: map["idAbout"],
             data: {
               'title': map["title"],
               'url_image': urlImage,

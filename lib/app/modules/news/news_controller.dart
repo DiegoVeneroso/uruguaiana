@@ -9,14 +9,15 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uruguaiana/app/models/news_model.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 import 'package:uruguaiana/app/repository/news_repositories.dart';
+import 'package:uruguaiana/app/routes/app_pages.dart';
 import '../../core/config/api_client.dart';
 import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
-import '../../models/item_model.dart';
 
 class NewsController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -26,8 +27,8 @@ class NewsController extends GetxController
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
   final _dialog = Rxn<DialogModel>();
-  var itemList = <ItemModel>[].obs;
-  Rx<List<ItemModel>> foundItem = Rx<List<ItemModel>>([]);
+  var newsList = <NewsModel>[].obs;
+  Rx<List<NewsModel>> foundNews = Rx<List<NewsModel>>([]);
   RxList<DropdownMenuItem<String>> listDropdown =
       <DropdownMenuItem<String>>[].obs;
 
@@ -55,7 +56,7 @@ class NewsController extends GetxController
     loaderListener(_loading);
     messageListener(_message);
     dialogListener(_dialog);
-    foundItem.value = itemList;
+    foundNews.value = newsList;
     notificationPush();
 
     super.onInit();
@@ -64,7 +65,6 @@ class NewsController extends GetxController
   @override
   onReady() {
     // login();
-
     subscribe();
     loadData();
 
@@ -74,13 +74,20 @@ class NewsController extends GetxController
   Future<void> getIsAdmin() async {
     try {
       var idUser = await storage.read('id_user');
-      var user = await authRepository.getUserById(idUser);
-      print(user.profile);
 
-      if (user.profile == 'Administrador') {
-        isAdmin.value = true;
-      } else {
+      print('iduser');
+      print(idUser);
+
+      if (idUser == '' || idUser == null) {
         isAdmin.value = false;
+      } else {
+        var user = await authRepository.getUserById(idUser);
+
+        if (user.profile == 'Administrador') {
+          isAdmin.value = true;
+        } else {
+          isAdmin.value = false;
+        }
       }
     } catch (e) {
       log(e.toString());
@@ -111,12 +118,13 @@ class NewsController extends GetxController
   pickImageFileFromGalery() async {
     imageFile = await ImagePicker()
         .pickImage(source: ImageSource.gallery, imageQuality: 50);
+
     if (imageFile != null) {
       await _cropImage(File(imageFile!.path));
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Imagem adicionada!',
+          message: 'Imagem carregada!',
           type: MessageType.success,
         ),
       );
@@ -131,7 +139,7 @@ class NewsController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Imagem adicionada!',
+          message: 'Imagem carregada!',
           type: MessageType.success,
         ),
       );
@@ -183,32 +191,35 @@ class NewsController extends GetxController
   }
 
   getDialog({
-    required String idItem,
-    required String item,
+    required String idNews,
+    required String news,
   }) {
     _dialog(DialogModel(
-      id: idItem,
+      id: idNews,
       title: 'Atenção',
-      message: 'Deseja realmente excluir?\n$item',
+      message: 'Deseja realmente excluir?\n$news',
     ));
   }
 
-  void filterItem(String itemName) {
-    List<ItemModel> results = [];
-    if (itemName.isEmpty) {
+  Future<void> filterNews(String newsName) async {
+    List<NewsModel> results = [];
+    if (newsName.isEmpty) {
       // _loading.toggle();
-      results = itemList;
+      results = newsList;
     } else {
       // _loading.toggle();
-      results = itemList
-          .where((element) => element.name
+      // await Future.delayed(const Duration(seconds: 1));
+      // _loading.toggle();
+
+      results = newsList
+          .where((element) => element.title
               .toString()
               .toLowerCase()
-              .contains(itemName.toLowerCase()))
+              .contains(newsName.toLowerCase()))
           .toList();
     }
     // _loading.toggle();
-    foundItem.value = results;
+    foundNews.value = results;
   }
 
   // login() async {
@@ -226,14 +237,14 @@ class NewsController extends GetxController
     try {
       var result = await repository.loadDataRepository();
 
-      itemList.assignAll(result);
+      newsList.assignAll(result);
     } catch (e) {
       _loading.toggle();
       _message(
         MessageModel(
           title: 'Atenção!',
-          message: 'Erro ao adicionar!',
-          type: MessageType.success,
+          message: 'Erro carrgar dados!',
+          type: MessageType.error,
         ),
       );
     }
@@ -243,7 +254,7 @@ class NewsController extends GetxController
     final realtime = Realtime(ApiClient.account.client);
 
     subscription = realtime.subscribe([
-      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_ITEM_ID}.documents'
+      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_NEWS_ID}.documents'
     ]);
 
     subscription!.stream.listen((data) {
@@ -265,19 +276,19 @@ class NewsController extends GetxController
     });
   }
 
-  Future<void> itemAdd(Map map) async {
+  Future<void> newsAdd(Map map) async {
     try {
       _loading.toggle();
 
-      await repository.itemAddRepository(map);
+      await repository.newsAddRepository(map);
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed('/home');
+      Get.offAndToNamed(Routes.news);
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Item adicionado com sucesso!',
+          message: 'Notícia adicionada com sucesso!',
           type: MessageType.success,
         ),
       );
@@ -293,24 +304,26 @@ class NewsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed('/home');
+      Get.offAndToNamed(Routes.news);
     }
   }
 
-  Future itemDelete(String idItem) async {
+  Future newsDelete(String idnews) async {
     try {
       Get.back();
       _loading.toggle();
 
-      await repository.itemDeleteRepository(idItem);
+      await repository.newsDeleteRepository(idnews);
 
       _loading.toggle();
       await Future.delayed(const Duration(seconds: 1));
+
+      //manter este snackbar para mostra a resposta, o _message() não funciona!
       Get.snackbar(
-        'Atenção!',
-        'Item excluído com sucesso!',
-        backgroundColor: Colors.red[800]!,
-        colorText: Colors.white,
+        'Parabéns!',
+        'Notícia excluída com sucesso!',
+        backgroundColor: Get.theme.colorScheme.primary,
+        colorText: Get.theme.colorScheme.onPrimaryContainer,
         margin: const EdgeInsets.all(20),
       );
     } catch (e) {
@@ -325,23 +338,23 @@ class NewsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed('/home');
+      Get.offAndToNamed(Routes.news);
     }
   }
 
-  Future<void> itemUpdate(Map map) async {
+  Future<void> newsUpdate(Map map) async {
     try {
       _loading.toggle();
 
-      await repository.itemUpdateRepository(map);
+      await repository.newsUpdateRepository(map);
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed('/home');
+      Get.offAndToNamed(Routes.news);
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Item atualizado com sucesso!',
+          message: 'Notícia atualizada com sucesso!',
           type: MessageType.success,
         ),
       );
@@ -357,7 +370,7 @@ class NewsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed('/home');
+      Get.offAndToNamed(Routes.news);
     }
   }
 
