@@ -22,7 +22,6 @@ class _AboutAddPageState extends AppState<AboutAddPage, AboutController> {
   final _formKey = GlobalKey<FormState>();
   final _titleEC = TextEditingController();
   final _descriptionEC = TextEditingController();
-  RxBool imageValidate = false.obs;
 
   @override
   void dispose() {
@@ -67,46 +66,179 @@ class _AboutAddPageState extends AppState<AboutAddPage, AboutController> {
                   ),
                   controller.imageFile == null
                       ? Obx(
-                          () => Center(
-                            child: Container(
+                          () => Container(
+                            width: double.infinity,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: controller.imageValidate.value
+                                    ? Get.theme.colorScheme.error
+                                    : Get.theme.colorScheme.primary,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Get.theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.image_not_supported,
+                                  color: Get.theme.colorScheme.primary,
+                                  size: 80,
+                                ),
+                                Text(
+                                  'Sem imagem',
+                                  style: TextStyle(
+                                      color: Get.theme.colorScheme.primary),
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.defaultDialog(
+                                      titlePadding:
+                                          const EdgeInsets.only(top: 30),
+                                      contentPadding: const EdgeInsets.only(
+                                          top: 30, bottom: 20),
+                                      title: 'Selecione a imagem?',
+                                      backgroundColor: Get
+                                          .theme.colorScheme.onPrimaryContainer,
+                                      titleStyle: TextStyle(
+                                          color: Get.theme.colorScheme.primary),
+                                      content: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          CustomButton(
+                                            label: 'Galeria',
+                                            height: 40,
+                                            onPressed: () async {
+                                              Get.back();
+                                              Map<Permission, PermissionStatus>
+                                                  statuses = await [
+                                                Permission.storage,
+                                                Permission.camera,
+                                              ].request();
+                                              if (statuses[Permission.storage]!
+                                                      .isGranted &&
+                                                  statuses[Permission.camera]!
+                                                      .isGranted) {
+                                                await controller
+                                                    .pickImageFileFromGalery();
+                                                setState(() {
+                                                  controller.imageFile;
+                                                });
+                                              } else {
+                                                print('Permissão negada!');
+                                              }
+                                            },
+                                          ),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                          CustomButton(
+                                            label: 'Câmera',
+                                            height: 40,
+                                            onPressed: () async {
+                                              Get.back();
+                                              Map<Permission, PermissionStatus>
+                                                  statuses = await [
+                                                Permission.storage,
+                                                Permission.camera,
+                                              ].request();
+                                              if (statuses[Permission.storage]!
+                                                      .isGranted &&
+                                                  statuses[Permission.camera]!
+                                                      .isGranted) {
+                                                await controller
+                                                    .captureImageFileFromCamera();
+                                                setState(() {
+                                                  controller.imageFile;
+                                                });
+                                              } else {
+                                                print('Permissão negada!');
+                                              }
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      radius: 20,
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Get.theme.colorScheme.primary),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Adicionar',
+                                        style: TextStyle(
+                                            color:
+                                                Get.theme.colorScheme.primary),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : Stack(
+                          clipBehavior: Clip.none,
+                          alignment: Alignment.center,
+                          children: [
+                            Container(
                               width: double.infinity,
                               height: 250,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: imageValidate.value
-                                      ? Get.theme.colorScheme.error
-                                      : Get.theme.colorScheme.primary,
-                                ),
+                                    color: Get.theme.colorScheme.primary),
                                 borderRadius: BorderRadius.circular(20),
-                                color: Get.theme.colorScheme.onPrimaryContainer,
-                              ),
-                              child: Icon(
-                                Icons.image_not_supported,
-                                color: Get.theme.colorScheme.primary,
-                                size: 130,
-                              ),
-                            ),
-                          ),
-                        )
-                      : Obx(
-                          () => Center(
-                            child: Container(
-                              width: double.infinity,
-                              height: 250,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
                                   image: FileImage(
                                     File(controller.imageFile!.path),
                                   ),
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                             ),
-                          ),
+                            Positioned(
+                              right: 15,
+                              top: 15,
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    controller.imageFile = null;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Get.theme.colorScheme
+                                            .onPrimaryContainer),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Remover',
+                                      style: TextStyle(
+                                          color: Get.theme.colorScheme
+                                              .onPrimaryContainer),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                   Obx(
                     () => Visibility(
-                      visible: imageValidate.value,
+                      visible: controller.imageValidate.value,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 30, vertical: 8.0),
@@ -123,58 +255,6 @@ class _AboutAddPageState extends AppState<AboutAddPage, AboutController> {
                         ),
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () async {
-                          Map<Permission, PermissionStatus> statuses = await [
-                            Permission.storage,
-                            Permission.camera,
-                          ].request();
-                          if (statuses[Permission.storage]!.isGranted &&
-                              statuses[Permission.camera]!.isGranted) {
-                            await controller.pickImageFileFromGalery();
-                            setState(() {
-                              controller.imageFile;
-                            });
-                          } else {
-                            print('Permissão negada!');
-                          }
-                        },
-                        icon: Icon(
-                          Icons.image_outlined,
-                          color: Get.theme.colorScheme.surface,
-                          size: 30,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          Map<Permission, PermissionStatus> statuses = await [
-                            Permission.storage,
-                            Permission.camera,
-                          ].request();
-                          if (statuses[Permission.storage]!.isGranted &&
-                              statuses[Permission.camera]!.isGranted) {
-                            await controller.captureImageFileFromCamera();
-                            setState(() {
-                              controller.imageFile;
-                            });
-                          } else {
-                            print('Permissão negada!');
-                          }
-                        },
-                        icon: Icon(
-                          Icons.camera_alt_outlined,
-                          color: Get.theme.colorScheme.surface,
-                          size: 30,
-                        ),
-                      ),
-                    ],
                   ),
                   const SizedBox(
                     height: 10,
@@ -207,9 +287,9 @@ class _AboutAddPageState extends AppState<AboutAddPage, AboutController> {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
 
-                        imageValidate.value =
+                        controller.imageValidate.value =
                             controller.imageFile == null ? true : false;
-                        if (formValid && imageValidate.value) {
+                        if (formValid && controller.imageValidate.value) {
                           if (controller.imageFile != null) {
                             controller.aboutAdd({
                               'title': _titleEC.text,

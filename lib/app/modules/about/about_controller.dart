@@ -42,6 +42,8 @@ class AboutController extends GetxController
   GetStorage storage = GetStorage();
   RxBool isAdmin = false.obs;
 
+  RxBool imageValidate = false.obs;
+
   AboutController({
     required this.repository,
     required this.authRepository,
@@ -129,6 +131,7 @@ class AboutController extends GetxController
         .pickImage(source: ImageSource.camera, imageQuality: 50);
     if (imageFile != null) {
       await _cropImage(File(imageFile!.path));
+
       _message(
         MessageModel(
           title: 'Parabéns!',

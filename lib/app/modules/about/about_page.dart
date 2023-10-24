@@ -95,7 +95,6 @@ class AboutPage extends GetView<AboutController> {
                                       style: TextStyle(
                                         color: Get.theme.colorScheme.surface,
                                         fontSize: 16,
-                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     textAlign: TextAlign.justify,
