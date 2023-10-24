@@ -24,6 +24,11 @@ abstract class Routes {
   static const collaborate = _Paths.collaborate;
   static const collaborate_add = _Paths.collaborate_add;
   static const collaborate_detail = _Paths.collaborate_detail;
+
+  static const proposal = _Paths.proposal;
+  static const proposal_add = _Paths.proposal_add;
+  static const proposal_detail = _Paths.proposal_detail;
+  static const proposal_edit = _Paths.proposal_edit;
 }
 
 abstract class _Paths {
@@ -50,4 +55,9 @@ abstract class _Paths {
   static const collaborate = '/collaborate';
   static const collaborate_add = '/collaborate_add';
   static const collaborate_detail = '/collaborate_detail';
+
+  static const proposal = '/proposal';
+  static const proposal_add = '/proposal_add';
+  static const proposal_detail = '/proposal_detail';
+  static const proposal_edit = '/proposal_edit';
 }

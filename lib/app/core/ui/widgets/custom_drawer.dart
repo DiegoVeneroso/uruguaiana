@@ -58,6 +58,17 @@ class CustomDrawer extends StatelessWidget {
                         : Get.theme.colorScheme.primary,
                   ),
                   buildDrawerItem(
+                    icon: Icons.library_books,
+                    text: "Nossa proposta",
+                    onTap: () => navigate(7),
+                    tileColor: Get.currentRoute == '/proposal'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/proposal'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
                     icon: Icons.lightbulb_outline,
                     text: "Repense e colabore",
                     onTap: () => navigate(4),
@@ -199,6 +210,17 @@ class CustomDrawer extends StatelessWidget {
                         ? Get.theme.colorScheme.primary
                         : null,
                     textIconColor: Get.currentRoute == '/about'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
+                    icon: Icons.library_books,
+                    text: "Nossa proposta",
+                    onTap: () => navigate(7),
+                    tileColor: Get.currentRoute == '/proposal'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/proposal'
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
@@ -424,6 +446,8 @@ class CustomDrawer extends StatelessWidget {
       Get.toNamed('/news');
     } else if (index == 6) {
       Get.toNamed('/login');
+    } else if (index == 7) {
+      Get.toNamed('/proposal');
     }
   }
 }

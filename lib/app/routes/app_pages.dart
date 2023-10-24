@@ -28,6 +28,8 @@ import '../modules/home/home_binding.dart';
 import '../modules/home/home_edit_page.dart';
 import '../modules/news/news_add_page.dart';
 import '../modules/news/news_edit_page.dart';
+import '../modules/proposal/proposal_bindings.dart';
+import '../modules/proposal/proposal_page.dart';
 import '../modules/splash/splash_binding.dart';
 import '../modules/splash/splash_page.dart';
 part 'app_routes.dart';
@@ -88,6 +90,28 @@ class AppPages {
       page: () => const ProfilePage(),
       binding: ProfileBindings(),
     ),
+
+    //proposal
+    GetPage(
+      name: _Paths.proposal,
+      page: () => const ProposalPage(),
+      binding: ProposalBindings(),
+    ),
+    // GetPage(
+    //   name: _Paths.proposal_add,
+    //   page: () => const ProposalAddPage(),
+    //   binding: ProposalBindings(),
+    // ),
+    // GetPage(
+    //   name: _Paths.proposal_edit,
+    //   page: () => const ProposalEditPage(),
+    //   binding: ProposalBindings(),
+    // ),
+    // GetPage(
+    //   name: _Paths.proposal_detail,
+    //   page: () => const ProposalDetailPage(),
+    //   binding: ProposalBindings(),
+    // ),
 
     //news
     GetPage(
