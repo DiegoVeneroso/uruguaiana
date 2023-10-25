@@ -254,7 +254,7 @@ class ProposalController extends GetxController
     final realtime = Realtime(ApiClient.account.client);
 
     subscription = realtime.subscribe([
-      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_NEWS_ID}.documents'
+      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_PROPOSAL_BASE_ID}.documents'
     ]);
 
     subscription!.stream.listen((data) {
@@ -371,34 +371,6 @@ class ProposalController extends GetxController
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
       Get.offAndToNamed(Routes.proposal);
-    }
-  }
-
-  Future<List<DropdownMenuItem<String>>> getDropdowValue(
-      {required String labelAndColecctionList}) async {
-    try {
-      listDropdown = <DropdownMenuItem<String>>[].obs;
-      var result =
-          await repository.getDropdowValueRepository(labelAndColecctionList);
-
-      for (var res in result.data['value']) {
-        listDropdown.add(DropdownMenuItem(
-          value: res,
-          child: Text(
-            res,
-            style: TextStyle(
-              fontSize: 14,
-              color: Get.theme.colorScheme.surface,
-            ),
-          ),
-        ));
-      }
-
-      return listDropdown;
-    } on AppwriteException catch (e) {
-      log(e.response['type']);
-
-      throw (e.response['type']);
     }
   }
 }
