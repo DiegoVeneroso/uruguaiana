@@ -4,7 +4,6 @@ import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
 import '../models/proposal_model.dart';
@@ -30,7 +29,6 @@ class ProposalRepository {
             .map((docmodel) => ProposalModel(
                   idProposal: docmodel.data['idProposal'],
                   title: docmodel.data['title'],
-                  url_image: docmodel.data['url_image'],
                 ))
             .toList();
 
@@ -45,7 +43,6 @@ class ProposalRepository {
             .map((docmodel) => ProposalModel(
                   idProposal: docmodel.data['idProposal'],
                   title: docmodel.data['title'],
-                  url_image: docmodel.data['url_image'],
                 ))
             .toList();
 
@@ -70,35 +67,13 @@ class ProposalRepository {
     try {
       final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
 
-      String fileName = "$idUnique."
-          "${map["url_image"].toString().split(".").last}";
-
-      var urlImage =
-          '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
-
-      await ApiClient.storage.createFile(
-        bucketId: constants.STORAGE_BUCKETS,
-        fileId: idUnique,
-        file: InputFile(
-          path: map["url_image"],
-          filename: fileName,
-        ),
-      );
-
       await ApiClient.databases.createDocument(
           databaseId: constants.DATABASE_ID,
           collectionId: constants.COLLETION_PROPOSAL_BASE_ID,
           documentId: idUnique,
           data: {
-            'idProposal': idUnique,
+            'id_proposal_base': idUnique,
             'title': map["title"],
-            'url_image': urlImage,
-            'description': map["description"],
-            'date': DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br')
-                .format(DateTime.now())
-                .toString(),
-            'created_by': storage.read('id_user').toString(),
-            'date_time_created': DateTime.now().toString(),
           });
     } on AppwriteException catch (e) {
       log(e.response['type']);

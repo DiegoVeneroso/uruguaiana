@@ -171,8 +171,8 @@ class NewsPage extends GetView<NewsController> {
                                         // var teste = controller.imageFile =
                                         //     controller.newsList[index].urlImage ;
 
-                                        print(controller.imageFile!.path
-                                            .toString());
+                                        // print(controller.imageFile!.path
+                                        //     .toString());
                                         // AppinioSocialShare().shareToWhatsapp(
                                         //     'message',
                                         //     filePath: controller.imageFile?.path

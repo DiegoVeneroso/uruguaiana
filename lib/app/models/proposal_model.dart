@@ -4,19 +4,16 @@ import 'dart:convert';
 class ProposalModel {
   String? idProposal;
   String title;
-  String url_image;
 
   ProposalModel({
     this.idProposal,
     required this.title,
-    required this.url_image,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'idProposal': idProposal,
       'title': title,
-      'url_image': url_image,
     };
   }
 
@@ -25,7 +22,6 @@ class ProposalModel {
       idProposal:
           map['idProposal'] != null ? map['idProposal'] as String : null,
       title: map['title'] as String,
-      url_image: map['url_image'] as String,
     );
   }
 

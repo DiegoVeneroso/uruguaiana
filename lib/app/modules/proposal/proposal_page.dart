@@ -6,6 +6,8 @@ import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
+import '../../core/ui/widgets/custom_floating_button.dart';
+import '../../routes/app_pages.dart';
 
 class ProposalPage extends GetView<ProposalController> {
   const ProposalPage({super.key});
@@ -13,133 +15,135 @@ class ProposalPage extends GetView<ProposalController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: context.theme.colorScheme.background,
-        drawer: CustomDrawer(),
-        appBar: CustomAppbar(
-          actionsList: [
-            IconButton(
-              onPressed: ThemeService().switchTheme,
-              icon: const Icon(Icons.contrast),
-              color: Get.theme.colorScheme.onBackground,
-            ),
-          ],
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Center(
-                child: Text(
-                  'Pilares da proposta',
-                  style: Get.textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Get.theme.colorScheme.surface,
-                      fontSize: 25),
-                ),
+      backgroundColor: context.theme.colorScheme.background,
+      drawer: CustomDrawer(),
+      appBar: CustomAppbar(
+        actionsList: [
+          IconButton(
+            onPressed: ThemeService().switchTheme,
+            icon: const Icon(Icons.contrast),
+            color: Get.theme.colorScheme.onBackground,
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Center(
+              child: Text(
+                'Pilares da proposta',
+                style: Get.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Get.theme.colorScheme.surface,
+                    fontSize: 25),
               ),
             ),
-            Obx(
-              () => Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 200,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10),
-                    itemCount: controller.foundProposal.value.length,
-                    itemBuilder: (BuildContext ctx, index) {
-                      return Column(
-                        children: [
-                          FractionallySizedBox(
-                            widthFactor: 0.95,
-                            child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Get.theme.colorScheme.onPrimaryContainer,
-                                border: Border.all(
-                                    color: Get.theme.colorScheme.primary),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Get.theme.colorScheme.surface,
-                                    blurRadius: 5.0,
-                                  )
-                                ],
-                                borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(0.0),
-                                    bottomRight: Radius.circular(10.0),
-                                    topLeft: Radius.circular(0.0),
-                                    bottomLeft: Radius.circular(10.0)),
-                              ),
-                              child: const SizedBox(
-                                height: 25,
-                              ),
+          ),
+          Obx(
+            () => Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10),
+                itemCount: controller.foundProposal.value.length,
+                itemBuilder: (BuildContext ctx, index) {
+                  return Column(
+                    children: [
+                      FractionallySizedBox(
+                        widthFactor: 0.95,
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Get.theme.colorScheme.onPrimaryContainer,
+                            border: Border.all(
+                                color: Get.theme.colorScheme.primary),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Get.theme.colorScheme.surface,
+                                blurRadius: 5.0,
+                              )
+                            ],
+                            borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(0.0),
+                              bottomRight: Radius.circular(10.0),
+                              topLeft: Radius.circular(0.0),
+                              bottomLeft: Radius.circular(10.0),
                             ),
                           ),
-                          FractionallySizedBox(
-                            widthFactor: 0.9,
-                            child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Get.theme.colorScheme.onPrimaryContainer,
-                                border: Border.all(
-                                    color: Get.theme.colorScheme.primary),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Get.theme.colorScheme.surface,
-                                    blurRadius: 5.0,
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: const SizedBox(
-                                height: 16,
-                              ),
-                            ),
+                          child: const SizedBox(
+                            height: 25,
                           ),
-                          FractionallySizedBox(
-                            widthFactor: 0.8,
-                            child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Get.theme.colorScheme.onPrimaryContainer,
-                                border: Border.all(
-                                    color: Get.theme.colorScheme.primary),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Get.theme.colorScheme.surface,
-                                    blurRadius: 5.0,
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: const SizedBox(
-                                height: 10,
-                              ),
-                            ),
+                        ),
+                      ),
+                      FractionallySizedBox(
+                        widthFactor: 0.85,
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Get.theme.colorScheme.onPrimaryContainer,
+                            border: Border.all(
+                                color: Get.theme.colorScheme.primary),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Get.theme.colorScheme.surface,
+                                blurRadius: 5.0,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          FractionallySizedBox(
-                            widthFactor: 0.7,
-                            child: Container(
-                              width: MediaQuery.of(context).size.height * 0.5,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Get.theme.colorScheme.onPrimaryContainer,
-                                border: Border.all(
-                                    color: Get.theme.colorScheme.primary),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Get.theme.colorScheme.surface,
-                                    blurRadius: 5.0,
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(0),
-                              ),
-                              child: Padding(
+                          child: const SizedBox(
+                            height: 16,
+                          ),
+                        ),
+                      ),
+                      FractionallySizedBox(
+                        widthFactor: 0.8,
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Get.theme.colorScheme.onPrimaryContainer,
+                            border: Border.all(
+                                color: Get.theme.colorScheme.primary),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Get.theme.colorScheme.surface,
+                                blurRadius: 5.0,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const SizedBox(
+                            height: 10,
+                          ),
+                        ),
+                      ),
+                      FractionallySizedBox(
+                        widthFactor: 0.7,
+                        child: Container(
+                          width: MediaQuery.of(context).size.height * 0.5,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Get.theme.colorScheme.onPrimaryContainer,
+                            border: Border.all(
+                                color: Get.theme.colorScheme.primary),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Get.theme.colorScheme.surface,
+                                blurRadius: 5.0,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(0),
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 30.0),
+                                    const EdgeInsets.symmetric(vertical: 8.0),
                                 child: AutoSizeText(
                                   controller.proposalList[index].title,
                                   style: TextStyle(
@@ -150,35 +154,104 @@ class ProposalPage extends GetView<ProposalController> {
                                   minFontSize: 10,
                                 ),
                               ),
-                            ),
-                          ),
-                          FractionallySizedBox(
-                            widthFactor: 0.9,
-                            child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Get.theme.colorScheme.onPrimaryContainer,
-                                border: Border.all(
-                                    color: Get.theme.colorScheme.primary),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Get.theme.colorScheme.surface,
-                                    blurRadius: 5.0,
-                                  )
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Get.theme.colorScheme.primary,
+                                      size: 20,
+                                    ),
+                                    onPressed: () {
+                                      Get.toNamed(Routes.proposal_edit,
+                                          parameters: {
+                                            'idNews': controller
+                                                .proposalList[index].idProposal
+                                                .toString(),
+                                            'date': controller
+                                                .proposalList[index].title
+                                                .toString(),
+                                          });
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Get.theme.colorScheme.primary,
+                                      size: 20,
+                                    ),
+                                    onPressed: () {},
+                                  ),
                                 ],
-                                borderRadius: BorderRadius.circular(0),
-                              ),
-                              child: const SizedBox(
-                                height: 20,
-                              ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      FractionallySizedBox(
+                        widthFactor: 0.9,
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Get.theme.colorScheme.onPrimaryContainer,
+                            border: Border.all(
+                                color: Get.theme.colorScheme.primary),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Get.theme.colorScheme.surface,
+                                blurRadius: 5.0,
+                              )
+                            ],
+                            borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(10.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(10.0),
+                              bottomLeft: Radius.circular(0.0),
                             ),
                           ),
-                        ],
-                      );
-                    }),
+                          child: const SizedBox(
+                            height: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+      floatingActionButton: Obx(
+        () => controller.isAdmin()
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FloatingActionButton.extended(
+                  label: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add,
+                        color: Get.theme.colorScheme.background,
+                        size: 25,
+                      ),
+                      Text(
+                        'Adicionar pilar',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Get.theme.colorScheme.background),
+                      ),
+                    ],
+                  ),
+                  backgroundColor: Get.theme.colorScheme.primary,
+                  onPressed: () {
+                    Get.toNamed(Routes.proposal_add);
+                  },
+                ),
+              )
+            : const CustomFloatingButton(),
+      ),
+    );
   }
 }
