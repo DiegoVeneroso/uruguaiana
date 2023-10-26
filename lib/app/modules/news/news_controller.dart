@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -18,6 +19,7 @@ import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
+import 'package:http/http.dart' as http;
 
 class NewsController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -57,7 +59,7 @@ class NewsController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundNews.value = newsList;
-    notificationPush();
+    showNotificationPush();
 
     super.onInit();
   }
@@ -95,21 +97,18 @@ class NewsController extends GetxController
     }
   }
 
-  notificationPush() {
+  showNotificationPush() {
     FirebaseMessaging.onMessage.listen((message) async {
       print(message.data.values
           .toString()); //recebe o valor dos dados personalidados da notificação
 
       if (message.notification != null) {
-        Get.snackbar(
-          onTap: (snack) {
-            // Get.toNamed('/noticias');
-          },
-          message.notification!.title.toString(),
-          message.notification!.body.toString(),
-          backgroundColor: Colors.blue,
-          colorText: Colors.white,
-          margin: const EdgeInsets.all(20),
+        _message(
+          MessageModel(
+            title: message.notification!.title.toString(),
+            message: message.notification!.body.toString(),
+            type: MessageType.success,
+          ),
         );
       }
     });

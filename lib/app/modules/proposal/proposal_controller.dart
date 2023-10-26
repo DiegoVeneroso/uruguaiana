@@ -57,7 +57,7 @@ class ProposalController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundProposal.value = proposalList;
-    notificationPush();
+    showNotificationPush();
 
     super.onInit();
   }
@@ -95,22 +95,21 @@ class ProposalController extends GetxController
     }
   }
 
-  notificationPush() {
+  showNotificationPush() {
     FirebaseMessaging.onMessage.listen((message) async {
       print(message.data.values
           .toString()); //recebe o valor dos dados personalidados da notificação
 
       if (message.notification != null) {
-        Get.snackbar(
-          onTap: (snack) {
-            // Get.toNamed('/noticias');
-          },
-          message.notification!.title.toString(),
-          message.notification!.body.toString(),
-          backgroundColor: Colors.blue,
-          colorText: Colors.white,
-          margin: const EdgeInsets.all(20),
-        );
+        if (message.notification != null) {
+          _message(
+            MessageModel(
+              title: message.notification!.title.toString(),
+              message: message.notification!.body.toString(),
+              type: MessageType.success,
+            ),
+          );
+        }
       }
     });
   }

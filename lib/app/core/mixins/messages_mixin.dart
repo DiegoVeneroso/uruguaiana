@@ -11,6 +11,12 @@ mixin MessagesMixin on GetxController {
           backgroundColor: model.type.color(),
           colorText: model.type.textColor(),
           margin: const EdgeInsets.all(20),
+          borderColor: Get.theme.colorScheme.onPrimaryContainer,
+          borderWidth: 1,
+          boxShadows: [
+            BoxShadow(
+                color: Get.theme.colorScheme.onPrimaryContainer, blurRadius: 3)
+          ],
         );
       }
     });

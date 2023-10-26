@@ -13,6 +13,9 @@ import 'package:uruguaiana/app/modules/auth/register/register_page.dart';
 import 'package:uruguaiana/app/modules/news/news_bindings.dart';
 import 'package:uruguaiana/app/modules/news/news_detail_page.dart';
 import 'package:uruguaiana/app/modules/news/news_page.dart';
+import 'package:uruguaiana/app/modules/notification/notification_add_page.dart';
+import 'package:uruguaiana/app/modules/notification/notification_bindings.dart';
+import 'package:uruguaiana/app/modules/notification/notification_page.dart';
 import 'package:uruguaiana/app/modules/profile/profile_bindings.dart';
 import 'package:uruguaiana/app/modules/profile/profile_page.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_add_page.dart';
@@ -174,6 +177,18 @@ class AppPages {
       name: _Paths.collaborate_detail,
       page: () => const collaborateDetailPage(),
       binding: CollaborateBindings(),
+    ),
+
+    //notification
+    GetPage(
+      name: _Paths.notification,
+      page: () => const NotificationPage(),
+      binding: NotificationBindings(),
+    ),
+    GetPage(
+      name: _Paths.notification_add,
+      page: () => const NotificationAddPage(),
+      binding: NotificationBindings(),
     ),
   ];
 }

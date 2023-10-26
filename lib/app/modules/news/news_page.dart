@@ -251,8 +251,10 @@ class NewsPage extends GetView<NewsController> {
                 padding: const EdgeInsets.all(8.0),
                 child: FloatingActionButton(
                   backgroundColor: Get.theme.colorScheme.primary,
-                  onPressed: () {
+                  onPressed: () async {
                     Get.toNamed(Routes.news_add);
+                    // await controller.sendPushNotification(
+                    //     title: 'Diego', body: 'Veneroso');
                   },
                   child: Icon(
                     Icons.add,

@@ -76,7 +76,7 @@ class AdminPage extends GetView<AdminController> {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  print('object');
+                  Get.toNamed(Routes.notification);
                 },
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -87,7 +87,7 @@ class AdminPage extends GetView<AdminController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.settings,
+                        Icons.notifications,
                         color: Get.theme.colorScheme.background,
                         size: 60,
                       ),
@@ -95,7 +95,7 @@ class AdminPage extends GetView<AdminController> {
                         height: 10,
                       ),
                       Text(
-                        'Propostas',
+                        'Notificações',
                         style: TextStyle(
                           color: Get.theme.colorScheme.background,
                           fontSize: 18,

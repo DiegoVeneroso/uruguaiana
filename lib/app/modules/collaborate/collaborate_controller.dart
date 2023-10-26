@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
@@ -10,7 +9,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/repository/collaborate_repositories.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
 import '../../core/config/api_client.dart';
 import '../../core/config/constants.dart' as constants;
@@ -18,6 +16,7 @@ import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
 import '../../models/collaborate_model.dart';
+import '../../repository/collaborate_repositories.dart';
 
 class CollaborateController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -57,7 +56,7 @@ class CollaborateController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundCollaborate.value = collaborateList;
-    notificationPush();
+    showNotificationPush();
 
     super.onInit();
   }
@@ -70,21 +69,18 @@ class CollaborateController extends GetxController
     super.onReady();
   }
 
-  notificationPush() {
+  showNotificationPush() {
     FirebaseMessaging.onMessage.listen((message) async {
       print(message.data.values
           .toString()); //recebe o valor dos dados personalidados da notificação
 
       if (message.notification != null) {
-        Get.snackbar(
-          onTap: (snack) {
-            // Get.toNamed('/noticias');
-          },
-          message.notification!.title.toString(),
-          message.notification!.body.toString(),
-          backgroundColor: Colors.blue,
-          colorText: Colors.white,
-          margin: const EdgeInsets.all(20),
+        _message(
+          MessageModel(
+            title: message.notification!.title.toString(),
+            message: message.notification!.body.toString(),
+            type: MessageType.success,
+          ),
         );
       }
     });
