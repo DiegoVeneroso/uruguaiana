@@ -151,7 +151,7 @@ class ProposalPage extends GetView<ProposalController> {
                               borderRadius: BorderRadius.circular(0),
                             ),
                             child: SizedBox(
-                              height: 90,
+                              height: 70,
                               child: Center(
                                 child: AutoSizeText(
                                   controller.proposalList[index].title
