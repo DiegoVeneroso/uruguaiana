@@ -15,7 +15,9 @@ import 'package:uruguaiana/app/modules/news/news_detail_page.dart';
 import 'package:uruguaiana/app/modules/news/news_page.dart';
 import 'package:uruguaiana/app/modules/profile/profile_bindings.dart';
 import 'package:uruguaiana/app/modules/profile/profile_page.dart';
-import 'package:uruguaiana/app/modules/proposal/proposal_add_page.dart';
+import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_add_page.dart';
+import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_page.dart';
+import 'package:uruguaiana/app/modules/proposal/proposal_home/proposal_bindings.dart';
 
 import '../modules/about/about_add_page.dart';
 import '../modules/about/about_edit_page.dart';
@@ -29,9 +31,10 @@ import '../modules/home/home_binding.dart';
 import '../modules/home/home_edit_page.dart';
 import '../modules/news/news_add_page.dart';
 import '../modules/news/news_edit_page.dart';
-import '../modules/proposal/proposal_bindings.dart';
-import '../modules/proposal/proposal_edit_page.dart';
-import '../modules/proposal/proposal_page.dart';
+import '../modules/proposal/proposal_actions/proposal_actions_bindings.dart';
+import '../modules/proposal/proposal_home/proposal_add_page.dart';
+import '../modules/proposal/proposal_home/proposal_edit_page.dart';
+import '../modules/proposal/proposal_home/proposal_page.dart';
 import '../modules/splash/splash_binding.dart';
 import '../modules/splash/splash_page.dart';
 part 'app_routes.dart';
@@ -114,11 +117,18 @@ class AppPages {
       page: () => const ProposalEditPage(),
       binding: ProposalBindings(),
     ),
-    // GetPage(
-    //   name: _Paths.proposal_detail,
-    //   page: () => const ProposalDetailPage(),
-    //   binding: ProposalBindings(),
-    // ),
+
+    //proposal actions
+    GetPage(
+      name: _Paths.proposal_actions,
+      page: () => ProposalActionPage(),
+      binding: ProposalActionsBindings(),
+    ),
+    GetPage(
+      name: _Paths.proposal_actions_add,
+      page: () => const ProposalActionsAddPage(),
+      binding: ProposalActionsBindings(),
+    ),
 
     //news
     GetPage(

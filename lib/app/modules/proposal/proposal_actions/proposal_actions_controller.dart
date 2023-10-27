@@ -10,25 +10,26 @@ import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
+import 'package:uruguaiana/app/repository/proposal_actions_repositories.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
-import '../../core/config/api_client.dart';
-import '../../core/config/constants.dart' as constants;
-import '../../core/mixins/dialog_mixin.dart';
-import '../../core/mixins/loader_mixin.dart';
-import '../../core/mixins/messages_mixin.dart';
-import '../../models/proposal_model.dart';
-import '../../repository/proposal_repositories.dart';
+import '../../../core/config/api_client.dart';
+import '../../../core/config/constants.dart' as constants;
+import '../../../core/mixins/dialog_mixin.dart';
+import '../../../core/mixins/loader_mixin.dart';
+import '../../../core/mixins/messages_mixin.dart';
+import '../../../models/proposal_action_model.dart';
 
-class ProposalController extends GetxController
+class ProposalActionsController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
   RealtimeSubscription? subscription;
-  ProposalRepository repository;
+  ProposalActionsRepository repository;
   AuthRepository authRepository;
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
   final _dialog = Rxn<DialogModel>();
-  var proposalList = <ProposalModel>[].obs;
-  Rx<List<ProposalModel>> foundProposal = Rx<List<ProposalModel>>([]);
+  var proposalList = <ProposalActionModel>[].obs;
+  Rx<List<ProposalActionModel>> foundProposal =
+      Rx<List<ProposalActionModel>>([]);
   RxList<DropdownMenuItem<String>> listDropdown =
       <DropdownMenuItem<String>>[].obs;
 
@@ -45,9 +46,13 @@ class ProposalController extends GetxController
   GetStorage storage = GetStorage();
   RxBool isAdmin = false.obs;
 
-  ProposalController({
+  String idProposalBase;
+
+  RxBool imageValidate = false.obs;
+  ProposalActionsController({
     required this.repository,
     required this.authRepository,
+    required this.idProposalBase,
   });
 
   @override
@@ -202,7 +207,7 @@ class ProposalController extends GetxController
   }
 
   Future<void> filterProposal(String proposalName) async {
-    List<ProposalModel> results = [];
+    List<ProposalActionModel> results = [];
     if (proposalName.isEmpty) {
       // _loading.toggle();
       results = proposalList;
@@ -235,7 +240,7 @@ class ProposalController extends GetxController
 
   void loadData() async {
     try {
-      var result = await repository.loadDataRepository();
+      var result = await repository.loadDataRepository(idProposalBase);
 
       proposalList.assignAll(result);
     } catch (e) {
@@ -254,7 +259,7 @@ class ProposalController extends GetxController
     final realtime = Realtime(ApiClient.account.client);
 
     subscription = realtime.subscribe([
-      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_PROPOSAL_BASE_ID}.documents'
+      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_PROPOSAL_ACTIONS_ID}.documents'
     ]);
 
     subscription!.stream.listen((data) {
@@ -276,11 +281,11 @@ class ProposalController extends GetxController
     });
   }
 
-  Future<void> proposalAdd(Map map) async {
+  Future<void> proposalActionAdd(Map map) async {
     try {
       _loading.toggle();
 
-      await repository.proposalAddRepository(map);
+      await repository.proposalActionAddRepository(map);
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
@@ -288,7 +293,7 @@ class ProposalController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Notícia adicionada com sucesso!',
+          message: 'Ação adicionada com sucesso!',
           type: MessageType.success,
         ),
       );
@@ -304,7 +309,7 @@ class ProposalController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.proposal_actions);
     }
   }
 
@@ -321,7 +326,7 @@ class ProposalController extends GetxController
       //manter este snackbar para mostra a resposta, o _message() não funciona!
       Get.snackbar(
         'Parabéns!',
-        'Notícia excluída com sucesso!',
+        'Pilar excluído com sucesso!',
         backgroundColor: Get.theme.colorScheme.primary,
         colorText: Get.theme.colorScheme.onPrimaryContainer,
         margin: const EdgeInsets.all(20),
@@ -354,7 +359,7 @@ class ProposalController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Notícia atualizada com sucesso!',
+          message: 'Pilar atualizado com sucesso!',
           type: MessageType.success,
         ),
       );
