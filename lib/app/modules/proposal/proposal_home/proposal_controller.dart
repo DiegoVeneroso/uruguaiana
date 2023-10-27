@@ -11,13 +11,13 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
-import '../../core/config/api_client.dart';
-import '../../core/config/constants.dart' as constants;
-import '../../core/mixins/dialog_mixin.dart';
-import '../../core/mixins/loader_mixin.dart';
-import '../../core/mixins/messages_mixin.dart';
-import '../../models/proposal_model.dart';
-import '../../repository/proposal_repositories.dart';
+import '../../../core/config/constants.dart' as constants;
+import '../../../core/config/api_client.dart';
+import '../../../core/mixins/dialog_mixin.dart';
+import '../../../core/mixins/loader_mixin.dart';
+import '../../../core/mixins/messages_mixin.dart';
+import '../../../models/proposal_model.dart';
+import '../../../repository/proposal_repositories.dart';
 
 class ProposalController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -320,7 +320,7 @@ class ProposalController extends GetxController
       //manter este snackbar para mostra a resposta, o _message() não funciona!
       Get.snackbar(
         'Parabéns!',
-        'Notícia excluída com sucesso!',
+        'Pilar excluído com sucesso!',
         backgroundColor: Get.theme.colorScheme.primary,
         colorText: Get.theme.colorScheme.onPrimaryContainer,
         margin: const EdgeInsets.all(20),
@@ -353,7 +353,7 @@ class ProposalController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Notícia atualizada com sucesso!',
+          message: 'Pilar atualizado com sucesso!',
           type: MessageType.success,
         ),
       );

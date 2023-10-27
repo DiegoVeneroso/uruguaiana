@@ -1,34 +1,30 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:uruguaiana/app/modules/proposal/proposal_controller.dart';
 import 'package:validatorless/validatorless.dart';
-import '../../core/colors/services/theme_service.dart';
-import '../../core/ui/app_state.dart';
-import '../../core/ui/widgets/custom_appbar.dart';
-import '../../core/ui/widgets/custom_button.dart';
-import '../../core/ui/widgets/custom_textformfield.dart';
+
+import '../../../core/colors/services/theme_service.dart';
+import '../../../core/ui/app_state.dart';
+import '../../../core/ui/widgets/custom_appbar.dart';
+import '../../../core/ui/widgets/custom_button.dart';
+import '../../../core/ui/widgets/custom_textformfield.dart';
 import 'proposal_controller.dart';
 
-class ProposalEditPage extends StatefulWidget {
-  const ProposalEditPage({Key? key}) : super(key: key);
+class ProposalAddPage extends StatefulWidget {
+  const ProposalAddPage({Key? key}) : super(key: key);
 
   @override
-  State<ProposalEditPage> createState() => _ProposalAddPageState();
+  State<ProposalAddPage> createState() => _ProposalAddPageState();
 }
 
 class _ProposalAddPageState
-    extends AppState<ProposalEditPage, ProposalController> {
+    extends AppState<ProposalAddPage, ProposalController> {
   final _formKey = GlobalKey<FormState>();
-  final _titleEC = TextEditingController(text: Get.parameters['title']);
-  final _descriptionEC =
-      TextEditingController(text: Get.parameters['description']);
+  final _titleEC = TextEditingController();
 
   @override
   void dispose() {
     _titleEC.dispose();
-    _descriptionEC.dispose();
     super.dispose();
   }
 
@@ -56,7 +52,7 @@ class _ProposalAddPageState
                 children: [
                   Center(
                     child: Text(
-                      'Atualizar notícia',
+                      'Adicionar novo pilar',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Get.theme.colorScheme.surface,
@@ -70,20 +66,10 @@ class _ProposalAddPageState
                     height: 10,
                   ),
                   CustomTextformfield(
-                    label: 'Título',
+                    label: 'Nome do pilar',
                     controller: _titleEC,
-                    validator: Validatorless.required('Titulo é obrigatório'),
-                    maxlines: 2,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextformfield(
-                    label: 'Descrição',
-                    controller: _descriptionEC,
                     validator:
-                        Validatorless.required('Descrição é obrigatória'),
-                    maxlines: 10,
+                        Validatorless.required('Nome do pilar é obrigatório'),
                   ),
                   const SizedBox(
                     height: 20,
@@ -92,14 +78,14 @@ class _ProposalAddPageState
                     child: CustomButton(
                       color: Get.theme.colorScheme.primaryContainer,
                       width: double.infinity,
-                      label: 'ATUALIZAR',
+                      label: 'ADICIONAR',
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
+
                         if (formValid) {
-                          controller.proposalUpdate({
-                            'idProposal': Get.parameters['idProposal'],
-                            'title': _titleEC.text,
+                          controller.proposalAdd({
+                            'title': _titleEC.text.toUpperCase(),
                           });
                         }
                       },
