@@ -65,4 +65,9 @@ abstract class _Paths {
   static const proposal_add = '/proposal_add';
   static const proposal_detail = '/proposal_detail';
   static const proposal_edit = '/proposal_edit';
+  static const proposal_actions = '/proposal_actions';
+  static const proposal_actions_add = '/proposal_actions_add';
+
+  static const notification = '/notification';
+  static const notification_add = '/notification_add';
 }
