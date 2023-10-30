@@ -19,7 +19,9 @@ import 'package:uruguaiana/app/modules/notification/notification_page.dart';
 import 'package:uruguaiana/app/modules/profile/profile_bindings.dart';
 import 'package:uruguaiana/app/modules/profile/profile_page.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_add_page.dart';
+import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_edit_page.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_page.dart';
+import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_detail_page.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_home/proposal_bindings.dart';
 
 import '../modules/about/about_add_page.dart';
@@ -130,6 +132,16 @@ class AppPages {
     GetPage(
       name: _Paths.proposal_actions_add,
       page: () => const ProposalActionsAddPage(),
+      binding: ProposalActionsBindings(),
+    ),
+    GetPage(
+      name: _Paths.proposal_actions_edit,
+      page: () => const ProposalActionsEditPage(),
+      binding: ProposalActionsBindings(),
+    ),
+    GetPage(
+      name: _Paths.proposal_actions_detail,
+      page: () => const ProposalActionsDetailPage(),
       binding: ProposalActionsBindings(),
     ),
 

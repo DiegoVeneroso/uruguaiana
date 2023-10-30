@@ -287,7 +287,7 @@ class ProposalController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Notícia adicionada com sucesso!',
+          message: 'Pilar adicionado com sucesso!',
           type: MessageType.success,
         ),
       );

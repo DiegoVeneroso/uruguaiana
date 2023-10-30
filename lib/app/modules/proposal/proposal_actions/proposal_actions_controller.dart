@@ -136,6 +136,30 @@ class ProposalActionsController extends GetxController
     }
   }
 
+  pickVideoFileFromGalery() async {
+    imageFile = await ImagePicker().pickVideo(source: ImageSource.gallery);
+
+    _message(
+      MessageModel(
+        title: 'Parabéns!',
+        message: 'Video carregado!',
+        type: MessageType.success,
+      ),
+    );
+  }
+
+  capturaVideoFileFromCamera() async {
+    imageFile = await ImagePicker().pickVideo(source: ImageSource.camera);
+
+    _message(
+      MessageModel(
+        title: 'Parabéns!',
+        message: 'Video carregado!',
+        type: MessageType.success,
+      ),
+    );
+  }
+
   captureImageFileFromCamera() async {
     imageFile = await ImagePicker()
         .pickImage(source: ImageSource.camera, imageQuality: 50);
@@ -289,7 +313,9 @@ class ProposalActionsController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.proposal_actions, parameters: {
+        'proposal_pilar_name': map['proposal_pilar_name'],
+      });
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -309,24 +335,30 @@ class ProposalActionsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal_actions);
+      Get.offAndToNamed(Routes.proposal_actions,
+          parameters: {'proposal_pilar_name': map['proposal_pilar_name']});
     }
   }
 
-  Future proposalDelete(String idproposal) async {
+  Future proposalActionDelete(Map map) async {
     try {
       Get.back();
       _loading.toggle();
 
-      await repository.proposalDeleteRepository(idproposal);
+      await repository
+          .proposalActionsDeleteRepository(map['idProposal'].toString());
 
       _loading.toggle();
       await Future.delayed(const Duration(seconds: 1));
 
+      Get.toNamed(Routes.proposal_actions, parameters: {
+        'proposal_pilar_name': map['proposal_pilar_name'].toString(),
+      });
+
       //manter este snackbar para mostra a resposta, o _message() não funciona!
       Get.snackbar(
         'Parabéns!',
-        'Pilar excluído com sucesso!',
+        'Ação excluída com sucesso!',
         backgroundColor: Get.theme.colorScheme.primary,
         colorText: Get.theme.colorScheme.onPrimaryContainer,
         margin: const EdgeInsets.all(20),
@@ -347,19 +379,21 @@ class ProposalActionsController extends GetxController
     }
   }
 
-  Future<void> proposalUpdate(Map map) async {
+  Future<void> proposalActionUpdate(Map map) async {
     try {
       _loading.toggle();
 
-      await repository.proposalUpdateRepository(map);
+      await repository.proposalActionsUpdateRepository(map);
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.toNamed(Routes.proposal_actions, parameters: {
+        'proposal_pilar_name': map['proposal_pilar_name'].toString(),
+      });
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Pilar atualizado com sucesso!',
+          message: 'Ação alterada com sucesso!',
           type: MessageType.success,
         ),
       );

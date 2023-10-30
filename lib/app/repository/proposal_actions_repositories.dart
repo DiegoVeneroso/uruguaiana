@@ -34,6 +34,7 @@ class ProposalActionsRepository {
                   idProposalAction: docmodel.data['id_proposal_action'],
                   title: docmodel.data['title'],
                   description: docmodel.data['description'],
+                  urlImage: docmodel.data['url_image'],
                 ))
             .toList();
 
@@ -50,6 +51,7 @@ class ProposalActionsRepository {
                   idProposalAction: docmodel.data['id_proposal_action'],
                   title: docmodel.data['title'],
                   description: docmodel.data['description'],
+                  urlImage: docmodel.data['url_image'],
                 ))
             .toList();
 
@@ -92,6 +94,9 @@ class ProposalActionsRepository {
         var urlImage =
             '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
 
+        print('fileName');
+        print(fileName);
+
         await ApiClient.storage.createFile(
           bucketId: constants.STORAGE_BUCKETS,
           fileId: idUnique,
@@ -120,11 +125,16 @@ class ProposalActionsRepository {
     }
   }
 
-  proposalDeleteRepository(String idProposal) async {
+  proposalActionsDeleteRepository(String idProposal) async {
     try {
+      await ApiClient.storage.deleteFile(
+        bucketId: constants.STORAGE_BUCKETS,
+        fileId: idProposal,
+      );
+
       await ApiClient.databases.deleteDocument(
         databaseId: constants.DATABASE_ID,
-        collectionId: constants.COLLETION_PROPOSAL_BASE_ID,
+        collectionId: constants.COLLETION_PROPOSAL_ACTIONS_ID,
         documentId: idProposal,
       );
     } on AppwriteException catch (e) {
@@ -134,14 +144,16 @@ class ProposalActionsRepository {
     }
   }
 
-  proposalUpdateRepository(Map map) async {
+  proposalActionsUpdateRepository(Map map) async {
     try {
       await ApiClient.databases.updateDocument(
           databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_PROPOSAL_BASE_ID,
-          documentId: map["idProposal"],
+          collectionId: constants.COLLETION_PROPOSAL_ACTIONS_ID,
+          documentId: map["id_proposal_action"],
           data: {
-            'title': map["title"],
+            "title": map['title'],
+            "description": map['description'],
+            "url_image": map['url_image'],
           });
     } on AppwriteException catch (e) {
       log(e.response['type']);

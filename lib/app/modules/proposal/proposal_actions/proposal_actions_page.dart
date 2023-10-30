@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
 import '../../../core/colors/services/theme_service.dart';
-import '../../../core/ui/widgets/custom_drawer.dart';
 import '../../../core/ui/widgets/custom_floating_button.dart';
 import '../../../repository/auth_repository.dart';
 import '../../../routes/app_pages.dart';
@@ -20,7 +20,6 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
-      drawer: CustomDrawer(),
       appBar: CustomAppbar(
         actionsList: [
           IconButton(
@@ -43,7 +42,7 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
               padding: const EdgeInsets.all(12.0),
               child: Center(
                 child: Text(
-                  Get.parameters['title'].toString(),
+                  Get.parameters['proposal_pilar_name'].toString(),
                   style: Get.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Get.theme.colorScheme.surface,
@@ -70,6 +69,23 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                         const Divider(),
                     itemBuilder: (context, index) {
                       return ListTile(
+                        onTap: () {
+                          Get.toNamed('/proposal_actions_detail', parameters: {
+                            'id_proposal_action': controller
+                                .proposalList[index].idProposalAction
+                                .toString(),
+                            'title':
+                                controller.proposalList[index].title.toString(),
+                            'url_image': controller.proposalList[index].urlImage
+                                .toString(),
+                            'description': controller
+                                .proposalList[index].description
+                                .toString(),
+                            'proposal_pilar_name': Get
+                                .parameters['proposal_pilar_name']
+                                .toString(),
+                          });
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         tileColor: Get.theme.colorScheme.primary,
@@ -77,8 +93,6 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                         iconColor: Get.theme.colorScheme.onPrimaryContainer,
                         titleTextStyle: const TextStyle(fontSize: 16),
                         subtitleTextStyle: const TextStyle(fontSize: 14),
-                        leadingAndTrailingTextStyle:
-                            const TextStyle(fontSize: 50),
                         title:
                             Text(controller.foundProposal.value[index].title),
                         subtitle: Row(
@@ -91,31 +105,6 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                             ),
                           ],
                         ),
-                        trailing: IconButton(
-                            onPressed: () {
-                              // Get.toNamed('/collaborate_detail', parameters: {
-                              //   'idCollaborate': controller
-                              //       .collaborateList[index].idCollaborate
-                              //       .toString(),
-                              //   'name': controller.collaborateList[index].name
-                              //       .toString(),
-                              //   'phone': controller.collaborateList[index].phone
-                              //       .toString(),
-                              //   'url_image': controller
-                              //       .collaborateList[index].urlImage
-                              //       .toString(),
-                              //   'description': controller
-                              //       .collaborateList[index].description
-                              //       .toString(),
-                              //   'date_time_created': controller
-                              //       .collaborateList[index].dateTimeCreated
-                              //       .toString(),
-                              // });
-                            },
-                            icon: const Icon(
-                              FontAwesomeIcons.arrowRight,
-                              size: 30,
-                            )),
                       );
                     },
                   )),
@@ -137,7 +126,7 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                         size: 25,
                       ),
                       Text(
-                        'Adicionar ação',
+                        'ADICIONAR AÇÃO',
                         style: TextStyle(
                             fontSize: 14,
                             color: Get.theme.colorScheme.background),
@@ -149,7 +138,8 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                     Get.toNamed(Routes.proposal_actions_add, parameters: {
                       'id_proposal_base':
                           Get.parameters['id_proposal_base'].toString(),
-                      'title': Get.parameters['title'].toString(),
+                      'proposal_pilar_name':
+                          Get.parameters['proposal_pilar_name'].toString(),
                     });
                   },
                 ),

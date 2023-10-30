@@ -31,6 +31,8 @@ abstract class Routes {
   static const proposal_edit = _Paths.proposal_edit;
   static const proposal_actions = _Paths.proposal_actions;
   static const proposal_actions_add = _Paths.proposal_actions_add;
+  static const proposal_actions_edit = _Paths.proposal_actions_edit;
+  static const proposal_actions_detail = _Paths.proposal_actions_detail;
 
   static const notification = _Paths.notification;
   static const notification_add = _Paths.notification_add;
@@ -67,6 +69,8 @@ abstract class _Paths {
   static const proposal_edit = '/proposal_edit';
   static const proposal_actions = '/proposal_actions';
   static const proposal_actions_add = '/proposal_actions_add';
+  static const proposal_actions_edit = '/proposal_actions_edit';
+  static const proposal_actions_detail = '/proposal_actions_detail';
 
   static const notification = '/notification';
   static const notification_add = '/notification_add';

@@ -59,7 +59,7 @@ class ProposalPage extends GetView<ProposalController> {
                         'id_proposal_base': controller
                             .proposalList[index].idProposal
                             .toString(),
-                        'title':
+                        'proposal_pilar_name':
                             controller.proposalList[index].title.toString(),
                       });
                     },
@@ -205,7 +205,7 @@ class ProposalPage extends GetView<ProposalController> {
                                             'id_proposal_base': controller
                                                 .proposalList[index].idProposal
                                                 .toString(),
-                                            'title': controller
+                                            'proposal_pilar_name': controller
                                                 .proposalList[index].title
                                                 .toString(),
                                           });
@@ -281,7 +281,7 @@ class ProposalPage extends GetView<ProposalController> {
                         size: 25,
                       ),
                       Text(
-                        'Adicionar pilar',
+                        'ADICIONAR PILAR',
                         style: TextStyle(
                             fontSize: 14,
                             color: Get.theme.colorScheme.background),
