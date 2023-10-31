@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
@@ -21,6 +23,8 @@ class _ProposalActionsDetailPageState
     extends AppState<ProposalActionsDetailPage, ProposalActionsController> {
   @override
   Widget build(BuildContext context) {
+    print("tipo:  ${controller.getVideoTypeFileUrl()}");
+
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
       appBar: CustomAppbar(
@@ -50,9 +54,60 @@ class _ProposalActionsDetailPageState
                   ),
                 ),
               ),
-              CustomPlayerVideo(
-                videoUri: Uri.parse(Get.parameters['url_image'].toString()),
-              ),
+              true
+                  ? CustomPlayerVideo(
+                      videoUri:
+                          Uri.parse(Get.parameters['url_image'].toString()),
+                    )
+                  : Stack(
+                      clipBehavior: Clip.none,
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Get.theme.colorScheme.primary),
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: FileImage(
+                                File(Get.parameters['url_image'].toString()),
+                              ),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 15,
+                          top: 15,
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                controller.imageFile = null;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Get
+                                        .theme.colorScheme.onPrimaryContainer),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Remover',
+                                  style: TextStyle(
+                                      color: Get
+                                          .theme.colorScheme.primaryContainer),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
               const SizedBox(
                 height: 10,
               ),

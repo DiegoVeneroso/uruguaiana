@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
@@ -18,6 +19,7 @@ import '../../../core/mixins/dialog_mixin.dart';
 import '../../../core/mixins/loader_mixin.dart';
 import '../../../core/mixins/messages_mixin.dart';
 import '../../../models/proposal_action_model.dart';
+import 'package:http/http.dart' as http;
 
 class ProposalActionsController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -173,6 +175,23 @@ class ProposalActionsController extends GetxController
         ),
       );
     }
+  }
+
+  getVideoTypeFileUrl() async {
+    http
+        .head(Uri.parse(
+            'https://frontapp.com.br/v1/storage/buckets/65243a86eacfdb9c9487/files/1698709529276/view?project=65243945bba372ff009e'))
+        .then(
+      (response) {
+        if (response.statusCode == 200 &&
+            response.headers['content-type'].toString().split('/').first ==
+                'video') {
+          return true;
+        } else {
+          return false;
+        }
+      },
+    );
   }
 
   _cropImage(File imgFile) async {
