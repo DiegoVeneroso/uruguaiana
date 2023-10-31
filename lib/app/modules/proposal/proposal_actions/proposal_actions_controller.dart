@@ -177,21 +177,16 @@ class ProposalActionsController extends GetxController
     }
   }
 
-  getVideoTypeFileUrl() async {
-    http
-        .head(Uri.parse(
-            'https://frontapp.com.br/v1/storage/buckets/65243a86eacfdb9c9487/files/1698709529276/view?project=65243945bba372ff009e'))
-        .then(
-      (response) {
-        if (response.statusCode == 200 &&
-            response.headers['content-type'].toString().split('/').first ==
-                'video') {
-          return true;
-        } else {
-          return false;
-        }
-      },
-    );
+  Future<Map<String, dynamic>> getVideoTypeFileUrl(String urlFile) async {
+    var response = await http.head(Uri.parse(urlFile));
+
+    if (response.statusCode == 200 &&
+        response.headers['content-type'].toString().split('/').first ==
+            'video') {
+      return {'type': 'video'};
+    } else {
+      return {'type': 'image'};
+    }
   }
 
   _cropImage(File imgFile) async {

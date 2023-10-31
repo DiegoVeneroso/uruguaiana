@@ -23,8 +23,6 @@ class _ProposalActionsDetailPageState
     extends AppState<ProposalActionsDetailPage, ProposalActionsController> {
   @override
   Widget build(BuildContext context) {
-    print("tipo:  ${controller.getVideoTypeFileUrl()}");
-
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
       appBar: CustomAppbar(
@@ -37,137 +35,110 @@ class _ProposalActionsDetailPageState
         ],
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Center(
-                  child: Text(
-                    Get.parameters['proposal_pilar_name'].toString(),
-                    style: Get.textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Get.theme.colorScheme.surface,
-                    ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                child: Text(
+                  Get.parameters['proposal_pilar_name'].toString(),
+                  style: Get.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Get.theme.colorScheme.surface,
                   ),
                 ),
               ),
-              true
-                  ? CustomPlayerVideo(
+            ),
+            FutureBuilder(
+                future: controller.getVideoTypeFileUrl(
+                    Get.parameters['url_image'].toString()),
+                builder: ((context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (snapshot.data!['type'] == 'video') {
+                    return CustomPlayerVideo(
                       videoUri:
                           Uri.parse(Get.parameters['url_image'].toString()),
-                    )
-                  : Stack(
-                      clipBehavior: Clip.none,
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 250,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Get.theme.colorScheme.primary),
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: FileImage(
-                                File(Get.parameters['url_image'].toString()),
-                              ),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                    );
+                  } else {
+                    print(snapshot.data!['type']);
+                    return Container(
+                      width: double.infinity,
+                      height: 250,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Get.theme.colorScheme.primary),
+                        borderRadius: BorderRadius.circular(0),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              Get.parameters['url_image'].toString()),
+                          fit: BoxFit.cover,
                         ),
-                        Positioned(
-                          right: 15,
-                          top: 15,
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                controller.imageFile = null;
-                              });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Get
-                                        .theme.colorScheme.onPrimaryContainer),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Remover',
-                                  style: TextStyle(
-                                      color: Get
-                                          .theme.colorScheme.primaryContainer),
-                                ),
+                      ),
+                    );
+                  }
+                })),
+            const SizedBox(
+              height: 10,
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: RichText(
+                            text: TextSpan(
+                              text: Get.parameters['title'].toString(),
+                              style: TextStyle(
+                                color: Get.theme.colorScheme.surface,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
+                            textAlign: TextAlign.justify,
                           ),
                         ),
-                      ],
+                      ),
                     ),
-              const SizedBox(
-                height: 10,
-              ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: RichText(
-                              text: TextSpan(
-                                text: Get.parameters['title'].toString(),
-                                style: TextStyle(
-                                  color: Get.theme.colorScheme.surface,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: RichText(
+                            text: TextSpan(
+                              text: Get.parameters['description'].toString(),
+                              style: TextStyle(
+                                color: Get.theme.colorScheme.surface,
+                                fontSize: 16,
                               ),
-                              textAlign: TextAlign.justify,
                             ),
+                            textAlign: TextAlign.justify,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: RichText(
-                              text: TextSpan(
-                                text: Get.parameters['description'].toString(),
-                                style: TextStyle(
-                                  color: Get.theme.colorScheme.surface,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              textAlign: TextAlign.justify,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
       floatingActionButton: Obx(
