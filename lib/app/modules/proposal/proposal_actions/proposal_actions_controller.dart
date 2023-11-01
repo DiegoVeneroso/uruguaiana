@@ -193,32 +193,15 @@ class ProposalActionsController extends GetxController
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
         aspectRatioPresets: Platform.isAndroid
-            ? [
-                // CropAspectRatioPreset.square,
-                // CropAspectRatioPreset.ratio3x2,
-                // CropAspectRatioPreset.original,
-                CropAspectRatioPreset.ratio4x3,
-                // CropAspectRatioPreset.ratio16x9
-              ]
-            : [
-                // CropAspectRatioPreset.original,
-                // CropAspectRatioPreset.square,
-                // CropAspectRatioPreset.ratio3x2,
-                CropAspectRatioPreset.ratio4x3,
-                // CropAspectRatioPreset.ratio5x3,
-                // CropAspectRatioPreset.ratio5x4,
-                // CropAspectRatioPreset.ratio7x5,
-                // CropAspectRatioPreset.ratio16x9
-              ],
+            ? [CropAspectRatioPreset.ratio16x9]
+            : [CropAspectRatioPreset.ratio16x9],
         uiSettings: [
           AndroidUiSettings(
             toolbarTitle: "Ajustar imagem",
             toolbarColor: Get.theme.colorScheme.primary,
             toolbarWidgetColor: Get.theme.colorScheme.onPrimaryContainer,
-            initAspectRatio: CropAspectRatioPreset.ratio4x3,
+            initAspectRatio: CropAspectRatioPreset.ratio16x9,
             lockAspectRatio: true,
-            // hideBottomControls: true,
-            // statusBarColor: Get.theme.colorScheme.primary,
             activeControlsWidgetColor: Get.theme.colorScheme.primary,
             dimmedLayerColor: Get.theme.colorScheme.primary,
             showCropGrid: false,

@@ -85,9 +85,12 @@ class _ProposalActionsEditPageState
                           clipBehavior: Clip.none,
                           alignment: Alignment.center,
                           children: [
-                            CustomPlayerVideo(
-                              videoUri: Uri.parse(
-                                  Get.parameters['url_image'].toString()),
+                            AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: CustomPlayerVideo(
+                                videoUri: Uri.parse(
+                                    Get.parameters['url_image'].toString()),
+                              ),
                             ),
                             Positioned(
                               right: 15,

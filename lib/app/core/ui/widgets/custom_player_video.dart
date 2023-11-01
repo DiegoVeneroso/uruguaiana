@@ -41,7 +41,7 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
               border: Border.all(
                 color: Get.theme.colorScheme.primary,
               ),
-              borderRadius: BorderRadius.circular(0),
+              borderRadius: BorderRadius.circular(20),
               color: Get.theme.colorScheme.onPrimaryContainer,
             ),
             child: Center(
@@ -55,8 +55,11 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomVideoPlayer(
-                customVideoPlayerController: _customVideoPlayerController,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: CustomVideoPlayer(
+                  customVideoPlayerController: _customVideoPlayerController,
+                ),
               ),
             ],
           );
@@ -80,12 +83,14 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
 
     _customVideoPlayerController = CustomVideoPlayerController(
       customVideoPlayerSettings: const CustomVideoPlayerSettings(
-          // thumbnailWidget: Text(
-          //   'fundo',
-          // ),
-          // customAspectRatio: 1.0,
-          // placeholderWidget: Text('placeholder'),
+        customAspectRatio: 16 / 9,
+        controlBarDecoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
           ),
+        ),
+        settingsButtonAvailable: false,
+      ),
       context: context,
       videoPlayerController: videoPlayerController,
     );
