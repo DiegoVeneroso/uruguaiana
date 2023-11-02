@@ -50,7 +50,8 @@ class ProposalActionsController extends GetxController
 
   String idProposalBase;
 
-  RxBool imageValidate = false.obs;
+  RxBool imageValidate = true.obs;
+  RxString imageValid = ''.obs;
   ProposalActionsController({
     required this.repository,
     required this.authRepository,
@@ -76,6 +77,13 @@ class ProposalActionsController extends GetxController
     loadData();
 
     super.onReady();
+  }
+
+  @override
+  onClose() {
+    imageFile = null;
+    imageValidate.value = false;
+    super.onClose();
   }
 
   Future<void> getIsAdmin() async {

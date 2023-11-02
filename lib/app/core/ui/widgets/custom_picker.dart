@@ -12,280 +12,458 @@ import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
 import 'custom_player_video.dart';
 
 class CustomPicker extends StatefulWidget {
-  XFile? imageFile;
-  RxBool? imageValidate = false.obs;
-  final FormFieldValidator<String>? validator;
-
-  CustomPicker({
+  const CustomPicker({
     Key? key,
-    this.imageFile,
-    this.imageValidate,
-    this.validator,
   }) : super(key: key);
 
   @override
-  State<CustomPicker> createState() => _CustomPickerState();
+  State<CustomPicker> createState() => CustomPickerState();
 }
 
-class _CustomPickerState extends State<CustomPicker> {
+class CustomPickerState extends State<CustomPicker> {
+  XFile? imageFile;
+  RxString? imageValidate = ''.obs;
+
+  void setImageValidate(String value) {
+    setState(() {
+      imageValidate?.value = value;
+    });
+  }
+
+  void setImageFile(XFile value) {
+    setState(() {
+      imageFile = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        widget.imageFile == null
-            ? Container(
+        Obx(
+          () => Visibility(
+            visible: imageFile == null && imageValidate?.value == '',
+            child: Container(
+              width: double.infinity,
+              height: 250,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Get.theme.colorScheme.primary,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                color: Get.theme.colorScheme.onPrimaryContainer,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.image_not_supported,
+                    color: Get.theme.colorScheme.primary,
+                    size: 80,
+                  ),
+                  Text(
+                    'Sem mídia',
+                    style: TextStyle(color: Get.theme.colorScheme.primary),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.defaultDialog(
+                        titlePadding: const EdgeInsets.only(top: 30),
+                        contentPadding:
+                            const EdgeInsets.only(top: 30, bottom: 20),
+                        title: 'Selecione a origem',
+                        backgroundColor:
+                            Get.theme.colorScheme.onPrimaryContainer,
+                        titleStyle:
+                            TextStyle(color: Get.theme.colorScheme.primary),
+                        content: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomButton(
+                              label: 'Imagem da Galeria',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await pickImageFileFromGalery();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomButton(
+                              label: 'Foto da Câmera',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await captureImageFileFromCamera();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomButton(
+                              label: 'Vídeo da Galeria',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await pickVideoFileFromGalery();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomButton(
+                              label: 'Gravar video da Câmera',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await capturaVideoFileFromCamera();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                        radius: 20,
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Get.theme.colorScheme.primary),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Adicionar',
+                          style:
+                              TextStyle(color: Get.theme.colorScheme.primary),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Obx(
+          () => Visibility(
+            visible: imageFile == null && imageValidate!.value == 'false',
+            child: Container(
+              width: double.infinity,
+              height: 250,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Get.theme.colorScheme.error,
+                ),
+                borderRadius: BorderRadius.circular(20),
+                color: Get.theme.colorScheme.onPrimaryContainer,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.image_not_supported,
+                    color: Get.theme.colorScheme.primary,
+                    size: 80,
+                  ),
+                  Text(
+                    'Sem mídia',
+                    style: TextStyle(color: Get.theme.colorScheme.primary),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.defaultDialog(
+                        titlePadding: const EdgeInsets.only(top: 30),
+                        contentPadding:
+                            const EdgeInsets.only(top: 30, bottom: 20),
+                        title: 'Selecione a origem',
+                        backgroundColor:
+                            Get.theme.colorScheme.onPrimaryContainer,
+                        titleStyle:
+                            TextStyle(color: Get.theme.colorScheme.primary),
+                        content: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomButton(
+                              label: 'Imagem da Galeria',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await pickImageFileFromGalery();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomButton(
+                              label: 'Foto da Câmera',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await captureImageFileFromCamera();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomButton(
+                              label: 'Vídeo da Galeria',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await pickVideoFileFromGalery();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomButton(
+                              label: 'Gravar video da Câmera',
+                              height: 40,
+                              onPressed: () async {
+                                Get.back();
+                                Map<Permission, PermissionStatus> statuses =
+                                    await [
+                                  Permission.storage,
+                                  Permission.camera,
+                                ].request();
+                                if (statuses[Permission.storage]!.isGranted &&
+                                    statuses[Permission.camera]!.isGranted) {
+                                  await capturaVideoFileFromCamera();
+                                  setState(() {
+                                    imageFile;
+                                  });
+                                } else {
+                                  print('Permissão negada!');
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                        radius: 20,
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Get.theme.colorScheme.primary),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Adicionar',
+                          style:
+                              TextStyle(color: Get.theme.colorScheme.primary),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Visibility(
+          visible:
+              imageFile != null && imageFile?.path.split(".").last == 'mp4',
+          child: Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.center,
+            children: [
+              CustomPlayerVideo(
+                videoUri: Uri.parse(imageFile?.path ?? ''),
+              ),
+              Positioned(
+                right: 15,
+                top: 15,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      imageFile = null;
+                      imageValidate?.value = '';
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Get.theme.colorScheme.onPrimaryContainer),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Remover',
+                        style: TextStyle(
+                          color: Get.theme.colorScheme.onPrimaryContainer,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Visibility(
+          visible:
+              imageFile != null && imageFile?.path.split(".").last != 'mp4',
+          child: Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.center,
+            children: [
+              Container(
                 width: double.infinity,
                 height: 250,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: widget.imageValidate!.value
-                        ? Get.theme.colorScheme.error
-                        : Get.theme.colorScheme.primary,
-                  ),
+                  border: Border.all(color: Get.theme.colorScheme.primary),
                   borderRadius: BorderRadius.circular(20),
-                  color: Get.theme.colorScheme.onPrimaryContainer,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.image_not_supported,
-                      color: Get.theme.colorScheme.primary,
-                      size: 80,
+                  image: DecorationImage(
+                    image: FileImage(
+                      File(imageFile?.path ?? ''),
                     ),
-                    Text(
-                      'Sem mídia',
-                      style: TextStyle(color: Get.theme.colorScheme.primary),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.defaultDialog(
-                          titlePadding: const EdgeInsets.only(top: 30),
-                          contentPadding:
-                              const EdgeInsets.only(top: 30, bottom: 20),
-                          title: 'Selecione a origem',
-                          backgroundColor:
-                              Get.theme.colorScheme.onPrimaryContainer,
-                          titleStyle:
-                              TextStyle(color: Get.theme.colorScheme.primary),
-                          content: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CustomButton(
-                                label: 'Imagem da Galeria',
-                                height: 40,
-                                onPressed: () async {
-                                  Get.back();
-                                  Map<Permission, PermissionStatus> statuses =
-                                      await [
-                                    Permission.storage,
-                                    Permission.camera,
-                                  ].request();
-                                  if (statuses[Permission.storage]!.isGranted &&
-                                      statuses[Permission.camera]!.isGranted) {
-                                    await pickImageFileFromGalery();
-                                    setState(() {
-                                      widget.imageFile;
-                                    });
-                                  } else {
-                                    print('Permissão negada!');
-                                  }
-                                },
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomButton(
-                                label: 'Foto da Câmera',
-                                height: 40,
-                                onPressed: () async {
-                                  Get.back();
-                                  Map<Permission, PermissionStatus> statuses =
-                                      await [
-                                    Permission.storage,
-                                    Permission.camera,
-                                  ].request();
-                                  if (statuses[Permission.storage]!.isGranted &&
-                                      statuses[Permission.camera]!.isGranted) {
-                                    await captureImageFileFromCamera();
-                                    setState(() {
-                                      widget.imageFile;
-                                    });
-                                  } else {
-                                    print('Permissão negada!');
-                                  }
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomButton(
-                                label: 'Vídeo da Galeria',
-                                height: 40,
-                                onPressed: () async {
-                                  Get.back();
-                                  Map<Permission, PermissionStatus> statuses =
-                                      await [
-                                    Permission.storage,
-                                    Permission.camera,
-                                  ].request();
-                                  if (statuses[Permission.storage]!.isGranted &&
-                                      statuses[Permission.camera]!.isGranted) {
-                                    await pickVideoFileFromGalery();
-                                    setState(() {
-                                      widget.imageFile;
-                                    });
-                                  } else {
-                                    print('Permissão negada!');
-                                  }
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomButton(
-                                label: 'Gravar video da Câmera',
-                                height: 40,
-                                onPressed: () async {
-                                  Get.back();
-                                  Map<Permission, PermissionStatus> statuses =
-                                      await [
-                                    Permission.storage,
-                                    Permission.camera,
-                                  ].request();
-                                  if (statuses[Permission.storage]!.isGranted &&
-                                      statuses[Permission.camera]!.isGranted) {
-                                    await capturaVideoFileFromCamera();
-                                    setState(() {
-                                      widget.imageFile;
-                                    });
-                                  } else {
-                                    print('Permissão negada!');
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
-                          radius: 20,
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Get.theme.colorScheme.primary),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Adicionar',
-                            style:
-                                TextStyle(color: Get.theme.colorScheme.primary),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : widget.imageFile!.path.split(".").last == 'mp4'
-                ? Stack(
-                    clipBehavior: Clip.none,
-                    alignment: Alignment.center,
-                    children: [
-                      CustomPlayerVideo(
-                        videoUri: Uri.parse(widget.imageFile!.path),
-                      ),
-                      Positioned(
-                        right: 15,
-                        top: 15,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              widget.imageFile = null;
-                            });
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Remover',
-                                style: TextStyle(
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                : Stack(
-                    clipBehavior: Clip.none,
-                    alignment: Alignment.center,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Get.theme.colorScheme.primary),
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: FileImage(
-                              File(widget.imageFile!.path),
-                            ),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 15,
-                        top: 15,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              widget.imageFile = null;
-                            });
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Remover',
-                                style: TextStyle(
-                                    color: Get
-                                        .theme.colorScheme.onPrimaryContainer),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    fit: BoxFit.fill,
                   ),
+                ),
+              ),
+              Positioned(
+                right: 15,
+                top: 15,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      imageFile = null;
+                      imageValidate?.value = '';
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Get.theme.colorScheme.onPrimaryContainer),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Remover',
+                        style: TextStyle(
+                            color: Get.theme.colorScheme.onPrimaryContainer),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
         Obx(
           () => Visibility(
-            visible: widget.imageValidate!.value,
+            visible: imageFile == null && imageValidate!.value == 'false',
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 30, vertical: 8.0),
@@ -308,59 +486,27 @@ class _CustomPickerState extends State<CustomPicker> {
   }
 
   pickImageFileFromGalery() async {
-    widget.imageFile = await ImagePicker()
+    imageFile = await ImagePicker()
         .pickImage(source: ImageSource.gallery, imageQuality: 50);
 
-    if (widget.imageFile != null) {
-      await _cropImage(File(widget.imageFile!.path));
-      // _message(
-      //   MessageModel(
-      //     title: 'Parabéns!',
-      //     message: 'Imagem carregada!',
-      //     type: MessageType.success,
-      //   ),
-      // );
+    if (imageFile != null) {
+      await _cropImage(File(imageFile!.path));
     }
   }
 
   pickVideoFileFromGalery() async {
-    widget.imageFile =
-        await ImagePicker().pickVideo(source: ImageSource.gallery);
-
-    // _message(
-    //   MessageModel(
-    //     title: 'Parabéns!',
-    //     message: 'Video carregado!',
-    //     type: MessageType.success,
-    //   ),
-    // );
+    imageFile = await ImagePicker().pickVideo(source: ImageSource.gallery);
   }
 
   capturaVideoFileFromCamera() async {
-    widget.imageFile =
-        await ImagePicker().pickVideo(source: ImageSource.camera);
-
-    // _message(
-    //   MessageModel(
-    //     title: 'Parabéns!',
-    //     message: 'Video carregado!',
-    //     type: MessageType.success,
-    //   ),
-    // );
+    imageFile = await ImagePicker().pickVideo(source: ImageSource.camera);
   }
 
   captureImageFileFromCamera() async {
-    widget.imageFile = await ImagePicker()
+    imageFile = await ImagePicker()
         .pickImage(source: ImageSource.camera, imageQuality: 50);
-    if (widget.imageFile != null) {
-      await _cropImage(File(widget.imageFile!.path));
-      // _message(
-      //   MessageModel(
-      //     title: 'Parabéns!',
-      //     message: 'Imagem carregada!',
-      //     type: MessageType.success,
-      //   ),
-      // );
+    if (imageFile != null) {
+      await _cropImage(File(imageFile!.path));
     }
   }
 
@@ -387,7 +533,7 @@ class _CustomPickerState extends State<CustomPicker> {
         ]);
     if (croppedFile != null) {
       imageCache.clear();
-      widget.imageFile = XFile(croppedFile.path);
+      imageFile = XFile(croppedFile.path);
     }
   }
 }

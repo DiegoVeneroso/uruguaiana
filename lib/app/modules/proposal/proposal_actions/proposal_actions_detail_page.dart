@@ -55,26 +55,51 @@ class _ProposalActionsDetailPageState
                     Get.parameters['url_image'].toString()),
                 builder: ((context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator();
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 230,
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Get.theme.colorScheme.primary),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: CircularProgressIndicator(
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              )
+                            ]),
+                      ),
+                    );
                   }
                   if (snapshot.data!['type'] == 'video') {
-                    return CustomPlayerVideo(
-                      videoUri:
-                          Uri.parse(Get.parameters['url_image'].toString()),
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: CustomPlayerVideo(
+                        videoUri:
+                            Uri.parse(Get.parameters['url_image'].toString()),
+                      ),
                     );
                   } else {
-                    print(snapshot.data!['type']);
-                    return Container(
-                      width: double.infinity,
-                      height: 250,
-                      decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Get.theme.colorScheme.primary),
-                        borderRadius: BorderRadius.circular(0),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              Get.parameters['url_image'].toString()),
-                          fit: BoxFit.cover,
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 250,
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Get.theme.colorScheme.primary),
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                Get.parameters['url_image'].toString()),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     );

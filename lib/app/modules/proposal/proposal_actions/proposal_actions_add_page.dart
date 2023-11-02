@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_picker.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_controller.dart';
@@ -24,6 +25,8 @@ class _ProposalActionsAddPageState
   final _formKey = GlobalKey<FormState>();
   final _titleEC = TextEditingController();
   final _descriptionEC = TextEditingController();
+
+  final _pickedKey = GlobalKey<CustomPickerState>();
 
   @override
   void dispose() {
@@ -79,296 +82,8 @@ class _ProposalActionsAddPageState
                   const SizedBox(
                     height: 20,
                   ),
-                  // controller.imageFile == null
-                  //     ? Container(
-                  //         width: double.infinity,
-                  //         height: 250,
-                  //         decoration: BoxDecoration(
-                  //           border: Border.all(
-                  //             color: controller.imageValidate.value
-                  //                 ? Get.theme.colorScheme.error
-                  //                 : Get.theme.colorScheme.primary,
-                  //           ),
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           color: Get.theme.colorScheme.onPrimaryContainer,
-                  //         ),
-                  //         child: Column(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: [
-                  //             Icon(
-                  //               Icons.image_not_supported,
-                  //               color: Get.theme.colorScheme.primary,
-                  //               size: 80,
-                  //             ),
-                  //             Text(
-                  //               'Sem mídia',
-                  //               style: TextStyle(
-                  //                   color: Get.theme.colorScheme.primary),
-                  //             ),
-                  //             const SizedBox(
-                  //               height: 30,
-                  //             ),
-                  //             GestureDetector(
-                  //               onTap: () {
-                  //                 Get.defaultDialog(
-                  //                   titlePadding:
-                  //                       const EdgeInsets.only(top: 30),
-                  //                   contentPadding: const EdgeInsets.only(
-                  //                       top: 30, bottom: 20),
-                  //                   title: 'Selecione a origem',
-                  //                   backgroundColor: Get
-                  //                       .theme.colorScheme.onPrimaryContainer,
-                  //                   titleStyle: TextStyle(
-                  //                       color: Get.theme.colorScheme.primary),
-                  //                   content: Column(
-                  //                     mainAxisAlignment:
-                  //                         MainAxisAlignment.center,
-                  //                     children: [
-                  //                       CustomButton(
-                  //                         label: 'Imagem da Galeria',
-                  //                         height: 40,
-                  //                         onPressed: () async {
-                  //                           Get.back();
-                  //                           Map<Permission, PermissionStatus>
-                  //                               statuses = await [
-                  //                             Permission.storage,
-                  //                             Permission.camera,
-                  //                           ].request();
-                  //                           if (statuses[Permission.storage]!
-                  //                                   .isGranted &&
-                  //                               statuses[Permission.camera]!
-                  //                                   .isGranted) {
-                  //                             await controller
-                  //                                 .pickImageFileFromGalery();
-                  //                             setState(() {
-                  //                               controller.imageFile;
-                  //                             });
-                  //                           } else {
-                  //                             print('Permissão negada!');
-                  //                           }
-                  //                         },
-                  //                       ),
-                  //                       const SizedBox(
-                  //                         width: 20,
-                  //                       ),
-                  //                       const SizedBox(
-                  //                         height: 10,
-                  //                       ),
-                  //                       CustomButton(
-                  //                         label: 'Foto da Câmera',
-                  //                         height: 40,
-                  //                         onPressed: () async {
-                  //                           Get.back();
-                  //                           Map<Permission, PermissionStatus>
-                  //                               statuses = await [
-                  //                             Permission.storage,
-                  //                             Permission.camera,
-                  //                           ].request();
-                  //                           if (statuses[Permission.storage]!
-                  //                                   .isGranted &&
-                  //                               statuses[Permission.camera]!
-                  //                                   .isGranted) {
-                  //                             await controller
-                  //                                 .captureImageFileFromCamera();
-                  //                             setState(() {
-                  //                               controller.imageFile;
-                  //                             });
-                  //                           } else {
-                  //                             print('Permissão negada!');
-                  //                           }
-                  //                         },
-                  //                       ),
-                  //                       const SizedBox(
-                  //                         height: 10,
-                  //                       ),
-                  //                       CustomButton(
-                  //                         label: 'Vídeo da Galeria',
-                  //                         height: 40,
-                  //                         onPressed: () async {
-                  //                           Get.back();
-                  //                           Map<Permission, PermissionStatus>
-                  //                               statuses = await [
-                  //                             Permission.storage,
-                  //                             Permission.camera,
-                  //                           ].request();
-                  //                           if (statuses[Permission.storage]!
-                  //                                   .isGranted &&
-                  //                               statuses[Permission.camera]!
-                  //                                   .isGranted) {
-                  //                             await controller
-                  //                                 .pickVideoFileFromGalery();
-                  //                             setState(() {
-                  //                               controller.imageFile;
-                  //                             });
-                  //                           } else {
-                  //                             print('Permissão negada!');
-                  //                           }
-                  //                         },
-                  //                       ),
-                  //                       const SizedBox(
-                  //                         height: 10,
-                  //                       ),
-                  //                       CustomButton(
-                  //                         label: 'Gravar video da Câmera',
-                  //                         height: 40,
-                  //                         onPressed: () async {
-                  //                           Get.back();
-                  //                           Map<Permission, PermissionStatus>
-                  //                               statuses = await [
-                  //                             Permission.storage,
-                  //                             Permission.camera,
-                  //                           ].request();
-                  //                           if (statuses[Permission.storage]!
-                  //                                   .isGranted &&
-                  //                               statuses[Permission.camera]!
-                  //                                   .isGranted) {
-                  //                             await controller
-                  //                                 .capturaVideoFileFromCamera();
-                  //                             setState(() {
-                  //                               controller.imageFile;
-                  //                             });
-                  //                           } else {
-                  //                             print('Permissão negada!');
-                  //                           }
-                  //                         },
-                  //                       ),
-                  //                     ],
-                  //                   ),
-                  //                   radius: 20,
-                  //                 );
-                  //               },
-                  //               child: Container(
-                  //                 decoration: BoxDecoration(
-                  //                   border: Border.all(
-                  //                       color: Get.theme.colorScheme.primary),
-                  //                   borderRadius: BorderRadius.circular(10),
-                  //                 ),
-                  //                 child: Padding(
-                  //                   padding: const EdgeInsets.all(8.0),
-                  //                   child: Text(
-                  //                     'Adicionar',
-                  //                     style: TextStyle(
-                  //                         color: Get.theme.colorScheme.primary),
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       )
-                  //     : controller.imageFile!.path.split(".").last == 'mp4'
-                  //         ? Stack(
-                  //             clipBehavior: Clip.none,
-                  //             alignment: Alignment.center,
-                  //             children: [
-                  //               CustomPlayerVideo(
-                  //                 videoUri:
-                  //                     Uri.parse(controller.imageFile!.path),
-                  //               ),
-                  //               Positioned(
-                  //                 right: 15,
-                  //                 top: 15,
-                  //                 child: GestureDetector(
-                  //                   onTap: () {
-                  //                     setState(() {
-                  //                       controller.imageFile = null;
-                  //                     });
-                  //                   },
-                  //                   child: Container(
-                  //                     decoration: BoxDecoration(
-                  //                       border: Border.all(
-                  //                           color: Get.theme.colorScheme
-                  //                               .onPrimaryContainer),
-                  //                       borderRadius: BorderRadius.circular(10),
-                  //                     ),
-                  //                     child: Padding(
-                  //                       padding: const EdgeInsets.all(8.0),
-                  //                       child: Text(
-                  //                         'Remover',
-                  //                         style: TextStyle(
-                  //                           color: Get.theme.colorScheme
-                  //                               .onPrimaryContainer,
-                  //                           fontWeight: FontWeight.bold,
-                  //                         ),
-                  //                       ),
-                  //                     ),
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ],
-                  //           )
-                  //         : Stack(
-                  //             clipBehavior: Clip.none,
-                  //             alignment: Alignment.center,
-                  //             children: [
-                  //               Container(
-                  //                 width: double.infinity,
-                  //                 height: 250,
-                  //                 decoration: BoxDecoration(
-                  //                   border: Border.all(
-                  //                       color: Get.theme.colorScheme.primary),
-                  //                   borderRadius: BorderRadius.circular(20),
-                  //                   image: DecorationImage(
-                  //                     image: FileImage(
-                  //                       File(controller.imageFile!.path),
-                  //                     ),
-                  //                     fit: BoxFit.fill,
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //               Positioned(
-                  //                 right: 15,
-                  //                 top: 15,
-                  //                 child: GestureDetector(
-                  //                   onTap: () {
-                  //                     setState(() {
-                  //                       controller.imageFile = null;
-                  //                     });
-                  //                   },
-                  //                   child: Container(
-                  //                     decoration: BoxDecoration(
-                  //                       border: Border.all(
-                  //                           color: Get.theme.colorScheme
-                  //                               .onPrimaryContainer),
-                  //                       borderRadius: BorderRadius.circular(10),
-                  //                     ),
-                  //                     child: Padding(
-                  //                       padding: const EdgeInsets.all(8.0),
-                  //                       child: Text(
-                  //                         'Remover',
-                  //                         style: TextStyle(
-                  //                             color: Get.theme.colorScheme
-                  //                                 .onPrimaryContainer),
-                  //                       ),
-                  //                     ),
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ],
-                  //           ),
-                  // Obx(
-                  //   () => Visibility(
-                  //     visible: controller.imageValidate.value,
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.symmetric(
-                  //           horizontal: 30, vertical: 8.0),
-                  //       child: Row(
-                  //         children: [
-                  //           Text(
-                  //             'midia é obrigatória',
-                  //             style: TextStyle(
-                  //               color: Get.theme.colorScheme.error,
-                  //               fontSize: 12,
-                  //             ),
-                  //           )
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   CustomPicker(
-                    imageFile: controller.imageFile,
-                    imageValidate: controller.imageValidate,
+                    key: _pickedKey,
                   ),
                   const SizedBox(
                     height: 10,
@@ -401,13 +116,19 @@ class _ProposalActionsAddPageState
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
 
-                        controller.imageValidate.value =
-                            controller.imageFile == null ? true : false;
-                        if (formValid &&
-                            controller.imageValidate.value == false) {
+                        final pickerValid =
+                            _pickedKey.currentState?.imageFile?.path != null
+                                ? true
+                                : false;
+
+                        _pickedKey.currentState
+                            ?.setImageValidate(pickerValid.toString());
+
+                        if (formValid & pickerValid) {
                           controller.proposalActionAdd({
                             'title': _titleEC.text,
-                            'url_image': controller.imageFile!.path,
+                            'url_image':
+                                _pickedKey.currentState?.imageFile?.path,
                             'description': _descriptionEC.text,
                             'id_proposal_base':
                                 Get.parameters['id_proposal_base'].toString(),

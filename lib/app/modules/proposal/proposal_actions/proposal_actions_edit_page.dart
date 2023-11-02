@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_picker.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../../core/colors/services/theme_service.dart';
@@ -25,6 +26,14 @@ class _ProposalActionsEditPageState
   final _titleEC = TextEditingController(text: Get.parameters['title']);
   final _descriptionEC =
       TextEditingController(text: Get.parameters['description']);
+
+  final _pickedKey = GlobalKey<CustomPickerState>();
+
+  @override
+  void initState() {
+    _pickedKey.currentState?.setImageValidate('true');
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -80,94 +89,98 @@ class _ProposalActionsEditPageState
                   const SizedBox(
                     height: 20,
                   ),
-                  controller.imageFile == null
-                      ? Stack(
-                          clipBehavior: Clip.none,
-                          alignment: Alignment.center,
-                          children: [
-                            AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: CustomPlayerVideo(
-                                videoUri: Uri.parse(
-                                    Get.parameters['url_image'].toString()),
-                              ),
-                            ),
-                            Positioned(
-                              right: 15,
-                              top: 15,
-                              child: GestureDetector(
-                                onTap: () async {
-                                  Map<Permission, PermissionStatus> statuses =
-                                      await [
-                                    Permission.storage,
-                                    Permission.camera,
-                                  ].request();
-                                  if (statuses[Permission.storage]!.isGranted &&
-                                      statuses[Permission.camera]!.isGranted) {
-                                    await controller.pickVideoFileFromGalery();
-                                    setState(() {
-                                      controller.imageFile;
-                                    });
-                                  }
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Get.theme.colorScheme
-                                            .onPrimaryContainer),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Alterar',
-                                      style: TextStyle(
-                                          color: Get.theme.colorScheme
-                                              .primaryContainer),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      : Stack(
-                          clipBehavior: Clip.none,
-                          alignment: Alignment.center,
-                          children: [
-                            CustomPlayerVideo(
-                              videoUri: Uri.parse(controller.imageFile!.path),
-                            ),
-                            Positioned(
-                              right: 15,
-                              top: 15,
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    controller.pickVideoFileFromGalery();
-                                  });
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Get.theme.colorScheme
-                                            .onPrimaryContainer),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Alterar',
-                                      style: TextStyle(
-                                          color: Get.theme.colorScheme
-                                              .primaryContainer),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+
+                  CustomPicker(
+                    key: _pickedKey,
+                  ),
+                  // controller.imageFile == null
+                  //     ? Stack(
+                  //         clipBehavior: Clip.none,
+                  //         alignment: Alignment.center,
+                  //         children: [
+                  //           AspectRatio(
+                  //             aspectRatio: 16 / 9,
+                  //             child: CustomPlayerVideo(
+                  //               videoUri: Uri.parse(
+                  //                   Get.parameters['url_image'].toString()),
+                  //             ),
+                  //           ),
+                  //           Positioned(
+                  //             right: 15,
+                  //             top: 15,
+                  //             child: GestureDetector(
+                  //               onTap: () async {
+                  //                 Map<Permission, PermissionStatus> statuses =
+                  //                     await [
+                  //                   Permission.storage,
+                  //                   Permission.camera,
+                  //                 ].request();
+                  //                 if (statuses[Permission.storage]!.isGranted &&
+                  //                     statuses[Permission.camera]!.isGranted) {
+                  //                   await controller.pickVideoFileFromGalery();
+                  //                   setState(() {
+                  //                     controller.imageFile;
+                  //                   });
+                  //                 }
+                  //               },
+                  //               child: Container(
+                  //                 decoration: BoxDecoration(
+                  //                   border: Border.all(
+                  //                       color: Get.theme.colorScheme
+                  //                           .onPrimaryContainer),
+                  //                   borderRadius: BorderRadius.circular(10),
+                  //                 ),
+                  //                 child: Padding(
+                  //                   padding: const EdgeInsets.all(8.0),
+                  //                   child: Text(
+                  //                     'Alterar',
+                  //                     style: TextStyle(
+                  //                         color: Get.theme.colorScheme
+                  //                             .primaryContainer),
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       )
+                  //     : Stack(
+                  //         clipBehavior: Clip.none,
+                  //         alignment: Alignment.center,
+                  //         children: [
+                  //           CustomPlayerVideo(
+                  //             videoUri: Uri.parse(controller.imageFile!.path),
+                  //           ),
+                  //           Positioned(
+                  //             right: 15,
+                  //             top: 15,
+                  //             child: GestureDetector(
+                  //               onTap: () {
+                  //                 setState(() {
+                  //                   controller.pickVideoFileFromGalery();
+                  //                 });
+                  //               },
+                  //               child: Container(
+                  //                 decoration: BoxDecoration(
+                  //                   border: Border.all(
+                  //                       color: Get.theme.colorScheme
+                  //                           .onPrimaryContainer),
+                  //                   borderRadius: BorderRadius.circular(10),
+                  //                 ),
+                  //                 child: Padding(
+                  //                   padding: const EdgeInsets.all(8.0),
+                  //                   child: Text(
+                  //                     'Alterar',
+                  //                     style: TextStyle(
+                  //                         color: Get.theme.colorScheme
+                  //                             .primaryContainer),
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
                   Obx(
                     () => Visibility(
                       visible: controller.imageValidate.value,
