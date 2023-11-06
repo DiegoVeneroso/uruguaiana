@@ -10,6 +10,7 @@ import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 import 'home_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeAddPage extends StatefulWidget {
   const HomeAddPage({Key? key}) : super(key: key);
@@ -53,7 +54,8 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Text(
+                    child: AutoSizeText(
+                      minFontSize: 10,
                       'Adicionar item',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,

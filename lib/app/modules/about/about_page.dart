@@ -1,4 +1,5 @@
 import 'package:appinio_social_share/appinio_social_share.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
@@ -33,6 +34,19 @@ class AboutPage extends GetView<AboutController> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                child: AutoSizeText(
+                  minFontSize: 10,
+                  'QUEM SOMOS',
+                  style: Get.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.colorScheme.surface,
+                      fontSize: 22),
+                ),
+              ),
+            ),
             Expanded(
               child: Obx(() => ListView.builder(
                     itemCount: controller.foundAbout.value.length,

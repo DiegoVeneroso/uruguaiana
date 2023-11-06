@@ -1,15 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
+import 'dart:typed_data';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:appwrite/appwrite.dart' hide Permission;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:uruguaiana/app/models/news_model.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 import 'package:uruguaiana/app/repository/news_repositories.dart';
@@ -33,19 +35,16 @@ class NewsController extends GetxController
   Rx<List<NewsModel>> foundNews = Rx<List<NewsModel>>([]);
   RxList<DropdownMenuItem<String>> listDropdown =
       <DropdownMenuItem<String>>[].obs;
-
   late Rx<File?> pickedFile;
   File? get profileImage => pickedFile.value;
   XFile? imageFile;
-
   RxString? valorSelecionadoDropDown = ''.obs;
-
   RxBool searchVisible = false.obs;
-
   var isDarkMode = false.obs;
-
   GetStorage storage = GetStorage();
   RxBool isAdmin = false.obs;
+  String? thumbnailUrl;
+  Uint8List? thumbnailData;
 
   NewsController({
     required this.repository,
@@ -60,7 +59,6 @@ class NewsController extends GetxController
     dialogListener(_dialog);
     foundNews.value = newsList;
     showNotificationPush();
-
     super.onInit();
   }
 
@@ -149,23 +147,8 @@ class NewsController extends GetxController
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
         aspectRatioPresets: Platform.isAndroid
-            ? [
-                // CropAspectRatioPreset.square,
-                // CropAspectRatioPreset.ratio3x2,
-                // CropAspectRatioPreset.original,
-                CropAspectRatioPreset.ratio4x3,
-                // CropAspectRatioPreset.ratio16x9
-              ]
-            : [
-                // CropAspectRatioPreset.original,
-                // CropAspectRatioPreset.square,
-                // CropAspectRatioPreset.ratio3x2,
-                CropAspectRatioPreset.ratio4x3,
-                // CropAspectRatioPreset.ratio5x3,
-                // CropAspectRatioPreset.ratio5x4,
-                // CropAspectRatioPreset.ratio7x5,
-                // CropAspectRatioPreset.ratio16x9
-              ],
+            ? [CropAspectRatioPreset.ratio16x9]
+            : [CropAspectRatioPreset.ratio16x9],
         uiSettings: [
           AndroidUiSettings(
             toolbarTitle: "Ajustar imagem",
@@ -383,7 +366,8 @@ class NewsController extends GetxController
       for (var res in result.data['value']) {
         listDropdown.add(DropdownMenuItem(
           value: res,
-          child: Text(
+          child: AutoSizeText(
+            minFontSize: 10,
             res,
             style: TextStyle(
               fontSize: 14,
@@ -398,6 +382,28 @@ class NewsController extends GetxController
       log(e.response['type']);
 
       throw (e.response['type']);
+    }
+  }
+
+  Future<Map<String, dynamic>> getVideoTypeFileUrl(String urlFile) async {
+    var response = await http.head(Uri.parse(urlFile));
+
+    if (response.statusCode == 200 &&
+        response.headers['content-type'].toString().split('/').first ==
+            'video') {
+      return {'type': 'video'};
+    } else {
+      return {'type': 'image'};
+    }
+  }
+
+  Future<String> getTypeUniqueFileUrl(String urlFile) async {
+    var response = await http.head(Uri.parse(urlFile));
+
+    if (response.statusCode == 200) {
+      return response.headers['content-type'].toString().split('/').last;
+    } else {
+      return 'Erro ao buscar a extensão';
     }
   }
 }

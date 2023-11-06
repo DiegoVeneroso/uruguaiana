@@ -8,6 +8,7 @@ import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../core/ui/widgets/custom_floating_button.dart';
 import '../../routes/app_pages.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class NotificationPage extends GetView<NotificationController> {
   const NotificationPage({super.key});
@@ -38,7 +39,8 @@ class NotificationPage extends GetView<NotificationController> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
-                child: Text(
+                child: AutoSizeText(
+                  minFontSize: 10,
                   'Notificações enviadas',
                   style: Get.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
@@ -75,7 +77,8 @@ class NotificationPage extends GetView<NotificationController> {
                         subtitleTextStyle: const TextStyle(fontSize: 14),
                         title: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
+                          child: AutoSizeText(
+                            minFontSize: 10,
                             controller.foundNotification.value[index].title,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -91,7 +94,8 @@ class NotificationPage extends GetView<NotificationController> {
                                   horizontal: 8.0, vertical: 3),
                               child: Row(
                                 children: [
-                                  Text(
+                                  AutoSizeText(
+                                    minFontSize: 10,
                                     controller
                                         .foundNotification.value[index].message
                                         .toString(),
@@ -112,7 +116,8 @@ class NotificationPage extends GetView<NotificationController> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text(
+                                  AutoSizeText(
+                                    minFontSize: 10,
                                     DateFormat(
                                             DateFormat.ABBR_MONTH_DAY, 'pt_Br')
                                         .format(
@@ -126,7 +131,8 @@ class NotificationPage extends GetView<NotificationController> {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                  Text(
+                                  AutoSizeText(
+                                    minFontSize: 10,
                                     DateFormat(
                                             DateFormat.HOUR24_MINUTE, 'pt_Br')
                                         .format(
@@ -165,7 +171,8 @@ class NotificationPage extends GetView<NotificationController> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text(
+                      AutoSizeText(
+                        minFontSize: 10,
                         'Enviar notificação',
                         style: TextStyle(
                             fontSize: 14,

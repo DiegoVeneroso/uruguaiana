@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CustomRoundedButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -16,15 +17,16 @@ class CustomRoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Text(
+      style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(), backgroundColor: Colors.white),
+      child: AutoSizeText(
+        minFontSize: 10,
         label,
         style: TextStyle(
           color: Colors.grey,
           fontSize: fontSize,
         ),
       ),
-      style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(), primary: Colors.white),
     );
   }
 }

@@ -146,6 +146,28 @@ class ProposalActionsRepository {
 
   proposalActionsUpdateRepository(Map map) async {
     try {
+      await ApiClient.storage.deleteFile(
+        bucketId: constants.STORAGE_BUCKETS,
+        fileId: map["id_proposal_action"],
+      );
+
+      final idUnique = map["id_proposal_action"];
+
+      String fileName = "$idUnique."
+          "${map["url_image"].toString().split(".").last}";
+
+      var urlImage =
+          '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
+
+      await ApiClient.storage.createFile(
+        bucketId: constants.STORAGE_BUCKETS,
+        fileId: idUnique,
+        file: InputFile.fromPath(
+          path: map["url_image"],
+          filename: fileName,
+        ),
+      );
+
       await ApiClient.databases.updateDocument(
           databaseId: constants.DATABASE_ID,
           collectionId: constants.COLLETION_PROPOSAL_ACTIONS_ID,
@@ -153,8 +175,18 @@ class ProposalActionsRepository {
           data: {
             "title": map['title'],
             "description": map['description'],
-            "url_image": map['url_image'],
+            "url_image": urlImage,
           });
+
+      // await ApiClient.databases.updateDocument(
+      //     databaseId: constants.DATABASE_ID,
+      //     collectionId: constants.COLLETION_PROPOSAL_ACTIONS_ID,
+      //     documentId: map["id_proposal_action"],
+      //     data: {
+      // "title": map['title'],
+      // "description": map['description'],
+      // "url_image": map['url_image'],
+      //     });
     } on AppwriteException catch (e) {
       log(e.response['type']);
 

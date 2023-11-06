@@ -2,8 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-mixin LoaderMixin on GetxController {
-  void loaderListener(RxBool loading) {
+mixin LoaderMessageMixin on GetxController {
+  void loaderMessageListener(RxBool loading) {
     ever(loading, (_) async {
       if (loading.isTrue) {
         await Get.dialog(
@@ -33,7 +33,18 @@ mixin LoaderMixin on GetxController {
                       ),
                       Material(
                         child: AutoSizeText(
-                          "Carregando...",
+                          "Carregando mídia!",
+                          style: TextStyle(
+                            color: Get.theme.colorScheme.primary,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          minFontSize: 10,
+                        ),
+                      ),
+                      Material(
+                        child: AutoSizeText(
+                          "Aguarde...",
                           style: TextStyle(
                             color: Get.theme.colorScheme.primary,
                             fontSize: 18,

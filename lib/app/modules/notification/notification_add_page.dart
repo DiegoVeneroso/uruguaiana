@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/modules/notification/notification_controller.dart';
@@ -8,6 +7,7 @@ import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class NotificationAddPage extends StatefulWidget {
   const NotificationAddPage({Key? key}) : super(key: key);
@@ -52,7 +52,8 @@ class _ProposalAddPageState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Text(
+                    child: AutoSizeText(
+                      minFontSize: 10,
                       'Enviar notificação',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,

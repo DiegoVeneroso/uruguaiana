@@ -8,6 +8,7 @@ import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../repository/auth_repository.dart';
 import '../auth/login/login_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CollaboratePage extends GetView<CollaborateController> {
   LoginController loginController = LoginController(AuthRepository());
@@ -40,7 +41,8 @@ class CollaboratePage extends GetView<CollaborateController> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
-                child: Text(
+                child: AutoSizeText(
+                  minFontSize: 10,
                   'Colaborações',
                   style: Get.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
@@ -77,18 +79,21 @@ class CollaboratePage extends GetView<CollaborateController> {
                         subtitleTextStyle: const TextStyle(fontSize: 14),
                         leadingAndTrailingTextStyle:
                             const TextStyle(fontSize: 50),
-                        title:
-                            Text(controller.foundCollaborate.value[index].name),
+                        title: AutoSizeText(
+                            minFontSize: 10,
+                            controller.foundCollaborate.value[index].name),
                         subtitle: Row(
                           children: [
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               controller.foundCollaborate.value[index].phone
                                   .toString(),
                             ),
                             const SizedBox(
                               width: 20,
                             ),
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               DateFormat(DateFormat.ABBR_MONTH_DAY, 'pt_Br')
                                   .format(
                                 DateTime.parse(controller.foundCollaborate
@@ -99,7 +104,8 @@ class CollaboratePage extends GetView<CollaborateController> {
                             const SizedBox(
                               width: 5,
                             ),
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               DateFormat(DateFormat.HOUR24_MINUTE, 'pt_Br')
                                   .format(
                                 DateTime.parse(controller.foundCollaborate

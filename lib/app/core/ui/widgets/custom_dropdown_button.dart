@@ -3,7 +3,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:uruguaiana/app/modules/home/home_controller.dart';
 
 class CustomDropdownButton extends GetView<HomeController> {
@@ -58,7 +58,8 @@ class CustomDropdownButton extends GetView<HomeController> {
                 fillColor: Colors.white,
               ),
               isExpanded: true,
-              hint: Text(
+              hint: AutoSizeText(
+                minFontSize: 10,
                 label ?? value.toString(),
                 style: TextStyle(
                     fontSize: 16, color: Get.theme.colorScheme.primary),

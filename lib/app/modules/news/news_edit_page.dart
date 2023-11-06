@@ -9,6 +9,7 @@ import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class NewsEditPage extends StatefulWidget {
   const NewsEditPage({Key? key}) : super(key: key);
@@ -44,152 +45,150 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
         ],
       ),
       body: SingleChildScrollView(
-        child: IntrinsicHeight(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Text(
-                      'Atualizar notícia',
-                      style: Get.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Get.theme.colorScheme.surface,
-                      ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: AutoSizeText(
+                    minFontSize: 10,
+                    'Atualizar notícia',
+                    style: Get.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.colorScheme.surface,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  controller.imageFile == null
-                      ? Center(
-                          child: Container(
-                            width: double.infinity,
-                            height: 250,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    Get.parameters['urlImage'].toString()),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        )
-                      : Center(
-                          child: Container(
-                            width: double.infinity,
-                            height: 250,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: FileImage(
-                                  File(controller.imageFile!.path),
-                                ),
-                              ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                controller.imageFile == null
+                    ? Center(
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  Get.parameters['url_image'].toString()),
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () async {
-                          Map<Permission, PermissionStatus> statuses = await [
-                            Permission.storage,
-                            Permission.camera,
-                          ].request();
-                          if (statuses[Permission.storage]!.isGranted &&
-                              statuses[Permission.camera]!.isGranted) {
-                            await controller.pickImageFileFromGalery();
-                            setState(() {
-                              controller.imageFile;
-                            });
-                          } else {
-                            print('Permissão negada!');
-                          }
-                        },
-                        icon: Icon(
-                          Icons.image_outlined,
-                          color: Get.theme.colorScheme.surface,
-                          size: 30,
+                      )
+                    : Center(
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              image: FileImage(
+                                File(controller.imageFile!.path),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          Map<Permission, PermissionStatus> statuses = await [
-                            Permission.storage,
-                            Permission.camera,
-                          ].request();
-                          if (statuses[Permission.storage]!.isGranted &&
-                              statuses[Permission.camera]!.isGranted) {
-                            await controller.captureImageFileFromCamera();
-                            setState(() {
-                              controller.imageFile;
-                            });
-                          } else {
-                            print('Permissão negada!');
-                          }
-                        },
-                        icon: Icon(
-                          Icons.camera_alt_outlined,
-                          color: Get.theme.colorScheme.surface,
-                          size: 30,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextformfield(
-                    label: 'Título',
-                    controller: _titleEC,
-                    validator: Validatorless.required('Titulo é obrigatório'),
-                    maxlines: 2,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextformfield(
-                    label: 'Descrição',
-                    controller: _descriptionEC,
-                    validator:
-                        Validatorless.required('Descrição é obrigatória'),
-                    maxlines: 10,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: CustomButton(
-                      color: Get.theme.colorScheme.primaryContainer,
-                      width: double.infinity,
-                      label: 'ATUALIZAR',
-                      onPressed: () {
-                        final formValid =
-                            _formKey.currentState?.validate() ?? false;
-                        if (formValid) {
-                          controller.newsUpdate({
-                            'idNews': Get.parameters['idNews'],
-                            'title': _titleEC.text,
-                            'url_image': controller.imageFile == null
-                                ? ''
-                                : controller.imageFile!.path,
-                            'description': _descriptionEC.text,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () async {
+                        Map<Permission, PermissionStatus> statuses = await [
+                          Permission.storage,
+                          Permission.camera,
+                        ].request();
+                        if (statuses[Permission.storage]!.isGranted &&
+                            statuses[Permission.camera]!.isGranted) {
+                          await controller.pickImageFileFromGalery();
+                          setState(() {
+                            controller.imageFile;
                           });
+                        } else {
+                          print('Permissão negada!');
                         }
                       },
+                      icon: Icon(
+                        Icons.image_outlined,
+                        color: Get.theme.colorScheme.surface,
+                        size: 30,
+                      ),
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    IconButton(
+                      onPressed: () async {
+                        Map<Permission, PermissionStatus> statuses = await [
+                          Permission.storage,
+                          Permission.camera,
+                        ].request();
+                        if (statuses[Permission.storage]!.isGranted &&
+                            statuses[Permission.camera]!.isGranted) {
+                          await controller.captureImageFileFromCamera();
+                          setState(() {
+                            controller.imageFile;
+                          });
+                        } else {
+                          print('Permissão negada!');
+                        }
+                      },
+                      icon: Icon(
+                        Icons.camera_alt_outlined,
+                        color: Get.theme.colorScheme.surface,
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CustomTextformfield(
+                  label: 'Título',
+                  controller: _titleEC,
+                  validator: Validatorless.required('Titulo é obrigatório'),
+                  maxlines: 2,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CustomTextformfield(
+                  label: 'Descrição',
+                  controller: _descriptionEC,
+                  validator: Validatorless.required('Descrição é obrigatória'),
+                  maxlines: 10,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: CustomButton(
+                    color: Get.theme.colorScheme.primaryContainer,
+                    width: double.infinity,
+                    label: 'ATUALIZAR',
+                    onPressed: () {
+                      final formValid =
+                          _formKey.currentState?.validate() ?? false;
+                      if (formValid) {
+                        controller.newsUpdate({
+                          'idNews': Get.parameters['idNews'],
+                          'title': _titleEC.text,
+                          'url_image': controller.imageFile == null
+                              ? ''
+                              : controller.imageFile!.path,
+                          'description': _descriptionEC.text,
+                        });
+                      }
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

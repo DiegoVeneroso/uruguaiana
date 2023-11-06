@@ -7,6 +7,7 @@ import '../../../core/ui/widgets/custom_appbar.dart';
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/custom_textformfield.dart';
 import 'proposal_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ProposalEditPage extends StatefulWidget {
   const ProposalEditPage({Key? key}) : super(key: key);
@@ -40,53 +41,52 @@ class _ProposalAddPageState
         ],
       ),
       body: SingleChildScrollView(
-        child: IntrinsicHeight(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Text(
-                      'Alterar pilar',
-                      style: Get.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Get.theme.colorScheme.surface,
-                      ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: AutoSizeText(
+                    minFontSize: 10,
+                    'Alterar pilar',
+                    style: Get.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.colorScheme.surface,
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                CustomTextformfield(
+                  label: 'Título',
+                  controller: _titleEC,
+                  validator: Validatorless.required('Titulo é obrigatório'),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: CustomButton(
+                    color: Get.theme.colorScheme.primaryContainer,
+                    width: double.infinity,
+                    label: 'ATUALIZAR',
+                    onPressed: () {
+                      final formValid =
+                          _formKey.currentState?.validate() ?? false;
+                      if (formValid) {
+                        controller.proposalUpdate({
+                          'idProposal': Get.parameters['id_proposal_base'],
+                          'title': _titleEC.text.toUpperCase(),
+                        });
+                      }
+                    },
                   ),
-                  CustomTextformfield(
-                    label: 'Título',
-                    controller: _titleEC,
-                    validator: Validatorless.required('Titulo é obrigatório'),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: CustomButton(
-                      color: Get.theme.colorScheme.primaryContainer,
-                      width: double.infinity,
-                      label: 'ATUALIZAR',
-                      onPressed: () {
-                        final formValid =
-                            _formKey.currentState?.validate() ?? false;
-                        if (formValid) {
-                          controller.proposalUpdate({
-                            'idProposal': Get.parameters['id_proposal_base'],
-                            'title': _titleEC.text.toUpperCase(),
-                          });
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

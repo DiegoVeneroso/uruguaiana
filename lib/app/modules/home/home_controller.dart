@@ -17,6 +17,7 @@ import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
 import '../../models/item_model.dart';
 import '../../repository/home_repositories.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -367,7 +368,8 @@ class HomeController extends GetxController
       for (var res in result.data['value']) {
         listDropdown.add(DropdownMenuItem(
           value: res,
-          child: Text(
+          child: AutoSizeText(
+            minFontSize: 10,
             res,
             style: TextStyle(
               fontSize: 14,

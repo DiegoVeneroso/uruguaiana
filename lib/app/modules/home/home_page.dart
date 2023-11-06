@@ -8,6 +8,7 @@ import '../../repository/auth_repository.dart';
 import '../../routes/app_pages.dart';
 import '../auth/login/login_controller.dart';
 import 'home_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomePage extends GetView<HomeController> {
   LoginController loginController = LoginController(AuthRepository());
@@ -210,7 +211,8 @@ class HomePage extends GetView<HomeController> {
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 10.0, vertical: 5.0),
-                                        child: Text(
+                                        child: AutoSizeText(
+                                          minFontSize: 10,
                                           controller
                                               .foundItem.value[index].name,
                                           style: TextStyle(

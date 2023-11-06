@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
@@ -41,7 +40,8 @@ class _ProposalActionsDetailPageState
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
-                child: Text(
+                child: AutoSizeText(
+                  minFontSize: 10,
                   Get.parameters['proposal_pilar_name'].toString(),
                   style: Get.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
@@ -51,60 +51,61 @@ class _ProposalActionsDetailPageState
               ),
             ),
             FutureBuilder(
-                future: controller.getVideoTypeFileUrl(
-                    Get.parameters['url_image'].toString()),
-                builder: ((context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 230,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Get.theme.colorScheme.primary),
-                          borderRadius: BorderRadius.circular(20),
+              future: controller
+                  .getVideoTypeFileUrl(Get.parameters['url_image'].toString()),
+              builder: ((context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: 210,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Get.theme.colorScheme.primary),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: CircularProgressIndicator(
+                                color: Get.theme.colorScheme.primary,
+                              ),
+                            )
+                          ]),
+                    ),
+                  );
+                }
+                if (snapshot.data!['type'] == 'video') {
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: CustomPlayerVideo(
+                      videoUri:
+                          Uri.parse(Get.parameters['url_image'].toString()),
+                    ),
+                  );
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: 250,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Get.theme.colorScheme.primary),
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              Get.parameters['url_image'].toString()),
+                          fit: BoxFit.cover,
                         ),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Center(
-                                child: CircularProgressIndicator(
-                                  color: Get.theme.colorScheme.primary,
-                                ),
-                              )
-                            ]),
                       ),
-                    );
-                  }
-                  if (snapshot.data!['type'] == 'video') {
-                    return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: CustomPlayerVideo(
-                        videoUri:
-                            Uri.parse(Get.parameters['url_image'].toString()),
-                      ),
-                    );
-                  } else {
-                    return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Get.theme.colorScheme.primary),
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                Get.parameters['url_image'].toString()),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-                })),
+                    ),
+                  );
+                }
+              }),
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -174,7 +175,8 @@ class _ProposalActionsDetailPageState
                 children: <Widget>[
                   FloatingActionButton.extended(
                     heroTag: 'Editar',
-                    label: Text(
+                    label: AutoSizeText(
+                      minFontSize: 10,
                       'Editar',
                       style: TextStyle(
                           color: Get.theme.colorScheme.onPrimaryContainer),
@@ -199,7 +201,8 @@ class _ProposalActionsDetailPageState
                   ),
                   FloatingActionButton.extended(
                     heroTag: 'excluir',
-                    label: Text(
+                    label: AutoSizeText(
+                      minFontSize: 10,
                       'Excluir',
                       style: TextStyle(
                           color: Get.theme.colorScheme.onPrimaryContainer),
@@ -218,7 +221,8 @@ class _ProposalActionsDetailPageState
                         content: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               Get.parameters['title'].toString(),
                               style: TextStyle(
                                 color: Get.theme.colorScheme.primary,

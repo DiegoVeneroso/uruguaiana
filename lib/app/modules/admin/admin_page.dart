@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
 import 'package:uruguaiana/app/modules/admin/admin_controller.dart';
@@ -56,7 +56,8 @@ class AdminPage extends GetView<AdminController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               'Colaborações',
                               style: TextStyle(
                                 color: Get.theme.colorScheme.background,
@@ -94,7 +95,8 @@ class AdminPage extends GetView<AdminController> {
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      AutoSizeText(
+                        minFontSize: 10,
                         'Notificações',
                         style: TextStyle(
                           color: Get.theme.colorScheme.background,

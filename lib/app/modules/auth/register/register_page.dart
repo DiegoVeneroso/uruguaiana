@@ -6,6 +6,7 @@ import '../../../core/ui/app_state.dart';
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/custom_textformfield.dart';
 import 'register_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -47,102 +48,102 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
         ],
       ),
       body: SingleChildScrollView(
-        child: IntrinsicHeight(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SizedBox(
-                      width: 200,
-                      height: 200,
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        width: 80,
-                      ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: 80,
                     ),
                   ),
-                  Center(
-                    child: Text(
-                      'Cadastre-se',
-                      style: Get.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Get.theme.colorScheme.surface,
-                      ),
+                ),
+                Center(
+                  child: AutoSizeText(
+                    minFontSize: 10,
+                    'CADASTRE-SE',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.colorScheme.surface,
+                      fontSize: 22,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomTextformfield(
+                  label: 'Nome',
+                  controller: _nameEC,
+                  validator: Validatorless.required('Nome Obrigatório'),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                CustomTextformfield(
+                  label: 'E-mail',
+                  controller: _emailEC,
+                  validator: Validatorless.multiple([
+                    Validatorless.required('E-mail obrigatório'),
+                    Validatorless.email('E-mail inválido')
+                  ]),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                CustomTextformfield(
+                  label: 'Senha',
+                  controller: _passwordEC,
+                  obscureText: true,
+                  visibility: true,
+                  validator: Validatorless.multiple([
+                    Validatorless.required('Senha obrigatório'),
+                    Validatorless.min(
+                        8, 'Senha deve conter pelo menos 8 caracteres'),
+                  ]),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                CustomTextformfield(
+                  label: 'Confirma senha',
+                  obscureText: true,
+                  visibility: true,
+                  validator: Validatorless.multiple([
+                    Validatorless.required('Confirma senha obrigatória'),
+                    Validatorless.compare(
+                        _passwordEC, 'Senha diferente de confirma senha'),
+                  ]),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: CustomButton(
+                    color: Get.theme.colorScheme.primaryContainer,
+                    width: double.infinity,
+                    label: 'CADASTRAR',
+                    onPressed: () {
+                      final formValid =
+                          _formKey.currentState?.validate() ?? false;
+                      if (formValid) {
+                        controller.register(
+                          email: _emailEC.text,
+                          password: _passwordEC.text,
+                          name: _nameEC.text,
+                        );
+                      }
+                    },
                   ),
-                  CustomTextformfield(
-                    label: 'Nome',
-                    controller: _nameEC,
-                    validator: Validatorless.required('Nome Obrigatório'),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomTextformfield(
-                    label: 'E-mail',
-                    controller: _emailEC,
-                    validator: Validatorless.multiple([
-                      Validatorless.required('E-mail obrigatório'),
-                      Validatorless.email('E-mail inválido')
-                    ]),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomTextformfield(
-                    label: 'Senha',
-                    controller: _passwordEC,
-                    obscureText: true,
-                    visibility: true,
-                    validator: Validatorless.multiple([
-                      Validatorless.required('Senha obrigatório'),
-                      Validatorless.min(
-                          8, 'Senha deve conter pelo menos 8 caracteres'),
-                    ]),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomTextformfield(
-                    label: 'Confirma senha',
-                    obscureText: true,
-                    visibility: true,
-                    validator: Validatorless.multiple([
-                      Validatorless.required('Confirma senha obrigatória'),
-                      Validatorless.compare(
-                          _passwordEC, 'Senha diferente de confirma senha'),
-                    ]),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Center(
-                    child: CustomButton(
-                      color: Get.theme.colorScheme.primaryContainer,
-                      width: double.infinity,
-                      label: 'CADASTRAR',
-                      onPressed: () {
-                        final formValid =
-                            _formKey.currentState?.validate() ?? false;
-                        if (formValid) {
-                          controller.register(
-                            email: _emailEC.text,
-                            password: _passwordEC.text,
-                            name: _nameEC.text,
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

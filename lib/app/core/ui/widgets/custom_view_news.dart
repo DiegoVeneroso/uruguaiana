@@ -3,18 +3,18 @@ import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomPlayerVideo extends StatefulWidget {
+class CustomViewNews extends StatefulWidget {
   Uri videoUri;
-  CustomPlayerVideo({
+  CustomViewNews({
     Key? key,
     required this.videoUri,
   }) : super(key: key);
 
   @override
-  State<CustomPlayerVideo> createState() => _CustomPlayerVideoState();
+  State<CustomViewNews> createState() => _CustomPlayerVideoState();
 }
 
-class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
+class _CustomPlayerVideoState extends State<CustomViewNews> {
   late CustomVideoPlayerController _customVideoPlayerController;
 
   late bool isLoading = true;
@@ -57,7 +57,7 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
             children: [
               ClipRRect(
                 clipBehavior: Clip.hardEdge,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(10),
                 child: SizedBox(
                   // height: 230,
                   width: double.infinity,
@@ -94,10 +94,10 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
         //       onPressed: () {
         //         print('play');
         //       },
-        //       icon: const Icon(
+        //       icon: Icon(
         //         Icons.play_arrow,
         //         size: 40,
-        //         color: Colors.white,
+        //         color: Get.theme.colorScheme.onPrimaryContainer,
         //       )),
         // ),
         // showPlayButton: true,
@@ -110,11 +110,11 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
         //     style: TextStyle(color: Colors.white, fontSize: 50),
         //   ),
         // ),
-        // controlBarAvailable: false,
+        controlBarAvailable: false,
         customAspectRatio: 16 / 9,
-        // controlBarDecoration: BoxDecoration(
+        // controlBarDecoration: const BoxDecoration(
         //   borderRadius: BorderRadius.all(
-        //     Radius.circular(20),
+        //     Radius.circular(10),
         //   ),
         // ),
         settingsButtonAvailable: false,

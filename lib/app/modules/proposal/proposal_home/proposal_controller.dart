@@ -287,7 +287,7 @@ class ProposalController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Pilar adicionado com sucesso!',
+          message: 'Área adicionada com sucesso!',
           type: MessageType.success,
         ),
       );
@@ -320,7 +320,7 @@ class ProposalController extends GetxController
       //manter este snackbar para mostra a resposta, o _message() não funciona!
       Get.snackbar(
         'Parabéns!',
-        'Pilar excluído com sucesso!',
+        'Área excluída com sucesso!',
         backgroundColor: Get.theme.colorScheme.primary,
         colorText: Get.theme.colorScheme.onPrimaryContainer,
         margin: const EdgeInsets.all(20),
@@ -353,7 +353,7 @@ class ProposalController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Pilar atualizado com sucesso!',
+          message: 'Área atualizada com sucesso!',
           type: MessageType.success,
         ),
       );

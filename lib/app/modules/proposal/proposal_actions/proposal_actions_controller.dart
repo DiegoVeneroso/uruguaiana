@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:uruguaiana/app/core/mixins/loader_message_mixin.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 import 'package:uruguaiana/app/repository/proposal_actions_repositories.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
@@ -22,11 +24,12 @@ import '../../../models/proposal_action_model.dart';
 import 'package:http/http.dart' as http;
 
 class ProposalActionsController extends GetxController
-    with LoaderMixin, MessagesMixin, DialogMixin {
+    with LoaderMessageMixin, LoaderMixin, MessagesMixin, DialogMixin {
   RealtimeSubscription? subscription;
   ProposalActionsRepository repository;
   AuthRepository authRepository;
-  final _loading = false.obs;
+  final loading = false.obs;
+  final loadingMessage = false.obs;
   final _message = Rxn<MessageModel>();
   final _dialog = Rxn<DialogModel>();
   var proposalList = <ProposalActionModel>[].obs;
@@ -61,7 +64,8 @@ class ProposalActionsController extends GetxController
   @override
   onInit() {
     getIsAdmin();
-    loaderListener(_loading);
+    loaderListener(loading);
+    loaderMessageListener(loadingMessage);
     messageListener(_message);
     dialogListener(_dialog);
     foundProposal.value = proposalList;
@@ -197,6 +201,16 @@ class ProposalActionsController extends GetxController
     }
   }
 
+  Future<String> getTypeUniqueFileUrl(String urlFile) async {
+    var response = await http.head(Uri.parse(urlFile));
+
+    if (response.statusCode == 200) {
+      return response.headers['content-type'].toString().split('/').last;
+    } else {
+      return 'Erro ao buscar a extensão';
+    }
+  }
+
   _cropImage(File imgFile) async {
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
@@ -238,12 +252,12 @@ class ProposalActionsController extends GetxController
   Future<void> filterProposal(String proposalName) async {
     List<ProposalActionModel> results = [];
     if (proposalName.isEmpty) {
-      // _loading.toggle();
+      // loading.toggle();
       results = proposalList;
     } else {
-      // _loading.toggle();
+      // loading.toggle();
       // await Future.delayed(const Duration(seconds: 1));
-      // _loading.toggle();
+      // loading.toggle();
 
       results = proposalList
           .where((element) => element.title
@@ -252,17 +266,17 @@ class ProposalActionsController extends GetxController
               .contains(proposalName.toLowerCase()))
           .toList();
     }
-    // _loading.toggle();
+    // loading.toggle();
     foundProposal.value = results;
   }
 
   // login() async {
   //   try {
-  //     _loading.toggle();
+  //     loading.toggle();
   //     await ApiClient.account.createAnonymousSession();
   //     print('usuario anonimo logado!');
   //   } on AppwriteException catch (e) {
-  //     _loading.toggle();
+  //     loading.toggle();
   //     print(e.message);
   //   }
   // }
@@ -273,7 +287,7 @@ class ProposalActionsController extends GetxController
 
       proposalList.assignAll(result);
     } catch (e) {
-      _loading.toggle();
+      loading.toggle();
       _message(
         MessageModel(
           title: 'Atenção!',
@@ -312,12 +326,12 @@ class ProposalActionsController extends GetxController
 
   Future<void> proposalActionAdd(Map map) async {
     try {
-      _loading.toggle();
+      loadingMessage.toggle();
 
       await repository.proposalActionAddRepository(map);
 
       await Future.delayed(const Duration(seconds: 1));
-      _loading.toggle();
+      loadingMessage.toggle();
       Get.offAndToNamed(Routes.proposal_actions, parameters: {
         'proposal_pilar_name': map['proposal_pilar_name'],
       });
@@ -339,7 +353,7 @@ class ProposalActionsController extends GetxController
         ),
       );
       await Future.delayed(const Duration(seconds: 2));
-      _loading.toggle();
+      loadingMessage.toggle();
       Get.offAndToNamed(Routes.proposal_actions,
           parameters: {'proposal_pilar_name': map['proposal_pilar_name']});
     }
@@ -348,12 +362,12 @@ class ProposalActionsController extends GetxController
   Future proposalActionDelete(Map map) async {
     try {
       Get.back();
-      _loading.toggle();
+      loading.toggle();
 
       await repository
           .proposalActionsDeleteRepository(map['idProposal'].toString());
 
-      _loading.toggle();
+      loading.toggle();
       await Future.delayed(const Duration(seconds: 1));
 
       Get.toNamed(Routes.proposal_actions, parameters: {
@@ -379,19 +393,19 @@ class ProposalActionsController extends GetxController
         ),
       );
       await Future.delayed(const Duration(seconds: 2));
-      _loading.toggle();
+      loading.toggle();
       Get.offAndToNamed(Routes.proposal);
     }
   }
 
   Future<void> proposalActionUpdate(Map map) async {
     try {
-      _loading.toggle();
+      loading.toggle();
 
       await repository.proposalActionsUpdateRepository(map);
 
       await Future.delayed(const Duration(seconds: 1));
-      _loading.toggle();
+      loading.toggle();
       Get.toNamed(Routes.proposal_actions, parameters: {
         'proposal_pilar_name': map['proposal_pilar_name'].toString(),
       });
@@ -413,8 +427,23 @@ class ProposalActionsController extends GetxController
         ),
       );
       await Future.delayed(const Duration(seconds: 2));
-      _loading.toggle();
+      loading.toggle();
       Get.offAndToNamed(Routes.proposal);
     }
+  }
+
+  getImageXFileByUrl(String url) async {
+    String extensionFile = await getTypeUniqueFileUrl(url);
+
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    String fileName =
+        "image${DateTime.now().millisecondsSinceEpoch}.$extensionFile";
+    File fileWrite = File("$tempPath/$fileName");
+    Uri uri = Uri.parse(url);
+    final response = await http.get(uri);
+    fileWrite.writeAsBytesSync(response.bodyBytes);
+    final file = XFile("$tempPath/$fileName");
+    return file.path;
   }
 }

@@ -13,6 +13,7 @@ import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_dropdown_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 import 'home_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeDetailPage extends StatefulWidget {
   const HomeDetailPage({Key? key}) : super(key: key);
@@ -54,7 +55,8 @@ class _HomeDetailPageState extends AppState<HomeDetailPage, HomeController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Text(
+                    child: AutoSizeText(
+                      minFontSize: 10,
                       'Visualizar item',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
@@ -98,7 +100,8 @@ class _HomeDetailPageState extends AppState<HomeDetailPage, HomeController> {
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: Row(
                           children: [
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               'Nome:',
                               style: TextStyle(
                                 fontSize: 18,
@@ -109,7 +112,8 @@ class _HomeDetailPageState extends AppState<HomeDetailPage, HomeController> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               Get.parameters['name'].toString(),
                               style: TextStyle(
                                 fontSize: 18,
@@ -123,7 +127,8 @@ class _HomeDetailPageState extends AppState<HomeDetailPage, HomeController> {
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: Row(
                           children: [
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               'Cidade:',
                               style: TextStyle(
                                 fontSize: 18,
@@ -134,7 +139,8 @@ class _HomeDetailPageState extends AppState<HomeDetailPage, HomeController> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               Get.parameters['cidade'].toString(),
                               style: TextStyle(
                                 fontSize: 18,

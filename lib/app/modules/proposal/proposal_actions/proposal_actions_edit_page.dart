@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_picker.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_controller.dart';
 import 'package:validatorless/validatorless.dart';
@@ -9,8 +7,8 @@ import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/app_state.dart';
 import '../../../core/ui/widgets/custom_appbar.dart';
 import '../../../core/ui/widgets/custom_button.dart';
-import '../../../core/ui/widgets/custom_player_video.dart';
 import '../../../core/ui/widgets/custom_textformfield.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ProposalActionsEditPage extends StatefulWidget {
   const ProposalActionsEditPage({Key? key}) : super(key: key);
@@ -31,8 +29,8 @@ class _ProposalActionsEditPageState
 
   @override
   void initState() {
-    _pickedKey.currentState?.setImageValidate('true');
-    super.initState();
+    _pickedKey.currentState?.setImageValidate('false');
+    loadMidiaEditForm();
   }
 
   @override
@@ -41,6 +39,13 @@ class _ProposalActionsEditPageState
     _descriptionEC.dispose();
     controller.imageFile = null;
     super.dispose();
+  }
+
+  Future<void> loadMidiaEditForm() async {
+    var pathImageUrl = await controller
+        .getImageXFileByUrl(Get.parameters['url_image'].toString());
+
+    _pickedKey.currentState?.setImageFile(pathImageUrl);
   }
 
   @override
@@ -66,7 +71,8 @@ class _ProposalActionsEditPageState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Text(
+                    child: AutoSizeText(
+                      minFontSize: 10,
                       'ALTERAR AÇÃO',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
@@ -78,7 +84,8 @@ class _ProposalActionsEditPageState
                     height: 10,
                   ),
                   Center(
-                    child: Text(
+                    child: AutoSizeText(
+                      minFontSize: 10,
                       Get.parameters['proposal_pilar_name'].toString(),
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
@@ -89,117 +96,8 @@ class _ProposalActionsEditPageState
                   const SizedBox(
                     height: 20,
                   ),
-
                   CustomPicker(
                     key: _pickedKey,
-                  ),
-                  // controller.imageFile == null
-                  //     ? Stack(
-                  //         clipBehavior: Clip.none,
-                  //         alignment: Alignment.center,
-                  //         children: [
-                  //           AspectRatio(
-                  //             aspectRatio: 16 / 9,
-                  //             child: CustomPlayerVideo(
-                  //               videoUri: Uri.parse(
-                  //                   Get.parameters['url_image'].toString()),
-                  //             ),
-                  //           ),
-                  //           Positioned(
-                  //             right: 15,
-                  //             top: 15,
-                  //             child: GestureDetector(
-                  //               onTap: () async {
-                  //                 Map<Permission, PermissionStatus> statuses =
-                  //                     await [
-                  //                   Permission.storage,
-                  //                   Permission.camera,
-                  //                 ].request();
-                  //                 if (statuses[Permission.storage]!.isGranted &&
-                  //                     statuses[Permission.camera]!.isGranted) {
-                  //                   await controller.pickVideoFileFromGalery();
-                  //                   setState(() {
-                  //                     controller.imageFile;
-                  //                   });
-                  //                 }
-                  //               },
-                  //               child: Container(
-                  //                 decoration: BoxDecoration(
-                  //                   border: Border.all(
-                  //                       color: Get.theme.colorScheme
-                  //                           .onPrimaryContainer),
-                  //                   borderRadius: BorderRadius.circular(10),
-                  //                 ),
-                  //                 child: Padding(
-                  //                   padding: const EdgeInsets.all(8.0),
-                  //                   child: Text(
-                  //                     'Alterar',
-                  //                     style: TextStyle(
-                  //                         color: Get.theme.colorScheme
-                  //                             .primaryContainer),
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       )
-                  //     : Stack(
-                  //         clipBehavior: Clip.none,
-                  //         alignment: Alignment.center,
-                  //         children: [
-                  //           CustomPlayerVideo(
-                  //             videoUri: Uri.parse(controller.imageFile!.path),
-                  //           ),
-                  //           Positioned(
-                  //             right: 15,
-                  //             top: 15,
-                  //             child: GestureDetector(
-                  //               onTap: () {
-                  //                 setState(() {
-                  //                   controller.pickVideoFileFromGalery();
-                  //                 });
-                  //               },
-                  //               child: Container(
-                  //                 decoration: BoxDecoration(
-                  //                   border: Border.all(
-                  //                       color: Get.theme.colorScheme
-                  //                           .onPrimaryContainer),
-                  //                   borderRadius: BorderRadius.circular(10),
-                  //                 ),
-                  //                 child: Padding(
-                  //                   padding: const EdgeInsets.all(8.0),
-                  //                   child: Text(
-                  //                     'Alterar',
-                  //                     style: TextStyle(
-                  //                         color: Get.theme.colorScheme
-                  //                             .primaryContainer),
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  Obx(
-                    () => Visibility(
-                      visible: controller.imageValidate.value,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 8.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'midia é obrigatória',
-                              style: TextStyle(
-                                color: Get.theme.colorScheme.error,
-                                fontSize: 12,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -228,22 +126,21 @@ class _ProposalActionsEditPageState
                       color: Get.theme.colorScheme.primaryContainer,
                       width: double.infinity,
                       label: 'ALTERAR',
-                      onPressed: () {
+                      onPressed: () async {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
 
-                        // controller.imageValidate.value =
-                        //     controller.imageFile == null ? true : false;
-                        controller.imageValidate.value =
-                            Get.parameters['url_image'].toString() == null
+                        final pickerValid =
+                            _pickedKey.currentState?.imageFile?.path != null
                                 ? true
                                 : false;
-                        if (formValid &&
-                            controller.imageValidate.value == false) {
+
+                        if (formValid & pickerValid) {
                           controller.proposalActionUpdate({
                             'title': _titleEC.text,
                             // 'url_image': controller.imageFile!.path,
-                            'url_image': Get.parameters['url_image'].toString(),
+                            'url_image':
+                                _pickedKey.currentState?.imageFile?.path,
                             'description': _descriptionEC.text,
                             'id_proposal_base':
                                 Get.parameters['id_proposal_base'].toString(),

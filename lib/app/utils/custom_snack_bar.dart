@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CustomSnackBar {
   static void showErrorSnackBar({
@@ -12,7 +13,8 @@ class CustomSnackBar {
       message,
       snackPosition: SnackPosition.TOP,
       backgroundColor: Colors.red,
-      titleText: Text(
+      titleText: AutoSizeText(
+        minFontSize: 10,
         title,
         style: Theme.of(context!).textTheme.titleLarge!.copyWith(
               fontSize: 16,
@@ -20,7 +22,8 @@ class CustomSnackBar {
               color: Colors.white,
             ),
       ),
-      messageText: Text(
+      messageText: AutoSizeText(
+        minFontSize: 10,
         message,
         style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontSize: 14,
@@ -52,7 +55,8 @@ class CustomSnackBar {
       message,
       snackPosition: SnackPosition.TOP,
       backgroundColor: Colors.blue,
-      titleText: Text(
+      titleText: AutoSizeText(
+        minFontSize: 10,
         title,
         style: Theme.of(context!).textTheme.titleLarge!.copyWith(
               fontSize: 16,
@@ -60,7 +64,8 @@ class CustomSnackBar {
               color: Colors.white,
             ),
       ),
-      messageText: Text(
+      messageText: AutoSizeText(
+        minFontSize: 10,
         message,
         style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontSize: 14,
@@ -92,7 +97,8 @@ class CustomSnackBar {
       message,
       snackPosition: SnackPosition.TOP,
       backgroundColor: Colors.green,
-      titleText: Text(
+      titleText: AutoSizeText(
+        minFontSize: 10,
         title,
         style: Theme.of(context!).textTheme.titleLarge!.copyWith(
               fontSize: 16,
@@ -100,7 +106,8 @@ class CustomSnackBar {
               color: Colors.white,
             ),
       ),
-      messageText: Text(
+      messageText: AutoSizeText(
+        minFontSize: 10,
         message,
         style: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontSize: 14,

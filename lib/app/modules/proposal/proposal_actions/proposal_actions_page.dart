@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
 import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/widgets/custom_floating_button.dart';
@@ -10,6 +8,7 @@ import '../../../repository/auth_repository.dart';
 import '../../../routes/app_pages.dart';
 import '../../auth/login/login_controller.dart';
 import 'proposal_actions_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ProposalActionPage extends GetView<ProposalActionsController> {
   LoginController loginController = LoginController(AuthRepository());
@@ -41,7 +40,8 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
-                child: Text(
+                child: AutoSizeText(
+                  minFontSize: 10,
                   Get.parameters['proposal_pilar_name'].toString(),
                   style: Get.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
@@ -93,11 +93,13 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                         iconColor: Get.theme.colorScheme.onPrimaryContainer,
                         titleTextStyle: const TextStyle(fontSize: 16),
                         subtitleTextStyle: const TextStyle(fontSize: 14),
-                        title:
-                            Text(controller.foundProposal.value[index].title),
+                        title: AutoSizeText(
+                            minFontSize: 10,
+                            controller.foundProposal.value[index].title),
                         subtitle: Row(
                           children: [
-                            Text(
+                            AutoSizeText(
+                              minFontSize: 10,
                               controller.foundProposal.value[index].description,
                             ),
                             const SizedBox(
@@ -116,32 +118,47 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
         () => controller.isAdmin()
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: FloatingActionButton.extended(
-                  label: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.add,
-                        color: Get.theme.colorScheme.background,
-                        size: 25,
-                      ),
-                      Text(
-                        'ADICIONAR AÇÃO',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Get.theme.colorScheme.background),
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.white,
+                        // offset: Offset(2, 0),
+                        blurRadius: 8,
                       ),
                     ],
+                    borderRadius: BorderRadius.circular(30),
                   ),
-                  backgroundColor: Get.theme.colorScheme.primary,
-                  onPressed: () {
-                    Get.toNamed(Routes.proposal_actions_add, parameters: {
-                      'id_proposal_base':
-                          Get.parameters['id_proposal_base'].toString(),
-                      'proposal_pilar_name':
-                          Get.parameters['proposal_pilar_name'].toString(),
-                    });
-                  },
+                  child: FloatingActionButton.extended(
+                    elevation: 0,
+                    isExtended: true,
+                    label: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.add,
+                          color: Get.theme.colorScheme.background,
+                          size: 25,
+                        ),
+                        AutoSizeText(
+                          minFontSize: 10,
+                          'ADICIONAR ÁREA',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Get.theme.colorScheme.background),
+                        ),
+                      ],
+                    ),
+                    backgroundColor: Get.theme.colorScheme.primary,
+                    onPressed: () {
+                      Get.toNamed(Routes.proposal_actions_add, parameters: {
+                        'id_proposal_base':
+                            Get.parameters['id_proposal_base'].toString(),
+                        'proposal_pilar_name':
+                            Get.parameters['proposal_pilar_name'].toString(),
+                      });
+                    },
+                  ),
                 ),
               )
             : const CustomFloatingButton(),

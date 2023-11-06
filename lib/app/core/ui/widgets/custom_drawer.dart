@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_initicon/flutter_initicon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -172,7 +173,8 @@ class CustomDrawer extends StatelessWidget {
                           Uri url = Uri.parse('');
                           launchUrl(url);
                         },
-                        child: const Text(
+                        child: const AutoSizeText(
+                          minFontSize: 10,
                           '2023\u00a9FrontApp',
                           style: TextStyle(
                               fontSize: 16,
@@ -346,7 +348,8 @@ class CustomDrawer extends StatelessWidget {
                           Uri url = Uri.parse('');
                           launchUrl(url);
                         },
-                        child: const Text(
+                        child: const AutoSizeText(
+                          minFontSize: 10,
                           '2023\u00a9FrontApp',
                           style: TextStyle(
                               fontSize: 16,
@@ -370,8 +373,11 @@ class CustomDrawer extends StatelessWidget {
     var profile = GetStorage().read('profile');
 
     return UserAccountsDrawerHeader(
-      accountName: Text(name),
-      accountEmail: Text(email),
+      accountName: AutoSizeText(
+        name,
+        minFontSize: 10.0,
+      ),
+      accountEmail: AutoSizeText(email, minFontSize: 10.0),
       currentAccountPicture: urlAvatar != ''
           ? CircleAvatar(backgroundImage: NetworkImage(urlAvatar))
           : Initicon(
@@ -383,12 +389,13 @@ class CustomDrawer extends StatelessWidget {
             ),
       currentAccountPictureSize: const Size.square(72),
       otherAccountsPictures: [
-        Text(
+        AutoSizeText(
           profile,
           style: TextStyle(
             color: Get.theme.colorScheme.onPrimaryContainer,
             fontSize: 14,
           ),
+          minFontSize: 10.0,
         ),
       ],
       otherAccountsPicturesSize: const Size.square(100),
@@ -397,7 +404,10 @@ class CustomDrawer extends StatelessWidget {
 
   Widget buildDrawerHeaderNotLogged() {
     return UserAccountsDrawerHeader(
-      accountName: const Text('Convidado'),
+      accountName: const AutoSizeText(
+        'Convidado',
+        minFontSize: 10.0,
+      ),
       accountEmail: null,
       currentAccountPicture: Initicon(
         text: 'Convidado',
@@ -422,8 +432,9 @@ class CustomDrawer extends StatelessWidget {
   }) {
     return ListTile(
       leading: Icon(icon, color: textIconColor),
-      title: Text(
+      title: AutoSizeText(
         text,
+        minFontSize: 10.0,
         style: TextStyle(color: textIconColor),
       ),
       tileColor: tileColor,
