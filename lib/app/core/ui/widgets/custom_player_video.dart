@@ -35,7 +35,7 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
   Widget build(BuildContext context) {
     return isLoading
         ? Container(
-            height: 210,
+            height: 600,
             width: double.infinity,
             decoration: BoxDecoration(
               border: Border.all(
@@ -50,7 +50,23 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
               ),
             ),
           )
-        : Column(
+        :
+        //  Container(
+        //     height: 600,
+        //     width: double.infinity,
+        //     decoration: BoxDecoration(
+        //       border: Border.all(
+        //         color: Get.theme.colorScheme.primary,
+        //       ),
+        //       borderRadius: BorderRadius.circular(20),
+        //       color: Get.theme.colorScheme.onPrimaryContainer,
+        //     ),
+        //     child: CustomVideoPlayer(
+        //       customVideoPlayerController: _customVideoPlayerController,
+        //     ),
+        //   );
+
+        Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +75,7 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
                 clipBehavior: Clip.hardEdge,
                 borderRadius: BorderRadius.circular(20),
                 child: SizedBox(
-                  // height: 230,
+                  height: 600,
                   width: double.infinity,
                   child: CustomVideoPlayer(
                     customVideoPlayerController: _customVideoPlayerController,
@@ -111,7 +127,7 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
         //   ),
         // ),
         // controlBarAvailable: false,
-        customAspectRatio: 16 / 9,
+        customAspectRatio: 4 / 3,
         // controlBarDecoration: BoxDecoration(
         //   borderRadius: BorderRadius.all(
         //     Radius.circular(20),

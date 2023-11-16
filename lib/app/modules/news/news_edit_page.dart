@@ -8,6 +8,7 @@ import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
+import '../../core/ui/widgets/custom_picker.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -24,11 +25,27 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
   final _descriptionEC =
       TextEditingController(text: Get.parameters['description']);
 
+  final _pickedKey = GlobalKey<CustomPickerState>();
+
+  @override
+  void initState() {
+    _pickedKey.currentState?.setImageValidate('false');
+    loadMidiaEditForm();
+  }
+
   @override
   void dispose() {
     _titleEC.dispose();
     _descriptionEC.dispose();
+    controller.imageFile = null;
     super.dispose();
+  }
+
+  Future<void> loadMidiaEditForm() async {
+    var pathImageUrl = await controller
+        .getImageXFileByUrl(Get.parameters['url_image'].toString());
+
+    _pickedKey.currentState?.setImageFile(pathImageUrl);
   }
 
   @override
@@ -55,7 +72,7 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                 Center(
                   child: AutoSizeText(
                     minFontSize: 10,
-                    'Atualizar notícia',
+                    'ALTERAR NOTÍCIA',
                     style: Get.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Get.theme.colorScheme.surface,
@@ -65,86 +82,8 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                 const SizedBox(
                   height: 20,
                 ),
-                controller.imageFile == null
-                    ? Center(
-                        child: Container(
-                          width: double.infinity,
-                          height: 250,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  Get.parameters['url_image'].toString()),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      )
-                    : Center(
-                        child: Container(
-                          width: double.infinity,
-                          height: 250,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: FileImage(
-                                File(controller.imageFile!.path),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        Map<Permission, PermissionStatus> statuses = await [
-                          Permission.storage,
-                          Permission.camera,
-                        ].request();
-                        if (statuses[Permission.storage]!.isGranted &&
-                            statuses[Permission.camera]!.isGranted) {
-                          await controller.pickImageFileFromGalery();
-                          setState(() {
-                            controller.imageFile;
-                          });
-                        } else {
-                          print('Permissão negada!');
-                        }
-                      },
-                      icon: Icon(
-                        Icons.image_outlined,
-                        color: Get.theme.colorScheme.surface,
-                        size: 30,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        Map<Permission, PermissionStatus> statuses = await [
-                          Permission.storage,
-                          Permission.camera,
-                        ].request();
-                        if (statuses[Permission.storage]!.isGranted &&
-                            statuses[Permission.camera]!.isGranted) {
-                          await controller.captureImageFileFromCamera();
-                          setState(() {
-                            controller.imageFile;
-                          });
-                        } else {
-                          print('Permissão negada!');
-                        }
-                      },
-                      icon: Icon(
-                        Icons.camera_alt_outlined,
-                        color: Get.theme.colorScheme.surface,
-                        size: 30,
-                      ),
-                    ),
-                  ],
+                CustomPicker(
+                  key: _pickedKey,
                 ),
                 const SizedBox(
                   height: 10,
@@ -171,7 +110,7 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                   child: CustomButton(
                     color: Get.theme.colorScheme.primaryContainer,
                     width: double.infinity,
-                    label: 'ATUALIZAR',
+                    label: 'ALTERAR',
                     onPressed: () {
                       final formValid =
                           _formKey.currentState?.validate() ?? false;
@@ -179,9 +118,7 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
                         controller.newsUpdate({
                           'idNews': Get.parameters['idNews'],
                           'title': _titleEC.text,
-                          'url_image': controller.imageFile == null
-                              ? ''
-                              : controller.imageFile!.path,
+                          'url_image': _pickedKey.currentState?.imageFile?.path,
                           'description': _descriptionEC.text,
                         });
                       }

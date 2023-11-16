@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
 import '../../core/config/api_client.dart';
@@ -17,6 +18,7 @@ import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
 import '../../models/about_model.dart';
 import '../../repository/about_repositories.dart';
+import 'package:http/http.dart' as http;
 
 class AboutController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -259,7 +261,7 @@ class AboutController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Notícia adicionada com sucesso!',
+          message: 'Quem somos adicionado com sucesso!',
           type: MessageType.success,
         ),
       );
@@ -343,5 +345,30 @@ class AboutController extends GetxController
       _loading.toggle();
       Get.offAndToNamed(Routes.about);
     }
+  }
+
+  Future<String> getTypeUniqueFileUrl(String urlFile) async {
+    var response = await http.head(Uri.parse(urlFile));
+
+    if (response.statusCode == 200) {
+      return response.headers['content-type'].toString().split('/').last;
+    } else {
+      return 'Erro ao buscar a extensão';
+    }
+  }
+
+  getImageXFileByUrl(String url) async {
+    String extensionFile = await getTypeUniqueFileUrl(url);
+
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    String fileName =
+        "image${DateTime.now().millisecondsSinceEpoch}.$extensionFile";
+    File fileWrite = File("$tempPath/$fileName");
+    Uri uri = Uri.parse(url);
+    final response = await http.get(uri);
+    fileWrite.writeAsBytesSync(response.bodyBytes);
+    final file = XFile("$tempPath/$fileName");
+    return file.path;
   }
 }

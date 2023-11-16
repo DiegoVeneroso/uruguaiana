@@ -43,7 +43,6 @@ class NewsController extends GetxController
   var isDarkMode = false.obs;
   GetStorage storage = GetStorage();
   RxBool isAdmin = false.obs;
-  String? thumbnailUrl;
   Uint8List? thumbnailData;
 
   NewsController({
@@ -405,5 +404,20 @@ class NewsController extends GetxController
     } else {
       return 'Erro ao buscar a extensão';
     }
+  }
+
+  getImageXFileByUrl(String url) async {
+    String extensionFile = await getTypeUniqueFileUrl(url);
+
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    String fileName =
+        "image${DateTime.now().millisecondsSinceEpoch}.$extensionFile";
+    File fileWrite = File("$tempPath/$fileName");
+    Uri uri = Uri.parse(url);
+    final response = await http.get(uri);
+    fileWrite.writeAsBytesSync(response.bodyBytes);
+    final file = XFile("$tempPath/$fileName");
+    return file.path;
   }
 }

@@ -70,37 +70,46 @@ class AboutRepository {
 
   aboutAddRepository(Map map) async {
     try {
-      final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
+      if (map['url_image'] != "") {
+        const idUnique = '123123';
 
-      String fileName = "$idUnique."
-          "${map["url_image"].toString().split(".").last}";
+        String fileName = "$idUnique."
+            "${map["url_image"].toString().split(".").last}";
 
-      var urlImage =
-          '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
+        var urlImage =
+            '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
 
-      await ApiClient.storage.createFile(
-        bucketId: constants.STORAGE_BUCKETS,
-        fileId: idUnique,
-        file: InputFile(
-          path: map["url_image"],
-          filename: fileName,
-        ),
-      );
+        // await ApiClient.storage.deleteFile(
+        //   bucketId: constants.STORAGE_BUCKETS,
+        //   fileId: idUnique,
+        // );
 
-      await ApiClient.databases.createDocument(
-          databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_ABOUT_ID,
-          documentId: idUnique,
-          data: {
-            'idAbout': idUnique,
-            'title': map["title"],
-            'url_image': urlImage,
-            'description': map["description"],
-            'created_by': storage.read('id_user').toString(),
-            'date_time_created': DateTime.now().toString(),
-            'update_by': storage.read('id_user').toString(),
-            'date_time_updated': DateTime.now().toString(),
-          });
+        // await ApiClient.databases.deleteDocument(
+        //   databaseId: constants.DATABASE_ID,
+        //   collectionId: constants.COLLETION_ABOUT_ID,
+        //   documentId: idUnique,
+        // );
+
+        await ApiClient.storage.createFile(
+          bucketId: constants.STORAGE_BUCKETS,
+          fileId: idUnique,
+          file: InputFile(
+            path: map["url_image"],
+            filename: fileName,
+          ),
+        );
+
+        await ApiClient.databases.createDocument(
+            databaseId: constants.DATABASE_ID,
+            collectionId: constants.COLLETION_ABOUT_ID,
+            documentId: idUnique,
+            data: {
+              'idAbout': idUnique,
+              'title': map["title"],
+              'url_image': urlImage,
+              'description': map["description"],
+            });
+      }
     } on AppwriteException catch (e) {
       log(e.response['type']);
 

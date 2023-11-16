@@ -62,100 +62,95 @@ class _ProposalActionsEditPageState
         ],
       ),
       body: SingleChildScrollView(
-        child: IntrinsicHeight(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: AutoSizeText(
-                      minFontSize: 10,
-                      'ALTERAR AÇÃO',
-                      style: Get.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Get.theme.colorScheme.surface,
-                      ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: AutoSizeText(
+                    minFontSize: 10,
+                    'ALTERAR AÇÃO',
+                    style: Get.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.colorScheme.surface,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Center(
-                    child: AutoSizeText(
-                      minFontSize: 10,
-                      Get.parameters['proposal_pilar_name'].toString(),
-                      style: Get.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Get.theme.colorScheme.surface,
-                      ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Center(
+                  child: AutoSizeText(
+                    minFontSize: 10,
+                    Get.parameters['proposal_pilar_name'].toString(),
+                    style: Get.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.colorScheme.surface,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  CustomPicker(
-                    key: _pickedKey,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextformfield(
-                    label: 'Título',
-                    controller: _titleEC,
-                    validator: Validatorless.required('Título é obrigatório'),
-                    maxlines: 2,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextformfield(
-                    label: 'Descrição',
-                    controller: _descriptionEC,
-                    validator:
-                        Validatorless.required('Descrição é obrigatório'),
-                    maxlines: 10,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: CustomButton(
-                      color: Get.theme.colorScheme.primaryContainer,
-                      width: double.infinity,
-                      label: 'ALTERAR',
-                      onPressed: () async {
-                        final formValid =
-                            _formKey.currentState?.validate() ?? false;
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomPicker(
+                  key: _pickedKey,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CustomTextformfield(
+                  label: 'Título',
+                  controller: _titleEC,
+                  validator: Validatorless.required('Título é obrigatório'),
+                  maxlines: 2,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CustomTextformfield(
+                  label: 'Descrição',
+                  controller: _descriptionEC,
+                  validator: Validatorless.required('Descrição é obrigatório'),
+                  maxlines: 10,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: CustomButton(
+                    color: Get.theme.colorScheme.primaryContainer,
+                    width: double.infinity,
+                    label: 'ALTERAR',
+                    onPressed: () async {
+                      final formValid =
+                          _formKey.currentState?.validate() ?? false;
 
-                        final pickerValid =
-                            _pickedKey.currentState?.imageFile?.path != null
-                                ? true
-                                : false;
+                      final pickerValid =
+                          _pickedKey.currentState?.imageFile?.path != null
+                              ? true
+                              : false;
 
-                        if (formValid & pickerValid) {
-                          controller.proposalActionUpdate({
-                            'title': _titleEC.text,
-                            // 'url_image': controller.imageFile!.path,
-                            'url_image':
-                                _pickedKey.currentState?.imageFile?.path,
-                            'description': _descriptionEC.text,
-                            'id_proposal_base':
-                                Get.parameters['id_proposal_base'].toString(),
-                            'id_proposal_action':
-                                Get.parameters['id_proposal_action'].toString(),
-                            'proposal_pilar_name': Get
-                                .parameters['proposal_pilar_name']
-                                .toString(),
-                          });
-                        }
-                      },
-                    ),
+                      if (formValid & pickerValid) {
+                        controller.proposalActionUpdate({
+                          'title': _titleEC.text,
+                          // 'url_image': controller.imageFile!.path,
+                          'url_image': _pickedKey.currentState?.imageFile?.path,
+                          'description': _descriptionEC.text,
+                          'id_proposal_base':
+                              Get.parameters['id_proposal_base'].toString(),
+                          'id_proposal_action':
+                              Get.parameters['id_proposal_action'].toString(),
+                          'proposal_pilar_name':
+                              Get.parameters['proposal_pilar_name'].toString(),
+                        });
+                      }
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

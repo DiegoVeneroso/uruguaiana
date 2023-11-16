@@ -72,88 +72,6 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
                 CustomPicker(
                   key: _pickedKey,
                 ),
-                // controller.imageFile == null
-                //     ? Center(
-                //         child: Container(
-                //           width: double.infinity,
-                //           height: 250,
-                //           decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(10),
-                //             color: Get.theme.colorScheme.primary,
-                //           ),
-                //           child: Icon(
-                //             Icons.image_not_supported,
-                //             color: Get.theme.colorScheme.onPrimaryContainer,
-                //             size: 130,
-                //           ),
-                //         ),
-                //       )
-                //     : Center(
-                //         child: Container(
-                //           width: double.infinity,
-                //           height: 250,
-                //           decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(10),
-                //             image: DecorationImage(
-                //               image: FileImage(
-                //                 File(controller.imageFile!.path),
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     IconButton(
-                //       onPressed: () async {
-                //         Map<Permission, PermissionStatus> statuses = await [
-                //           Permission.storage,
-                //           Permission.camera,
-                //         ].request();
-                //         if (statuses[Permission.storage]!.isGranted &&
-                //             statuses[Permission.camera]!.isGranted) {
-                //           await controller.pickImageFileFromGalery();
-                //           setState(() {
-                //             controller.imageFile;
-                //           });
-                //         } else {
-                //           print('Permissão negada!');
-                //         }
-                //       },
-                //       icon: Icon(
-                //         Icons.image_outlined,
-                //         color: Get.theme.colorScheme.surface,
-                //         size: 30,
-                //       ),
-                //     ),
-                //     const SizedBox(
-                //       width: 10,
-                //     ),
-                //     IconButton(
-                //       onPressed: () async {
-                //         Map<Permission, PermissionStatus> statuses = await [
-                //           Permission.storage,
-                //           Permission.camera,
-                //         ].request();
-                //         if (statuses[Permission.storage]!.isGranted &&
-                //             statuses[Permission.camera]!.isGranted) {
-                //           await controller.captureImageFileFromCamera();
-                //           setState(() {
-                //             controller.imageFile;
-                //           });
-                //         } else {
-                //           print('Permissão negada!');
-                //         }
-                //       },
-                //       icon: Icon(
-                //         Icons.camera_alt_outlined,
-                //         color: Get.theme.colorScheme.surface,
-                //         size: 30,
-                //       ),
-                //     ),
-                //   ],
-                // ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -199,23 +117,6 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
                           'description': _descriptionEC.text,
                         });
                       }
-
-                      // final formValid =
-                      //     _formKey.currentState?.validate() ?? false;
-                      // if (formValid) {
-                      //   if (controller.imageFile != null) {
-                      //     controller.newsAdd({
-                      //       'title': _titleEC.text,
-                      //       'url_image': controller.imageFile!.path,
-                      //       'description': _descriptionEC.text,
-                      //     });
-                      //   } else {
-                      //     controller.newsAdd({
-                      //       'title': _titleEC.text,
-                      //       'description': _descriptionEC.text,
-                      //     });
-                      //   }
-                      // }
                     },
                   ),
                 ),
