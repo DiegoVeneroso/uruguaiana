@@ -185,7 +185,7 @@ class HomeController extends GetxController
   }) {
     _dialog(DialogModel(
       id: idItem,
-      title: 'Atenção',
+      title: 'ATENÇÃO',
       message: 'Deseja realmente excluir o item?\n$item',
     ));
   }
@@ -228,7 +228,7 @@ class HomeController extends GetxController
       _loading.toggle();
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: 'Erro carregar!',
           type: MessageType.success,
         ),
@@ -283,7 +283,7 @@ class HomeController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -304,7 +304,7 @@ class HomeController extends GetxController
       _loading.toggle();
       await Future.delayed(const Duration(seconds: 1));
       Get.snackbar(
-        'Atenção!',
+        'ATENÇÃO!',
         'Item excluído com sucesso!',
         backgroundColor: Colors.red[800]!,
         colorText: Colors.white,
@@ -315,7 +315,7 @@ class HomeController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -347,7 +347,7 @@ class HomeController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),

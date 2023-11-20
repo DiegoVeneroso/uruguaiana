@@ -34,55 +34,43 @@ class _CustomPlayerVideoState extends State<CustomPlayerVideo> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? Container(
-            height: 600,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Get.theme.colorScheme.primary,
+        ? Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: Container(
+              height: Get.size.height * 0.35,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Get.theme.colorScheme.primary,
+                ),
+                color: Get.theme.colorScheme.onPrimaryContainer,
               ),
-              borderRadius: BorderRadius.circular(20),
-              color: Get.theme.colorScheme.onPrimaryContainer,
-            ),
-            child: Center(
-              child: CircularProgressIndicator(
-                color: Get.theme.colorScheme.primary,
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Get.theme.colorScheme.primary,
+                ),
               ),
             ),
           )
-        :
-        //  Container(
-        //     height: 600,
-        //     width: double.infinity,
-        //     decoration: BoxDecoration(
-        //       border: Border.all(
-        //         color: Get.theme.colorScheme.primary,
-        //       ),
-        //       borderRadius: BorderRadius.circular(20),
-        //       color: Get.theme.colorScheme.onPrimaryContainer,
-        //     ),
-        //     child: CustomVideoPlayer(
-        //       customVideoPlayerController: _customVideoPlayerController,
-        //     ),
-        //   );
-
-        Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ClipRRect(
-                clipBehavior: Clip.hardEdge,
-                borderRadius: BorderRadius.circular(20),
-                child: SizedBox(
-                  height: 600,
-                  width: double.infinity,
-                  child: CustomVideoPlayer(
-                    customVideoPlayerController: _customVideoPlayerController,
+        : Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  clipBehavior: Clip.hardEdge,
+                  child: SizedBox(
+                    height: Get.size.height * 0.35,
+                    width: double.infinity,
+                    child: CustomVideoPlayer(
+                      customVideoPlayerController: _customVideoPlayerController,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
   }
 

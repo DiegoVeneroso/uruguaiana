@@ -244,7 +244,7 @@ class ProposalActionsController extends GetxController
   }) {
     _dialog(DialogModel(
       id: idProposal,
-      title: 'Atenção',
+      title: 'ATENÇÃO',
       message: 'Deseja realmente excluir?\n$proposal',
     ));
   }
@@ -290,7 +290,7 @@ class ProposalActionsController extends GetxController
       loading.toggle();
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: 'Erro carregar dados!',
           type: MessageType.error,
         ),
@@ -347,7 +347,7 @@ class ProposalActionsController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -387,7 +387,7 @@ class ProposalActionsController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -421,7 +421,7 @@ class ProposalActionsController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),

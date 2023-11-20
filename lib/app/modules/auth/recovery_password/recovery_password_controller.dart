@@ -64,7 +64,7 @@ class RecoveyPasswordController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: text,
           type: MessageType.error,
         ),

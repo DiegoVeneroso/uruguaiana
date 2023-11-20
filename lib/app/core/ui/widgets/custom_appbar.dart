@@ -9,16 +9,21 @@ class CustomAppbar extends AppBar {
   List<IconButton>? actionsList;
   CustomAppbar({Key? key, double elevation = 2, this.titulo, this.actionsList})
       : super(
-          toolbarHeight: 70,
+          toolbarHeight: 80,
           key: key,
           backgroundColor: Get.theme.colorScheme.secondary,
-          elevation: elevation,
+          elevation: 2,
           iconTheme: IconThemeData(color: Get.theme.colorScheme.onBackground),
           actions: actionsList,
           title: Image.asset(
             'assets/images/header.png',
             fit: BoxFit.contain,
             height: 80,
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
           ),
         );
 }

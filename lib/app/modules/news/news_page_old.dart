@@ -98,21 +98,27 @@ class NewsPage extends GetView<NewsController> {
                           builder: ((context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return Container(
-                                height: Get.size.height * 0.35,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Get.theme.colorScheme.primary,
+                              return Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 600,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Get.theme.colorScheme.primary),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  // borderRadius: BorderRadius.circular(10),
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer,
-                                ),
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    color: Get.theme.colorScheme.primary,
-                                  ),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Center(
+                                          child: CircularProgressIndicator(
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                          ),
+                                        )
+                                      ]),
                                 ),
                               );
                             }
@@ -121,12 +127,9 @@ class NewsPage extends GetView<NewsController> {
                                 ? Stack(
                                     alignment: Alignment.center,
                                     children: [
-                                      GestureDetector(
-                                        onTap: () {},
-                                        child: CustomViewNews(
-                                          videoUri: Uri.parse(controller
-                                              .foundNews.value[index].urlImage),
-                                        ),
+                                      CustomViewNews(
+                                        videoUri: Uri.parse(controller
+                                            .foundNews.value[index].urlImage),
                                       ),
                                       Positioned(
                                         right: 10,
@@ -323,8 +326,8 @@ class NewsPage extends GetView<NewsController> {
                                               width: 60,
                                               height: 60,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
+                                                // borderRadius:
+                                                //     BorderRadius.circular(10),
                                                 color: Get
                                                     .theme.colorScheme.shadow,
                                               ),
@@ -544,28 +547,14 @@ class NewsPage extends GetView<NewsController> {
                       Icon(
                         Icons.add,
                         color: Get.theme.colorScheme.background,
-                        size: 30,
+                        size: 25,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            AutoSizeText(
-                              minFontSize: 10,
-                              'ADICIONAR',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Get.theme.colorScheme.background),
-                            ),
-                            AutoSizeText(
-                              minFontSize: 10,
-                              'NOTÍCIA',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Get.theme.colorScheme.background),
-                            ),
-                          ],
-                        ),
+                      AutoSizeText(
+                        minFontSize: 10,
+                        'ADICIONAR NOTÍCIA',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Get.theme.colorScheme.background),
                       ),
                     ],
                   ),
@@ -576,6 +565,54 @@ class NewsPage extends GetView<NewsController> {
                 ),
               )
             : const CustomFloatingButton(),
+      ),
+    );
+  }
+}
+
+class BackgroundWaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+
+    final p0 = size.height * 0.75;
+    path.lineTo(0.0, p0);
+
+    final controlPoint = Offset(size.width * 0.4, size.height);
+    final endPoint = Offset(size.width, size.height / 2);
+    path.quadraticBezierTo(
+        controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
+
+    path.lineTo(size.width, 0.0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(BackgroundWaveClipper oldClipper) => oldClipper != this;
+}
+
+class SearchPage extends StatelessWidget {
+  const SearchPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverList(
+              delegate:
+                  SliverChildBuilderDelegate((BuildContext context, int index) {
+            return Container(
+                margin: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(16),
+                child: const Text(
+                  'Cruelty-free brand',
+                  style: TextStyle(fontSize: 20),
+                ));
+          }, childCount: 20))
+        ],
       ),
     );
   }

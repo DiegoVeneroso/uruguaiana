@@ -35,13 +35,13 @@ class _CustomPlayerVideoState extends State<CustomViewNews> {
   Widget build(BuildContext context) {
     return isLoading
         ? Container(
-            // height: 600,
-            // width: double.infinity,
+            height: Get.size.height * 0.35,
+            width: double.infinity,
             decoration: BoxDecoration(
               border: Border.all(
                 color: Get.theme.colorScheme.primary,
               ),
-              borderRadius: BorderRadius.circular(10),
+              // borderRadius: BorderRadius.circular(10),
               color: Get.theme.colorScheme.onPrimaryContainer,
             ),
             child: Center(
@@ -50,38 +50,36 @@ class _CustomPlayerVideoState extends State<CustomViewNews> {
               ),
             ),
           )
-        : Container(
-            height: 600,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Get.theme.colorScheme.primary,
+        : SizedBox(
+            height: Get.height * 0.35,
+            width: Get.width,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.symmetric(
+                  horizontal: BorderSide(
+                    color: Get.theme.colorScheme.primary,
+                    width: 1,
+                  ),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Get.theme.colorScheme.primary,
+                      blurRadius: 3.0,
+                      offset: const Offset(0.0, 0.5))
+                ],
               ),
-              borderRadius: BorderRadius.circular(10),
-              color: Get.theme.colorScheme.onPrimaryContainer,
-            ),
-            child: CustomVideoPlayer(
-              customVideoPlayerController: _customVideoPlayerController,
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: SizedBox(
+                  width: 5 / 4,
+                  // height: 0,
+                  child: CustomVideoPlayer(
+                    customVideoPlayerController: _customVideoPlayerController,
+                  ),
+                ),
+              ),
             ),
           );
-
-    // Column(
-    //   mainAxisSize: MainAxisSize.max,
-    //   mainAxisAlignment: MainAxisAlignment.center,
-    //   crossAxisAlignment: CrossAxisAlignment.center,
-    //   children: [
-    //     ClipRRect(
-    //       clipBehavior: Clip.hardEdge,
-    //       borderRadius: BorderRadius.circular(10),
-    //       child: SizedBox(
-    //         width: double.infinity,
-    //         child: CustomVideoPlayer(
-    //           customVideoPlayerController: _customVideoPlayerController,
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 
   void initializeVideoPlayer() {
@@ -125,7 +123,7 @@ class _CustomPlayerVideoState extends State<CustomViewNews> {
         //   ),
         // ),
         controlBarAvailable: false,
-        // customAspectRatio: 7 / 5,
+        customAspectRatio: 16 / 9,
         // controlBarDecoration: const BoxDecoration(
         //   borderRadius: BorderRadius.all(
         //     Radius.circular(10),

@@ -1,4 +1,3 @@
-import 'package:appinio_social_share/appinio_social_share.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +6,7 @@ import 'package:uruguaiana/app/core/ui/widgets/custom_floating_button.dart';
 import 'package:uruguaiana/app/modules/about/about_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
+import '../../core/ui/widgets/custom_player_video.dart';
 import '../../repository/auth_repository.dart';
 import '../../routes/app_pages.dart';
 import '../auth/login/login_controller.dart';
@@ -19,20 +19,18 @@ class AboutPage extends GetView<AboutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.theme.colorScheme.background,
-      drawer: CustomDrawer(),
-      appBar: CustomAppbar(
-        actionsList: [
-          IconButton(
-            onPressed: ThemeService().switchTheme,
-            icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.onBackground,
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
+        backgroundColor: context.theme.colorScheme.background,
+        drawer: CustomDrawer(),
+        appBar: CustomAppbar(
+          actionsList: [
+            IconButton(
+              onPressed: ThemeService().switchTheme,
+              icon: const Icon(Icons.contrast),
+              color: Get.theme.colorScheme.onBackground,
+            ),
+          ],
+        ),
+        body: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(12.0),
@@ -53,26 +51,74 @@ class AboutPage extends GetView<AboutController> {
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Container(
-                              width: double.infinity,
-                              height: 250,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                    controller.foundAbout.value[index].urlImage
-                                        .toString(),
+                          FutureBuilder(
+                            future: controller.getVideoTypeFileUrl(controller
+                                .foundAbout.value.first.urlImage
+                                .toString()),
+                            builder: ((context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return Container(
+                                  height: Get.size.height * 0.35,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Get.theme.colorScheme.primary,
+                                    ),
+                                    // borderRadius: BorderRadius.circular(10),
+                                    color: Get
+                                        .theme.colorScheme.onPrimaryContainer,
                                   ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              child: const Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [],
-                              ),
-                            ),
+                                  child: Center(
+                                    child: CircularProgressIndicator(
+                                      color: Get.theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                );
+                              }
+                              if (snapshot.data!['type'] == 'video') {
+                                return Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    CustomPlayerVideo(
+                                      videoUri: Uri.parse(controller
+                                          .foundAbout.value.first.urlImage
+                                          .toString()),
+                                    ),
+                                  ],
+                                );
+                              } else {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10.0),
+                                  child: Container(
+                                    height: Get.size.height * 0.35,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      border: Border.symmetric(
+                                        horizontal: BorderSide(
+                                          color: Get.theme.colorScheme.primary,
+                                          width: 1,
+                                        ),
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                            blurRadius: 3.0,
+                                            offset: const Offset(0.0, 0.5))
+                                      ],
+                                      image: DecorationImage(
+                                        image: NetworkImage(controller
+                                            .foundAbout.value.first.urlImage
+                                            .toString()),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                            }),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -124,24 +170,10 @@ class AboutPage extends GetView<AboutController> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: Obx(
-        () => controller.isAdmin()
-            ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FloatingActionButton(
-                  backgroundColor: Get.theme.colorScheme.primary,
-                  onPressed: () {
-                    Get.toNamed(Routes.about_add);
-                  },
-                  child: Icon(
-                    Icons.add,
-                    color: Get.theme.colorScheme.background,
-                  ),
-                ),
-              )
-            : const CustomFloatingButton(),
-      ),
-    );
+        floatingActionButton: Obx(
+          () => controller.isAdmin()
+              ? const SizedBox()
+              : const CustomFloatingButton(),
+        ));
   }
 }

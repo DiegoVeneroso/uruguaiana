@@ -177,7 +177,7 @@ class NewsController extends GetxController
   }) {
     _dialog(DialogModel(
       id: idNews,
-      title: 'Atenção',
+      title: 'ATENÇÃO',
       message: 'Deseja realmente excluir?\n$news',
     ));
   }
@@ -223,7 +223,7 @@ class NewsController extends GetxController
       _loading.toggle();
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: 'Erro carrgar dados!',
           type: MessageType.error,
         ),
@@ -278,7 +278,7 @@ class NewsController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -312,7 +312,7 @@ class NewsController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -344,7 +344,7 @@ class NewsController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),

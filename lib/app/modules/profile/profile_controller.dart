@@ -79,7 +79,7 @@ class ProfileController extends GetxController
   }) {
     _dialog(DialogModel(
       id: idItem,
-      title: 'Atenção',
+      title: 'ATENÇÃO',
       message: 'Deseja realmente excluir o item?\n$item',
     ));
   }
@@ -176,7 +176,7 @@ class ProfileController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -197,7 +197,7 @@ class ProfileController extends GetxController
       _loading.toggle();
       await Future.delayed(const Duration(seconds: 1));
       Get.snackbar(
-        'Atenção!',
+        'ATENÇÃO!',
         'Item excluído com sucesso!',
         backgroundColor: Colors.red[800]!,
         colorText: Colors.white,
@@ -208,7 +208,7 @@ class ProfileController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -240,7 +240,7 @@ class ProfileController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),

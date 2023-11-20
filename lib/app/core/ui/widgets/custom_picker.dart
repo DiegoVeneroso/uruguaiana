@@ -50,7 +50,7 @@ class CustomPickerState extends State<CustomPicker> {
             visible: imageFile == null && imageValidate?.value == '',
             child: Container(
               width: double.infinity,
-              height: 600,
+              height: Get.size.height * 0.35,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Get.theme.colorScheme.primary,
@@ -81,123 +81,291 @@ class CustomPickerState extends State<CustomPicker> {
                       onTap: () {
                         Get.defaultDialog(
                             titlePadding: const EdgeInsets.only(top: 30),
-                            contentPadding:
-                                const EdgeInsets.only(top: 30, bottom: 20),
-                            title: 'Selecione a origem',
+                            title: 'SELECIONE A MÍDIA',
                             backgroundColor:
                                 Get.theme.colorScheme.onPrimaryContainer,
                             titleStyle:
                                 TextStyle(color: Get.theme.colorScheme.primary),
                             content: Column(
                               children: [
-                                CustomButton(
-                                  label: 'Imagem da Galeria',
-                                  height: 40,
-                                  width: 200,
-                                  onPressed: () async {
-                                    Get.back();
-                                    Map<Permission, PermissionStatus> statuses =
-                                        await [
-                                      Permission.storage,
-                                      Permission.camera,
-                                    ].request();
-                                    if (statuses[Permission.storage]!
-                                            .isGranted &&
-                                        statuses[Permission.camera]!
-                                            .isGranted) {
-                                      await pickImageFileFromGalery();
-                                      setState(() {
-                                        imageFile;
-                                      });
-                                    } else {
-                                      print('Permissão negada!');
-                                    }
-                                  },
-                                ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                CustomButton(
-                                  label: 'Imagem da Câmera',
-                                  height: 40,
-                                  width: 200,
-                                  onPressed: () async {
-                                    Get.back();
-                                    Map<Permission, PermissionStatus> statuses =
-                                        await [
-                                      Permission.storage,
-                                      Permission.camera,
-                                    ].request();
-                                    if (statuses[Permission.storage]!
-                                            .isGranted &&
-                                        statuses[Permission.camera]!
-                                            .isGranted) {
-                                      await captureImageFileFromCamera();
-                                      setState(() {
-                                        imageFile;
-                                      });
-                                    } else {
-                                      print('Permissão negada!');
-                                    }
-                                  },
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                CustomButton(
-                                  label: 'Vídeo da Galeria',
-                                  height: 40,
-                                  width: 200,
-                                  onPressed: () async {
-                                    Get.back();
-                                    Map<Permission, PermissionStatus> statuses =
-                                        await [
-                                      Permission.storage,
-                                      Permission.camera,
-                                    ].request();
-                                    if (statuses[Permission.storage]!
-                                            .isGranted &&
-                                        statuses[Permission.camera]!
-                                            .isGranted) {
-                                      await pickVideoFileFromGalery();
-                                      setState(() {
-                                        imageFile;
-                                      });
-                                    } else {
-                                      print('Permissão negada!');
-                                    }
-                                  },
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                CustomButton(
-                                  label: 'Vídeo da Câmera',
-                                  height: 40,
-                                  width: 200,
-                                  onPressed: () async {
-                                    Get.back();
-                                    Map<Permission, PermissionStatus> statuses =
-                                        await [
-                                      Permission.storage,
-                                      Permission.camera,
-                                    ].request();
-                                    if (statuses[Permission.storage]!
-                                            .isGranted &&
-                                        statuses[Permission.camera]!
-                                            .isGranted) {
-                                      await capturaVideoFileFromCamera();
-                                      setState(() {
-                                        imageFile;
-                                      });
-                                    } else {
-                                      print('Permissão negada!');
-                                    }
-                                  },
-                                ),
+                                Stack(alignment: Alignment.center, children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20.0),
+                                    child: Container(
+                                      width: Get.width * 0.5,
+                                      height: Get.height * 0.1,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Get.theme.colorScheme
+                                              .primaryContainer,
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 20,
+                                    top: 5,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          imageFile = null;
+                                          imageValidate?.value = '';
+                                        });
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Get.theme.colorScheme
+                                                  .onPrimaryContainer),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Get.theme.colorScheme
+                                              .onPrimaryContainer,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: AutoSizeText(
+                                            minFontSize: 10,
+                                            'FOTO',
+                                            style: TextStyle(
+                                                color: Get
+                                                    .theme.colorScheme.primary,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 20,
+                                    top: 50,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          imageFile = null;
+                                          imageValidate?.value = '';
+                                        });
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Get.theme.colorScheme
+                                                  .onPrimaryContainer),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Get.theme.colorScheme
+                                              .onPrimaryContainer,
+                                        ),
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              CustomButton(
+                                                label: 'Galeria',
+                                                height: 40,
+                                                // width: 100,
+                                                onPressed: () async {
+                                                  Get.back();
+                                                  Map<Permission,
+                                                          PermissionStatus>
+                                                      statuses = await [
+                                                    Permission.storage,
+                                                    Permission.camera,
+                                                  ].request();
+                                                  if (statuses[Permission
+                                                              .storage]!
+                                                          .isGranted &&
+                                                      statuses[Permission
+                                                              .camera]!
+                                                          .isGranted) {
+                                                    await pickImageFileFromGalery();
+                                                    setState(() {
+                                                      imageFile;
+                                                    });
+                                                  } else {
+                                                    print('Permissão negada!');
+                                                  }
+                                                },
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              CustomButton(
+                                                label: 'Câmera',
+                                                height: 40,
+                                                onPressed: () async {
+                                                  Get.back();
+                                                  Map<Permission,
+                                                          PermissionStatus>
+                                                      statuses = await [
+                                                    Permission.storage,
+                                                    Permission.camera,
+                                                  ].request();
+                                                  if (statuses[Permission
+                                                              .storage]!
+                                                          .isGranted &&
+                                                      statuses[Permission
+                                                              .camera]!
+                                                          .isGranted) {
+                                                    await captureImageFileFromCamera();
+                                                    setState(() {
+                                                      imageFile;
+                                                    });
+                                                  } else {
+                                                    print('Permissão negada!');
+                                                  }
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]),
+                                Stack(alignment: Alignment.center, children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20.0),
+                                    child: Container(
+                                      width: Get.width * 0.5,
+                                      height: Get.height * 0.1,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Get.theme.colorScheme
+                                              .primaryContainer,
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 20,
+                                    top: 5,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          imageFile = null;
+                                          imageValidate?.value = '';
+                                        });
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Get.theme.colorScheme
+                                                  .onPrimaryContainer),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Get.theme.colorScheme
+                                              .onPrimaryContainer,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: AutoSizeText(
+                                            minFontSize: 10,
+                                            'VÍDEO',
+                                            style: TextStyle(
+                                                color: Get
+                                                    .theme.colorScheme.primary,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 20,
+                                    top: 50,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          imageFile = null;
+                                          imageValidate?.value = '';
+                                        });
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: Get.theme.colorScheme
+                                                  .onPrimaryContainer),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Get.theme.colorScheme
+                                              .onPrimaryContainer,
+                                        ),
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              CustomButton(
+                                                label: 'Galeria',
+                                                height: 40,
+                                                // width: 200,
+                                                onPressed: () async {
+                                                  Get.back();
+                                                  Map<Permission,
+                                                          PermissionStatus>
+                                                      statuses = await [
+                                                    Permission.storage,
+                                                    Permission.camera,
+                                                  ].request();
+                                                  if (statuses[Permission
+                                                              .storage]!
+                                                          .isGranted &&
+                                                      statuses[Permission
+                                                              .camera]!
+                                                          .isGranted) {
+                                                    await pickVideoFileFromGalery();
+                                                    setState(() {
+                                                      imageFile;
+                                                    });
+                                                  } else {
+                                                    print('Permissão negada!');
+                                                  }
+                                                },
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              CustomButton(
+                                                label: 'Câmera',
+                                                height: 40,
+                                                onPressed: () async {
+                                                  Get.back();
+                                                  Map<Permission,
+                                                          PermissionStatus>
+                                                      statuses = await [
+                                                    Permission.storage,
+                                                    Permission.camera,
+                                                  ].request();
+                                                  if (statuses[Permission
+                                                              .storage]!
+                                                          .isGranted &&
+                                                      statuses[Permission
+                                                              .camera]!
+                                                          .isGranted) {
+                                                    await capturaVideoFileFromCamera();
+                                                    setState(() {
+                                                      imageFile;
+                                                    });
+                                                  } else {
+                                                    print('Permissão negada!');
+                                                  }
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]),
                               ],
                             ));
                       },
@@ -230,7 +398,7 @@ class CustomPickerState extends State<CustomPicker> {
             visible: imageFile == null && imageValidate!.value == 'false',
             child: Container(
               width: double.infinity,
-              // height: 250,
+              height: Get.size.height * 0.35,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Get.theme.colorScheme.error,
@@ -261,7 +429,7 @@ class CustomPickerState extends State<CustomPicker> {
                         titlePadding: const EdgeInsets.only(top: 30),
                         contentPadding:
                             const EdgeInsets.only(top: 30, bottom: 20),
-                        title: 'Selecione a origem',
+                        title: 'Selecione a midia',
                         backgroundColor:
                             Get.theme.colorScheme.onPrimaryContainer,
                         titleStyle:
@@ -446,7 +614,7 @@ class CustomPickerState extends State<CustomPicker> {
             children: [
               Container(
                 width: double.infinity,
-                height: 600,
+                height: Get.size.height * 0.35,
                 decoration: BoxDecoration(
                   border: Border.all(color: Get.theme.colorScheme.primary),
                   borderRadius: BorderRadius.circular(20),
@@ -549,13 +717,45 @@ class CustomPickerState extends State<CustomPicker> {
   }
 
   compressVideo() async {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => const Dialog(
-        child: CustomProgressDialog(),
+    Get.dialog(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 60),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Get.theme.colorScheme.onPrimaryContainer,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Material(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 15),
+                      CustomProgressDialog(),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
+
+    // showDialog(
+    //   context: context,
+    //   barrierDismissible: false,
+
+    //   builder: (context) => const Dialog(
+    //     child: CustomProgressDialog(),
+    //   ),
+    // );
 
     final info = await VideoCompressHelper.compressVideo(File(imageFile!.path));
 
@@ -574,11 +774,19 @@ class CustomPickerState extends State<CustomPicker> {
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
         aspectRatioPresets: Platform.isAndroid
-            ? [CropAspectRatioPreset.original]
-            : [CropAspectRatioPreset.original],
+            ? [
+                // CropAspectRatioPreset.original,
+                // CropAspectRatioPreset.ratio16x9,
+                // CropAspectRatioPreset.ratio7x5,
+                // CropAspectRatioPreset.ratio4x3,
+                // CropAspectRatioPreset.ratio5x3,
+                // CropAspectRatioPreset.ratio3x2,
+                CropAspectRatioPreset.ratio5x4,
+              ]
+            : [CropAspectRatioPreset.ratio5x4],
         uiSettings: [
           AndroidUiSettings(
-            toolbarTitle: "Ajustar imagem",
+            toolbarTitle: "RECORTAR IMAGEM",
             toolbarColor: Get.theme.colorScheme.primary,
             toolbarWidgetColor: Get.theme.colorScheme.onPrimaryContainer,
             initAspectRatio: CropAspectRatioPreset.original,
@@ -588,7 +796,7 @@ class CustomPickerState extends State<CustomPicker> {
             showCropGrid: false,
           ),
           IOSUiSettings(
-            title: "Ajustar imagem",
+            title: "RECORTAR IMAGEM",
           )
         ]);
     if (croppedFile != null) {

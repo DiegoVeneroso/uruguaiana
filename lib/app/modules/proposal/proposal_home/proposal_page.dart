@@ -147,7 +147,7 @@ class ProposalPage extends GetView<ProposalController> {
                                               contentPadding:
                                                   const EdgeInsets.only(
                                                       top: 30, bottom: 20),
-                                              title: 'Atenção!',
+                                              title: 'ATENÇÃO!',
                                               middleText:
                                                   'Somente pilares sem ações cadastradas podem ser excluídos!',
                                               backgroundColor: Get

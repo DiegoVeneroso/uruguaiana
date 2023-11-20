@@ -73,7 +73,7 @@ class _AboutAddPageState extends AppState<AboutEditPage, AboutController> {
                 Center(
                   child: AutoSizeText(
                     minFontSize: 10,
-                    'ALTERAR NOTÍCIA',
+                    'ALTERAR "QUEM SOMOS"',
                     style: Get.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Get.theme.colorScheme.surface,

@@ -154,7 +154,7 @@ class CollaborateController extends GetxController
   }) {
     _dialog(DialogModel(
       id: idcollaborates,
-      title: 'Atenção',
+      title: 'ATENÇÃO',
       message: 'Deseja realmente excluir?\n$collaborates',
     ));
   }
@@ -196,7 +196,7 @@ class CollaborateController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -230,7 +230,7 @@ class CollaborateController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -250,7 +250,7 @@ class CollaborateController extends GetxController
       _loading.toggle();
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: 'Erro carregar dados!',
           type: MessageType.error,
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
 import 'package:video_compress/video_compress.dart';
 
 class CustomProgressDialog extends StatefulWidget {
@@ -31,34 +32,56 @@ class _CustomProgressDialogState extends State<CustomProgressDialog> {
   @override
   Widget build(BuildContext context) {
     final value = progress == null ? progress : progress! / 100;
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            'Compactando o video...',
-            style: TextStyle(fontSize: 20),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'COMPACTANDO VÍDEO',
+          style: TextStyle(
+            fontSize: 20,
+            color: Get.theme.colorScheme.primary,
+            fontWeight: FontWeight.bold,
           ),
-          const SizedBox(
-            height: 24,
-          ),
-          LinearProgressIndicator(
-            value: value,
-            minHeight: 12,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          ElevatedButton(
-            onPressed: () => VideoCompress.cancelCompression(),
-            child: Text(
-              'Cancelar',
-              style: TextStyle(color: Get.theme.colorScheme.onPrimaryContainer),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          'AGUARDE...',
+          style: TextStyle(
+              fontSize: 18,
+              color: Get.theme.colorScheme.primary,
+              fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        LinearProgressIndicator(
+          value: value,
+          minHeight: 12,
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomButton(
+              onPressed: () => Get.back(),
+              label: 'VOLTAR',
+              height: 40,
             ),
-          )
-        ],
-      ),
+            const SizedBox(
+              width: 20,
+            ),
+            CustomButton(
+              onPressed: () => VideoCompress.cancelCompression(),
+              label: 'CANCELAR',
+              height: 40,
+            ),
+          ],
+        )
+      ],
     );
   }
 }

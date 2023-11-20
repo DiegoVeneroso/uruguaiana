@@ -101,7 +101,7 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
       }
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: msgErrorAppwriteException,
           type: MessageType.error,
         ),

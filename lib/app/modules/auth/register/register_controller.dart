@@ -95,7 +95,7 @@ class RegisterController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: msgErrorAppwriteException,
           type: MessageType.error,
         ),

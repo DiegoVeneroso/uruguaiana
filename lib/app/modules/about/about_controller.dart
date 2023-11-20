@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
+import 'dart:ffi';
 import 'dart:io';
 import 'package:appwrite/appwrite.dart' hide Permission;
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -43,6 +44,7 @@ class AboutController extends GetxController
 
   GetStorage storage = GetStorage();
   RxBool isAdmin = false.obs;
+  RxBool aboutIsEmpty = true.obs;
 
   RxBool imageValidate = false.obs;
 
@@ -59,6 +61,7 @@ class AboutController extends GetxController
     dialogListener(_dialog);
     foundAbout.value = aboutList;
     showNotificationPush();
+    getAboutIsEmpty();
 
     super.onInit();
   }
@@ -88,6 +91,26 @@ class AboutController extends GetxController
       }
     } catch (e) {
       log(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<void> getAboutIsEmpty() async {
+    try {
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_ABOUT_ID,
+      );
+
+      int res = result.documents.length;
+
+      if (res == 0) {
+        aboutIsEmpty.value = true;
+      } else {
+        aboutIsEmpty.value = false;
+      }
+    } on AppwriteException catch (e) {
+      print(e);
       rethrow;
     }
   }
@@ -180,7 +203,7 @@ class AboutController extends GetxController
   }) {
     _dialog(DialogModel(
       id: idAbout,
-      title: 'Atenção',
+      title: 'ATENÇÃO',
       message: 'Deseja realmente excluir?\n$about',
     ));
   }
@@ -215,7 +238,7 @@ class AboutController extends GetxController
       _loading.toggle();
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: 'Erro carregar dados!',
           type: MessageType.error,
         ),
@@ -257,7 +280,7 @@ class AboutController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.about);
+      Get.toNamed(Routes.news);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -270,7 +293,7 @@ class AboutController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -304,7 +327,7 @@ class AboutController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -336,7 +359,7 @@ class AboutController extends GetxController
 
       _message(
         MessageModel(
-          title: 'Atenção!',
+          title: 'ATENÇÃO!',
           message: e.toString(),
           type: MessageType.error,
         ),
@@ -370,5 +393,17 @@ class AboutController extends GetxController
     fileWrite.writeAsBytesSync(response.bodyBytes);
     final file = XFile("$tempPath/$fileName");
     return file.path;
+  }
+
+  Future<Map<String, dynamic>> getVideoTypeFileUrl(String urlFile) async {
+    var response = await http.head(Uri.parse(urlFile));
+
+    if (response.statusCode == 200 &&
+        response.headers['content-type'].toString().split('/').first ==
+            'video') {
+      return {'type': 'video'};
+    } else {
+      return {'type': 'image'};
+    }
   }
 }
