@@ -60,7 +60,7 @@ class AboutPage extends GetView<AboutController> {
                             ),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.symmetric(vertical: 16.0),
+                                  const EdgeInsets.symmetric(vertical: 32.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,6 +97,25 @@ class AboutPage extends GetView<AboutController> {
                       } else {
                         return Column(
                           children: [
+                            Visibility(
+                              visible: controller.isAdmin(),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 32.0),
+                                    child: CustomButton(
+                                      label: 'ALTERAR',
+                                      onPressed: () {
+                                        Get.toNamed(Routes.about_edit);
+                                      },
+                                      height: 30,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                             FutureBuilder(
                               future: controller.getVideoTypeFileUrl(controller
                                   .foundAbout.value.first.urlImage
@@ -122,6 +141,7 @@ class AboutPage extends GetView<AboutController> {
                                     ),
                                   );
                                 }
+
                                 if (snapshot.data!['type'] == 'video') {
                                   return Stack(
                                     alignment: Alignment.center,
