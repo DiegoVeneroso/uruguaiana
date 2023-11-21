@@ -197,17 +197,6 @@ class AboutController extends GetxController
     }
   }
 
-  getDialog({
-    required String idAbout,
-    required String about,
-  }) {
-    _dialog(DialogModel(
-      id: idAbout,
-      title: 'ATENÇÃO',
-      message: 'Deseja realmente excluir?\n$about',
-    ));
-  }
-
   Future<void> filterAbout(String aboutName) async {
     List<AboutModel> results = [];
     if (aboutName.isEmpty) {
@@ -317,7 +306,7 @@ class AboutController extends GetxController
       //manter este snackbar para mostra a resposta, o _message() não funciona!
       Get.snackbar(
         'Parabéns!',
-        'Notícia excluída com sucesso!',
+        '"Quem somos" excluído com sucesso!',
         backgroundColor: Get.theme.colorScheme.primary,
         colorText: Get.theme.colorScheme.onPrimaryContainer,
         margin: const EdgeInsets.all(20),
@@ -350,7 +339,7 @@ class AboutController extends GetxController
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Notícia atualizada com sucesso!',
+          message: 'Quem somos atualizado com sucesso!',
           type: MessageType.success,
         ),
       );
@@ -405,5 +394,13 @@ class AboutController extends GetxController
     } else {
       return {'type': 'image'};
     }
+  }
+
+  void getDialogDeleteAbout({required String idAbout}) {
+    _dialog(DialogModel(
+      id: idAbout,
+      title: 'ATENÇÃO',
+      message: 'Deseja realmente excluir?',
+    ));
   }
 }

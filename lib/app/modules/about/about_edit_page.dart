@@ -1,9 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:uruguaiana/app/modules/about/about_controller.dart';
-import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
@@ -12,6 +9,8 @@ import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_picker.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+
+import 'about_controller.dart';
 
 class AboutEditPage extends StatefulWidget {
   const AboutEditPage({Key? key}) : super(key: key);
@@ -117,7 +116,7 @@ class _AboutAddPageState extends AppState<AboutEditPage, AboutController> {
                           _formKey.currentState?.validate() ?? false;
                       if (formValid) {
                         controller.aboutUpdate({
-                          'idNews': Get.parameters['idNews'],
+                          'idAbout': Get.parameters['idAbout'],
                           'title': _titleEC.text,
                           'url_image': _pickedKey.currentState?.imageFile?.path,
                           'description': _descriptionEC.text,

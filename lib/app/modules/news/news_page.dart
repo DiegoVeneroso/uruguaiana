@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:appinio_social_share/appinio_social_share.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_floating_button.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
@@ -11,7 +10,6 @@ import 'package:uruguaiana/app/core/ui/widgets/custom_view_news.dart';
 import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
-import '../../core/ui/widgets/custom_player_video.dart';
 import '../../repository/auth_repository.dart';
 import '../../routes/app_pages.dart';
 import '../auth/login/login_controller.dart';
@@ -77,166 +75,61 @@ class NewsPage extends GetView<NewsController> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.toNamed('/news_detail', parameters: {
-                            'idNews':
-                                controller.newsList[index].idNews.toString(),
-                            'date': controller.newsList[index].date.toString(),
-                            'title':
-                                controller.newsList[index].title.toString(),
-                            'url_image':
-                                controller.newsList[index].urlImage.toString(),
-                            'description': controller
-                                .newsList[index].description
-                                .toString(),
-                          });
-                        },
-                        child: FutureBuilder(
-                          future: controller.getVideoTypeFileUrl(
-                              controller.foundNews.value[index].urlImage),
-                          builder: ((context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return Container(
-                                height: Get.size.height * 0.35,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Get.theme.colorScheme.primary,
-                                  ),
-                                  // borderRadius: BorderRadius.circular(10),
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer,
+                      child: FutureBuilder(
+                        future: controller.getVideoTypeFileUrl(
+                            controller.foundNews.value[index].urlImage),
+                        builder: ((context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Container(
+                              height: Get.size.height * 0.35,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Get.theme.colorScheme.primary,
                                 ),
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    color: Get.theme.colorScheme.primary,
-                                  ),
+                                // borderRadius: BorderRadius.circular(10),
+                                color: Get.theme.colorScheme.onPrimaryContainer,
+                              ),
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: Get.theme.colorScheme.primary,
                                 ),
-                              );
-                            }
+                              ),
+                            );
+                          }
 
-                            return snapshot.data!['type'] == 'video'
-                                ? Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {},
-                                        child: CustomViewNews(
-                                          videoUri: Uri.parse(controller
-                                              .foundNews.value[index].urlImage),
-                                        ),
+                          return snapshot.data!['type'] == 'video'
+                              ? Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        print('1111');
+                                      },
+                                      child: CustomViewNews(
+                                        videoUri: Uri.parse(controller
+                                            .foundNews.value[index].urlImage),
                                       ),
-                                      Positioned(
-                                        right: 10,
-                                        top: 10,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Visibility(
-                                              visible: controller.isAdmin(),
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  controller.getDialog(
-                                                    idNews: controller
-                                                        .newsList[index].idNews
-                                                        .toString(),
-                                                    news: controller.foundNews
-                                                        .value[index].title,
-                                                  );
-                                                },
-                                                child: Container(
-                                                  width: 40,
-                                                  height: 40,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: Get.theme.colorScheme
-                                                        .shadow,
-                                                  ),
-                                                  child: Icon(
-                                                    Icons.delete,
-                                                    color: Get.theme.colorScheme
-                                                        .background,
-                                                    size: 22,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Visibility(
-                                              visible: controller.isAdmin(),
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  Get.toNamed(Routes.news_edit,
-                                                      parameters: {
-                                                        'idNews': controller
-                                                            .newsList[index]
-                                                            .idNews
-                                                            .toString(),
-                                                        'date': controller
-                                                            .newsList[index]
-                                                            .date
-                                                            .toString(),
-                                                        'title': controller
-                                                            .newsList[index]
-                                                            .title
-                                                            .toString(),
-                                                        'url_image': controller
-                                                            .newsList[index]
-                                                            .urlImage
-                                                            .toString(),
-                                                        'description':
-                                                            controller
-                                                                .newsList[index]
-                                                                .description
-                                                                .toString(),
-                                                      });
-                                                },
-                                                child: Container(
-                                                  width: 40,
-                                                  height: 40,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: Get.theme.colorScheme
-                                                        .shadow,
-                                                  ),
-                                                  child: Icon(
-                                                    Icons.edit,
-                                                    color: Get.theme.colorScheme
-                                                        .background,
-                                                    size: 22,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            GestureDetector(
-                                              onTap: () async {
-                                                // var teste = controller.imageFile =
-                                                //     controller.newsList[index].urlImage ;
-
-                                                // print(controller.imageFile!.path
-                                                //     .toString());
-                                                // AppinioSocialShare().shareToWhatsapp(
-                                                //     'message',
-                                                //     filePath: controller.imageFile?.path
-                                                //         .toString());
-                                                // AppinioSocialShare().shareToFacebook(
-                                                //     'teste',
-                                                //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
-
-                                                // AppinioSocialShare().shareToInstagramFeed(
-                                                //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
+                                    ),
+                                    Positioned(
+                                      right: 10,
+                                      top: 10,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Visibility(
+                                            visible: controller.isAdmin(),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                controller.getDialog(
+                                                  idNews: controller
+                                                      .newsList[index].idNews
+                                                      .toString(),
+                                                  news: controller.foundNews
+                                                      .value[index].title,
+                                                );
                                               },
                                               child: Container(
                                                 width: 40,
@@ -248,80 +141,87 @@ class NewsPage extends GetView<NewsController> {
                                                       .theme.colorScheme.shadow,
                                                 ),
                                                 child: Icon(
-                                                  Icons.share,
+                                                  Icons.delete,
                                                   color: Get.theme.colorScheme
                                                       .background,
                                                   size: 22,
                                                 ),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Positioned(
-                                        left: 10,
-                                        bottom: 10,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 8.0,
-                                                      horizontal: 16),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: Get
-                                                    .theme.colorScheme.shadow,
-                                              ),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  text: controller.foundNews
-                                                      .value[index].title,
-                                                  style: TextStyle(
-                                                    color: Get.theme.colorScheme
-                                                        .background,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Visibility(
+                                            visible: controller.isAdmin(),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Get.toNamed(Routes.news_edit,
+                                                    parameters: {
+                                                      'idNews': controller
+                                                          .newsList[index]
+                                                          .idNews
+                                                          .toString(),
+                                                      'date': controller
+                                                          .newsList[index].date
+                                                          .toString(),
+                                                      'title': controller
+                                                          .newsList[index].title
+                                                          .toString(),
+                                                      'url_image': controller
+                                                          .newsList[index]
+                                                          .urlImage
+                                                          .toString(),
+                                                      'description': controller
+                                                          .newsList[index]
+                                                          .description
+                                                          .toString(),
+                                                    });
+                                              },
+                                              child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: Get
+                                                      .theme.colorScheme.shadow,
                                                 ),
-                                                textAlign: TextAlign.justify,
+                                                child: Icon(
+                                                  Icons.edit,
+                                                  color: Get.theme.colorScheme
+                                                      .background,
+                                                  size: 22,
+                                                ),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Stack(
-                                        alignment: Alignment.center,
-                                        children: [
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
                                           GestureDetector(
-                                            onTap: () {
-                                              Get.toNamed('/news_detail',
-                                                  parameters: {
-                                                    'idNews': controller
-                                                        .newsList[index].idNews
-                                                        .toString(),
-                                                    'date': controller
-                                                        .newsList[index].date
-                                                        .toString(),
-                                                    'title': controller
-                                                        .newsList[index].title
-                                                        .toString(),
-                                                    'url_image': controller
-                                                        .newsList[index]
-                                                        .urlImage
-                                                        .toString(),
-                                                    'description': controller
-                                                        .newsList[index]
-                                                        .description
-                                                        .toString(),
-                                                  });
+                                            onTap: () async {
+                                              // var teste = controller.imageFile =
+                                              //     controller.newsList[index].urlImage ;
+
+                                              print(controller.imageFile!.path
+                                                  .toString());
+                                              AppinioSocialShare()
+                                                  .shareToWhatsapp('message',
+                                                      filePath: controller
+                                                          .newsList[index]
+                                                          .urlImage);
+                                              // AppinioSocialShare()
+                                              //     .shareToFacebook('teste',
+                                              //         '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
+
+                                              // AppinioSocialShare()
+                                              //     .shareToInstagramFeed(
+                                              //         '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
                                             },
                                             child: Container(
-                                              width: 60,
-                                              height: 60,
+                                              width: 40,
+                                              height: 40,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
@@ -329,143 +229,128 @@ class NewsPage extends GetView<NewsController> {
                                                     .theme.colorScheme.shadow,
                                               ),
                                               child: Icon(
-                                                Icons.play_arrow,
+                                                Icons.abc,
                                                 color: Get.theme.colorScheme
                                                     .background,
-                                                size: 40,
+                                                size: 22,
                                               ),
                                             ),
                                           ),
                                         ],
                                       ),
-                                    ],
-                                  )
-                                : Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.all(8.0),
-                                        width: double.infinity,
-                                        height: Get.height * 0.35,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: NetworkImage(controller
-                                                .foundNews
-                                                .value[index]
-                                                .urlImage),
-                                            fit: BoxFit.cover,
+                                    ),
+                                    Positioned(
+                                      left: 10,
+                                      bottom: 10,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 8.0, horizontal: 16),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color:
+                                                  Get.theme.colorScheme.shadow,
+                                            ),
+                                            child: RichText(
+                                              text: TextSpan(
+                                                text: controller.foundNews
+                                                    .value[index].title,
+                                                style: TextStyle(
+                                                  color: Get.theme.colorScheme
+                                                      .background,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              textAlign: TextAlign.justify,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.toNamed('/news_detail',
+                                                parameters: {
+                                                  'idNews': controller
+                                                      .newsList[index].idNews
+                                                      .toString(),
+                                                  'date': controller
+                                                      .newsList[index].date
+                                                      .toString(),
+                                                  'title': controller
+                                                      .newsList[index].title
+                                                      .toString(),
+                                                  'url_image': controller
+                                                      .newsList[index].urlImage
+                                                      .toString(),
+                                                  'description': controller
+                                                      .newsList[index]
+                                                      .description
+                                                      .toString(),
+                                                });
+                                          },
+                                          child: Container(
+                                            width: 60,
+                                            height: 60,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color:
+                                                  Get.theme.colorScheme.shadow,
+                                            ),
+                                            child: Icon(
+                                              Icons.play_arrow,
+                                              color: Get
+                                                  .theme.colorScheme.background,
+                                              size: 40,
+                                            ),
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              : Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(8.0),
+                                      width: double.infinity,
+                                      height: Get.height * 0.35,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage(controller
+                                              .foundNews.value[index].urlImage),
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                      Positioned(
-                                        right: 10,
-                                        top: 10,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Visibility(
-                                              visible: controller.isAdmin(),
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  controller.getDialog(
-                                                    idNews: controller
-                                                        .newsList[index].idNews
-                                                        .toString(),
-                                                    news: controller.foundNews
-                                                        .value[index].title,
-                                                  );
-                                                },
-                                                child: Container(
-                                                  width: 40,
-                                                  height: 40,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: Get.theme.colorScheme
-                                                        .shadow,
-                                                  ),
-                                                  child: Icon(
-                                                    Icons.delete,
-                                                    color: Get.theme.colorScheme
-                                                        .background,
-                                                    size: 22,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Visibility(
-                                              visible: controller.isAdmin(),
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  Get.toNamed(Routes.news_edit,
-                                                      parameters: {
-                                                        'idNews': controller
-                                                            .newsList[index]
-                                                            .idNews
-                                                            .toString(),
-                                                        'date': controller
-                                                            .newsList[index]
-                                                            .date
-                                                            .toString(),
-                                                        'title': controller
-                                                            .newsList[index]
-                                                            .title
-                                                            .toString(),
-                                                        'url_image': controller
-                                                            .newsList[index]
-                                                            .urlImage
-                                                            .toString(),
-                                                        'description':
-                                                            controller
-                                                                .newsList[index]
-                                                                .description
-                                                                .toString(),
-                                                      });
-                                                },
-                                                child: Container(
-                                                  width: 40,
-                                                  height: 40,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: Get.theme.colorScheme
-                                                        .shadow,
-                                                  ),
-                                                  child: Icon(
-                                                    Icons.edit,
-                                                    color: Get.theme.colorScheme
-                                                        .background,
-                                                    size: 22,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            GestureDetector(
-                                              onTap: () async {
-                                                // var teste = controller.imageFile =
-                                                //     controller.newsList[index].urlImage ;
-
-                                                // print(controller.imageFile!.path
-                                                //     .toString());
-                                                // AppinioSocialShare().shareToWhatsapp(
-                                                //     'message',
-                                                //     filePath: controller.imageFile?.path
-                                                //         .toString());
-                                                // AppinioSocialShare().shareToFacebook(
-                                                //     'teste',
-                                                //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
-
-                                                // AppinioSocialShare().shareToInstagramFeed(
-                                                //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
+                                    ),
+                                    Positioned(
+                                      right: 10,
+                                      top: 10,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Visibility(
+                                            visible: controller.isAdmin(),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                controller.getDialog(
+                                                  idNews: controller
+                                                      .newsList[index].idNews
+                                                      .toString(),
+                                                  news: controller.foundNews
+                                                      .value[index].title,
+                                                );
                                               },
                                               child: Container(
                                                 width: 40,
@@ -477,55 +362,144 @@ class NewsPage extends GetView<NewsController> {
                                                       .theme.colorScheme.shadow,
                                                 ),
                                                 child: Icon(
-                                                  Icons.share,
+                                                  Icons.delete,
                                                   color: Get.theme.colorScheme
                                                       .background,
                                                   size: 22,
                                                 ),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Positioned(
-                                        left: 10,
-                                        bottom: 20,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 8.0,
-                                                      horizontal: 16),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Visibility(
+                                            visible: controller.isAdmin(),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Get.toNamed(Routes.news_edit,
+                                                    parameters: {
+                                                      'idNews': controller
+                                                          .newsList[index]
+                                                          .idNews
+                                                          .toString(),
+                                                      'date': controller
+                                                          .newsList[index].date
+                                                          .toString(),
+                                                      'title': controller
+                                                          .newsList[index].title
+                                                          .toString(),
+                                                      'url_image': controller
+                                                          .newsList[index]
+                                                          .urlImage
+                                                          .toString(),
+                                                      'description': controller
+                                                          .newsList[index]
+                                                          .description
+                                                          .toString(),
+                                                    });
+                                              },
+                                              child: Container(
+                                                width: 40,
+                                                height: 40,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: Get
+                                                      .theme.colorScheme.shadow,
+                                                ),
+                                                child: Icon(
+                                                  Icons.edit,
+                                                  color: Get.theme.colorScheme
+                                                      .background,
+                                                  size: 22,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          GestureDetector(
+                                            onTap: () async {
+                                              controller.imageFile = XFile(
+                                                  controller.newsList[index]
+                                                      .urlImage);
+
+                                              // print(teste);
+
+                                              // print(controller.imageFile!.path
+                                              //     .toString());
+                                              AppinioSocialShare()
+                                                  .shareToWhatsapp('message',
+                                                      filePath: controller
+                                                          .imageFile?.path
+                                                          .toString());
+                                              // AppinioSocialShare().shareToFacebook(
+                                              //     'teste',
+                                              //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
+
+                                              // AppinioSocialShare()
+                                              //     .shareToInstagramFeed(
+                                              //         controller
+                                              //             .imageFile!.path);
+                                            },
+                                            child: Container(
+                                              width: 40,
+                                              height: 40,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
                                                 color: Get
                                                     .theme.colorScheme.shadow,
                                               ),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  text: controller.foundNews
-                                                      .value[index].title,
-                                                  style: TextStyle(
-                                                    color: Get.theme.colorScheme
-                                                        .background,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                textAlign: TextAlign.justify,
+                                              child: Icon(
+                                                Icons.share,
+                                                color: Get.theme.colorScheme
+                                                    .background,
+                                                size: 22,
                                               ),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  );
-                          }),
-                        ),
+                                    ),
+                                    Positioned(
+                                      left: 10,
+                                      bottom: 20,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 8.0, horizontal: 16),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color:
+                                                  Get.theme.colorScheme.shadow,
+                                            ),
+                                            child: RichText(
+                                              text: TextSpan(
+                                                text: controller.foundNews
+                                                    .value[index].title,
+                                                style: TextStyle(
+                                                  color: Get.theme.colorScheme
+                                                      .background,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              textAlign: TextAlign.justify,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                );
+                        }),
                       ),
                     );
                   },

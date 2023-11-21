@@ -51,69 +51,160 @@ class AboutPage extends GetView<AboutController> {
                     itemCount: controller.foundAbout.value.isEmpty ? 1 : 1,
                     itemBuilder: (context, index) {
                       if (controller.foundAbout.value.isEmpty) {
-                        return Padding(
-                          padding: const EdgeInsets.all(30.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Get.theme.colorScheme.onPrimaryContainer,
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 32.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Center(
-                                      child: AutoSizeText(
-                                        minFontSize: 10,
-                                        'Informações não cadastradas!',
-                                        style: Get.textTheme.titleLarge
-                                            ?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: Get
-                                                    .theme.colorScheme.surface,
-                                                fontSize: 22),
+                        if (controller.isAdmin()) {
+                          return Padding(
+                            padding: const EdgeInsets.all(30.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Get.theme.colorScheme.onPrimaryContainer,
+                              ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 32.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: Center(
+                                        child: AutoSizeText(
+                                          minFontSize: 10,
+                                          'Informações não cadastradas!',
+                                          style: Get.textTheme.titleLarge
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Get.theme.colorScheme
+                                                      .surface,
+                                                  fontSize: 22),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  CustomButton(
-                                    label: 'CADASTRAR  "QUEM SOMOS"',
-                                    onPressed: () {
-                                      Get.toNamed(Routes.about_add);
-                                    },
-                                  )
-                                ],
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    CustomButton(
+                                      label: 'CADASTRAR  "QUEM SOMOS"',
+                                      onPressed: () {
+                                        Get.toNamed(Routes.about_add);
+                                      },
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
+                          );
+                        }
                       } else {
                         return Column(
                           children: [
                             Visibility(
                               visible: controller.isAdmin(),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 32.0),
-                                    child: CustomButton(
-                                      label: 'ALTERAR',
-                                      onPressed: () {
-                                        Get.toNamed(Routes.about_edit);
-                                      },
-                                      height: 30,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10.0),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Get.defaultDialog(
+                                            titlePadding:
+                                                const EdgeInsets.only(top: 10),
+                                            contentPadding:
+                                                const EdgeInsets.only(
+                                                    top: 30, bottom: 20),
+                                            title: 'ATENÇÃO',
+                                            middleText:
+                                                'Deseja realmente excluir?',
+                                            backgroundColor: Get.theme
+                                                .colorScheme.onPrimaryContainer,
+                                            titleStyle: TextStyle(
+                                                color: Get.theme.colorScheme
+                                                    .onSurface),
+                                            middleTextStyle: TextStyle(
+                                                color: Get.theme.colorScheme
+                                                    .onSurface),
+                                            radius: 30,
+                                            confirm: CustomButton(
+                                              color:
+                                                  Get.theme.colorScheme.onError,
+                                              height: 40,
+                                              width: 100,
+                                              label: 'Excluir',
+                                              onPressed: () async {
+                                                await controller.aboutDelete(
+                                                    controller.aboutList[index]
+                                                        .idAbout
+                                                        .toString());
+                                              },
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 40,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                          ),
+                                          child: Icon(
+                                            Icons.delete,
+                                            color: Get
+                                                .theme.colorScheme.background,
+                                            size: 25,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  )
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10.0),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Get.toNamed(Routes.about_edit,
+                                              parameters: {
+                                                'idAbout': controller
+                                                    .aboutList[index].idAbout
+                                                    .toString(),
+                                                'title': controller
+                                                    .aboutList[index].title
+                                                    .toString(),
+                                                'url_image': controller
+                                                    .aboutList[index].urlImage
+                                                    .toString(),
+                                                'description': controller
+                                                    .aboutList[index]
+                                                    .description
+                                                    .toString(),
+                                              });
+                                        },
+                                        child: Container(
+                                          width: 40,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                          ),
+                                          child: Icon(
+                                            Icons.edit,
+                                            color: Get
+                                                .theme.colorScheme.background,
+                                            size: 25,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             FutureBuilder(
@@ -128,7 +219,8 @@ class AboutPage extends GetView<AboutController> {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                        color: Get.theme.colorScheme.primary,
+                                        color: Get.theme.colorScheme
+                                            .onPrimaryContainer,
                                       ),
                                       // borderRadius: BorderRadius.circular(10),
                                       color: Get

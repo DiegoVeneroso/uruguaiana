@@ -71,24 +71,13 @@ class AboutRepository {
   aboutAddRepository(Map map) async {
     try {
       if (map['url_image'] != "") {
-        const idUnique = '123123';
+        final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
 
         String fileName = "$idUnique."
             "${map["url_image"].toString().split(".").last}";
 
         var urlImage =
             '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
-
-        // await ApiClient.storage.deleteFile(
-        //   bucketId: constants.STORAGE_BUCKETS,
-        //   fileId: idUnique,
-        // );
-
-        // await ApiClient.databases.deleteDocument(
-        //   databaseId: constants.DATABASE_ID,
-        //   collectionId: constants.COLLETION_ABOUT_ID,
-        //   documentId: idUnique,
-        // );
 
         await ApiClient.storage.createFile(
           bucketId: constants.STORAGE_BUCKETS,
@@ -177,11 +166,12 @@ class AboutRepository {
             collectionId: constants.COLLETION_ABOUT_ID,
             documentId: map["idAbout"],
             data: {
+              'idAbout': map["idAbout"],
               'title': map["title"],
               'url_image': urlImage,
               'description': map["description"],
-              'updated_by': storage.read('id_user').toString(),
-              'date_time_updated': DateTime.now().toString(),
+              // 'updated_by': storage.read('id_user').toString(),
+              // 'date_time_updated': DateTime.now().toString(),
             });
       }
     } on AppwriteException catch (e) {
