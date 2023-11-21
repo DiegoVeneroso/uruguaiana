@@ -2,7 +2,6 @@ import 'package:appinio_social_share/appinio_social_share.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_floating_button.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
@@ -422,27 +421,23 @@ class NewsPage extends GetView<NewsController> {
                                           ),
                                           GestureDetector(
                                             onTap: () async {
-                                              controller.imageFile = XFile(
-                                                  controller.newsList[index]
-                                                      .urlImage);
+                                              var pathImageUrl =
+                                                  await controller
+                                                      .getImageXFileByUrl(
+                                                          controller
+                                                              .newsList[index]
+                                                              .urlImage);
 
-                                              // print(teste);
-
-                                              // print(controller.imageFile!.path
-                                              //     .toString());
                                               AppinioSocialShare()
                                                   .shareToWhatsapp('message',
-                                                      filePath: controller
-                                                          .imageFile?.path
-                                                          .toString());
-                                              // AppinioSocialShare().shareToFacebook(
-                                              //     'teste',
-                                              //     '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
+                                                      filePath: pathImageUrl);
+                                              // AppinioSocialShare()
+                                              //     .shareToFacebook(
+                                              //         'teste', pathImageUrl);
 
                                               // AppinioSocialShare()
                                               //     .shareToInstagramFeed(
-                                              //         controller
-                                              //             .imageFile!.path);
+                                              //         pathImageUrl);
                                             },
                                             child: Container(
                                               width: 40,
