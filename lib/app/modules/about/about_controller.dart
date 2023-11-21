@@ -280,7 +280,7 @@ class AboutController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.toNamed(Routes.news);
+      Get.toNamed(Routes.about);
       _message(
         MessageModel(
           title: 'Parabéns!',
