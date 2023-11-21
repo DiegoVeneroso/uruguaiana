@@ -60,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   buildDrawerItem(
                     icon: Icons.library_books,
-                    text: "Nossa proposta",
+                    text: "Proposta",
                     onTap: () => navigate(7),
                     tileColor: Get.currentRoute == '/proposal'
                         ? Get.theme.colorScheme.primary
@@ -71,7 +71,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   buildDrawerItem(
                     icon: Icons.lightbulb_outline,
-                    text: "Repense e colabore",
+                    text: "Faça parte",
                     onTap: () => navigate(4),
                     tileColor: Get.currentRoute == '/collaborate_add'
                         ? Get.theme.colorScheme.primary
@@ -217,7 +217,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   buildDrawerItem(
                     icon: Icons.library_books,
-                    text: "Nossa proposta",
+                    text: "Proposta",
                     onTap: () => navigate(7),
                     tileColor: Get.currentRoute == '/proposal'
                         ? Get.theme.colorScheme.primary
@@ -228,7 +228,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   buildDrawerItem(
                     icon: Icons.lightbulb_outline,
-                    text: "Repense e colabore",
+                    text: "Faça parte",
                     onTap: () => navigate(4),
                     tileColor: Get.currentRoute == '/collaborate'
                         ? Get.theme.colorScheme.primary
