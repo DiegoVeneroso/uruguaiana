@@ -79,6 +79,80 @@ class NewsPage extends GetView<NewsController> {
                         future: controller.getVideoTypeFileUrl(
                             controller.foundNews.value[index].urlImage),
                         builder: ((context, snapshot) {
+                          getShareDialog() {
+                            Get.defaultDialog(
+                              title: 'Compartilhar',
+                              titleStyle: TextStyle(
+                                color: Get.theme.colorScheme.primary,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    onPressed: () async {
+                                      var pathImageUrl = await controller
+                                          .getImageXFileByUrl(controller
+                                              .newsList[index].urlImage);
+
+                                      String message =
+                                          '${controller.newsList[index].title}\n\n${controller.newsList[index].description}';
+
+                                      AppinioSocialShare().shareToWhatsapp(
+                                          message,
+                                          filePath: pathImageUrl);
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.whatsapp,
+                                      size: 40,
+                                      color: Get.theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  IconButton(
+                                    onPressed: () async {
+                                      var pathImageUrl = await controller
+                                          .getImageXFileByUrl(controller
+                                              .newsList[index].urlImage);
+
+                                      String message =
+                                          '${controller.newsList[index].title}\n\n${controller.newsList[index].description}';
+
+                                      AppinioSocialShare().shareToFacebook(
+                                          message, pathImageUrl);
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.facebook,
+                                      size: 40,
+                                      color: Get.theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  IconButton(
+                                    onPressed: () async {
+                                      var pathImageUrl = await controller
+                                          .getImageXFileByUrl(controller
+                                              .newsList[index].urlImage);
+
+                                      AppinioSocialShare()
+                                          .shareToInstagramFeed(pathImageUrl);
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.instagram,
+                                      size: 40,
+                                      color: Get.theme.colorScheme.primary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
                             return Container(
@@ -105,7 +179,24 @@ class NewsPage extends GetView<NewsController> {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        print('1111');
+                                        Get.toNamed('/news_detail',
+                                            parameters: {
+                                              'idNews': controller
+                                                  .newsList[index].idNews
+                                                  .toString(),
+                                              'date': controller
+                                                  .newsList[index].date
+                                                  .toString(),
+                                              'title': controller
+                                                  .newsList[index].title
+                                                  .toString(),
+                                              'url_image': controller
+                                                  .newsList[index].urlImage
+                                                  .toString(),
+                                              'description': controller
+                                                  .newsList[index].description
+                                                  .toString(),
+                                            });
                                       },
                                       child: CustomViewNews(
                                         videoUri: Uri.parse(controller
@@ -201,23 +292,7 @@ class NewsPage extends GetView<NewsController> {
                                           ),
                                           GestureDetector(
                                             onTap: () async {
-                                              // var teste = controller.imageFile =
-                                              //     controller.newsList[index].urlImage ;
-
-                                              print(controller.imageFile!.path
-                                                  .toString());
-                                              AppinioSocialShare()
-                                                  .shareToWhatsapp('message',
-                                                      filePath: controller
-                                                          .newsList[index]
-                                                          .urlImage);
-                                              // AppinioSocialShare()
-                                              //     .shareToFacebook('teste',
-                                              //         '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
-
-                                              // AppinioSocialShare()
-                                              //     .shareToInstagramFeed(
-                                              //         '/data/user/0/br.com.frontapp.uruguaiana/cache/image_cropper_1698072394885.jpg');
+                                              getShareDialog();
                                             },
                                             child: Container(
                                               width: 40,
@@ -229,7 +304,7 @@ class NewsPage extends GetView<NewsController> {
                                                     .theme.colorScheme.shadow,
                                               ),
                                               child: Icon(
-                                                Icons.abc,
+                                                Icons.share,
                                                 color: Get.theme.colorScheme
                                                     .background,
                                                 size: 22,
@@ -321,15 +396,39 @@ class NewsPage extends GetView<NewsController> {
                               : Stack(
                                   alignment: Alignment.center,
                                   children: [
-                                    Container(
-                                      padding: const EdgeInsets.all(8.0),
-                                      width: double.infinity,
-                                      height: Get.height * 0.35,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage(controller
-                                              .foundNews.value[index].urlImage),
-                                          fit: BoxFit.cover,
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.toNamed('/news_detail',
+                                            parameters: {
+                                              'idNews': controller
+                                                  .newsList[index].idNews
+                                                  .toString(),
+                                              'date': controller
+                                                  .newsList[index].date
+                                                  .toString(),
+                                              'title': controller
+                                                  .newsList[index].title
+                                                  .toString(),
+                                              'url_image': controller
+                                                  .newsList[index].urlImage
+                                                  .toString(),
+                                              'description': controller
+                                                  .newsList[index].description
+                                                  .toString(),
+                                            });
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8.0),
+                                        width: double.infinity,
+                                        height: Get.height * 0.35,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: NetworkImage(controller
+                                                .foundNews
+                                                .value[index]
+                                                .urlImage),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -422,105 +521,7 @@ class NewsPage extends GetView<NewsController> {
                                           ),
                                           GestureDetector(
                                             onTap: () async {
-                                              Get.defaultDialog(
-                                                title: 'Compartilhar',
-                                                titleStyle: TextStyle(
-                                                  color: Get.theme.colorScheme
-                                                      .primary,
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                                content: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    IconButton(
-                                                      onPressed: () async {
-                                                        var pathImageUrl = await controller
-                                                            .getImageXFileByUrl(
-                                                                controller
-                                                                    .newsList[
-                                                                        index]
-                                                                    .urlImage);
-
-                                                        AppinioSocialShare()
-                                                            .shareToWhatsapp(
-                                                                controller
-                                                                    .newsList[
-                                                                        index]
-                                                                    .title,
-                                                                filePath:
-                                                                    pathImageUrl);
-                                                      },
-                                                      icon: Icon(
-                                                        FontAwesomeIcons
-                                                            .whatsapp,
-                                                        size: 40,
-                                                        color: Get
-                                                            .theme
-                                                            .colorScheme
-                                                            .primary,
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    IconButton(
-                                                      onPressed: () async {
-                                                        var pathImageUrl = await controller
-                                                            .getImageXFileByUrl(
-                                                                controller
-                                                                    .newsList[
-                                                                        index]
-                                                                    .urlImage);
-
-                                                        AppinioSocialShare()
-                                                            .shareToFacebook(
-                                                                controller
-                                                                    .newsList[
-                                                                        index]
-                                                                    .title,
-                                                                pathImageUrl);
-                                                      },
-                                                      icon: Icon(
-                                                        FontAwesomeIcons
-                                                            .facebook,
-                                                        size: 40,
-                                                        color: Get
-                                                            .theme
-                                                            .colorScheme
-                                                            .primary,
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    IconButton(
-                                                      onPressed: () async {
-                                                        var pathImageUrl = await controller
-                                                            .getImageXFileByUrl(
-                                                                controller
-                                                                    .newsList[
-                                                                        index]
-                                                                    .urlImage);
-
-                                                        AppinioSocialShare()
-                                                            .shareToInstagramFeed(
-                                                                pathImageUrl);
-                                                      },
-                                                      icon: Icon(
-                                                        FontAwesomeIcons
-                                                            .instagram,
-                                                        size: 40,
-                                                        color: Get
-                                                            .theme
-                                                            .colorScheme
-                                                            .primary,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
+                                              getShareDialog();
                                             },
                                             child: Container(
                                               width: 40,

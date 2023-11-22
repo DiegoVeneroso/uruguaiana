@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/modules/news/news_controller.dart';
@@ -33,6 +34,22 @@ class _NewsDetailPageState extends AppState<NewsDetailPage, NewsController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: AutoSizeText(
+                  minFontSize: 10,
+                  'NOTÍCIA',
+                  style: Get.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.colorScheme.surface,
+                      fontSize: 22),
+                ),
+              ),
+            ),
             FutureBuilder(
               future: controller
                   .getVideoTypeFileUrl(Get.parameters['url_image'].toString()),
@@ -107,7 +124,8 @@ class _NewsDetailPageState extends AppState<NewsDetailPage, NewsController> {
                         // borderRadius: BorderRadius.circular(8),
                         ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 10.0, right: 10),
+                      padding: const EdgeInsets.only(
+                          left: 10.0, right: 10, bottom: 15),
                       child: RichText(
                         text: TextSpan(
                           text: Get.parameters['title'].toString(),

@@ -71,7 +71,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   buildDrawerItem(
                     icon: Icons.lightbulb_outline,
-                    text: "Faça parte",
+                    text: "Colabore e faça parte",
                     onTap: () => navigate(4),
                     tileColor: Get.currentRoute == '/collaborate_add'
                         ? Get.theme.colorScheme.primary
@@ -228,7 +228,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   buildDrawerItem(
                     icon: Icons.lightbulb_outline,
-                    text: "Faça parte",
+                    text: "Colabore e faça parte",
                     onTap: () => navigate(4),
                     tileColor: Get.currentRoute == '/collaborate'
                         ? Get.theme.colorScheme.primary
