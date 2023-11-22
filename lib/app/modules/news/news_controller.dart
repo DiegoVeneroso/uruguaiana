@@ -407,6 +407,8 @@ class NewsController extends GetxController
   }
 
   getImageXFileByUrl(String url) async {
+    _loading.toggle();
+
     String extensionFile = await getTypeUniqueFileUrl(url);
 
     Directory tempDir = await getTemporaryDirectory();
@@ -418,6 +420,7 @@ class NewsController extends GetxController
     final response = await http.get(uri);
     fileWrite.writeAsBytesSync(response.bodyBytes);
     final file = XFile("$tempPath/$fileName");
+    _loading.toggle();
     return file.path;
   }
 }

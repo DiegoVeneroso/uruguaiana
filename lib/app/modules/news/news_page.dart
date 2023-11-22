@@ -1,6 +1,7 @@
 import 'package:appinio_social_share/appinio_social_share.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_floating_button.dart';
@@ -421,23 +422,105 @@ class NewsPage extends GetView<NewsController> {
                                           ),
                                           GestureDetector(
                                             onTap: () async {
-                                              var pathImageUrl =
-                                                  await controller
-                                                      .getImageXFileByUrl(
-                                                          controller
-                                                              .newsList[index]
-                                                              .urlImage);
+                                              Get.defaultDialog(
+                                                title: 'Compartilhar',
+                                                titleStyle: TextStyle(
+                                                  color: Get.theme.colorScheme
+                                                      .primary,
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                                content: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    IconButton(
+                                                      onPressed: () async {
+                                                        var pathImageUrl = await controller
+                                                            .getImageXFileByUrl(
+                                                                controller
+                                                                    .newsList[
+                                                                        index]
+                                                                    .urlImage);
 
-                                              AppinioSocialShare()
-                                                  .shareToWhatsapp('message',
-                                                      filePath: pathImageUrl);
-                                              // AppinioSocialShare()
-                                              //     .shareToFacebook(
-                                              //         'teste', pathImageUrl);
+                                                        AppinioSocialShare()
+                                                            .shareToWhatsapp(
+                                                                controller
+                                                                    .newsList[
+                                                                        index]
+                                                                    .title,
+                                                                filePath:
+                                                                    pathImageUrl);
+                                                      },
+                                                      icon: Icon(
+                                                        FontAwesomeIcons
+                                                            .whatsapp,
+                                                        size: 40,
+                                                        color: Get
+                                                            .theme
+                                                            .colorScheme
+                                                            .primary,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 20,
+                                                    ),
+                                                    IconButton(
+                                                      onPressed: () async {
+                                                        var pathImageUrl = await controller
+                                                            .getImageXFileByUrl(
+                                                                controller
+                                                                    .newsList[
+                                                                        index]
+                                                                    .urlImage);
 
-                                              // AppinioSocialShare()
-                                              //     .shareToInstagramFeed(
-                                              //         pathImageUrl);
+                                                        AppinioSocialShare()
+                                                            .shareToFacebook(
+                                                                controller
+                                                                    .newsList[
+                                                                        index]
+                                                                    .title,
+                                                                pathImageUrl);
+                                                      },
+                                                      icon: Icon(
+                                                        FontAwesomeIcons
+                                                            .facebook,
+                                                        size: 40,
+                                                        color: Get
+                                                            .theme
+                                                            .colorScheme
+                                                            .primary,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 20,
+                                                    ),
+                                                    IconButton(
+                                                      onPressed: () async {
+                                                        var pathImageUrl = await controller
+                                                            .getImageXFileByUrl(
+                                                                controller
+                                                                    .newsList[
+                                                                        index]
+                                                                    .urlImage);
+
+                                                        AppinioSocialShare()
+                                                            .shareToInstagramFeed(
+                                                                pathImageUrl);
+                                                      },
+                                                      icon: Icon(
+                                                        FontAwesomeIcons
+                                                            .instagram,
+                                                        size: 40,
+                                                        color: Get
+                                                            .theme
+                                                            .colorScheme
+                                                            .primary,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
                                             },
                                             child: Container(
                                               width: 40,
