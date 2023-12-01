@@ -81,6 +81,8 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                             'description': controller
                                 .proposalList[index].description
                                 .toString(),
+                            'id_proposal_base':
+                                Get.parameters['id_proposal_base'].toString(),
                             'proposal_pilar_name': Get
                                 .parameters['proposal_pilar_name']
                                 .toString(),
@@ -142,7 +144,7 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                         ),
                         AutoSizeText(
                           minFontSize: 10,
-                          'ADICIONAR ÁREA',
+                          'ADICIONAR AÇÃO',
                           style: TextStyle(
                               fontSize: 14,
                               color: Get.theme.colorScheme.background),

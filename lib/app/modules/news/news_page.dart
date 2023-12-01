@@ -103,14 +103,9 @@ class NewsPage extends GetView<NewsController> {
                               ? Stack(
                                   alignment: Alignment.center,
                                   children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        print('1111');
-                                      },
-                                      child: CustomViewNews(
-                                        videoUri: Uri.parse(controller
-                                            .foundNews.value[index].urlImage),
-                                      ),
+                                    CustomViewNews(
+                                      videoUri: Uri.parse(controller
+                                          .foundNews.value[index].urlImage),
                                     ),
                                     Positioned(
                                       right: 10,
@@ -321,15 +316,39 @@ class NewsPage extends GetView<NewsController> {
                               : Stack(
                                   alignment: Alignment.center,
                                   children: [
-                                    Container(
-                                      padding: const EdgeInsets.all(8.0),
-                                      width: double.infinity,
-                                      height: Get.height * 0.35,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage(controller
-                                              .foundNews.value[index].urlImage),
-                                          fit: BoxFit.cover,
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.toNamed('/news_detail',
+                                            parameters: {
+                                              'idNews': controller
+                                                  .newsList[index].idNews
+                                                  .toString(),
+                                              'date': controller
+                                                  .newsList[index].date
+                                                  .toString(),
+                                              'title': controller
+                                                  .newsList[index].title
+                                                  .toString(),
+                                              'url_image': controller
+                                                  .newsList[index].urlImage
+                                                  .toString(),
+                                              'description': controller
+                                                  .newsList[index].description
+                                                  .toString(),
+                                            });
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8.0),
+                                        width: double.infinity,
+                                        height: Get.height * 0.35,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: NetworkImage(controller
+                                                .foundNews
+                                                .value[index]
+                                                .urlImage),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),

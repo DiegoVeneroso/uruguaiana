@@ -245,7 +245,7 @@ class ProposalActionsController extends GetxController
     _dialog(DialogModel(
       id: idProposal,
       title: 'ATENÇÃO',
-      message: 'Deseja realmente excluir?\n$proposal',
+      message: 'Deseja realmente excluir a ação?\n$proposal',
     ));
   }
 
