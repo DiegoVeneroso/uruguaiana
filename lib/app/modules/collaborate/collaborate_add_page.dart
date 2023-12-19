@@ -83,198 +83,89 @@ class _NewsAddPageState
                         ),
                       )
                     : const SizedBox(),
-
-                // controller.imageFile == null
-                //     ? Obx(
-                //         () => Visibility(
-                //           visible: controller.addImageVisible.value,
-                //           child: Center(
-                //             child: Container(
-                //               width: double.infinity,
-                //               height: 250,
-                //               decoration: BoxDecoration(
-                //                 borderRadius: BorderRadius.circular(10),
-                //                 color: Get.theme.colorScheme.primary,
-                //               ),
-                //               child: Icon(
-                //                 Icons.image_not_supported,
-                //                 color: Get.theme.colorScheme.onPrimaryContainer,
-                //                 size: 130,
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       )
-                //     : Obx(
-                //         () => Visibility(
-                //           visible: controller.addImageVisible.value,
-                //           child: Center(
-                //             child: Container(
-                //               width: double.infinity,
-                //               height: 250,
-                //               decoration: BoxDecoration(
-                //                 borderRadius: BorderRadius.circular(10),
-                //                 image: DecorationImage(
-                //                   image: FileImage(
-                //                     File(controller.imageFile!.path),
-                //                   ),
-                //                 ),
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                // Obx(
-                //   () => Visibility(
-                //     visible: controller.addImageVisible.value,
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         TextButton(
-                //           style: ButtonStyle(
-                //             backgroundColor: MaterialStateProperty.all<Color>(
-                //                 Get.theme.colorScheme.background),
-                //           ),
-                //           onPressed: () async {
-                //             Map<Permission, PermissionStatus> statuses = await [
-                //               Permission.storage,
-                //               Permission.camera,
-                //             ].request();
-                //             if (statuses[Permission.storage]!.isGranted &&
-                //                 statuses[Permission.camera]!.isGranted) {
-                //               await controller.pickImageFileFromGalery();
-                //               setState(() {
-                //                 controller.imageFile;
-                //               });
-                //             } else {
-                //               print('Permissão negada!');
-                //             }
-                //           },
-                //           child: Row(
-                //             children: [
-                //               Icon(
-                //                 Icons.image_outlined,
-                //                 color: Get.theme.colorScheme.surface,
-                //                 size: 30,
-                //               ),
-                //               Padding(
-                //                 padding: const EdgeInsets.all(8.0),
-                //                 child: Text(
-                //                   'Galeria',
-                //                   style: TextStyle(
-                //                       color: Get.theme.colorScheme.surface),
-                //                 ),
-                //               )
-                //             ],
-                //           ),
-                //         ),
-                //         Text(
-                //           '|',
-                //           style: TextStyle(
-                //               color: Get.theme.colorScheme.surface,
-                //               fontWeight: FontWeight.bold,
-                //               fontSize: 30),
-                //         ),
-                //         TextButton(
-                //           style: ButtonStyle(
-                //             backgroundColor: MaterialStateProperty.all<Color>(
-                //                 Get.theme.colorScheme.background),
-                //           ),
-                //           onPressed: () async {
-                //             Map<Permission, PermissionStatus> statuses = await [
-                //               Permission.storage,
-                //               Permission.camera,
-                //             ].request();
-                //             if (statuses[Permission.storage]!.isGranted &&
-                //                 statuses[Permission.camera]!.isGranted) {
-                //               await controller.captureImageFileFromCamera();
-                //               setState(() {
-                //                 controller.imageFile;
-                //               });
-                //             } else {
-                //               print('Permissão negada!');
-                //             }
-                //           },
-                //           child: Row(
-                //             children: [
-                //               Padding(
-                //                 padding: const EdgeInsets.all(8.0),
-                //                 child: Text(
-                //                   'Câmera',
-                //                   style: TextStyle(
-                //                       color: Get.theme.colorScheme.surface),
-                //                 ),
-                //               ),
-                //               Icon(
-                //                 Icons.camera_alt_outlined,
-                //                 color: Get.theme.colorScheme.surface,
-                //                 size: 30,
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                OutlinedButton.icon(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(23),
-                    ),
-                    minimumSize: const Size.fromHeight(50),
-                    backgroundColor: Get.theme.colorScheme.onPrimaryContainer,
-                    side: BorderSide(
-                        width: 1, color: Get.theme.colorScheme.primary),
-                  ),
-                  onPressed: () {
-                    controller.addImageVisible.value
-                        ? controller.addImageVisible.value = false
-                        : controller.addImageVisible.value = true;
-                  },
-                  icon: const Icon(Icons.add_a_photo_outlined),
-                  label: const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text('Adicionar')),
+                const SizedBox(
+                  height: 10,
                 ),
-                // Obx(
-                //   () => Row(
-                //     mainAxisAlignment: MainAxisAlignment.start,
-                //     children: [
-                //       TextButton(
-                //         onPressed: () {
-                //           controller.addImageVisible.value
-                //               ? controller.addImageVisible.value = false
-                //               : controller.addImageVisible.value = true;
-                //         },
-                //         child: controller.addImageVisible.value
-                //             ? const Text('Cancelar imagem')
-                //             : Container(
-                //                 height: 50,
-                //                 width: 200,
-                //                 decoration: BoxDecoration(
-                //                     color: Colors.white,
-                //                     borderRadius: BorderRadius.circular(23),
-                //                     border: Border.all(
-                //                         color: Get.theme.colorScheme.primary)),
-                //                 child: const Padding(
-                //                   padding:
-                //                       EdgeInsets.symmetric(horizontal: 15.0),
-                //                   child: Row(
-                //                     children: [
-                //                       Icon(Icons.add_a_photo_outlined),
-                //                       SizedBox(
-                //                         width: 10,
-                //                       ),
-                //                       Text('Adicionar mídia'),
-                //                     ],
-                //                   ),
-                //                 ),
-                //               ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
+                controller.addImageVisible.value == false
+                    ? Obx(
+                        () => Visibility(
+                          visible: controller.addImageVisible.value == true,
+                          child: Stack(children: [
+                            CustomPicker(
+                              key: _pickedKey,
+                            ),
+                            Positioned(
+                              right: 15,
+                              top: 15,
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    controller.addImageVisible.value == false
+                                        ? controller.addImageVisible.value =
+                                            true
+                                        : controller.addImageVisible.value =
+                                            false;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Get.theme.colorScheme
+                                            .onPrimaryContainer),
+                                    borderRadius: BorderRadius.circular(30),
+                                    color: Get
+                                        .theme.colorScheme.onPrimaryContainer,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: Icon(
+                                      Icons.close,
+                                      color: Get
+                                          .theme.colorScheme.primaryContainer,
+                                      size: 30,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      )
+                    : const SizedBox(),
+                controller.addImageVisible.value == false
+                    ? Obx(
+                        () => Visibility(
+                          visible: controller.addImageVisible.value == false,
+                          child: OutlinedButton.icon(
+                            style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(23),
+                              ),
+                              minimumSize: const Size.fromHeight(50),
+                              backgroundColor:
+                                  Get.theme.colorScheme.onPrimaryContainer,
+                              side: BorderSide(
+                                  width: 1,
+                                  color: Get.theme.colorScheme.primary),
+                            ),
+                            onPressed: () {
+                              controller.addImageVisible.value == false
+                                  ? controller.addImageVisible.value = true
+                                  : controller.addImageVisible.value = false;
+                            },
+                            icon: const Icon(Icons.add_a_photo_outlined),
+                            label: const Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Adicionar imagem ou video',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.normal),
+                                )),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
                 const SizedBox(
                   height: 10,
                 ),
