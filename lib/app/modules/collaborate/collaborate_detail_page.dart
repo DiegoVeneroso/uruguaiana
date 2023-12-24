@@ -6,6 +6,7 @@ import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
+import '../../core/ui/widgets/custom_player_video.dart';
 
 class collaborateDetailPage extends StatefulWidget {
   const collaborateDetailPage({Key? key}) : super(key: key);
@@ -36,22 +37,67 @@ class _NewsDetailPageState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Visibility(
-                  visible: Get.parameters['url_image'] == '' ? false : true,
-                  child: Center(
-                    child: Container(
-                      width: double.infinity,
-                      height: 250,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              Get.parameters['url_image'].toString()),
-                          fit: BoxFit.cover,
+                FutureBuilder(
+                  future: controller.getVideoTypeFileUrl(
+                      Get.parameters['url_image'].toString()),
+                  builder: ((context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container(
+                        height: Get.size.height * 0.35,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Get.theme.colorScheme.primary,
+                          ),
+                          // borderRadius: BorderRadius.circular(10),
+                          color: Get.theme.colorScheme.onPrimaryContainer,
                         ),
-                      ),
-                    ),
-                  ),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: Get.theme.colorScheme.primary,
+                          ),
+                        ),
+                      );
+                    }
+                    if (snapshot.data!['type'] == 'video') {
+                      return Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          CustomPlayerVideo(
+                            videoUri: Uri.parse(
+                                Get.parameters['url_image'].toString()),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Container(
+                          height: Get.size.height * 0.35,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            border: Border.symmetric(
+                              horizontal: BorderSide(
+                                color: Get.theme.colorScheme.primary,
+                                width: 1,
+                              ),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Get.theme.colorScheme.primary,
+                                  blurRadius: 3.0,
+                                  offset: const Offset(0.0, 0.5))
+                            ],
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  Get.parameters['url_image'].toString()),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                  }),
                 ),
                 const SizedBox(
                   height: 10,

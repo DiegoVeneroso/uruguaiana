@@ -70,6 +70,29 @@ class CollaboratePage extends GetView<CollaborateController> {
                         const Divider(),
                     itemBuilder: (context, index) {
                       return ListTile(
+                        onTap: () {
+                          Get.toNamed(
+                            '/collaborate_detail',
+                            parameters: {
+                              'idCollaborate': controller
+                                  .collaborateList[index].idCollaborate
+                                  .toString(),
+                              'name': controller.collaborateList[index].name
+                                  .toString(),
+                              'phone': controller.collaborateList[index].phone
+                                  .toString(),
+                              'url_image': controller
+                                  .collaborateList[index].urlImage
+                                  .toString(),
+                              'description': controller
+                                  .collaborateList[index].description
+                                  .toString(),
+                              'date_time_created': controller
+                                  .collaborateList[index].dateTimeCreated
+                                  .toString(),
+                            },
+                          );
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         tileColor: Get.theme.colorScheme.primary,
@@ -115,28 +138,6 @@ class CollaboratePage extends GetView<CollaborateController> {
                             ),
                           ],
                         ),
-                        trailing: IconButton(
-                            onPressed: () {
-                              Get.toNamed('/collaborate_detail', parameters: {
-                                'idCollaborate': controller
-                                    .collaborateList[index].idCollaborate
-                                    .toString(),
-                                'name': controller.collaborateList[index].name
-                                    .toString(),
-                                'phone': controller.collaborateList[index].phone
-                                    .toString(),
-                                'url_image': controller
-                                    .collaborateList[index].urlImage
-                                    .toString(),
-                                'description': controller
-                                    .collaborateList[index].description
-                                    .toString(),
-                                'date_time_created': controller
-                                    .collaborateList[index].dateTimeCreated
-                                    .toString(),
-                              });
-                            },
-                            icon: const Icon(Icons.visibility)),
                       );
                     },
                   )),

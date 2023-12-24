@@ -1,8 +1,7 @@
-import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 import 'package:uruguaiana/app/modules/collaborate/collaborate_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
@@ -135,35 +134,38 @@ class _NewsAddPageState
                 controller.addImageVisible.value == false
                     ? Obx(
                         () => Visibility(
-                          visible: controller.addImageVisible.value == false,
-                          child: OutlinedButton.icon(
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(23),
-                              ),
-                              minimumSize: const Size.fromHeight(50),
-                              backgroundColor:
-                                  Get.theme.colorScheme.onPrimaryContainer,
-                              side: BorderSide(
+                            visible: controller.addImageVisible.value == false,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(23),
+                                ),
+                                minimumSize: const Size.fromHeight(50),
+                                backgroundColor:
+                                    Get.theme.colorScheme.onPrimaryContainer,
+                                side: BorderSide(
                                   width: 1,
-                                  color: Get.theme.colorScheme.primary),
-                            ),
-                            onPressed: () {
-                              controller.addImageVisible.value == false
-                                  ? controller.addImageVisible.value = true
-                                  : controller.addImageVisible.value = false;
-                            },
-                            icon: const Icon(Icons.add_a_photo_outlined),
-                            label: const Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Adicionar imagem ou video',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.normal),
-                                )),
-                          ),
-                        ),
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.only(left: 15),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    'Adicionar imagem ou video',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ),
+                              ),
+                              onPressed: () {
+                                controller.addImageVisible.value == false
+                                    ? controller.addImageVisible.value = true
+                                    : controller.addImageVisible.value = false;
+                              },
+                            )),
                       )
                     : const SizedBox(),
                 const SizedBox(
@@ -205,22 +207,22 @@ class _NewsAddPageState
                     onPressed: () {
                       final formValid =
                           _formKey.currentState?.validate() ?? false;
-                      if (formValid) {
-                        if (controller.imageFile != null) {
-                          controller.collaboratesAdd({
-                            'name': _nameEC.text,
-                            'phone': _phoneEC.text,
-                            'description': _descriptionEC.text,
-                            'url_image': controller.imageFile!.path,
-                          });
-                        } else {
-                          controller.collaboratesAdd({
-                            'name': _nameEC.text,
-                            'phone': _phoneEC.text,
-                            'description': _descriptionEC.text,
-                            'url_image': '',
-                          });
-                        }
+
+                      final pickerValid =
+                          _pickedKey.currentState?.imageFile?.path != null
+                              ? true
+                              : false;
+
+                      _pickedKey.currentState
+                          ?.setImageValidate(pickerValid.toString());
+
+                      if (formValid & pickerValid) {
+                        controller.collaboratesAdd({
+                          'name': _nameEC.text,
+                          'phone': _phoneEC.text,
+                          'url_image': _pickedKey.currentState?.imageFile?.path,
+                          'description': _descriptionEC.text,
+                        });
                       }
                     },
                   ),
