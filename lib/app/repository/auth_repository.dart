@@ -87,6 +87,7 @@ class AuthRepository {
       await ApiClient.account.createRecovery(
         email: email,
         url: 'http://frontapp.com.br:8080',
+        // url: 'https://uruguaiana-91d45.web.app/'
       );
       print('email de recuperação de senha enviado!');
     } on AppwriteException catch (e) {

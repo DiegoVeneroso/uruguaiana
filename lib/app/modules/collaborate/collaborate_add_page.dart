@@ -181,9 +181,9 @@ class _NewsAddPageState
                   height: 10,
                 ),
                 CustomTextformfield(
-                  label: 'Telefone',
+                  label: 'Whatsapp',
                   controller: _phoneEC,
-                  validator: Validatorless.required('Telefone é obrigatório'),
+                  validator: Validatorless.required('Whatsapp é obrigatório'),
                   cellMask: true,
                 ),
                 const SizedBox(

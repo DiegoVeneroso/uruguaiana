@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
 import 'package:uruguaiana/app/modules/news/news_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
@@ -189,6 +191,19 @@ class _NewsDetailPageState
                           ),
                         ),
                       ],
+                    ),
+                    CustomButton(
+                      label: 'Entrar em contato',
+                      height: 40,
+                      onPressed: () {
+                        var phone = Get.parameters['phone']
+                            .toString()
+                            .replaceAll(RegExp('[^0-9]'), '');
+
+                        Uri url = Uri.parse(
+                            'https://api.whatsapp.com/send?phone=$phone');
+                        launchUrl(url);
+                      },
                     ),
                   ],
                 ),

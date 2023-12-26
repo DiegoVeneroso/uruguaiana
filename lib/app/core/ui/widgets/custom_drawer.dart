@@ -81,6 +81,17 @@ class CustomDrawer extends StatelessWidget {
                         : Get.theme.colorScheme.primary,
                   ),
                   buildDrawerItem(
+                    icon: Icons.note_add_outlined,
+                    text: "Minhas colaborações",
+                    onTap: () => navigate(8),
+                    tileColor: Get.currentRoute == '/my_colaborate'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/my_colaborate'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
                     icon: Icons.settings,
                     text: 'Administração',
                     onTap: () => navigate(6),
@@ -237,14 +248,25 @@ class CustomDrawer extends StatelessWidget {
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
+                  // buildDrawerItem(
+                  //   icon: Icons.person,
+                  //   text: "Perfil",
+                  //   onTap: () => navigate(1),
+                  //   tileColor: Get.currentRoute == '/profile'
+                  //       ? Get.theme.colorScheme.primary
+                  //       : null,
+                  //   textIconColor: Get.currentRoute == '/profile'
+                  //       ? Get.theme.colorScheme.onPrimaryContainer
+                  //       : Get.theme.colorScheme.primary,
+                  // ),
                   buildDrawerItem(
-                    icon: Icons.person,
-                    text: "Perfil",
-                    onTap: () => navigate(1),
-                    tileColor: Get.currentRoute == '/profile'
+                    icon: Icons.note_add_outlined,
+                    text: "Minhas colaborações",
+                    onTap: () => navigate(8),
+                    tileColor: Get.currentRoute == '/my_colaborate'
                         ? Get.theme.colorScheme.primary
                         : null,
-                    textIconColor: Get.currentRoute == '/profile'
+                    textIconColor: Get.currentRoute == '/my_colaborate'
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
@@ -459,6 +481,8 @@ class CustomDrawer extends StatelessWidget {
       Get.toNamed('/login');
     } else if (index == 7) {
       Get.toNamed('/proposal');
+    } else if (index == 8) {
+      Get.toNamed('/my_colaborate');
     }
   }
 }

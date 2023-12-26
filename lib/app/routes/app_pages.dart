@@ -10,6 +10,8 @@ import 'package:uruguaiana/app/modules/home/home_detail_page.dart';
 import 'package:uruguaiana/app/modules/home/home_page.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_bindigns.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_page.dart';
+import 'package:uruguaiana/app/modules/my_colaborate/my_colaborate_bindings.dart';
+import 'package:uruguaiana/app/modules/my_colaborate/my_colaborate_page.dart';
 import 'package:uruguaiana/app/modules/news/news_bindings.dart';
 import 'package:uruguaiana/app/modules/news/news_detail_page.dart';
 import 'package:uruguaiana/app/modules/news/news_page.dart';
@@ -199,6 +201,13 @@ class AppPages {
       name: _Paths.collaborate_detail,
       page: () => const collaborateDetailPage(),
       binding: CollaborateBindings(),
+    ),
+
+    //my collaborate
+    GetPage(
+      name: _Paths.my_colaborate,
+      page: () => MyColaboratePage(),
+      binding: MyCollaborateBindings(),
     ),
 
     //notification
