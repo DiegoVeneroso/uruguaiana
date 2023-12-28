@@ -18,7 +18,6 @@ import '../../core/mixins/messages_mixin.dart';
 import '../../models/collaborate_model.dart';
 import '../../repository/collaborate_repositories.dart';
 
-
 class CollaborateController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
   RealtimeSubscription? subscription;
@@ -180,6 +179,9 @@ class CollaborateController extends GetxController
       _loading.toggle();
 
       await repository.collaboratesAddRepository(map);
+
+      await storage.write(
+          'my_collaborate_list', collaborateList.toJson().toString());
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();

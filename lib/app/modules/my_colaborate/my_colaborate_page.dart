@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
 import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
@@ -43,14 +44,18 @@ class MyColaboratePage extends GetView<MyCollaborateController> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
-                child: AutoSizeText(
-                  minFontSize: 10,
-                  'MINHAS COLABORAÇÕES',
-                  style: Get.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Get.theme.colorScheme.surface,
-                  ),
+                child: Text(
+                  GetStorage().read('my_collaborate_list'),
                 ),
+                // child: AutoSizeText(
+                //   minFontSize: 10,
+                //   'MINHAS COLABORAÇÕES',
+
+                //   style: Get.textTheme.titleLarge?.copyWith(
+                //     fontWeight: FontWeight.bold,
+                //     color: Get.theme.colorScheme.surface,
+                //   ),
+                // ),
               ),
             ),
             const SizedBox(
@@ -80,20 +85,20 @@ class MyColaboratePage extends GetView<MyCollaborateController> {
                             '/collaborate_detail',
                             parameters: {
                               'idCollaborate': controller
-                                  .collaborateList[index].idCollaborate
+                                  .mycollaborateList[index].idCollaborate
                                   .toString(),
-                              'name': controller.collaborateList[index].name
+                              'name': controller.mycollaborateList[index].name
                                   .toString(),
-                              'phone': controller.collaborateList[index].phone
+                              'phone': controller.mycollaborateList[index].phone
                                   .toString(),
                               'url_image': controller
-                                  .collaborateList[index].urlImage
+                                  .mycollaborateList[index].urlImage
                                   .toString(),
                               'description': controller
-                                  .collaborateList[index].description
+                                  .mycollaborateList[index].description
                                   .toString(),
                               'date_time_created': controller
-                                  .collaborateList[index].dateTimeCreated
+                                  .mycollaborateList[index].dateTimeCreated
                                   .toString(),
                             },
                           );

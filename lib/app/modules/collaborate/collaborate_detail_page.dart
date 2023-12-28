@@ -192,6 +192,9 @@ class _NewsDetailPageState
                         ),
                       ],
                     ),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     CustomButton(
                       label: 'Entrar em contato',
                       height: 40,
