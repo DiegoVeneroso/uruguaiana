@@ -25,6 +25,11 @@ class SplashController extends GetxController {
         Get.offAllNamed(Routes.news);
       }
     });
+
+    var collaboratesStorage = await storage.read('my_collaborates_list');
+    if (collaboratesStorage == null) {
+      await storage.write('my_collaborates_list', '[]');
+    }
   }
 
   loginAnonymous() async {

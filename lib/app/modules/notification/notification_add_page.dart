@@ -31,74 +31,77 @@ class _ProposalAddPageState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.colorScheme.background,
-      appBar: CustomAppbar(
-        actionsList: [
-          IconButton(
-            onPressed: ThemeService().switchTheme,
-            icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.onBackground,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: IntrinsicHeight(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: AutoSizeText(
-                      minFontSize: 10,
-                      'Enviar notificação',
-                      style: Get.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Get.theme.colorScheme.surface,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.colorScheme.background,
+        appBar: CustomAppbar(
+          actionsList: [
+            IconButton(
+              onPressed: ThemeService().switchTheme,
+              icon: const Icon(Icons.contrast),
+              color: Get.theme.colorScheme.onBackground,
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: IntrinsicHeight(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: AutoSizeText(
+                        minFontSize: 10,
+                        'Enviar notificação',
+                        style: Get.textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Get.theme.colorScheme.surface,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  CustomTextformfield(
-                    label: 'Título',
-                    controller: _titleEC,
-                    validator: Validatorless.required('Título é obrigatório'),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextformfield(
-                    label: 'Mensagem',
-                    controller: _messageEC,
-                    validator: Validatorless.required('Mensagem é obrigatório'),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: CustomButton(
-                      color: Get.theme.colorScheme.primaryContainer,
-                      width: double.infinity,
-                      label: 'ENVIAR',
-                      onPressed: () {
-                        final formValid =
-                            _formKey.currentState?.validate() ?? false;
-
-                        if (formValid) {
-                          controller.notificationsAdd({
-                            'title': _titleEC.text,
-                            'message': _messageEC.text,
-                          });
-                        }
-                      },
+                    const SizedBox(
+                      height: 30,
                     ),
-                  ),
-                ],
+                    CustomTextformfield(
+                      label: 'Título',
+                      controller: _titleEC,
+                      validator: Validatorless.required('Título é obrigatório'),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextformfield(
+                      label: 'Mensagem',
+                      controller: _messageEC,
+                      validator:
+                          Validatorless.required('Mensagem é obrigatório'),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: CustomButton(
+                        color: Get.theme.colorScheme.primaryContainer,
+                        width: double.infinity,
+                        label: 'ENVIAR',
+                        onPressed: () {
+                          final formValid =
+                              _formKey.currentState?.validate() ?? false;
+
+                          if (formValid) {
+                            controller.notificationsAdd({
+                              'title': _titleEC.text,
+                              'message': _messageEC.text,
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -31,159 +31,161 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.colorScheme.background,
-      appBar: CustomAppbar(
-        actionsList: [
-          IconButton(
-            onPressed: ThemeService().switchTheme,
-            icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.onBackground,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: AutoSizeText(
-                    minFontSize: 10,
-                    'PERFIL',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Get.theme.colorScheme.surface,
-                      fontSize: 22,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.colorScheme.background,
+        appBar: CustomAppbar(
+          actionsList: [
+            IconButton(
+              onPressed: ThemeService().switchTheme,
+              icon: const Icon(Icons.contrast),
+              color: Get.theme.colorScheme.onBackground,
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: AutoSizeText(
+                      minFontSize: 10,
+                      'PERFIL',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Get.theme.colorScheme.surface,
+                        fontSize: 22,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                controller.imageFile == null
-                    ? Center(
-                        child: CircleAvatar(
-                          radius: 80,
-                          backgroundImage:
-                              NetworkImage(Get.parameters['image'].toString()),
-                          backgroundColor: Get.theme.colorScheme.primary,
-                        ),
-                      )
-                    : Center(
-                        child: Container(
-                          width: 180,
-                          height: 180,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Get.theme.colorScheme.primary,
-                              image: DecorationImage(
-                                fit: BoxFit.fitHeight,
-                                image: FileImage(
-                                  File(controller.imageFile!.path),
-                                ),
-                              )),
-                        ),
-                      ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        Map<Permission, PermissionStatus> statuses = await [
-                          Permission.storage,
-                          Permission.camera,
-                        ].request();
-                        if (statuses[Permission.storage]!.isGranted &&
-                            statuses[Permission.camera]!.isGranted) {
-                          await controller.pickImageFileFromGalery();
-                          setState(() {
-                            controller.imageFile;
-                          });
-                        } else {
-                          print('Permissão negada!');
-                        }
-                      },
-                      icon: Icon(
-                        Icons.image_outlined,
-                        color: Get.theme.colorScheme.surface,
-                        size: 30,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        Map<Permission, PermissionStatus> statuses = await [
-                          Permission.storage,
-                          Permission.camera,
-                        ].request();
-                        if (statuses[Permission.storage]!.isGranted &&
-                            statuses[Permission.camera]!.isGranted) {
-                          await controller.captureImageFileFromCamera();
-                          setState(() {
-                            controller.imageFile;
-                          });
-                        } else {
-                          print('Permissão negada!');
-                        }
-                      },
-                      icon: Icon(
-                        Icons.camera_alt_outlined,
-                        color: Get.theme.colorScheme.surface,
-                        size: 30,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                CustomTextformfield(
-                  label: 'Nome',
-                  controller: _nameEC,
-                  validator: Validatorless.required('Nome Obrigatório'),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomDropdownButton(
-                  value: Get.parameters['cidade'].toString(),
-                  futureListDropdown: controller.getDropdowValue(
-                      labelAndColecctionList: 'Cidade'),
-                  validator: Validatorless.required('Cidade é obrigatória'),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Center(
-                  child: CustomButton(
-                    color: Get.theme.colorScheme.primaryContainer,
-                    width: double.infinity,
-                    label: 'ATUALIZAR',
-                    onPressed: () {
-                      final formValid =
-                          _formKey.currentState?.validate() ?? false;
-                      if (formValid) {
-                        controller.itemUpdate({
-                          'id': Get.parameters['id'],
-                          'name': _nameEC.text,
-                          'imagePath': controller.imageFile == null
-                              ? ''
-                              : controller.imageFile!.path,
-                          'cidade':
-                              controller.valorSelecionadoDropDown?.value ??
-                                  Get.parameters['cidade'],
-                        });
-                      }
-                    },
+                  const SizedBox(
+                    height: 30,
                   ),
-                ),
-              ],
+                  controller.imageFile == null
+                      ? Center(
+                          child: CircleAvatar(
+                            radius: 80,
+                            backgroundImage: NetworkImage(
+                                Get.parameters['image'].toString()),
+                            backgroundColor: Get.theme.colorScheme.primary,
+                          ),
+                        )
+                      : Center(
+                          child: Container(
+                            width: 180,
+                            height: 180,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Get.theme.colorScheme.primary,
+                                image: DecorationImage(
+                                  fit: BoxFit.fitHeight,
+                                  image: FileImage(
+                                    File(controller.imageFile!.path),
+                                  ),
+                                )),
+                          ),
+                        ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () async {
+                          Map<Permission, PermissionStatus> statuses = await [
+                            Permission.storage,
+                            Permission.camera,
+                          ].request();
+                          if (statuses[Permission.storage]!.isGranted &&
+                              statuses[Permission.camera]!.isGranted) {
+                            await controller.pickImageFileFromGalery();
+                            setState(() {
+                              controller.imageFile;
+                            });
+                          } else {
+                            print('Permissão negada!');
+                          }
+                        },
+                        icon: Icon(
+                          Icons.image_outlined,
+                          color: Get.theme.colorScheme.surface,
+                          size: 30,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          Map<Permission, PermissionStatus> statuses = await [
+                            Permission.storage,
+                            Permission.camera,
+                          ].request();
+                          if (statuses[Permission.storage]!.isGranted &&
+                              statuses[Permission.camera]!.isGranted) {
+                            await controller.captureImageFileFromCamera();
+                            setState(() {
+                              controller.imageFile;
+                            });
+                          } else {
+                            print('Permissão negada!');
+                          }
+                        },
+                        icon: Icon(
+                          Icons.camera_alt_outlined,
+                          color: Get.theme.colorScheme.surface,
+                          size: 30,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  CustomTextformfield(
+                    label: 'Nome',
+                    controller: _nameEC,
+                    validator: Validatorless.required('Nome Obrigatório'),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomDropdownButton(
+                    value: Get.parameters['cidade'].toString(),
+                    futureListDropdown: controller.getDropdowValue(
+                        labelAndColecctionList: 'Cidade'),
+                    validator: Validatorless.required('Cidade é obrigatória'),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Center(
+                    child: CustomButton(
+                      color: Get.theme.colorScheme.primaryContainer,
+                      width: double.infinity,
+                      label: 'ATUALIZAR',
+                      onPressed: () {
+                        final formValid =
+                            _formKey.currentState?.validate() ?? false;
+                        if (formValid) {
+                          controller.itemUpdate({
+                            'id': Get.parameters['id'],
+                            'name': _nameEC.text,
+                            'imagePath': controller.imageFile == null
+                                ? ''
+                                : controller.imageFile!.path,
+                            'cidade':
+                                controller.valorSelecionadoDropDown?.value ??
+                                    Get.parameters['cidade'],
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

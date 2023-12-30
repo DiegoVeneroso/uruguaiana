@@ -35,107 +35,112 @@ class _ProposalActionsAddPageState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.colorScheme.background,
-      appBar: CustomAppbar(
-        actionsList: [
-          IconButton(
-            onPressed: ThemeService().switchTheme,
-            icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.onBackground,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: AutoSizeText(
-                    minFontSize: 10,
-                    'ADICIONAR AÇÃO',
-                    style: Get.textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Get.theme.colorScheme.surface,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.colorScheme.background,
+        appBar: CustomAppbar(
+          actionsList: [
+            IconButton(
+              onPressed: ThemeService().switchTheme,
+              icon: const Icon(Icons.contrast),
+              color: Get.theme.colorScheme.onBackground,
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: AutoSizeText(
+                      minFontSize: 10,
+                      'ADICIONAR AÇÃO',
+                      style: Get.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Get.theme.colorScheme.surface,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: AutoSizeText(
-                    minFontSize: 10,
-                    Get.parameters['proposal_pilar_name'].toString(),
-                    style: Get.textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Get.theme.colorScheme.surface,
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                    child: AutoSizeText(
+                      minFontSize: 10,
+                      Get.parameters['proposal_pilar_name'].toString(),
+                      style: Get.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Get.theme.colorScheme.surface,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomPicker(
-                  key: _pickedKey,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextformfield(
-                  label: 'Título',
-                  controller: _titleEC,
-                  validator: Validatorless.required('Título é obrigatório'),
-                  maxlines: 2,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextformfield(
-                  label: 'Descrição',
-                  controller: _descriptionEC,
-                  validator: Validatorless.required('Descrição é obrigatório'),
-                  maxlines: 10,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: CustomButton(
-                    color: Get.theme.colorScheme.primaryContainer,
-                    width: double.infinity,
-                    label: 'ADICIONAR',
-                    onPressed: () {
-                      final formValid =
-                          _formKey.currentState?.validate() ?? false;
-
-                      final pickerValid =
-                          _pickedKey.currentState?.imageFile?.path != null
-                              ? true
-                              : false;
-
-                      _pickedKey.currentState
-                          ?.setImageValidate(pickerValid.toString());
-
-                      if (formValid & pickerValid) {
-                        controller.proposalActionAdd({
-                          'title': _titleEC.text,
-                          'url_image': _pickedKey.currentState?.imageFile?.path,
-                          'description': _descriptionEC.text,
-                          'id_proposal_base':
-                              Get.parameters['id_proposal_base'].toString(),
-                          'proposal_pilar_name':
-                              Get.parameters['proposal_pilar_name'].toString(),
-                        });
-                      }
-                    },
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-              ],
+                  CustomPicker(
+                    key: _pickedKey,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Título',
+                    controller: _titleEC,
+                    validator: Validatorless.required('Título é obrigatório'),
+                    maxlines: 2,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Descrição',
+                    controller: _descriptionEC,
+                    validator:
+                        Validatorless.required('Descrição é obrigatório'),
+                    maxlines: 10,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: CustomButton(
+                      color: Get.theme.colorScheme.primaryContainer,
+                      width: double.infinity,
+                      label: 'ADICIONAR',
+                      onPressed: () {
+                        final formValid =
+                            _formKey.currentState?.validate() ?? false;
+
+                        final pickerValid =
+                            _pickedKey.currentState?.imageFile?.path != null
+                                ? true
+                                : false;
+
+                        _pickedKey.currentState
+                            ?.setImageValidate(pickerValid.toString());
+
+                        if (formValid & pickerValid) {
+                          controller.proposalActionAdd({
+                            'title': _titleEC.text,
+                            'url_image':
+                                _pickedKey.currentState?.imageFile?.path,
+                            'description': _descriptionEC.text,
+                            'id_proposal_base':
+                                Get.parameters['id_proposal_base'].toString(),
+                            'proposal_pilar_name': Get
+                                .parameters['proposal_pilar_name']
+                                .toString(),
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
@@ -111,6 +113,44 @@ class MyCollaborateController extends GetxController
     foundCollaborate.value = results;
   }
 
+  Future<void> getMyCollaborateStorage() async {
+    // List<String> myCollaborateListString =
+    //     await storage.read('my_collaborate_list');
+
+    // final List<Map<String, dynamic>> mapList = myCollaborateListString
+    //     .map((s) => {'name': s, 'selected': false})
+    //     .toList();
+
+    // final List<CollaborateModel> mapList = myCollaborateListString
+    //     .map(
+    //       (s) => CollaborateModel(
+    //           name: 'controller',
+    //           description: 'gfdsg',
+    //           urlImage: 'gdfsg',
+    //           dateTimeCreated: '2023-12-28 10:07:36.938068'),
+    //     )
+    //     .toList();
+
+    String stringCollab =
+        '{name:fadsfasd, phone:555555, url_image:https://frontapp.com.br/v1/storage/buckets/65243a86eacfdb9c9487/files/1703768856524/view?project=65243945bba372ff009e, description:fdsafasd}';
+
+    var jsonCollab = json.decode(stringCollab);
+
+    final Rx<List<CollaborateModel>> mapList = jsonCollab
+        .map(
+          (s) => CollaborateModel(
+              name: 'controller',
+              description: 'gfdsg',
+              urlImage: 'gdfsg',
+              dateTimeCreated: '2023-12-28 10:07:36.938068'),
+        )
+        .toList();
+
+    foundCollaborate = mapList;
+
+    // return mapList;
+  }
+
   Future<void> collaboratesAdd(Map map) async {
     try {
       _loading.toggle();
@@ -146,23 +186,33 @@ class MyCollaborateController extends GetxController
 
   void loadData() async {
     try {
-      mycollaborateList.add(
-        CollaborateModel(
-          idCollaborate: '12312',
-          name: 'name',
-          urlImage:
-              'https://frontapp.com.br/v1/storage/buckets/65243a86eacfdb9c9487/files/1703427144198/view?project=65243945bba372ff009e',
-          phone: '2132',
-          description: 'gfds',
-          dateTimeCreated: '2023-12-24 11:12:24.623149',
-        ),
-      );
-    } catch (e) {
+      // jsonDecode(storage.read('my_collaborates_list').toString())
+      //     .forEach((e) => mycollaborateList.add(CollaborateModel.fromJson(e)));
+
+      jsonDecode(storage.read('my_collaborates_list').toString())
+          .forEach((e) => mycollaborateList.add(CollaborateModel.fromJson(e)));
+
+      // mycollaborateList.add(
+      //   CollaborateModel(
+      //     idCollaborate: '123123',
+      //     name: 'e.name',
+      //     urlImage: 'e.urlImage',
+      //     phone: 'e.phone',
+      //     description: 'e.description',
+      //     dateTimeCreated: DateTime.now().toString(),
+      //   ),
+      // );
+
+      // listColab.map((e) => print(e.toString()));
+    } catch (e, s) {
+      log(e.toString());
+      log(s.toString());
       _loading.toggle();
       _message(
         MessageModel(
           title: 'ATENÇÃO!',
-          message: 'Erro carregar dados!',
+          message: e.toString(),
+          // message: 'Erro carregar dados!',
           type: MessageType.error,
         ),
       );

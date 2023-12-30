@@ -46,4 +46,9 @@ class CollaborateModel {
 
   factory CollaborateModel.fromJson(String source) =>
       CollaborateModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'CollaborateModel(idCollaborate: $idCollaborate, name: $name, phone: $phone, description: $description, urlImage: $urlImage, dateTimeCreated: $dateTimeCreated)';
+  }
 }

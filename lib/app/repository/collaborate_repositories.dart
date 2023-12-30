@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
@@ -114,6 +115,19 @@ class ColaborateRepository {
               'description': map["description"],
               'date_time_created': DateTime.now().toString(),
             });
+      }
+
+      //adicionar o storage
+
+      String myCollaboratesString = await storage.read('my_collaborates_list');
+
+      if (myCollaboratesString.isEmpty) {
+        await storage.write('my_collaborates_list', myCollaboratesString);
+        // dynamic jsonData = jsonDecode(myCollaboratesString);
+
+        // List list = jsonData.map((value) => value.fromJson(value)).toList().obs;
+
+        // String jsonString = jsonEncode(paymentsAsMap);
       }
     } on AppwriteException catch (e) {
       log(e.response['type']);

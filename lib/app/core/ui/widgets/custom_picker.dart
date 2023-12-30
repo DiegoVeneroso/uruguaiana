@@ -167,7 +167,7 @@ class CustomPickerState extends State<CustomPicker> {
                                               CustomButton(
                                                 label: 'Galeria',
                                                 height: 40,
-                                                // width: 100,
+                                                width: 100,
                                                 onPressed: () async {
                                                   Get.back();
                                                   Map<Permission,

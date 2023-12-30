@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
@@ -27,6 +28,7 @@ class CollaborateController extends GetxController
   final _message = Rxn<MessageModel>();
   final _dialog = Rxn<DialogModel>();
   var collaborateList = <CollaborateModel>[].obs;
+  var mycollaborateList = <CollaborateModel>[].obs;
   Rx<List<CollaborateModel>> foundCollaborate = Rx<List<CollaborateModel>>([]);
   RxList<DropdownMenuItem<String>> listDropdown =
       <DropdownMenuItem<String>>[].obs;
@@ -57,6 +59,7 @@ class CollaborateController extends GetxController
     dialogListener(_dialog);
     foundCollaborate.value = collaborateList;
     showNotificationPush();
+    getCollaborateFromStorage();
 
     super.onInit();
   }
@@ -67,6 +70,32 @@ class CollaborateController extends GetxController
     loadData();
 
     super.onReady();
+  }
+
+  Future<void> getCollaborateFromStorage() async {
+    var result = await storage.read('my_collaborates_list');
+
+    if (result != null) {
+      dynamic jsonData = jsonDecode(result);
+      mycollaborateList = jsonData
+          .map((value) => CollaborateModel.fromJson(value))
+          .toList()
+          .obs;
+    } else {
+      mycollaborateList.value = [];
+    }
+  }
+
+  Future<void> saveCollaborateToStorage(Map<String, dynamic> map) async {
+    mycollaborateList.add(CollaborateModel(
+        name: map['name'],
+        description: map['description'],
+        urlImage: map['urlImage']));
+
+    var collaborateAsMap =
+        mycollaborateList.map((value) => value.toJson()).toList();
+    String jsonString = jsonEncode(collaborateAsMap);
+    await storage.write('my_collaborates_list', jsonString);
   }
 
   showNotificationPush() {
@@ -174,18 +203,49 @@ class CollaborateController extends GetxController
     foundCollaborate.value = results;
   }
 
-  Future<void> collaboratesAdd(Map map) async {
+  Future<void> collaboratesAdd(Map<String, dynamic> map) async {
     try {
       _loading.toggle();
 
       await repository.collaboratesAddRepository(map);
 
+      //add
+
+      for (var e in [map]) {
+        // print('teste');
+        // print(e.toString());
+        mycollaborateList.add(
+          CollaborateModel(
+            idCollaborate: '1223123',
+            name: e['name'],
+            phone: e['phone'],
+            description: e['description'],
+            urlImage: e['url_image'],
+            dateTimeCreated: DateTime.now().toString(),
+          ),
+        );
+      }
+
       await storage.write(
-          'my_collaborate_list', collaborateList.toJson().toString());
+          'my_collaborates_list', jsonEncode(mycollaborateList));
+      // .forEach(
+      //   (e) => CollaborateModel(
+      //     idCollaborate: e[0]['idCollaborate'],
+      //     name: e[0]['name'],
+      //     phone: e[0]['phone'],
+      //     description: e[0]['description'],
+      //     urlImage: e[0]['url_image'],
+      //     dateTimeCreated: DateTime.now().toString(),
+      //   ),
+      // )
+      // .toList();
+
+      // jsonDecode(storage.read('my_collaborates_list').toString())
+      //     .forEach((e) => collaborateList.add(CollaborateModel.fromJson(e)));
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.news);
+      Get.offAndToNamed(Routes.my_collaborate);
       _message(
         MessageModel(
           title: 'Parabéns!',

@@ -29,68 +29,70 @@ class _ProposalAddPageState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.colorScheme.background,
-      appBar: CustomAppbar(
-        actionsList: [
-          IconButton(
-            onPressed: ThemeService().switchTheme,
-            icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.onBackground,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: AutoSizeText(
-                    minFontSize: 10,
-                    'Adicionar nova área',
-                    style: Get.textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Get.theme.colorScheme.surface,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.colorScheme.background,
+        appBar: CustomAppbar(
+          actionsList: [
+            IconButton(
+              onPressed: ThemeService().switchTheme,
+              icon: const Icon(Icons.contrast),
+              color: Get.theme.colorScheme.onBackground,
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: AutoSizeText(
+                      minFontSize: 10,
+                      'Adicionar nova área',
+                      style: Get.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Get.theme.colorScheme.surface,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextformfield(
-                  label: 'Nome do área',
-                  controller: _titleEC,
-                  validator:
-                      Validatorless.required('Nome da área é obrigatório'),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: CustomButton(
-                    color: Get.theme.colorScheme.primaryContainer,
-                    width: double.infinity,
-                    label: 'ADICIONAR',
-                    onPressed: () {
-                      final formValid =
-                          _formKey.currentState?.validate() ?? false;
-
-                      if (formValid) {
-                        controller.proposalAdd({
-                          'title': _titleEC.text.toUpperCase(),
-                        });
-                      }
-                    },
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Nome do área',
+                    controller: _titleEC,
+                    validator:
+                        Validatorless.required('Nome da área é obrigatório'),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: CustomButton(
+                      color: Get.theme.colorScheme.primaryContainer,
+                      width: double.infinity,
+                      label: 'ADICIONAR',
+                      onPressed: () {
+                        final formValid =
+                            _formKey.currentState?.validate() ?? false;
+
+                        if (formValid) {
+                          controller.proposalAdd({
+                            'title': _titleEC.text.toUpperCase(),
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

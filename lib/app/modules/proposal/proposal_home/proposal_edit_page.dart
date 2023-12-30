@@ -29,64 +29,66 @@ class _ProposalAddPageState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.colorScheme.background,
-      appBar: CustomAppbar(
-        actionsList: [
-          IconButton(
-            onPressed: ThemeService().switchTheme,
-            icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.onBackground,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: AutoSizeText(
-                    minFontSize: 10,
-                    'Alterar pilar',
-                    style: Get.textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Get.theme.colorScheme.surface,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.colorScheme.background,
+        appBar: CustomAppbar(
+          actionsList: [
+            IconButton(
+              onPressed: ThemeService().switchTheme,
+              icon: const Icon(Icons.contrast),
+              color: Get.theme.colorScheme.onBackground,
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: AutoSizeText(
+                      minFontSize: 10,
+                      'Alterar pilar',
+                      style: Get.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Get.theme.colorScheme.surface,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                CustomTextformfield(
-                  label: 'Título',
-                  controller: _titleEC,
-                  validator: Validatorless.required('Titulo é obrigatório'),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: CustomButton(
-                    color: Get.theme.colorScheme.primaryContainer,
-                    width: double.infinity,
-                    label: 'ATUALIZAR',
-                    onPressed: () {
-                      final formValid =
-                          _formKey.currentState?.validate() ?? false;
-                      if (formValid) {
-                        controller.proposalUpdate({
-                          'idProposal': Get.parameters['id_proposal_base'],
-                          'title': _titleEC.text.toUpperCase(),
-                        });
-                      }
-                    },
+                  const SizedBox(
+                    height: 30,
                   ),
-                ),
-              ],
+                  CustomTextformfield(
+                    label: 'Título',
+                    controller: _titleEC,
+                    validator: Validatorless.required('Titulo é obrigatório'),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: CustomButton(
+                      color: Get.theme.colorScheme.primaryContainer,
+                      width: double.infinity,
+                      label: 'ATUALIZAR',
+                      onPressed: () {
+                        final formValid =
+                            _formKey.currentState?.validate() ?? false;
+                        if (formValid) {
+                          controller.proposalUpdate({
+                            'idProposal': Get.parameters['id_proposal_base'],
+                            'title': _titleEC.text.toUpperCase(),
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

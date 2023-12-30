@@ -34,93 +34,97 @@ class _NewsAddPageState extends AppState<NewsAddPage, NewsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.colorScheme.background,
-      appBar: CustomAppbar(
-        actionsList: [
-          IconButton(
-            onPressed: ThemeService().switchTheme,
-            icon: const Icon(Icons.contrast),
-            color: Get.theme.colorScheme.onBackground,
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Center(
-                    child: AutoSizeText(
-                      minFontSize: 10,
-                      'ADICIONAR NOTÍCIA',
-                      style: Get.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Get.theme.colorScheme.surface,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.colorScheme.background,
+        appBar: CustomAppbar(
+          actionsList: [
+            IconButton(
+              onPressed: ThemeService().switchTheme,
+              icon: const Icon(Icons.contrast),
+              color: Get.theme.colorScheme.onBackground,
+            ),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Form(
+            key: _formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Center(
+                      child: AutoSizeText(
+                        minFontSize: 10,
+                        'ADICIONAR NOTÍCIA',
+                        style: Get.textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Get.theme.colorScheme.surface,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomPicker(
-                  key: _pickedKey,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextformfield(
-                  label: 'Título',
-                  controller: _titleEC,
-                  validator: Validatorless.required('Título é obrigatório'),
-                  maxlines: 2,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextformfield(
-                  label: 'Descrição',
-                  controller: _descriptionEC,
-                  validator: Validatorless.required('Descrição é obrigatório'),
-                  maxlines: 10,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: CustomButton(
-                    color: Get.theme.colorScheme.primaryContainer,
-                    width: double.infinity,
-                    label: 'ADICIONAR',
-                    onPressed: () {
-                      final formValid =
-                          _formKey.currentState?.validate() ?? false;
-
-                      final pickerValid =
-                          _pickedKey.currentState?.imageFile?.path != null
-                              ? true
-                              : false;
-
-                      _pickedKey.currentState
-                          ?.setImageValidate(pickerValid.toString());
-
-                      if (formValid & pickerValid) {
-                        controller.newsAdd({
-                          'title': _titleEC.text,
-                          'url_image': _pickedKey.currentState?.imageFile?.path,
-                          'description': _descriptionEC.text,
-                        });
-                      }
-                    },
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-              ],
+                  CustomPicker(
+                    key: _pickedKey,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Título',
+                    controller: _titleEC,
+                    validator: Validatorless.required('Título é obrigatório'),
+                    maxlines: 2,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Descrição',
+                    controller: _descriptionEC,
+                    validator:
+                        Validatorless.required('Descrição é obrigatório'),
+                    maxlines: 10,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: CustomButton(
+                      color: Get.theme.colorScheme.primaryContainer,
+                      width: double.infinity,
+                      label: 'ADICIONAR',
+                      onPressed: () {
+                        final formValid =
+                            _formKey.currentState?.validate() ?? false;
+
+                        final pickerValid =
+                            _pickedKey.currentState?.imageFile?.path != null
+                                ? true
+                                : false;
+
+                        _pickedKey.currentState
+                            ?.setImageValidate(pickerValid.toString());
+
+                        if (formValid & pickerValid) {
+                          controller.newsAdd({
+                            'title': _titleEC.text,
+                            'url_image':
+                                _pickedKey.currentState?.imageFile?.path,
+                            'description': _descriptionEC.text,
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

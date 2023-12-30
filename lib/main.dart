@@ -15,6 +15,7 @@ Future<void> main() async {
   await GetStorage.init();
   await FirebaseMessaging.instance.requestPermission();
   await initializeDateFormatting('pt_BR');
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) => runApp(GetMaterialApp(
             title: 'Realtime modelo',
