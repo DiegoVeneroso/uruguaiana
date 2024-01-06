@@ -26,6 +26,9 @@ abstract class Routes {
   static const collaborate_detail = _Paths.collaborate_detail;
 
   static const my_collaborate = _Paths.my_colaborate;
+  static const my_collaborate_detail = _Paths.my_colaborate_detail;
+
+  static const my_contact = _Paths.my_contact;
 
   static const proposal = _Paths.proposal;
   static const proposal_add = _Paths.proposal_add;
@@ -66,6 +69,9 @@ abstract class _Paths {
   static const collaborate_detail = '/collaborate_detail';
 
   static const my_colaborate = '/my_colaborate';
+  static const my_colaborate_detail = '/my_collaborate_detail';
+
+  static const my_contact = '/my_contact';
 
   static const proposal = '/proposal';
   static const proposal_add = '/proposal_add';

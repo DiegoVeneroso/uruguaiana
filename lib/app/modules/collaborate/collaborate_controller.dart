@@ -58,7 +58,7 @@ class CollaborateController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundCollaborate.value = collaborateList;
-    showNotificationPush();
+    //showNotificationPush();
     getCollaborateFromStorage();
 
     super.onInit();
@@ -211,23 +211,23 @@ class CollaborateController extends GetxController
 
       //add
 
-      for (var e in [map]) {
-        // print('teste');
-        // print(e.toString());
-        mycollaborateList.add(
-          CollaborateModel(
-            idCollaborate: '1223123',
-            name: e['name'],
-            phone: e['phone'],
-            description: e['description'],
-            urlImage: e['url_image'],
-            dateTimeCreated: DateTime.now().toString(),
-          ),
-        );
-      }
+      // for (var e in [map]) {
+      //   // print('teste');
+      //   // print(e.toString());
+      //   mycollaborateList.add(
+      //     CollaborateModel(
+      //       idCollaborate: '1223123',
+      //       name: e['name'],
+      //       phone: e['phone'],
+      //       description: e['description'],
+      //       urlImage: e['url_image'],
+      //       dateTimeCreated: DateTime.now().toString(),
+      //     ),
+      //   );
+      // }
 
-      await storage.write(
-          'my_collaborates_list', jsonEncode(mycollaborateList));
+      // await storage.write(
+      //     'my_collaborates_list', jsonEncode(mycollaborateList));
       // .forEach(
       //   (e) => CollaborateModel(
       //     idCollaborate: e[0]['idCollaborate'],
@@ -245,7 +245,7 @@ class CollaborateController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.my_collaborate);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',

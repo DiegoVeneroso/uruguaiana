@@ -83,9 +83,9 @@ class MyColaboratePage extends GetView<MyCollaborateController> {
                         return ListTile(
                           onTap: () {
                             Get.toNamed(
-                              '/collaborate_detail',
+                              'my_collaborate_detail',
                               parameters: {
-                                'idCollaborate': controller
+                                'idMyCollaborate': controller
                                     .mycollaborateList[index].idCollaborate
                                     .toString(),
                                 'name': controller.mycollaborateList[index].name

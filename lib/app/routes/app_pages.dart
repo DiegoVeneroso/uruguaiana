@@ -12,6 +12,8 @@ import 'package:uruguaiana/app/modules/auth/register/register_bindigns.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_page.dart';
 import 'package:uruguaiana/app/modules/my_colaborate/my_colaborate_bindings.dart';
 import 'package:uruguaiana/app/modules/my_colaborate/my_colaborate_page.dart';
+import 'package:uruguaiana/app/modules/my_contact/my_contact_bindings.dart';
+import 'package:uruguaiana/app/modules/my_contact/my_contact_page.dart';
 import 'package:uruguaiana/app/modules/news/news_bindings.dart';
 import 'package:uruguaiana/app/modules/news/news_detail_page.dart';
 import 'package:uruguaiana/app/modules/news/news_page.dart';
@@ -36,6 +38,7 @@ import '../modules/collaborate/collaborate_add_page.dart';
 import '../modules/home/home_add_page.dart';
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_edit_page.dart';
+import '../modules/my_colaborate/my_collaborate_detail_page.dart';
 import '../modules/news/news_add_page.dart';
 import '../modules/news/news_edit_page.dart';
 import '../modules/proposal/proposal_actions/proposal_actions_bindings.dart';
@@ -208,6 +211,18 @@ class AppPages {
       name: _Paths.my_colaborate,
       page: () => MyColaboratePage(),
       binding: MyCollaborateBindings(),
+    ),
+    GetPage(
+      name: _Paths.my_colaborate_detail,
+      page: () => const MyCollaborateDetailPage(),
+      binding: MyCollaborateBindings(),
+    ),
+
+    //my contact
+    GetPage(
+      name: _Paths.my_contact,
+      page: () => const MyContactPage(),
+      binding: MyContactBindings(),
     ),
 
     //notification

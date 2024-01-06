@@ -168,7 +168,7 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                     ),
                   ),
                 )
-              : const CustomFloatingButton(),
+              : CustomFloatingButton(),
         ),
       ),
     );

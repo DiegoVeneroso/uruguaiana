@@ -188,7 +188,7 @@ class NotificationPage extends GetView<NotificationController> {
                     },
                   ),
                 )
-              : const CustomFloatingButton(),
+              : CustomFloatingButton(),
         ),
       ),
     );

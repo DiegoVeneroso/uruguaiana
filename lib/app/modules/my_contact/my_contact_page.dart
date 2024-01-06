@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/modules/notification/notification_controller.dart';
+import 'package:uruguaiana/app/modules/my_contact/my_contact_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
@@ -9,23 +9,24 @@ import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-class NotificationAddPage extends StatefulWidget {
-  const NotificationAddPage({Key? key}) : super(key: key);
+class MyContactPage extends StatefulWidget {
+  const MyContactPage({Key? key}) : super(key: key);
 
   @override
-  State<NotificationAddPage> createState() => _ProposalAddPageState();
+  State<MyContactPage> createState() => _MyContactPageState();
 }
 
-class _ProposalAddPageState
-    extends AppState<NotificationAddPage, NotificationController> {
+class _MyContactPageState extends AppState<MyContactPage, MyContactController> {
   final _formKey = GlobalKey<FormState>();
-  final _titleEC = TextEditingController();
-  final _messageEC = TextEditingController();
+  final _faceEC = TextEditingController();
+  final _instaEC = TextEditingController();
+  final _whatsEC = TextEditingController();
 
   @override
   void dispose() {
-    _titleEC.dispose();
-    _messageEC.dispose();
+    _faceEC.dispose();
+    _instaEC.dispose();
+    _whatsEC.dispose();
     super.dispose();
   }
 
@@ -51,10 +52,13 @@ class _ProposalAddPageState
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Center(
                     child: AutoSizeText(
                       minFontSize: 10,
-                      'Enviar notificação',
+                      'Meus contatos',
                       style: Get.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Get.theme.colorScheme.surface,
@@ -62,20 +66,33 @@ class _ProposalAddPageState
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   CustomTextformfield(
-                    label: 'Título',
-                    controller: _titleEC,
-                    validator: Validatorless.required('Título é obrigatório'),
+                    label: 'Link do Facebook',
+                    controller: _faceEC,
+                    validator: Validatorless.required(
+                        'Link do Facebook é obrigatório'),
+                    maxlines: 2,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   CustomTextformfield(
-                    label: 'Mensagem',
-                    controller: _messageEC,
-                    validator: Validatorless.required('Mensagem é obrigatório'),
+                    label: 'Link do Instagram',
+                    controller: _instaEC,
+                    validator: Validatorless.required(
+                        'Link do Instagram é obrigatório'),
+                    maxlines: 2,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Whatsapp',
+                    controller: _whatsEC,
+                    validator: Validatorless.required('Whatsapp é obrigatório'),
+                    cellMask: true,
                   ),
                   const SizedBox(
                     height: 20,
@@ -84,15 +101,16 @@ class _ProposalAddPageState
                     child: CustomButton(
                       color: Get.theme.colorScheme.primaryContainer,
                       width: double.infinity,
-                      label: 'ENVIAR',
+                      label: 'SALVAR',
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
 
                         if (formValid) {
-                          controller.notificationsAdd({
-                            'title': _titleEC.text,
-                            'message': _messageEC.text,
+                          controller.myContactAdd({
+                            'facebook': _faceEC.text,
+                            'instagram': _instaEC.text,
+                            'whatsapp': _whatsEC.text,
                           });
                         }
                       },

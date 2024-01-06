@@ -13,6 +13,7 @@ class ColaborateRepository {
   RxList<CollaborateModel> listItem = <CollaborateModel>[].obs;
   RxString? search = ''.obs;
   GetStorage storage = GetStorage();
+  var mycollaborateList = <CollaborateModel>[].obs;
 
   Future<List<CollaborateModel>> loadDataRepository() async {
     try {
@@ -115,19 +116,40 @@ class ColaborateRepository {
               'description': map["description"],
               'date_time_created': DateTime.now().toString(),
             });
-      }
 
-      //adicionar o storage
+        //adicionar no storage
 
-      String myCollaboratesString = await storage.read('my_collaborates_list');
+        String myCollaboratesString =
+            await storage.read('my_collaborates_list');
 
-      if (myCollaboratesString.isEmpty) {
-        await storage.write('my_collaborates_list', myCollaboratesString);
-        // dynamic jsonData = jsonDecode(myCollaboratesString);
+        if (myCollaboratesString.isEmpty) {
+          await storage.write('my_collaborates_list', myCollaboratesString);
+        } else {
+          // String myCollaborateListString =
+          //     await storage.read('my_collaborates_list');
 
-        // List list = jsonData.map((value) => value.fromJson(value)).toList().obs;
+          // RxList<CollaborateModel> mycollaborateList =
+          //     jsonDecode(myCollaborateListString);
 
-        // String jsonString = jsonEncode(paymentsAsMap);
+          jsonDecode(storage.read('my_collaborates_list').toString()).forEach(
+              (e) => mycollaborateList.add(CollaborateModel.fromJson(e)));
+
+          for (var e in [map]) {
+            mycollaborateList.add(
+              CollaborateModel(
+                idCollaborate: idUnique,
+                name: e['name'],
+                phone: e['phone'],
+                description: e['description'],
+                urlImage: urlImage,
+                dateTimeCreated: DateTime.now().toString(),
+              ),
+            );
+          }
+
+          await storage.write(
+              'my_collaborates_list', jsonEncode(mycollaborateList));
+        }
       }
     } on AppwriteException catch (e) {
       log(e.response['type']);

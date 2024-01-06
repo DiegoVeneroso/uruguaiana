@@ -60,7 +60,7 @@ class AboutController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundAbout.value = aboutList;
-    showNotificationPush();
+    // showNotificationPush();
     getAboutIsEmpty();
 
     super.onInit();

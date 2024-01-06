@@ -645,7 +645,7 @@ class NewsPage extends GetView<NewsController> {
                     },
                   ),
                 )
-              : const CustomFloatingButton(),
+              : CustomFloatingButton(),
         ),
       ),
     );

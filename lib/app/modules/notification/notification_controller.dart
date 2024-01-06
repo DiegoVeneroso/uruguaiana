@@ -59,7 +59,7 @@ class NotificationController extends GetxController
     loaderListener(_loading);
     messageListener(_message);
     foundNotification.value = notificationList;
-    showNotificationPush();
+    //showNotificationPush();
 
     super.onInit();
   }
@@ -104,8 +104,8 @@ class NotificationController extends GetxController
       //     "cEKJD0-2QQ-DM-Dg2ejnZN:APA91bH_EmiRGaJyP_dWvnJ3EZvjovmaoRg7aUl3mD5IIK3XnlkzoG3ThJ6cc6I9HxcPuEG_QbyhZNo0X7THFh0v7oJWlo7M8wujhSPHBmfXdEqzAJ-8SvUO_qI2PBIywsV4niEGr70g",
       "to": "/topics/br.com.frontapp.uruguaiana",
       "notification": {
-        "title": "",
-        "body": "",
+        "title": title,
+        "body": body,
       },
       "data": {
         "title": title,

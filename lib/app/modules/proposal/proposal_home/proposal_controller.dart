@@ -57,7 +57,7 @@ class ProposalController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundProposal.value = proposalList;
-    showNotificationPush();
+    //showNotificationPush();
 
     super.onInit();
   }

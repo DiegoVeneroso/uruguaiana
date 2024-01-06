@@ -197,7 +197,7 @@ class _NewsAddPageState
                     controller: _descriptionEC,
                     validator: Validatorless.required(
                         'Descrição da proposta é obrigatório'),
-                    maxlines: 10,
+                    maxlines: 6,
                   ),
                   const SizedBox(
                     height: 20,

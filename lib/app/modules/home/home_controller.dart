@@ -56,7 +56,7 @@ class HomeController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundItem.value = itemList;
-    showNotificationPush();
+    //showNotificationPush();
     getIsAdmin();
     super.onInit();
   }

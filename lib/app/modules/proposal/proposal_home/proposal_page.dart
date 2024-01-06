@@ -80,7 +80,7 @@ class ProposalPage extends GetView<ProposalController> {
                               blurRadius: 6.0,
                             )
                           ],
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -98,121 +98,110 @@ class ProposalPage extends GetView<ProposalController> {
                                 ),
                               ),
                               Obx(() => controller.isAdmin()
-                                  ? Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          IconButton(
-                                            padding: EdgeInsets.zero,
-                                            constraints: const BoxConstraints(),
-                                            icon: Icon(
-                                              Icons.edit,
-                                              color:
-                                                  Get.theme.colorScheme.primary,
-                                              // size: 20,
-                                            ),
-                                            onPressed: () {
-                                              Get.toNamed(Routes.proposal_edit,
-                                                  parameters: {
-                                                    'id_proposal_base':
-                                                        controller
-                                                            .proposalList[index]
-                                                            .idProposal
-                                                            .toString(),
-                                                    'proposal_pilar_name':
-                                                        controller
-                                                            .proposalList[index]
-                                                            .title
-                                                            .toString(),
-                                                  });
-                                            },
+                                  ? Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          padding: EdgeInsets.zero,
+                                          constraints: const BoxConstraints(),
+                                          icon: Icon(
+                                            Icons.edit,
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                            // size: 20,
                                           ),
-                                          const SizedBox(
-                                            width: 20,
+                                          onPressed: () {
+                                            Get.toNamed(Routes.proposal_edit,
+                                                parameters: {
+                                                  'id_proposal_base': controller
+                                                      .proposalList[index]
+                                                      .idProposal
+                                                      .toString(),
+                                                  'proposal_pilar_name':
+                                                      controller
+                                                          .proposalList[index]
+                                                          .title
+                                                          .toString(),
+                                                });
+                                          },
+                                        ),
+                                        IconButton(
+                                          padding: EdgeInsets.zero,
+                                          constraints: const BoxConstraints(),
+                                          icon: Icon(
+                                            Icons.delete,
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                            // size: 20,
                                           ),
-                                          IconButton(
-                                            padding: EdgeInsets.zero,
-                                            constraints: const BoxConstraints(),
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color:
-                                                  Get.theme.colorScheme.primary,
-                                              // size: 20,
-                                            ),
-                                            onPressed: () {
-                                              Get.defaultDialog(
-                                                titlePadding:
-                                                    const EdgeInsets.only(
-                                                        top: 10),
-                                                contentPadding:
-                                                    const EdgeInsets.only(
-                                                        top: 30, bottom: 20),
-                                                title: 'ATENÇÃO!',
-                                                middleText:
-                                                    'Somente pilares sem ações cadastradas podem ser excluídos!',
-                                                backgroundColor: Get
-                                                    .theme
-                                                    .colorScheme
-                                                    .onPrimaryContainer,
-                                                titleStyle: TextStyle(
-                                                    color: Get.theme.colorScheme
-                                                        .onSurface),
-                                                middleTextStyle: TextStyle(
-                                                    color: Get.theme.colorScheme
-                                                        .onSurface),
-                                                radius: 30,
-                                                confirm: CustomButton(
+                                          onPressed: () {
+                                            Get.defaultDialog(
+                                              titlePadding:
+                                                  const EdgeInsets.only(
+                                                      top: 10),
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                      top: 30, bottom: 20),
+                                              title: 'ATENÇÃO!',
+                                              middleText:
+                                                  'Somente pilares sem ações cadastradas podem ser excluídos!',
+                                              backgroundColor: Get
+                                                  .theme
+                                                  .colorScheme
+                                                  .onPrimaryContainer,
+                                              titleStyle: TextStyle(
                                                   color: Get.theme.colorScheme
-                                                      .onError,
-                                                  height: 40,
-                                                  width: 100,
-                                                  label: 'Excluir',
-                                                  onPressed: () async {
-                                                    await controller
-                                                        .proposalDelete(
-                                                            controller
-                                                                .proposalList[
-                                                                    index]
-                                                                .idProposal
-                                                                .toString());
-                                                  },
-                                                ),
-                                              );
-                                            },
+                                                      .onSurface),
+                                              middleTextStyle: TextStyle(
+                                                  color: Get.theme.colorScheme
+                                                      .onSurface),
+                                              radius: 30,
+                                              confirm: CustomButton(
+                                                color: Get
+                                                    .theme.colorScheme.onError,
+                                                height: 40,
+                                                width: 100,
+                                                label: 'Excluir',
+                                                onPressed: () async {
+                                                  await controller
+                                                      .proposalDelete(controller
+                                                          .proposalList[index]
+                                                          .idProposal
+                                                          .toString());
+                                                },
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        IconButton(
+                                          padding: EdgeInsets.zero,
+                                          constraints: const BoxConstraints(),
+                                          icon: Icon(
+                                            Icons.visibility,
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                            // size: 20,
                                           ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          IconButton(
-                                            padding: EdgeInsets.zero,
-                                            constraints: const BoxConstraints(),
-                                            icon: Icon(
-                                              Icons.visibility,
-                                              color:
-                                                  Get.theme.colorScheme.primary,
-                                              // size: 20,
-                                            ),
-                                            onPressed: () {
-                                              Get.toNamed(
-                                                  Routes.proposal_actions,
-                                                  parameters: {
-                                                    'id_proposal_base':
-                                                        controller
-                                                            .proposalList[index]
-                                                            .idProposal
-                                                            .toString(),
-                                                    'proposal_pilar_name':
-                                                        controller
-                                                            .proposalList[index]
-                                                            .title
-                                                            .toString(),
-                                                  });
-                                            },
-                                          ),
-                                        ],
-                                      ),
+                                          onPressed: () {
+                                            Get.toNamed(Routes.proposal_actions,
+                                                parameters: {
+                                                  'id_proposal_base': controller
+                                                      .proposalList[index]
+                                                      .idProposal
+                                                      .toString(),
+                                                  'proposal_pilar_name':
+                                                      controller
+                                                          .proposalList[index]
+                                                          .title
+                                                          .toString(),
+                                                });
+                                          },
+                                        ),
+                                      ],
                                     )
                                   : const SizedBox())
                             ]),
@@ -266,7 +255,7 @@ class ProposalPage extends GetView<ProposalController> {
                     ),
                   ),
                 )
-              : const CustomFloatingButton(),
+              : CustomFloatingButton(),
         ),
       ),
     );

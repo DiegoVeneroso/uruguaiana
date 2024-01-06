@@ -96,14 +96,18 @@ class NewsController extends GetxController
 
   showNotificationPush() {
     FirebaseMessaging.onMessage.listen((message) async {
+      print('############');
       print(message.data.values
           .toString()); //recebe o valor dos dados personalidados da notificação
+
+      print(message.data['title']);
+      print(message.data['body']);
 
       if (message.notification != null) {
         _message(
           MessageModel(
-            title: message.notification!.title.toString(),
-            message: message.notification!.body.toString(),
+            title: message.data['title'],
+            message: message.data['body'],
             type: MessageType.success,
           ),
         );

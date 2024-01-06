@@ -259,17 +259,17 @@ class CustomDrawer extends StatelessWidget {
                   //       ? Get.theme.colorScheme.onPrimaryContainer
                   //       : Get.theme.colorScheme.primary,
                   // ),
-                  buildDrawerItem(
-                    icon: Icons.note_add_outlined,
-                    text: "Minhas colaborações",
-                    onTap: () => navigate(8),
-                    tileColor: Get.currentRoute == '/my_colaborate'
-                        ? Get.theme.colorScheme.primary
-                        : null,
-                    textIconColor: Get.currentRoute == '/my_colaborate'
-                        ? Get.theme.colorScheme.onPrimaryContainer
-                        : Get.theme.colorScheme.primary,
-                  ),
+                  // buildDrawerItem(
+                  //   icon: Icons.note_add_outlined,
+                  //   text: "Minhas colaborações",
+                  //   onTap: () => navigate(8),
+                  //   tileColor: Get.currentRoute == '/my_colaborate'
+                  //       ? Get.theme.colorScheme.primary
+                  //       : null,
+                  //   textIconColor: Get.currentRoute == '/my_colaborate'
+                  //       ? Get.theme.colorScheme.onPrimaryContainer
+                  //       : Get.theme.colorScheme.primary,
+                  // ),
                   buildDrawerItem(
                     icon: Icons.settings,
                     text: 'Administração',

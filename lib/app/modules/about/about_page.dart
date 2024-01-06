@@ -343,7 +343,7 @@ class AboutPage extends GetView<AboutController> {
           floatingActionButton: Obx(
             () => controller.isAdmin()
                 ? const SizedBox()
-                : const CustomFloatingButton(),
+                : CustomFloatingButton(),
           )),
     );
   }
