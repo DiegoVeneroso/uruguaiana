@@ -487,30 +487,29 @@ class NewsPage extends GetView<NewsController> {
                                               visible: controller.isAdmin(),
                                               child: GestureDetector(
                                                 onTap: () {
-                                                  Get.toNamed(Routes.news_edit,
-                                                      parameters: {
-                                                        'idNews': controller
-                                                            .newsList[index]
-                                                            .idNews
-                                                            .toString(),
-                                                        'date': controller
-                                                            .newsList[index]
-                                                            .date
-                                                            .toString(),
-                                                        'title': controller
-                                                            .newsList[index]
-                                                            .title
-                                                            .toString(),
-                                                        'url_image': controller
-                                                            .newsList[index]
-                                                            .urlImage
-                                                            .toString(),
-                                                        'description':
-                                                            controller
-                                                                .newsList[index]
-                                                                .description
-                                                                .toString(),
-                                                      });
+                                                  Get.toNamed(
+                                                    Routes.news_edit,
+                                                    parameters: {
+                                                      'idNews': controller
+                                                          .newsList[index]
+                                                          .idNews
+                                                          .toString(),
+                                                      'date': controller
+                                                          .newsList[index].date
+                                                          .toString(),
+                                                      'title': controller
+                                                          .newsList[index].title
+                                                          .toString(),
+                                                      'url_image': controller
+                                                          .newsList[index]
+                                                          .urlImage
+                                                          .toString(),
+                                                      'description': controller
+                                                          .newsList[index]
+                                                          .description
+                                                          .toString(),
+                                                    },
+                                                  );
                                                 },
                                                 child: Container(
                                                   width: 40,

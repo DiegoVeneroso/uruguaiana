@@ -221,7 +221,7 @@ class AppPages {
     //my contact
     GetPage(
       name: _Paths.my_contact,
-      page: () => const MyContactPage(),
+      page: () => MyContactPage(),
       binding: MyContactBindings(),
     ),
 

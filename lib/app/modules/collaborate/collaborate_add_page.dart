@@ -20,6 +20,8 @@ class CollaborateAddPage extends StatefulWidget {
 
 class _NewsAddPageState
     extends AppState<CollaborateAddPage, CollaborateController> {
+  RxBool acceptTerms = false.obs;
+
   final _formKey = GlobalKey<FormState>();
   final _pickedKey = GlobalKey<CustomPickerState>();
   final _nameEC = TextEditingController();
@@ -94,35 +96,40 @@ class _NewsAddPageState
                               CustomPicker(
                                 key: _pickedKey,
                               ),
-                              Positioned(
-                                right: 15,
-                                top: 15,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      controller.addImageVisible.value == false
-                                          ? controller.addImageVisible.value =
-                                              true
-                                          : controller.addImageVisible.value =
-                                              false;
-                                    });
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
+                              Visibility(
+                                visible:
+                                    controller.addImageVisible.value == true,
+                                child: Positioned(
+                                  right: 15,
+                                  top: 15,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        controller.addImageVisible.value ==
+                                                false
+                                            ? controller.addImageVisible.value =
+                                                true
+                                            : controller.addImageVisible.value =
+                                                false;
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Get.theme.colorScheme
+                                                .onPrimaryContainer),
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Get.theme.colorScheme
+                                            .onPrimaryContainer,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(2.0),
+                                        child: Icon(
+                                          Icons.close,
                                           color: Get.theme.colorScheme
-                                              .onPrimaryContainer),
-                                      borderRadius: BorderRadius.circular(30),
-                                      color: Get
-                                          .theme.colorScheme.onPrimaryContainer,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Icon(
-                                        Icons.close,
-                                        color: Get
-                                            .theme.colorScheme.primaryContainer,
-                                        size: 30,
+                                              .primaryContainer,
+                                          size: 30,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -151,7 +158,7 @@ class _NewsAddPageState
                                   ),
                                 ),
                                 child: const Padding(
-                                  padding: EdgeInsets.only(left: 15),
+                                  padding: EdgeInsets.only(left: 5),
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
@@ -199,37 +206,183 @@ class _NewsAddPageState
                         'Descrição da proposta é obrigatório'),
                     maxlines: 6,
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: CustomButton(
-                      color: Get.theme.colorScheme.primaryContainer,
-                      width: double.infinity,
-                      label: 'CADASTRAR',
-                      onPressed: () {
-                        final formValid =
-                            _formKey.currentState?.validate() ?? false;
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10.0, left: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Obx(
+                          () => Checkbox(
+                              fillColor:
+                                  MaterialStateProperty.resolveWith<Color>(
+                                      (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.disabled)) {
+                                  return Get.theme.colorScheme.primaryContainer;
+                                }
+                                return Get.theme.colorScheme.onPrimaryContainer;
+                              }),
+                              checkColor:
+                                  Get.theme.colorScheme.primaryContainer,
+                              value: acceptTerms.value,
+                              onChanged: (bool? selected) {
+                                acceptTerms.toggle();
+                              }),
+                        ),
+                        TextButton(
+                          child: Text.rich(
+                            TextSpan(text: 'Aceito os ', children: [
+                              TextSpan(
+                                  text: 'termos de uso',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
+                                      decorationStyle:
+                                          TextDecorationStyle.solid,
+                                      decorationThickness: 2,
+                                      decorationColor: Get
+                                          .theme.colorScheme.primaryContainer)),
+                            ]),
+                          ),
+                          onPressed: () {
+                            Get.dialog(AlertDialog(
+                              title: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Termos de uso",
+                                  style: TextStyle(
+                                      color: Get
+                                          .theme.colorScheme.primaryContainer,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                              ),
+                              actions: [
+                                Center(
+                                  child: ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(Get
+                                              .theme
+                                              .colorScheme
+                                              .primaryContainer),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                          side: BorderSide(
+                                              color: Get.theme.colorScheme
+                                                  .primaryContainer),
+                                        ),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: const Text("Voltar"),
+                                  ),
+                                )
+                              ],
+                              content: const SizedBox(
+                                width: double.maxFinite,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        SizedBox(height: 8),
+                                        // FutureBuilder(
+                                        //     future: FirebaseFirestore.instance
+                                        //         .collection('termo_de_uso')
+                                        //         .doc('WOtoLBUhb3WVcHwBNAJz')
+                                        //         .get(),
+                                        //     builder: (context,
+                                        //         AsyncSnapshot<
+                                        //                 DocumentSnapshot>
+                                        //             snapshot) {
+                                        //       if (snapshot.connectionState ==
+                                        //           ConnectionState.waiting) {
+                                        //         return CircularProgressIndicator(
+                                        //           color: CustomColors()
+                                        //               .circularProgressSplashColor,
+                                        //         );
+                                        //       }
+                                        //       if (!snapshot.hasData) {
+                                        //         return Text(
+                                        //           'Erro ao carregar o termo',
+                                        //           style: TextStyle(
+                                        //               color: CustomColors()
+                                        //                   .textErrorColor),
+                                        //         );
+                                        //       }
 
-                        final pickerValid =
-                            _pickedKey.currentState?.imageFile?.path != null
-                                ? true
-                                : false;
-
-                        _pickedKey.currentState
-                            ?.setImageValidate(pickerValid.toString());
-
-                        if (formValid & pickerValid) {
-                          controller.collaboratesAdd({
-                            'name': _nameEC.text,
-                            'phone': _phoneEC.text,
-                            'url_image':
-                                _pickedKey.currentState?.imageFile?.path,
-                            'description': _descriptionEC.text,
-                          });
-                        }
-                      },
+                                        //       return SingleChildScrollView(
+                                        //         child: RichText(
+                                        //           text: TextSpan(
+                                        //             text: snapshot
+                                        //                 .data!['descricao'],
+                                        //             style: TextStyle(
+                                        //               color: CustomColors()
+                                        //                   .textDescriptionColor,
+                                        //               fontSize: 14,
+                                        //               fontWeight:
+                                        //                   FontWeight.normal,
+                                        //             ),
+                                        //           ),
+                                        //           textAlign:
+                                        //               TextAlign.justify,
+                                        //         ),
+                                        //       );
+                                        //     }),
+                                      ]),
+                                ),
+                              ),
+                            ));
+                          },
+                        ),
+                      ],
                     ),
+                  ),
+                  Obx(
+                    () => Center(
+                      child: CustomButton(
+                        color: Get.theme.colorScheme.primaryContainer,
+                        width: double.infinity,
+                        label: 'CADASTRAR',
+                        onPressed: !acceptTerms.value
+                            ? null
+                            : () {
+                                final formValid =
+                                    _formKey.currentState?.validate() ?? false;
+
+                                final pickerValid =
+                                    _pickedKey.currentState?.imageFile?.path !=
+                                            null
+                                        ? true
+                                        : false;
+
+                                _pickedKey.currentState
+                                    ?.setImageValidate(pickerValid.toString());
+
+                                // if (formValid & pickerValid) {
+                                if (formValid) {
+                                  controller.collaboratesAdd({
+                                    'name': _nameEC.text,
+                                    'phone': _phoneEC.text,
+                                    'url_image': _pickedKey
+                                        .currentState?.imageFile?.path,
+                                    'description': _descriptionEC.text,
+                                  });
+                                }
+                              },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
                   ),
                 ],
               ),

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:uruguaiana/app/modules/auth/login/login_controller.dart';
 import 'package:uruguaiana/app/modules/my_contact/my_contact_controller.dart';
+import 'package:uruguaiana/app/repository/auth_repository.dart';
+import 'package:uruguaiana/app/repository/my_contact_repositories.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
@@ -10,7 +15,7 @@ import '../../core/ui/widgets/custom_textformfield.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class MyContactPage extends StatefulWidget {
-  const MyContactPage({Key? key}) : super(key: key);
+  const MyContactPage({super.key});
 
   @override
   State<MyContactPage> createState() => _MyContactPageState();
@@ -69,21 +74,19 @@ class _MyContactPageState extends AppState<MyContactPage, MyContactController> {
                     height: 20,
                   ),
                   CustomTextformfield(
-                    label: 'Link do Facebook',
+                    label: 'ID do perfil do Facebook',
                     controller: _faceEC,
-                    validator: Validatorless.required(
-                        'Link do Facebook é obrigatório'),
-                    maxlines: 2,
+                    validator:
+                        Validatorless.required('ID do Facebook é obrigatório'),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   CustomTextformfield(
-                    label: 'Link do Instagram',
+                    label: 'Nome da conta do Instagram',
                     controller: _instaEC,
                     validator: Validatorless.required(
-                        'Link do Instagram é obrigatório'),
-                    maxlines: 2,
+                        'Nome da conta do Instagram é obrigatório'),
                   ),
                   const SizedBox(
                     height: 10,
@@ -101,7 +104,7 @@ class _MyContactPageState extends AppState<MyContactPage, MyContactController> {
                     child: CustomButton(
                       color: Get.theme.colorScheme.primaryContainer,
                       width: double.infinity,
-                      label: 'SALVAR',
+                      label: 'CADASTRAR CONTATOS',
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
@@ -115,6 +118,142 @@ class _MyContactPageState extends AppState<MyContactPage, MyContactController> {
                         }
                       },
                     ),
+                  ),
+                  FutureBuilder(
+                    future: controller.getContactFacebook(),
+                    builder: (context, snap2) {
+                      if (snap2.connectionState == ConnectionState.waiting) {
+                        return const SizedBox();
+                      }
+
+                      if (snap2.data!.documents.isEmpty) {
+                        return const SizedBox();
+                      } else {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.all(12.0),
+                              child: Divider(),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Center(
+                              child: AutoSizeText(
+                                minFontSize: 10,
+                                'Teste os icones de contato',
+                                style: Get.textTheme.titleLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Get.theme.colorScheme.surface,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        );
+                      }
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FutureBuilder(
+                        future: controller.getContactFacebook(),
+                        builder: (context, snap2) {
+                          if (snap2.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap2.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap2.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.facebook),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
+                        },
+                      ),
+                      FutureBuilder(
+                        future: controller.getContactInstagram(),
+                        builder: (context, snap3) {
+                          if (snap3.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap3.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap3.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.instagram),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
+                        },
+                      ),
+                      FutureBuilder(
+                        future: controller.getContactWhatsapp(),
+                        builder: (context, snap4) {
+                          if (snap4.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap4.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap4.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.whatsapp),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -63,44 +63,47 @@ class _MyCollaborateDetailPageState
                           ),
                         );
                       }
-                      print(snapshot.data!.toString());
-                      if (snapshot.data!['type'] == 'video') {
-                        return Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            CustomPlayerVideo(
-                              videoUri: Uri.parse(
-                                  Get.parameters['url_image'].toString()),
-                            ),
-                          ],
-                        );
-                      } else {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: Container(
-                            height: Get.size.height * 0.35,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              border: Border.symmetric(
-                                horizontal: BorderSide(
-                                  color: Get.theme.colorScheme.primary,
-                                  width: 1,
+                      if (snapshot.hasData) {
+                        if (snapshot.data!['type'] == 'video') {
+                          return Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              CustomPlayerVideo(
+                                videoUri: Uri.parse(
+                                    Get.parameters['url_image'].toString()),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: Container(
+                              height: Get.size.height * 0.35,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                border: Border.symmetric(
+                                  horizontal: BorderSide(
+                                    color: Get.theme.colorScheme.primary,
+                                    width: 1,
+                                  ),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Get.theme.colorScheme.primary,
+                                      blurRadius: 3.0,
+                                      offset: const Offset(0.0, 0.5))
+                                ],
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                      Get.parameters['url_image'].toString()),
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Get.theme.colorScheme.primary,
-                                    blurRadius: 3.0,
-                                    offset: const Offset(0.0, 0.5))
-                              ],
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    Get.parameters['url_image'].toString()),
-                                fit: BoxFit.cover,
-                              ),
                             ),
-                          ),
-                        );
+                          );
+                        }
+                      } else {
+                        return const SizedBox();
                       }
                     }),
                   ),

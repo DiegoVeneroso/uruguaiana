@@ -209,40 +209,6 @@ class CollaborateController extends GetxController
 
       await repository.collaboratesAddRepository(map);
 
-      //add
-
-      // for (var e in [map]) {
-      //   // print('teste');
-      //   // print(e.toString());
-      //   mycollaborateList.add(
-      //     CollaborateModel(
-      //       idCollaborate: '1223123',
-      //       name: e['name'],
-      //       phone: e['phone'],
-      //       description: e['description'],
-      //       urlImage: e['url_image'],
-      //       dateTimeCreated: DateTime.now().toString(),
-      //     ),
-      //   );
-      // }
-
-      // await storage.write(
-      //     'my_collaborates_list', jsonEncode(mycollaborateList));
-      // .forEach(
-      //   (e) => CollaborateModel(
-      //     idCollaborate: e[0]['idCollaborate'],
-      //     name: e[0]['name'],
-      //     phone: e[0]['phone'],
-      //     description: e[0]['description'],
-      //     urlImage: e[0]['url_image'],
-      //     dateTimeCreated: DateTime.now().toString(),
-      //   ),
-      // )
-      // .toList();
-
-      // jsonDecode(storage.read('my_collaborates_list').toString())
-      //     .forEach((e) => collaborateList.add(CollaborateModel.fromJson(e)));
-
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
       Get.offAndToNamed(Routes.splash);

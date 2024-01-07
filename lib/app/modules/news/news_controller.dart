@@ -425,6 +425,7 @@ class NewsController extends GetxController
     fileWrite.writeAsBytesSync(response.bodyBytes);
     final file = XFile("$tempPath/$fileName");
     _loading.toggle();
+
     return file.path;
   }
 }

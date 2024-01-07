@@ -76,7 +76,7 @@ class ColaborateRepository {
     try {
       final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
 
-      if (map["url_image"] == '') {
+      if (map["url_image"] == '' || map["url_image"] == null) {
         await ApiClient.databases.createDocument(
             databaseId: constants.DATABASE_ID,
             collectionId: constants.COLLETION_COLLABORATE_ID,
@@ -88,6 +88,34 @@ class ColaborateRepository {
               'description': map["description"],
               'date_time_created': DateTime.now().toString(),
             });
+
+        //adicionar no storage
+
+        String myCollaboratesString =
+            await storage.read('my_collaborates_list');
+
+        if (myCollaboratesString.isEmpty) {
+          await storage.write('my_collaborates_list', myCollaboratesString);
+        } else {
+          jsonDecode(storage.read('my_collaborates_list').toString()).forEach(
+              (e) => mycollaborateList.add(CollaborateModel.fromJson(e)));
+
+          for (var e in [map]) {
+            mycollaborateList.add(
+              CollaborateModel(
+                idCollaborate: idUnique,
+                name: e['name'],
+                phone: e['phone'],
+                description: e['description'],
+                urlImage: '',
+                dateTimeCreated: DateTime.now().toString(),
+              ),
+            );
+          }
+
+          await storage.write(
+              'my_collaborates_list', jsonEncode(mycollaborateList));
+        }
       } else {
         String fileName = "$idUnique."
             "${map["url_image"].toString().split(".").last}";
@@ -125,12 +153,6 @@ class ColaborateRepository {
         if (myCollaboratesString.isEmpty) {
           await storage.write('my_collaborates_list', myCollaboratesString);
         } else {
-          // String myCollaborateListString =
-          //     await storage.read('my_collaborates_list');
-
-          // RxList<CollaborateModel> mycollaborateList =
-          //     jsonDecode(myCollaborateListString);
-
           jsonDecode(storage.read('my_collaborates_list').toString()).forEach(
               (e) => mycollaborateList.add(CollaborateModel.fromJson(e)));
 

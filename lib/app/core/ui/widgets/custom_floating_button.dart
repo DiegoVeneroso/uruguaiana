@@ -19,62 +19,85 @@ class CustomFloatingButton extends StatelessWidget {
     return FutureBuilder(
         future: controller.getContactWhatsapp(),
         builder: (context, snap2) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Get.theme.colorScheme.onPrimaryContainer,
-                        blurRadius: 10.0, // soften the shadow
-                        spreadRadius: 4.0, //extend the shadow
-                        offset: const Offset(
-                          1.0, // Move to right 5  horizontally
-                          1.0, // Move to bottom 5 Vertically
-                        ),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Get.theme.colorScheme.primaryContainer,
-                  ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        ' Fale conosco',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 0),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Icon(
-                        FontAwesomeIcons.arrowRight,
-                        color: Get.theme.colorScheme.onPrimaryContainer,
-                        size: 18,
-                      )
-                    ],
-                  )),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.2,
-                width: MediaQuery.of(context).size.width * 0.2,
-                child: FloatingActionButton(
-                  elevation: 0.0,
-                  backgroundColor: Colors.transparent,
-                  onPressed: () {
-                    Uri url = Uri.parse(
-                        snap2.data?.documents.first.data['url'] ?? '');
-                    launchUrl(url);
-                  },
-                  child: LottieBuilder.asset('assets/lottie/whats.json'),
+          if (snap2.connectionState == ConnectionState.waiting) {
+            return Container(
+              height: Get.size.height * 0.35,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Get.theme.colorScheme.onPrimaryContainer,
+                ),
+                // borderRadius: BorderRadius.circular(10),
+                color: Get.theme.colorScheme.onPrimaryContainer,
+              ),
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Get.theme.colorScheme.primary,
                 ),
               ),
-            ],
-          );
+            );
+          }
+
+          if (snap2.data!.documents.isEmpty) {
+            return const SizedBox();
+          } else {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Get.theme.colorScheme.onPrimaryContainer,
+                          blurRadius: 10.0, // soften the shadow
+                          spreadRadius: 4.0, //extend the shadow
+                          offset: const Offset(
+                            1.0, // Move to right 5  horizontally
+                            1.0, // Move to bottom 5 Vertically
+                          ),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: Get.theme.colorScheme.primaryContainer,
+                    ),
+                    child: Row(
+                      children: [
+                        const Text(
+                          ' Fale conosco',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          FontAwesomeIcons.arrowRight,
+                          color: Get.theme.colorScheme.onPrimaryContainer,
+                          size: 18,
+                        )
+                      ],
+                    )),
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.2,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  child: FloatingActionButton(
+                    elevation: 0.0,
+                    backgroundColor: Colors.transparent,
+                    onPressed: () {
+                      Uri url = Uri.parse(
+                          snap2.data?.documents.first.data['url'] ?? '');
+                      launchUrl(url);
+                    },
+                    child: LottieBuilder.asset('assets/lottie/whats.json'),
+                  ),
+                ),
+              ],
+            );
+          }
         });
 
     // return Align(

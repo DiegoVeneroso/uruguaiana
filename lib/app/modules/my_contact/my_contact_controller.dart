@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
+import 'package:appwrite/models.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,14 +63,6 @@ class MyContactController extends GetxController
     super.onInit();
   }
 
-  @override
-  onReady() {
-    subscribe();
-    loadData();
-
-    super.onReady();
-  }
-
   Future<void> getIsAdmin() async {
     try {
       var idUser = await storage.read('id_user');
@@ -102,7 +95,7 @@ class MyContactController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.news);
+      Get.offAndToNamed(Routes.my_contact);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -122,50 +115,40 @@ class MyContactController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.collaborate);
+      Get.offAndToNamed(Routes.my_contact);
     }
   }
 
-  void loadData() async {
+  Future<DocumentList> getContactFacebook() async {
     try {
-      var result = repository.loadDataRepository();
+      var res = await authRepository.getContactFacebookRepository();
 
-      // notificationList.assignAll(result);
+      return res;
     } catch (e) {
-      _loading.toggle();
-      _message(
-        MessageModel(
-          title: 'ATENÇÃO!',
-          message: 'Erro carregar dados!',
-          type: MessageType.error,
-        ),
-      );
+      log(e.toString());
+      rethrow;
     }
   }
 
-  void subscribe() {
-    final realtime = Realtime(ApiClient.account.client);
+  Future<DocumentList> getContactInstagram() async {
+    try {
+      var res = await authRepository.getContactInstagramRepository();
 
-    subscription = realtime.subscribe([
-      'databases.${constants.DATABASE_ID}.collections.${constants.COLLETION_NOTIFICATION_ID}.documents'
-    ]);
+      return res;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
 
-    subscription!.stream.listen((data) {
-      for (var ev in data.events) {
-        switch (ev) {
-          case "databases.*.collections.*.documents.*.create":
-            loadData();
-            break;
-          case "databases.*.collections.*.documents.*.update":
-            loadData();
-            break;
-          case "databases.*.collections.*.documents.*.delete":
-            loadData();
-            break;
-          default:
-            break;
-        }
-      }
-    });
+  Future<DocumentList> getContactWhatsapp() async {
+    try {
+      var res = await authRepository.getContactWhatsappRepository();
+
+      return res;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
   }
 }

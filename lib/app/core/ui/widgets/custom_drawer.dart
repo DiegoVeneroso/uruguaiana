@@ -111,67 +111,91 @@ class CustomDrawer extends StatelessWidget {
                       FutureBuilder(
                         future: controller.getContactFacebook(),
                         builder: (context, snap2) {
-                          print(snap2.data?.documents.first.data['url']);
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Uri url = Uri.parse(
-                                      snap2.data?.documents.first.data['url'] ??
-                                          '');
-                                  launchUrl(url);
-                                },
-                                icon: const Icon(FontAwesomeIcons.facebook),
-                                iconSize: 40,
-                                color: Get.theme.colorScheme.primary,
-                              ),
-                            ],
-                          );
+                          if (snap2.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap2.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap2.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.facebook),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
                         },
                       ),
                       FutureBuilder(
                         future: controller.getContactInstagram(),
                         builder: (context, snap3) {
-                          print(snap3.data?.documents.first.data['url']);
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Uri url = Uri.parse(
-                                      snap3.data?.documents.first.data['url'] ??
-                                          '');
-                                  launchUrl(url);
-                                },
-                                icon: const Icon(FontAwesomeIcons.instagram),
-                                iconSize: 40,
-                                color: Get.theme.colorScheme.primary,
-                              ),
-                            ],
-                          );
+                          if (snap3.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap3.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap3.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.instagram),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
                         },
                       ),
                       FutureBuilder(
                         future: controller.getContactWhatsapp(),
                         builder: (context, snap4) {
-                          print(snap4.data?.documents.first.data['url']);
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Uri url = Uri.parse(
-                                      snap4.data?.documents.first.data['url'] ??
-                                          '');
-                                  launchUrl(url);
-                                },
-                                icon: const Icon(FontAwesomeIcons.whatsapp),
-                                iconSize: 40,
-                                color: Get.theme.colorScheme.primary,
-                              ),
-                            ],
-                          );
+                          if (snap4.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap4.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap4.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.whatsapp),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
                         },
                       ),
                     ],
@@ -297,67 +321,91 @@ class CustomDrawer extends StatelessWidget {
                       FutureBuilder(
                         future: controller.getContactFacebook(),
                         builder: (context, snap2) {
-                          print(snap2.data?.documents.first.data['url']);
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Uri url = Uri.parse(
-                                      snap2.data?.documents.first.data['url'] ??
-                                          '');
-                                  launchUrl(url);
-                                },
-                                icon: const Icon(FontAwesomeIcons.facebook),
-                                iconSize: 40,
-                                color: Get.theme.colorScheme.primary,
-                              ),
-                            ],
-                          );
+                          if (snap2.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap2.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap2.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.facebook),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
                         },
                       ),
                       FutureBuilder(
                         future: controller.getContactInstagram(),
                         builder: (context, snap3) {
-                          print(snap3.data?.documents.first.data['url']);
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Uri url = Uri.parse(
-                                      snap3.data?.documents.first.data['url'] ??
-                                          '');
-                                  launchUrl(url);
-                                },
-                                icon: const Icon(FontAwesomeIcons.instagram),
-                                iconSize: 40,
-                                color: Get.theme.colorScheme.primary,
-                              ),
-                            ],
-                          );
+                          if (snap3.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap3.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap3.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.instagram),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
                         },
                       ),
                       FutureBuilder(
                         future: controller.getContactWhatsapp(),
                         builder: (context, snap4) {
-                          print(snap4.data?.documents.first.data['url']);
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Uri url = Uri.parse(
-                                      snap4.data?.documents.first.data['url'] ??
-                                          '');
-                                  launchUrl(url);
-                                },
-                                icon: const Icon(FontAwesomeIcons.whatsapp),
-                                iconSize: 40,
-                                color: Get.theme.colorScheme.primary,
-                              ),
-                            ],
-                          );
+                          if (snap4.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+
+                          if (snap4.data!.documents.isEmpty) {
+                            return const SizedBox();
+                          } else {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Uri url = Uri.parse(snap4.data?.documents
+                                            .first.data['url'] ??
+                                        '');
+                                    launchUrl(url);
+                                  },
+                                  icon: const Icon(FontAwesomeIcons.whatsapp),
+                                  iconSize: 40,
+                                  color: Get.theme.colorScheme.primary,
+                                ),
+                              ],
+                            );
+                          }
                         },
                       ),
                     ],

@@ -34,13 +34,17 @@ class _CustomProgressDialogState extends State<CustomProgressDialog> {
     final value = progress == null ? progress : progress! / 100;
     return Column(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          'COMPACTANDO VÍDEO',
-          style: TextStyle(
-            fontSize: 20,
-            color: Get.theme.colorScheme.primary,
-            fontWeight: FontWeight.bold,
+        Center(
+          child: Text(
+            'COMPACTANDO',
+            style: TextStyle(
+              fontSize: 20,
+              color: Get.theme.colorScheme.primary,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const SizedBox(
@@ -49,7 +53,7 @@ class _CustomProgressDialogState extends State<CustomProgressDialog> {
         Text(
           'AGUARDE...',
           style: TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               color: Get.theme.colorScheme.primary,
               fontWeight: FontWeight.bold),
         ),
@@ -63,7 +67,7 @@ class _CustomProgressDialogState extends State<CustomProgressDialog> {
         const SizedBox(
           height: 16,
         ),
-        Row(
+        Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomButton(
@@ -72,7 +76,7 @@ class _CustomProgressDialogState extends State<CustomProgressDialog> {
               height: 40,
             ),
             const SizedBox(
-              width: 20,
+              height: 20,
             ),
             CustomButton(
               onPressed: () => VideoCompress.cancelCompression(),

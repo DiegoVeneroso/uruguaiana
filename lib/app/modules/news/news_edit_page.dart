@@ -30,6 +30,7 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
   @override
   void initState() {
     _pickedKey.currentState?.setImageValidate('false');
+
     loadMidiaEditForm();
   }
 
@@ -42,8 +43,14 @@ class _NewsAddPageState extends AppState<NewsEditPage, NewsController> {
   }
 
   Future<void> loadMidiaEditForm() async {
+    print('#############');
+    print(Get.parameters['url_image'].toString());
+
     var pathImageUrl = await controller
         .getImageXFileByUrl(Get.parameters['url_image'].toString());
+
+    print('#############fasdfs');
+    print(pathImageUrl);
 
     _pickedKey.currentState?.setImageFile(pathImageUrl);
   }
