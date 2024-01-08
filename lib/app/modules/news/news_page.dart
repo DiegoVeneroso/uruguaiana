@@ -591,19 +591,30 @@ class NewsPage extends GetView<NewsController> {
                                           child: Padding(
                                             padding:
                                                 const EdgeInsets.only(top: 3.0),
-                                            child: RichText(
-                                              text: TextSpan(
-                                                text: controller.foundNews
-                                                    .value[index].title,
-                                                style: TextStyle(
-                                                  color: Get.theme.colorScheme
-                                                      .background,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                            child: AutoSizeText(
+                                              controller
+                                                  .foundNews.value[index].title,
+                                              style: TextStyle(
+                                                color: Get
+                                                    .theme.colorScheme.primary,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
                                               ),
-                                              textAlign: TextAlign.justify,
+                                              minFontSize: 8,
                                             ),
+                                            // child: RichText(
+                                            //   text: TextSpan(
+                                            //     text: controller.foundNews
+                                            //         .value[index].title,
+                                            //     style: TextStyle(
+                                            //       color: Get.theme.colorScheme
+                                            //           .background,
+                                            //       fontSize: 16,
+                                            //       fontWeight: FontWeight.bold,
+                                            //     ),
+                                            //   ),
+                                            //   textAlign: TextAlign.justify,
+                                            // ),
                                           ),
                                         ),
                                       ),
