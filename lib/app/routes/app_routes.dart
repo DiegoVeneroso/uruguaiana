@@ -30,6 +30,10 @@ abstract class Routes {
 
   static const my_contact = _Paths.my_contact;
 
+  static const term_of_use = _Paths.term_of_use;
+  static const term_of_use_add = _Paths.term_of_use_add;
+  static const term_of_use_edit = _Paths.term_of_use_edit;
+
   static const proposal = _Paths.proposal;
   static const proposal_add = _Paths.proposal_add;
   static const proposal_detail = _Paths.proposal_detail;
@@ -72,6 +76,10 @@ abstract class _Paths {
   static const my_colaborate_detail = '/my_collaborate_detail';
 
   static const my_contact = '/my_contact';
+
+  static const term_of_use = '/term_of_use';
+  static const term_of_use_add = '/term_of_use_add';
+  static const term_of_use_edit = '/term_of_use_edit';
 
   static const proposal = '/proposal';
   static const proposal_add = '/proposal_add';

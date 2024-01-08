@@ -27,6 +27,10 @@ import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_action
 import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_page.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_detail_page.dart';
 import 'package:uruguaiana/app/modules/proposal/proposal_home/proposal_bindings.dart';
+import 'package:uruguaiana/app/modules/term_of_use/term_of_use_add_page.dart';
+import 'package:uruguaiana/app/modules/term_of_use/term_of_use_bindings.dart';
+import 'package:uruguaiana/app/modules/term_of_use/term_of_use_edit.dart';
+import 'package:uruguaiana/app/modules/term_of_use/term_of_use_page.dart';
 
 import '../modules/about/about_add_page.dart';
 import '../modules/about/about_edit_page.dart';
@@ -189,6 +193,23 @@ class AppPages {
       binding: AboutBindings(),
     ),
 
+    //term of use
+    GetPage(
+      name: _Paths.term_of_use,
+      page: () => TermOfUsePage(),
+      binding: TermOfUseBindings(),
+    ),
+    GetPage(
+      name: _Paths.term_of_use_add,
+      page: () => const TermOfUseAddPage(),
+      binding: TermOfUseBindings(),
+    ),
+    GetPage(
+      name: _Paths.term_of_use_edit,
+      page: () => const TermOfUseEditPage(),
+      binding: TermOfUseBindings(),
+    ),
+
     //collaborate
     GetPage(
       name: _Paths.collaborate,
@@ -221,7 +242,7 @@ class AppPages {
     //my contact
     GetPage(
       name: _Paths.my_contact,
-      page: () => MyContactPage(),
+      page: () => const MyContactPage(),
       binding: MyContactBindings(),
     ),
 

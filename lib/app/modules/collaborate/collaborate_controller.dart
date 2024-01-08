@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
-
+import 'package:http/http.dart' as http;
 import 'package:appwrite/appwrite.dart' hide Permission;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uruguaiana/app/models/term_model.dart';
 import 'package:uruguaiana/app/repository/auth_repository.dart';
 import 'package:uruguaiana/app/routes/app_pages.dart';
 import '../../core/config/api_client.dart';
@@ -209,6 +211,10 @@ class CollaborateController extends GetxController
 
       await repository.collaboratesAddRepository(map);
 
+      await sendPushNotificationToAdmin(
+          title: 'Nova colaboração registrada! 💪 👊 ',
+          body: "${map['name']} fez uma colaboração");
+
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
       Get.offAndToNamed(Routes.splash);
@@ -233,6 +239,61 @@ class CollaborateController extends GetxController
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
       Get.offAndToNamed(Routes.collaborate);
+    }
+  }
+
+  Future<String> getTokenIsAdmin() async {
+    try {
+      var res = await authRepository.getTokenAdminUserRepository();
+      String token = res.documents.first.data['token_push'];
+
+      return token;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<bool> sendPushNotificationToAdmin(
+      {required String title, required String body}) async {
+    const postUrl = 'https://fcm.googleapis.com/fcm/send';
+    final data = {
+      // "to":
+      //     "eTyvEVg8QDuE8ts3_UMNMi:APA91bHVYPFwfEqU4l2qepd4In01F5mROWmZjDV0eEW8mwaVMaUOEOTJuI9h8xQAfGydwmDGPuPSpJiPd69lBE-8JnaDsGrbud6cn8BzdDv5uQk6Om6a6YqBzDH2UJR1IKZ15lUeuT-s",
+      "to": await getTokenIsAdmin(),
+      "notification": {
+        "title": title,
+        "body": body,
+      },
+      "data": {
+        "title": title,
+        "body": body,
+        // "click_action": 'FLUTTER_NOTIFICATION_CLICK'
+      }
+    };
+
+    final headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization':
+          'key=AAAANQf4ge4:APA91bE-LywHQosV6dq1l8cbYjthVP85bTXo5kAokzK8jXOqchENT9VUIoFqFssRpgX5IIDpxiVbPaQLhBltG5EWs3mgbbemOAYpvx4Sk06lidPskgj20-K-B0PlWEnnoBtBnUqSrBCj',
+    };
+
+    final response = await http.post(
+      Uri.parse(postUrl),
+      body: json.encode(data),
+      encoding: Encoding.getByName('utf-8'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      print('notificação enviada!');
+
+      return true;
+    } else {
+      print(response.statusCode);
+      print(response);
+      print(' erro ao enviar notificação!');
+      return false;
     }
   }
 
@@ -284,6 +345,24 @@ class CollaborateController extends GetxController
           type: MessageType.error,
         ),
       );
+    }
+  }
+
+  Future<TermModel> getTermOfUse() async {
+    try {
+      var result = await repository.getTermOfUseRepository();
+
+      return TermModel(descripton: result.documents.first.data['description']);
+    } catch (e) {
+      _loading.toggle();
+      _message(
+        MessageModel(
+          title: 'ATENÇÃO!',
+          message: 'Erro carregar termo de uso!',
+          type: MessageType.error,
+        ),
+      );
+      rethrow;
     }
   }
 

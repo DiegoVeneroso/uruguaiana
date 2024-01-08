@@ -119,6 +119,20 @@ class AuthRepository {
     }
   }
 
+  Future<DocumentList> getTokenAdminUserRepository() async {
+    try {
+      var result = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_USERS_ID,
+      );
+
+      return result;
+    } on AppwriteException catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   Future<DocumentList> getContactFacebookRepository() async {
     try {
       var result = await ApiClient.databases.listDocuments(

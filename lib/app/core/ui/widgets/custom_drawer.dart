@@ -16,6 +16,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginController controller = LoginController(AuthRepository());
     return Drawer(
+      width: Get.width * 0.80,
       backgroundColor: context.theme.colorScheme.background,
       child: FutureBuilder(
           future: controller.getProfile(),

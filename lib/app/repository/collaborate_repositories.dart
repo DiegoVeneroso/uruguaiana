@@ -64,6 +64,21 @@ class ColaborateRepository {
     }
   }
 
+  Future<DocumentList> getTermOfUseRepository() async {
+    try {
+      var response = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_TERM_OF_USE,
+      );
+
+      return response;
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
+    }
+  }
+
   Future deleteImage(String fileId) {
     final response = ApiClient.storage.deleteFile(
       bucketId: constants.STORAGE_BUCKETS,

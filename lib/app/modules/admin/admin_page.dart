@@ -168,6 +168,42 @@ class AdminPage extends GetView<AdminController> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(Routes.term_of_use);
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            color: Get.theme.colorScheme.primary,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.fileCircleCheck,
+                                  color: Get.theme.colorScheme.background,
+                                  size: 60,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                AutoSizeText(
+                                  minFontSize: 10,
+                                  'Termo de uso',
+                                  style: TextStyle(
+                                    color: Get.theme.colorScheme.background,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ]),
               )
             ],

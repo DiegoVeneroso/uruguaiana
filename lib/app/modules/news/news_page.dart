@@ -559,37 +559,52 @@ class NewsPage extends GetView<NewsController> {
                                       ),
                                       Positioned(
                                         left: 10,
-                                        bottom: 20,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 8.0,
-                                                      horizontal: 16),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: Get
-                                                    .theme.colorScheme.shadow,
-                                              ),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  text: controller.foundNews
-                                                      .value[index].title,
-                                                  style: TextStyle(
-                                                    color: Get.theme.colorScheme
-                                                        .background,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                        bottom: 10,
+                                        // child: Container(
+                                        //   height: 40,
+                                        //   width: Get.width * .94,
+                                        //   color: Colors.red,
+                                        //   child: RichText(
+                                        //     text: TextSpan(
+                                        //       text: controller
+                                        //           .foundNews.value[index].title,
+                                        //       style: TextStyle(
+                                        //         color: Get.theme.colorScheme
+                                        //             .background,
+                                        //         fontSize: 16,
+                                        //         fontWeight: FontWeight.bold,
+                                        //       ),
+                                        //     ),
+                                        //     textAlign: TextAlign.justify,
+                                        //   ),
+                                        // ),
+                                        child: Container(
+                                          // height: 40,
+                                          width: Get.width * .94,
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 8.0, horizontal: 16),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Get.theme.colorScheme.shadow,
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 3.0),
+                                            child: RichText(
+                                              text: TextSpan(
+                                                text: controller.foundNews
+                                                    .value[index].title,
+                                                style: TextStyle(
+                                                  color: Get.theme.colorScheme
+                                                      .background,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
                                                 ),
-                                                textAlign: TextAlign.justify,
                                               ),
+                                              textAlign: TextAlign.justify,
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ),
                                     ],
