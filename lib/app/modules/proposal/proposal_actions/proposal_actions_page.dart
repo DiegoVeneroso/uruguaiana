@@ -102,17 +102,22 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                           title: AutoSizeText(
                               minFontSize: 10,
                               controller.foundProposal.value[index].title),
-                          subtitle: Row(
-                            children: [
-                              AutoSizeText(
-                                minFontSize: 10,
-                                controller
-                                    .foundProposal.value[index].description,
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                            ],
+                          subtitle: Expanded(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: AutoSizeText(
+                                    overflow: TextOverflow.ellipsis,
+                                    minFontSize: 10,
+                                    controller
+                                        .foundProposal.value[index].description,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },

@@ -595,26 +595,13 @@ class NewsPage extends GetView<NewsController> {
                                               controller
                                                   .foundNews.value[index].title,
                                               style: TextStyle(
-                                                color: Get
-                                                    .theme.colorScheme.primary,
+                                                color: Get.theme.colorScheme
+                                                    .onPrimaryContainer,
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                               minFontSize: 8,
                                             ),
-                                            // child: RichText(
-                                            //   text: TextSpan(
-                                            //     text: controller.foundNews
-                                            //         .value[index].title,
-                                            //     style: TextStyle(
-                                            //       color: Get.theme.colorScheme
-                                            //           .background,
-                                            //       fontSize: 16,
-                                            //       fontWeight: FontWeight.bold,
-                                            //     ),
-                                            //   ),
-                                            //   textAlign: TextAlign.justify,
-                                            // ),
                                           ),
                                         ),
                                       ),

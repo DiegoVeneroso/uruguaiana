@@ -29,6 +29,7 @@ abstract class Routes {
   static const my_collaborate_detail = _Paths.my_colaborate_detail;
 
   static const my_contact = _Paths.my_contact;
+  static const dev_contact = _Paths.dev_contact;
 
   static const term_of_use = _Paths.term_of_use;
   static const term_of_use_add = _Paths.term_of_use_add;
@@ -76,6 +77,7 @@ abstract class _Paths {
   static const my_colaborate_detail = '/my_collaborate_detail';
 
   static const my_contact = '/my_contact';
+  static const dev_contact = '/dev_contact';
 
   static const term_of_use = '/term_of_use';
   static const term_of_use_add = '/term_of_use_add';

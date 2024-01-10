@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:uruguaiana/app/modules/collaborate/collaborate_bindings.dart';
 import 'package:uruguaiana/app/modules/collaborate/collaborate_detail_page.dart';
 import 'package:uruguaiana/app/modules/collaborate/collaborate_page.dart';
+import 'package:uruguaiana/app/modules/dev_contact/dev_contact_bindings.dart';
+import 'package:uruguaiana/app/modules/dev_contact/dev_contact_page.dart';
 import 'package:uruguaiana/app/modules/home/home_detail_page.dart';
 import 'package:uruguaiana/app/modules/home/home_page.dart';
 import 'package:uruguaiana/app/modules/auth/register/register_bindigns.dart';
@@ -225,6 +227,13 @@ class AppPages {
       name: _Paths.collaborate_detail,
       page: () => const collaborateDetailPage(),
       binding: CollaborateBindings(),
+    ),
+
+    //dev_contact
+    GetPage(
+      name: _Paths.dev_contact,
+      page: () => const DevContactPage(),
+      binding: DevContactBindings(),
     ),
 
     //my collaborate

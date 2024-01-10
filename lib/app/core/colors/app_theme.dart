@@ -4,18 +4,18 @@ class Themes {
   static final light = ThemeData.light().copyWith(
     colorScheme: ColorScheme(
         brightness: Brightness.light,
-        primary: Colors.green, //loader
-        onPrimary: Colors.grey,
-        secondary: Colors.green,
+        primary: const Color.fromARGB(255, 255, 167, 34), //loader
+        onPrimary: const Color.fromARGB(225, 247, 244, 244),
+        secondary: const Color.fromARGB(255, 255, 224, 183),
         onSecondary: Colors.black,
         error: Colors.redAccent,
         onError: Colors.redAccent, //messages_error
-        // background: Color(0xFFF1F2F3),
-        background: const Color.fromARGB(255, 230, 230, 231),
+        // background: const Color.fromARGB(255, 230, 230, 231),
+        background: const Color.fromARGB(255, 252, 252, 252),
         onBackground: Colors.white,
-        surface: Colors.green,
-        onSurface: Colors.green, //messages_success
-        primaryContainer: Colors.green,
+        surface: const Color.fromARGB(255, 255, 167, 34),
+        onSurface: const Color.fromARGB(255, 255, 167, 34), //messages_success
+        primaryContainer: const Color.fromARGB(255, 255, 167, 34),
         onPrimaryContainer: Colors.white,
         shadow: Colors.black.withOpacity(0.3)),
   );

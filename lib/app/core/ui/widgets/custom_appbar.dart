@@ -16,7 +16,7 @@ class CustomAppbar extends AppBar {
           iconTheme: IconThemeData(color: Get.theme.colorScheme.onBackground),
           actions: actionsList,
           title: Image.asset(
-            'assets/images/header.png',
+            'assets/images/logo_header.png',
             fit: BoxFit.contain,
             height: 80,
           ),

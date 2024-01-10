@@ -6,23 +6,34 @@ class SplashPage extends GetView<SplashController> {
   const SplashPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Get.theme.colorScheme.background,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: SizedBox(
-                width: 250,
-                height: 250,
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  width: 80,
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+              colors: [
+            Color.fromARGB(255, 255, 251, 247),
+            Color.fromARGB(255, 255, 205, 141),
+          ])),
+      child: Scaffold(
+        // backgroundColor: Get.theme.colorScheme.background,
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: SizedBox(
+                  width: Get.width * .8,
+                  height: Get.width * .4,
+                  child: Image.asset(
+                    'assets/images/logo_splash.png',
+                    width: 80,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

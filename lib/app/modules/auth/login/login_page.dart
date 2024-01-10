@@ -60,15 +60,18 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Center(
-                          child: SizedBox(
-                            width: 200,
-                            height: 200,
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              width: 80,
-                            ),
-                          ),
+                        // Center(
+                        //   child: SizedBox(
+                        //     width: 200,
+                        //     height: 200,
+                        //     child: Image.asset(
+                        //       'assets/images/logo.png',
+                        //       width: 80,
+                        //     ),
+                        //   ),
+                        // ),
+                        const SizedBox(
+                          height: 50,
                         ),
                         AutoSizeText(
                           'ENTRAR',

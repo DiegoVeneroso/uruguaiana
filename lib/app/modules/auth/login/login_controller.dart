@@ -8,7 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:uruguaiana/app/models/user_model.dart';
 
 import 'package:uruguaiana/app/routes/app_pages.dart';
-
+import 'package:http/http.dart' as http;
 import '../../../core/mixins/loader_mixin.dart';
 import '../../../core/mixins/messages_mixin.dart';
 import '../../../repository/auth_repository.dart';
@@ -62,21 +62,37 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
 
       var result = await authRepository.getUserById(idUser.toString());
 
-      await storage.write('id_user', result.id ?? '');
-      await storage.write('name', result.name);
-      await storage.write('email', result.email);
-      await storage.write('url_avatar', result.urlAvatar ?? '');
-      await storage.write('toke_push', result.tokenPush ?? '');
-      await storage.write('phone', result.phone ?? '');
-      await storage.write('profile', result.profile ?? '');
-      _message(
-        MessageModel(
-          title: 'Parabéns!',
-          message: 'Conectado com sucesso!',
-          type: MessageType.success,
-        ),
-      );
-      Get.toNamed(Routes.splash);
+      String profile = result.profile.toString();
+
+      if (profile == 'Administrador') {
+        await storage.write('id_user', result.id ?? '');
+        await storage.write('name', result.name);
+        await storage.write('email', result.email);
+        await storage.write('url_avatar', result.urlAvatar ?? '');
+        await storage.write('toke_push', result.tokenPush ?? '');
+        await storage.write('phone', result.phone ?? '');
+        await storage.write('profile', result.profile ?? '');
+
+        _message(
+          MessageModel(
+            title: 'Parabéns!',
+            message: 'Conectado com sucesso!',
+            type: MessageType.success,
+          ),
+        );
+        Get.toNamed(Routes.splash);
+      } else {
+        _message(
+          MessageModel(
+            title: 'Atenção!',
+            message: 'Entre em contato com o Desenvolvedor!',
+            type: MessageType.error,
+          ),
+        );
+        Get.toNamed(Routes.dev_contact, parameters: {
+          'email': result.email,
+        });
+      }
     } catch (e) {
       _loading.toggle();
 
