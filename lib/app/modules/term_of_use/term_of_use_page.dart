@@ -74,13 +74,13 @@ class TermOfUsePage extends GetView<TermOfUseController> {
                                         child: Center(
                                           child: AutoSizeText(
                                             minFontSize: 10,
-                                            'Informações não cadastradas!',
+                                            'Sem informações!',
                                             style: Get.textTheme.titleLarge
                                                 ?.copyWith(
                                                     fontWeight: FontWeight.bold,
                                                     color: Get.theme.colorScheme
                                                         .surface,
-                                                    fontSize: 22),
+                                                    fontSize: 16),
                                           ),
                                         ),
                                       ),

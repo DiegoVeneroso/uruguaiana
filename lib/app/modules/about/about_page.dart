@@ -58,8 +58,7 @@ class AboutPage extends GetView<AboutController> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer,
+                                  color: Get.theme.colorScheme.secondary,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -80,12 +79,12 @@ class AboutPage extends GetView<AboutController> {
                                                     fontWeight: FontWeight.bold,
                                                     color: Get.theme.colorScheme
                                                         .surface,
-                                                    fontSize: 22),
+                                                    fontSize: 18),
                                           ),
                                         ),
                                       ),
                                       const SizedBox(
-                                        height: 15,
+                                        height: 30,
                                       ),
                                       CustomButton(
                                         label: 'CADASTRAR  "QUEM SOMOS"',
@@ -235,7 +234,8 @@ class AboutPage extends GetView<AboutController> {
                                       ),
                                       child: Center(
                                         child: CircularProgressIndicator(
-                                          color: Get.theme.colorScheme.primary,
+                                          color: Get.theme.colorScheme
+                                              .onPrimaryContainer,
                                         ),
                                       ),
                                     );

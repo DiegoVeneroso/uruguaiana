@@ -296,7 +296,7 @@ class _NewsAddPageState
                                           Get.back();
                                         },
                                         child: Text(
-                                          "Voltar",
+                                          "VOLTAR",
                                           style: TextStyle(
                                               color: Get.theme.colorScheme
                                                   .onPrimaryContainer),
@@ -338,8 +338,11 @@ class _NewsAddPageState
                                                     text: TextSpan(
                                                       text: snapshot
                                                           .data!.descripton,
-                                                      style: const TextStyle(
-                                                        color: Colors.green,
+                                                      style: TextStyle(
+                                                        color: Get
+                                                            .theme
+                                                            .colorScheme
+                                                            .primary,
                                                         fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.normal,

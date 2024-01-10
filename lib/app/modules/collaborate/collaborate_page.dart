@@ -40,11 +40,11 @@ class CollaboratePage extends GetView<CollaborateController> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Center(
                   child: AutoSizeText(
                     minFontSize: 10,
-                    'Colaborações',
+                    'COLABORAÇÕES',
                     style: Get.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Get.theme.colorScheme.surface,
