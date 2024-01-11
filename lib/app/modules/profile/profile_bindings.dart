@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/repository/profile_repositories.dart';
+import 'package:eu_faco_parte/app/repository/profile_repositories.dart';
 import './profile_controller.dart';
 
 class ProfileBindings implements Bindings {

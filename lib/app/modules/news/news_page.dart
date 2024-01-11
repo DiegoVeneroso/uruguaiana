@@ -3,11 +3,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_floating_button.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_view_news.dart';
-import 'package:uruguaiana/app/modules/news/news_controller.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_floating_button.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_searchformfield.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_view_news.dart';
+import 'package:eu_faco_parte/app/modules/news/news_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../repository/auth_repository.dart';
@@ -156,21 +156,15 @@ class NewsPage extends GetView<NewsController> {
 
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return Container(
-                                height: Get.size.height * 0.35,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Get.theme.colorScheme.primary,
-                                  ),
-                                  // borderRadius: BorderRadius.circular(10),
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer,
-                                ),
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    color: Get.theme.colorScheme.primary,
-                                  ),
+                              return Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    CircularProgressIndicator(
+                                      color: Get.theme.colorScheme.primary,
+                                    ),
+                                  ],
                                 ),
                               );
                             }

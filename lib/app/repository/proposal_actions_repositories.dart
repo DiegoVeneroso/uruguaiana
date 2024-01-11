@@ -4,7 +4,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:uruguaiana/app/models/proposal_action_model.dart';
+import 'package:eu_faco_parte/app/models/proposal_action_model.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
 

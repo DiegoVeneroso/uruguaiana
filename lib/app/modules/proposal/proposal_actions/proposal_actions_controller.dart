@@ -11,10 +11,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:uruguaiana/app/core/mixins/loader_message_mixin.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/repository/proposal_actions_repositories.dart';
-import 'package:uruguaiana/app/routes/app_pages.dart';
+import 'package:eu_faco_parte/app/core/mixins/loader_message_mixin.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/repository/proposal_actions_repositories.dart';
+import 'package:eu_faco_parte/app/routes/app_pages.dart';
 import '../../../core/config/api_client.dart';
 import '../../../core/config/constants.dart' as constants;
 import '../../../core/mixins/dialog_mixin.dart';
@@ -332,9 +332,12 @@ class ProposalActionsController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       loadingMessage.toggle();
-      Get.offAndToNamed(Routes.proposal_actions, parameters: {
-        'proposal_pilar_name': map['proposal_pilar_name'],
-      });
+
+      Get.offAllNamed(Routes.proposal);
+
+      // Get.offAndToNamed(Routes.proposal_actions, parameters: {
+      //   'proposal_pilar_name': map['proposal_pilar_name'],
+      // });
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -354,8 +357,11 @@ class ProposalActionsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       loadingMessage.toggle();
-      Get.offAndToNamed(Routes.proposal_actions,
-          parameters: {'proposal_pilar_name': map['proposal_pilar_name']});
+
+      Get.offAndToNamed(Routes.proposal);
+
+      // Get.offAndToNamed(Routes.proposal_actions,
+      //     parameters: {'proposal_pilar_name': map['proposal_pilar_name']});
     }
   }
 

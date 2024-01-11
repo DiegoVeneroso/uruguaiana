@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
 import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/widgets/custom_button.dart';
 import '../../../core/ui/widgets/custom_drawer.dart';
@@ -174,6 +174,16 @@ class ProposalPage extends GetView<ProposalController> {
                                                           .toString());
                                                 },
                                               ),
+                                              cancel: CustomButton(
+                                                color: Get
+                                                    .theme.colorScheme.primary,
+                                                height: 40,
+                                                width: 100,
+                                                label: 'Voltar',
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                              ),
                                             );
                                           },
                                         ),
@@ -187,7 +197,8 @@ class ProposalPage extends GetView<ProposalController> {
                                             // size: 20,
                                           ),
                                           onPressed: () {
-                                            Get.toNamed(Routes.proposal_actions,
+                                            Get.offAllNamed(
+                                                Routes.proposal_actions,
                                                 parameters: {
                                                   'id_proposal_base': controller
                                                       .proposalList[index]

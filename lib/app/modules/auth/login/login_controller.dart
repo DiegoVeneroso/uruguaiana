@@ -5,9 +5,9 @@ import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:uruguaiana/app/models/user_model.dart';
+import 'package:eu_faco_parte/app/models/user_model.dart';
 
-import 'package:uruguaiana/app/routes/app_pages.dart';
+import 'package:eu_faco_parte/app/routes/app_pages.dart';
 import 'package:http/http.dart' as http;
 import '../../../core/mixins/loader_mixin.dart';
 import '../../../core/mixins/messages_mixin.dart';

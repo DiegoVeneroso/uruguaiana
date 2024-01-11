@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_button.dart';
 import 'package:video_compress/video_compress.dart';
 
 class CustomProgressDialog extends StatefulWidget {

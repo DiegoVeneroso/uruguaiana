@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_searchformfield.dart';
 import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/widgets/custom_floating_button.dart';
 import '../../../repository/auth_repository.dart';
@@ -67,7 +67,9 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                 child: Obx(() => ListView.separated(
                       itemCount: controller.foundProposal.value.length,
                       separatorBuilder: (BuildContext context, int index) =>
-                          const Divider(),
+                          Divider(
+                        color: Get.theme.colorScheme.background,
+                      ),
                       itemBuilder: (context, index) {
                         return ListTile(
                           onTap: () {
@@ -102,22 +104,20 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
                           title: AutoSizeText(
                               minFontSize: 10,
                               controller.foundProposal.value[index].title),
-                          subtitle: Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: AutoSizeText(
-                                    overflow: TextOverflow.ellipsis,
-                                    minFontSize: 10,
-                                    controller
-                                        .foundProposal.value[index].description,
-                                  ),
+                          subtitle: Row(
+                            children: [
+                              Expanded(
+                                child: AutoSizeText(
+                                  overflow: TextOverflow.ellipsis,
+                                  minFontSize: 10,
+                                  controller
+                                      .foundProposal.value[index].description,
                                 ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                              ],
-                            ),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                            ],
                           ),
                         );
                       },

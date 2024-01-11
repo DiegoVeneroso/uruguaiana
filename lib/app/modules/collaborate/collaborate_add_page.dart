@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/models/term_model.dart';
+import 'package:eu_faco_parte/app/models/term_model.dart';
 
-import 'package:uruguaiana/app/modules/collaborate/collaborate_controller.dart';
+import 'package:eu_faco_parte/app/modules/collaborate/collaborate_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';

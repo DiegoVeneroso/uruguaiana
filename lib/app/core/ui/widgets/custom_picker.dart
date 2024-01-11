@@ -8,9 +8,9 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:uruguaiana/app/core/helpers/video_compress_helper.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_progress_dialog.dart';
+import 'package:eu_faco_parte/app/core/helpers/video_compress_helper.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_button.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_progress_dialog.dart';
 import 'package:video_compress/video_compress.dart';
 
 import 'custom_player_video.dart';

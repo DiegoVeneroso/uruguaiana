@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/modules/notification/notification_controller.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/repository/notification_repositories.dart';
+import 'package:eu_faco_parte/app/modules/notification/notification_controller.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/repository/notification_repositories.dart';
 
 class NotificationBindings implements Bindings {
   @override

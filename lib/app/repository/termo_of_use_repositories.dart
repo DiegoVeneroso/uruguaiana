@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
-import 'package:uruguaiana/app/models/term_model.dart';
+import 'package:eu_faco_parte/app/models/term_model.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
 import '../models/about_model.dart';

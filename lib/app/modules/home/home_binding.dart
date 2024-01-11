@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
 
 import '../../repository/home_repositories.dart';
 import 'home_controller.dart';

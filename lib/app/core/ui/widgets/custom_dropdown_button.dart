@@ -4,7 +4,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:uruguaiana/app/modules/home/home_controller.dart';
+import 'package:eu_faco_parte/app/modules/home/home_controller.dart';
 
 class CustomDropdownButton extends GetView<HomeController> {
   final String? label;

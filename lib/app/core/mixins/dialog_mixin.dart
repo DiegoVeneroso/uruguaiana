@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
-import 'package:uruguaiana/app/modules/news/news_controller.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/repository/news_repositories.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_button.dart';
+import 'package:eu_faco_parte/app/modules/news/news_controller.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/repository/news_repositories.dart';
 
 mixin DialogMixin on GetxController {
   void dialogListener(Rxn<DialogModel> dialog) {

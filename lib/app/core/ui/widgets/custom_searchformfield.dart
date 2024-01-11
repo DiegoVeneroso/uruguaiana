@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:uruguaiana/app/modules/home/home_controller.dart';
+import 'package:eu_faco_parte/app/modules/home/home_controller.dart';
 
 class CustomSearchformfield extends GetView<HomeController> {
   final Function() onPressed;

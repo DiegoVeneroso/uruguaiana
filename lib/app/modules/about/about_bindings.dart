@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/repository/about_repositories.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/repository/about_repositories.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
 import './about_controller.dart';
 
 class AboutBindings implements Bindings {

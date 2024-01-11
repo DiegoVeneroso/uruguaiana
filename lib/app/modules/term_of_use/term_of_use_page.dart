@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_button.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_floating_button.dart';
-import 'package:uruguaiana/app/modules/term_of_use/term_of_use_controller.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_button.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_floating_button.dart';
+import 'package:eu_faco_parte/app/modules/term_of_use/term_of_use_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../core/ui/widgets/custom_player_video.dart';

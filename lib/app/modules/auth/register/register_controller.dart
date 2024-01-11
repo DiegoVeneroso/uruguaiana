@@ -1,10 +1,10 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:uruguaiana/app/modules/auth/login/login_controller.dart';
+import 'package:eu_faco_parte/app/modules/auth/login/login_controller.dart';
 
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/routes/app_pages.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/routes/app_pages.dart';
 
 import '../../../core/mixins/loader_mixin.dart';
 import '../../../core/mixins/messages_mixin.dart';

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/routes/app_pages.dart';
+import 'package:eu_faco_parte/app/routes/app_pages.dart';
 
 import '../../../core/mixins/loader_mixin.dart';
 import '../../../core/mixins/messages_mixin.dart';

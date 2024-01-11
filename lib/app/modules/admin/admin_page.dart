@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
-import 'package:uruguaiana/app/modules/admin/admin_controller.dart';
-import 'package:uruguaiana/app/routes/app_pages.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
+import 'package:eu_faco_parte/app/modules/admin/admin_controller.dart';
+import 'package:eu_faco_parte/app/routes/app_pages.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 

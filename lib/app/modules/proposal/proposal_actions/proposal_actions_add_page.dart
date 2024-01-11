@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_picker.dart';
-import 'package:uruguaiana/app/modules/proposal/proposal_actions/proposal_actions_controller.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_picker.dart';
+import 'package:eu_faco_parte/app/modules/proposal/proposal_actions/proposal_actions_controller.dart';
 import 'package:validatorless/validatorless.dart';
 import '../../../core/colors/services/theme_service.dart';
 import '../../../core/ui/app_state.dart';

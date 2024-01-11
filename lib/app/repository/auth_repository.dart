@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 
-import 'package:uruguaiana/app/core/config/api_client.dart';
+import 'package:eu_faco_parte/app/core/config/api_client.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:uruguaiana/app/models/user_model.dart';
+import 'package:eu_faco_parte/app/models/user_model.dart';
 import '../core/config/constants.dart' as constants;
 
 class AuthRepository {

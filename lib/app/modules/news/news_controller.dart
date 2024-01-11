@@ -12,10 +12,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:uruguaiana/app/models/news_model.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/repository/news_repositories.dart';
-import 'package:uruguaiana/app/routes/app_pages.dart';
+import 'package:eu_faco_parte/app/models/news_model.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/repository/news_repositories.dart';
+import 'package:eu_faco_parte/app/routes/app_pages.dart';
 import '../../core/config/api_client.dart';
 import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
@@ -228,7 +228,7 @@ class NewsController extends GetxController
       _message(
         MessageModel(
           title: 'ATENÇÃO!',
-          message: 'Erro carrgar dados!',
+          message: 'Erro carregar dados!',
           type: MessageType.error,
         ),
       );

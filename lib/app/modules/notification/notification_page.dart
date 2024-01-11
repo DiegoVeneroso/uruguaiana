@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_appbar.dart';
-import 'package:uruguaiana/app/core/ui/widgets/custom_searchformfield.dart';
-import 'package:uruguaiana/app/modules/notification/notification_controller.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
+import 'package:eu_faco_parte/app/core/ui/widgets/custom_searchformfield.dart';
+import 'package:eu_faco_parte/app/modules/notification/notification_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../core/ui/widgets/custom_floating_button.dart';

@@ -18,7 +18,7 @@ Future<void> main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) => runApp(GetMaterialApp(
-            title: 'Realtime modelo',
+            title: 'Eu faço parte',
             initialRoute: AppPages.initial,
             theme: Themes.light,
             darkTheme: Themes.dark,

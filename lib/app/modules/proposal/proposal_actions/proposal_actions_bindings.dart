@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:uruguaiana/app/repository/auth_repository.dart';
-import 'package:uruguaiana/app/repository/proposal_actions_repositories.dart';
+import 'package:eu_faco_parte/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/repository/proposal_actions_repositories.dart';
 
 import 'proposal_actions_controller.dart';
 
