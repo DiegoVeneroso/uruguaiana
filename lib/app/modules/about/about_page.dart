@@ -28,7 +28,7 @@ class AboutPage extends GetView<AboutController> {
               IconButton(
                 onPressed: ThemeService().switchTheme,
                 icon: const Icon(Icons.contrast),
-                color: Get.theme.colorScheme.onBackground,
+                color: Get.theme.colorScheme.background,
               ),
             ],
           ),
@@ -78,7 +78,7 @@ class AboutPage extends GetView<AboutController> {
                                                 ?.copyWith(
                                                     fontWeight: FontWeight.bold,
                                                     color: Get.theme.colorScheme
-                                                        .surface,
+                                                        .primary,
                                                     fontSize: 18),
                                           ),
                                         ),

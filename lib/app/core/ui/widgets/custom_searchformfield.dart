@@ -24,7 +24,7 @@ class CustomSearchformfield extends GetView<HomeController> {
             const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
         isDense: true,
         labelText: 'Pesquisar',
-        labelStyle: TextStyle(color: Get.theme.colorScheme.secondary),
+        labelStyle: TextStyle(color: Get.theme.colorScheme.primary),
         errorStyle: TextStyle(color: Get.theme.colorScheme.error),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(23),

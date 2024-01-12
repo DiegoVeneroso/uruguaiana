@@ -35,6 +35,7 @@ class _LoginPageState extends AppState<LoginPage, LoginController> {
     return Scaffold(
       backgroundColor: context.theme.colorScheme.background,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Get.theme.colorScheme.surface),
         elevation: 0,
         actions: [
           IconButton(

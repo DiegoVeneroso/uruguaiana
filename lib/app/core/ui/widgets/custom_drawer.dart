@@ -201,23 +201,51 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Column(
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          Uri url = Uri.parse('');
-                          launchUrl(url);
-                        },
-                        child: const AutoSizeText(
-                          minFontSize: 10,
-                          '2023\u00a9FrontApp',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 133, 3, 81)),
-                        ),
-                      )
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AutoSizeText(
+                            minFontSize: 10,
+                            'Suporte do App',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 133, 3, 81)),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Uri url =
+                                  Uri.parse('https://wa.me/5555984598383');
+                              launchUrl(url);
+                            },
+                            style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        side: const BorderSide(
+                                          color: Color.fromARGB(255, 133, 3,
+                                              81), // your color here
+                                          width: 1,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(15)))),
+                            child: const AutoSizeText(
+                              minFontSize: 10,
+                              '2024\u00a9FrontApp',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 133, 3, 81)),
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   )
                 ],
@@ -411,23 +439,51 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Column(
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          Uri url = Uri.parse('');
-                          launchUrl(url);
-                        },
-                        child: const AutoSizeText(
-                          minFontSize: 10,
-                          '2023\u00a9FrontApp',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 133, 3, 81)),
-                        ),
-                      )
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AutoSizeText(
+                            minFontSize: 10,
+                            'Suporte do App',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 133, 3, 81)),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Uri url =
+                                  Uri.parse('https://wa.me/5555984598383');
+                              launchUrl(url);
+                            },
+                            style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        side: const BorderSide(
+                                          color: Color.fromARGB(255, 133, 3,
+                                              81), // your color here
+                                          width: 1,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(15)))),
+                            child: const AutoSizeText(
+                              minFontSize: 10,
+                              '2024\u00a9FrontApp',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 133, 3, 81)),
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   )
                 ],

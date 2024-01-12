@@ -13,7 +13,7 @@ class CustomAppbar extends AppBar {
           key: key,
           backgroundColor: Get.theme.colorScheme.secondary,
           elevation: 2,
-          iconTheme: IconThemeData(color: Get.theme.colorScheme.onBackground),
+          iconTheme: IconThemeData(color: Get.theme.colorScheme.background),
           actions: actionsList,
           title: Padding(
             padding: const EdgeInsets.only(top: 15.0),

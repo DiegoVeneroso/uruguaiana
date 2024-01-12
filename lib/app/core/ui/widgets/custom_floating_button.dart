@@ -20,20 +20,9 @@ class CustomFloatingButton extends StatelessWidget {
         future: controller.getContactWhatsapp(),
         builder: (context, snap2) {
           if (snap2.connectionState == ConnectionState.waiting) {
-            return Container(
-              height: Get.size.height * 0.35,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Get.theme.colorScheme.onPrimaryContainer,
-                ),
-                // borderRadius: BorderRadius.circular(10),
-                color: Get.theme.colorScheme.onPrimaryContainer,
-              ),
-              child: Center(
-                child: CircularProgressIndicator(
-                  color: Get.theme.colorScheme.primary,
-                ),
+            return Center(
+              child: CircularProgressIndicator(
+                color: Get.theme.colorScheme.primary,
               ),
             );
           }

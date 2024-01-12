@@ -25,7 +25,7 @@ class Themes {
       brightness: Brightness.dark,
       primary: Colors.green, //loader
       onPrimary: const Color(0xFFFFFFFF),
-      secondary: Colors.green,
+      secondary: const Color(0xFFFFFFFF),
       onSecondary: const Color(0xFFEAEAEA),
       error: Colors.yellowAccent,
       onError: Colors.redAccent, //messages_error

@@ -37,7 +37,7 @@ class _ProposalAddPageState
             IconButton(
               onPressed: ThemeService().switchTheme,
               icon: const Icon(Icons.contrast),
-              color: Get.theme.colorScheme.onBackground,
+              color: Get.theme.colorScheme.background,
             ),
           ],
         ),

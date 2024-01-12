@@ -30,12 +30,12 @@ class NewsPage extends GetView<NewsController> {
             IconButton(
               onPressed: ThemeService().switchTheme,
               icon: const Icon(Icons.contrast),
-              color: Get.theme.colorScheme.onBackground,
+              color: Get.theme.colorScheme.background,
             ),
             IconButton(
               onPressed: () => controller.searchVisible.toggle(),
               icon: const Icon(Icons.search),
-              color: Get.theme.colorScheme.onBackground,
+              color: Get.theme.colorScheme.background,
             ),
           ],
         ),
@@ -554,24 +554,6 @@ class NewsPage extends GetView<NewsController> {
                                       Positioned(
                                         left: 10,
                                         bottom: 10,
-                                        // child: Container(
-                                        //   height: 40,
-                                        //   width: Get.width * .94,
-                                        //   color: Colors.red,
-                                        //   child: RichText(
-                                        //     text: TextSpan(
-                                        //       text: controller
-                                        //           .foundNews.value[index].title,
-                                        //       style: TextStyle(
-                                        //         color: Get.theme.colorScheme
-                                        //             .background,
-                                        //         fontSize: 16,
-                                        //         fontWeight: FontWeight.bold,
-                                        //       ),
-                                        //     ),
-                                        //     textAlign: TextAlign.justify,
-                                        //   ),
-                                        // ),
                                         child: Container(
                                           // height: 40,
                                           width: Get.width * .94,

@@ -56,16 +56,6 @@ class _RegisterPageState extends AppState<RegisterPage, RegisterController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: SizedBox(
-                    width: 200,
-                    height: 200,
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                      width: 80,
-                    ),
-                  ),
-                ),
-                Center(
                   child: AutoSizeText(
                     minFontSize: 10,
                     'CADASTRE-SE',

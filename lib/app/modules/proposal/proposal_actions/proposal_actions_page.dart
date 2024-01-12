@@ -25,12 +25,12 @@ class ProposalActionPage extends GetView<ProposalActionsController> {
             IconButton(
               onPressed: ThemeService().switchTheme,
               icon: const Icon(Icons.contrast),
-              color: Get.theme.colorScheme.onBackground,
+              color: Get.theme.colorScheme.background,
             ),
             IconButton(
               onPressed: () => controller.searchVisible.toggle(),
               icon: const Icon(Icons.search),
-              color: Get.theme.colorScheme.onBackground,
+              color: Get.theme.colorScheme.background,
             ),
           ],
         ),
