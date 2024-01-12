@@ -50,13 +50,16 @@ class _CustomProgressDialogState extends State<CustomProgressDialog> {
         const SizedBox(
           height: 15,
         ),
-        Text(
-          'AGUARDE...',
-          style: TextStyle(
-              fontSize: 16,
-              color: Get.theme.colorScheme.primary,
-              fontWeight: FontWeight.bold),
+        CircularProgressIndicator(
+          color: Get.theme.colorScheme.primary,
         ),
+        // Text(
+        //   'AGUARDE...',
+        //   style: TextStyle(
+        //       fontSize: 16,
+        //       color: Get.theme.colorScheme.primary,
+        //       fontWeight: FontWeight.bold),
+        // ),
         const SizedBox(
           height: 24,
         ),

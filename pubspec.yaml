@@ -45,7 +45,7 @@ dependencies:
   intl: ^0.18.1
   validatorless: ^1.2.1
   image_picker_plus: ^0.5.9
-  image_picker:
+  # image_picker:
   image_cropper: ^5.0.0
   permission_handler: ^11.0.1
   flutter_image_compress: ^2.0.4
@@ -66,6 +66,9 @@ dependencies:
   network_to_file_image: ^4.0.1
   video_compress: ^3.1.2
   file_selector: ^1.0.1
+  device_info_plus: ^9.0.3
+  image_picker:
+  
   
 dev_dependencies:
   flutter_test:

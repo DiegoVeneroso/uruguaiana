@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
@@ -29,6 +30,10 @@ class CustomPickerState extends State<CustomPicker> {
   RxString? imageValidate = ''.obs;
   MediaInfo? compressedVideoInfo;
 
+  bool isStoragePermission = true;
+  bool isVideosPermission = true;
+  bool isPhotosPermission = true;
+
   void setImageValidate(String value) {
     setState(() {
       imageValidate?.value = value;
@@ -39,6 +44,24 @@ class CustomPickerState extends State<CustomPicker> {
     setState(() {
       imageFile = XFile(url);
     });
+  }
+
+  Future<void> storageCheck() async {
+    // Only check for storage < Android 13
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    if (androidInfo.version.sdkInt >= 33) {
+      isVideosPermission = await Permission.videos.status.isGranted;
+      isPhotosPermission = await Permission.photos.status.isGranted;
+    } else {
+      isStoragePermission = await Permission.storage.status.isGranted;
+    }
+
+    // if (isStoragePermission && isVideosPermission && isPhotosPermission) {
+    //   print('permitido');
+    // } else {
+    //   print(' não permitido');
+    // }
   }
 
   @override
@@ -102,22 +125,39 @@ class CustomPickerState extends State<CustomPicker> {
                                           width: Get.width * .50,
                                           onPressed: () async {
                                             Get.back();
-                                            Map<Permission, PermissionStatus>
-                                                statuses = await [
-                                              Permission.storage,
-                                              Permission.camera,
-                                            ].request();
-                                            if (statuses[Permission.storage]!
-                                                    .isGranted &&
-                                                statuses[Permission.camera]!
-                                                    .isGranted) {
-                                              await pickImageFileFromGalery();
-                                              setState(() {
-                                                imageFile;
-                                              });
+                                            // Map<Permission, PermissionStatus>
+                                            //     statuses = await [
+                                            //   Permission.storage,
+                                            //   Permission.camera,
+                                            // ].request();
+
+                                            // if (statuses[Permission.storage]!
+                                            //         .isGranted &&
+                                            //     statuses[Permission.camera]!
+                                            //         .isGranted) {
+                                            //   await pickImageFileFromGalery();
+                                            //   setState(
+                                            //     () {
+                                            //       imageFile;
+                                            //     },
+                                            //   );
+                                            await storageCheck();
+
+                                            if (isStoragePermission &&
+                                                isVideosPermission &&
+                                                isPhotosPermission) {
                                             } else {
-                                              print('Permissão negada!');
+                                              await pickImageFileFromGalery();
+                                              setState(
+                                                () {
+                                                  imageFile;
+                                                },
+                                              );
                                             }
+
+                                            // } else {
+                                            //   print('Permissão negada!');
+                                            // }
                                           },
                                         ),
                                       ],
@@ -144,22 +184,37 @@ class CustomPickerState extends State<CustomPicker> {
                                             width: Get.width * .50,
                                             onPressed: () async {
                                               Get.back();
-                                              Map<Permission, PermissionStatus>
-                                                  statuses = await [
-                                                Permission.storage,
-                                                Permission.camera,
-                                              ].request();
-                                              if (statuses[Permission.storage]!
-                                                      .isGranted &&
-                                                  statuses[Permission.camera]!
-                                                      .isGranted) {
-                                                await pickVideoFileFromGalery();
-                                                setState(() {
-                                                  imageFile;
-                                                });
+
+                                              await storageCheck();
+
+                                              if (isStoragePermission &&
+                                                  isVideosPermission &&
+                                                  isPhotosPermission) {
                                               } else {
-                                                print('Permissão negada!');
+                                                await pickVideoFileFromGalery();
+                                                setState(
+                                                  () {
+                                                    imageFile;
+                                                  },
+                                                );
                                               }
+
+                                              // Map<Permission, PermissionStatus>
+                                              //     statuses = await [
+                                              //   Permission.storage,
+                                              //   Permission.camera,
+                                              // ].request();
+                                              // if (statuses[Permission.storage]!
+                                              //         .isGranted &&
+                                              //     statuses[Permission.camera]!
+                                              //         .isGranted) {
+                                              //   await pickVideoFileFromGalery();
+                                              //   setState(() {
+                                              //     imageFile;
+                                              //   });
+                                              // } else {
+                                              //   print('Permissão negada!');
+                                              // }
                                             },
                                           ),
                                           const SizedBox(
@@ -171,21 +226,35 @@ class CustomPickerState extends State<CustomPicker> {
                                             width: Get.width * .50,
                                             onPressed: () async {
                                               Get.back();
-                                              Map<Permission, PermissionStatus>
-                                                  statuses = await [
-                                                Permission.storage,
-                                                Permission.camera,
-                                              ].request();
-                                              if (statuses[Permission.storage]!
-                                                      .isGranted &&
-                                                  statuses[Permission.camera]!
-                                                      .isGranted) {
-                                                await captureImageFileFromCamera();
-                                                setState(() {
-                                                  imageFile;
-                                                });
+                                              // Map<Permission, PermissionStatus>
+                                              //     statuses = await [
+                                              //   Permission.storage,
+                                              //   Permission.camera,
+                                              // ].request();
+                                              // if (statuses[Permission.storage]!
+                                              //         .isGranted &&
+                                              //     statuses[Permission.camera]!
+                                              //         .isGranted) {
+                                              //   await captureImageFileFromCamera();
+                                              //   setState(() {
+                                              //     imageFile;
+                                              //   });
+                                              // } else {
+                                              //   print('Permissão negada!');
+                                              // }
+
+                                              await storageCheck();
+
+                                              if (isStoragePermission &&
+                                                  isVideosPermission &&
+                                                  isPhotosPermission) {
                                               } else {
-                                                print('Permissão negada!');
+                                                await captureImageFileFromCamera();
+                                                setState(
+                                                  () {
+                                                    imageFile;
+                                                  },
+                                                );
                                               }
                                             },
                                           ),
@@ -198,21 +267,35 @@ class CustomPickerState extends State<CustomPicker> {
                                             width: Get.width * .50,
                                             onPressed: () async {
                                               Get.back();
-                                              Map<Permission, PermissionStatus>
-                                                  statuses = await [
-                                                Permission.storage,
-                                                Permission.camera,
-                                              ].request();
-                                              if (statuses[Permission.storage]!
-                                                      .isGranted &&
-                                                  statuses[Permission.camera]!
-                                                      .isGranted) {
-                                                await capturaVideoFileFromCamera();
-                                                setState(() {
-                                                  imageFile;
-                                                });
+                                              // Map<Permission, PermissionStatus>
+                                              //     statuses = await [
+                                              //   Permission.storage,
+                                              //   Permission.camera,
+                                              // ].request();
+                                              // if (statuses[Permission.storage]!
+                                              //         .isGranted &&
+                                              //     statuses[Permission.camera]!
+                                              //         .isGranted) {
+                                              //   await capturaVideoFileFromCamera();
+                                              //   setState(() {
+                                              //     imageFile;
+                                              //   });
+                                              // } else {
+                                              //   print('Permissão negada!');
+                                              // }
+
+                                              await storageCheck();
+
+                                              if (isStoragePermission &&
+                                                  isVideosPermission &&
+                                                  isPhotosPermission) {
                                               } else {
-                                                print('Permissão negada!');
+                                                await capturaVideoFileFromCamera();
+                                                setState(
+                                                  () {
+                                                    imageFile;
+                                                  },
+                                                );
                                               }
                                             },
                                           ),
@@ -297,20 +380,33 @@ class CustomPickerState extends State<CustomPicker> {
                               label: 'Imagem da Galeria',
                               height: 40,
                               onPressed: () async {
-                                Get.back();
-                                Map<Permission, PermissionStatus> statuses =
-                                    await [
-                                  Permission.storage,
-                                  Permission.camera,
-                                ].request();
-                                if (statuses[Permission.storage]!.isGranted &&
-                                    statuses[Permission.camera]!.isGranted) {
-                                  await pickImageFileFromGalery();
-                                  setState(() {
-                                    imageFile;
-                                  });
+                                // Get.back();
+                                // Map<Permission, PermissionStatus> statuses =
+                                //     await [
+                                //   Permission.storage,
+                                //   Permission.camera,
+                                // ].request();
+                                // if (statuses[Permission.storage]!.isGranted &&
+                                //     statuses[Permission.camera]!.isGranted) {
+                                //   await pickImageFileFromGalery();
+                                //   setState(() {
+                                //     imageFile;
+                                //   });
+                                // } else {
+                                //   print('Permissão negada!');
+                                // }
+                                await storageCheck();
+
+                                if (isStoragePermission &&
+                                    isVideosPermission &&
+                                    isPhotosPermission) {
                                 } else {
-                                  print('Permissão negada!');
+                                  await pickImageFileFromGalery();
+                                  setState(
+                                    () {
+                                      imageFile;
+                                    },
+                                  );
                                 }
                               },
                             ),
@@ -325,19 +421,32 @@ class CustomPickerState extends State<CustomPicker> {
                               height: 40,
                               onPressed: () async {
                                 Get.back();
-                                Map<Permission, PermissionStatus> statuses =
-                                    await [
-                                  Permission.storage,
-                                  Permission.camera,
-                                ].request();
-                                if (statuses[Permission.storage]!.isGranted &&
-                                    statuses[Permission.camera]!.isGranted) {
-                                  await captureImageFileFromCamera();
-                                  setState(() {
-                                    imageFile;
-                                  });
+                                // Map<Permission, PermissionStatus> statuses =
+                                //     await [
+                                //   Permission.storage,
+                                //   Permission.camera,
+                                // ].request();
+                                // if (statuses[Permission.storage]!.isGranted &&
+                                //     statuses[Permission.camera]!.isGranted) {
+                                //   await captureImageFileFromCamera();
+                                //   setState(() {
+                                //     imageFile;
+                                //   });
+                                // } else {
+                                //   print('Permissão negada!');
+                                // }
+                                await storageCheck();
+
+                                if (isStoragePermission &&
+                                    isVideosPermission &&
+                                    isPhotosPermission) {
                                 } else {
-                                  print('Permissão negada!');
+                                  await captureImageFileFromCamera();
+                                  setState(
+                                    () {
+                                      imageFile;
+                                    },
+                                  );
                                 }
                               },
                             ),
@@ -349,19 +458,32 @@ class CustomPickerState extends State<CustomPicker> {
                               height: 40,
                               onPressed: () async {
                                 Get.back();
-                                Map<Permission, PermissionStatus> statuses =
-                                    await [
-                                  Permission.storage,
-                                  Permission.camera,
-                                ].request();
-                                if (statuses[Permission.storage]!.isGranted &&
-                                    statuses[Permission.camera]!.isGranted) {
-                                  await pickVideoFileFromGalery();
-                                  setState(() {
-                                    imageFile;
-                                  });
+                                // Map<Permission, PermissionStatus> statuses =
+                                //     await [
+                                //   Permission.storage,
+                                //   Permission.camera,
+                                // ].request();
+                                // if (statuses[Permission.storage]!.isGranted &&
+                                //     statuses[Permission.camera]!.isGranted) {
+                                //   await pickVideoFileFromGalery();
+                                //   setState(() {
+                                //     imageFile;
+                                //   });
+                                // } else {
+                                //   print('Permissão negada!');
+                                // }
+                                await storageCheck();
+
+                                if (isStoragePermission &&
+                                    isVideosPermission &&
+                                    isPhotosPermission) {
                                 } else {
-                                  print('Permissão negada!');
+                                  await pickVideoFileFromGalery();
+                                  setState(
+                                    () {
+                                      imageFile;
+                                    },
+                                  );
                                 }
                               },
                             ),
@@ -373,19 +495,32 @@ class CustomPickerState extends State<CustomPicker> {
                               height: 40,
                               onPressed: () async {
                                 Get.back();
-                                Map<Permission, PermissionStatus> statuses =
-                                    await [
-                                  Permission.storage,
-                                  Permission.camera,
-                                ].request();
-                                if (statuses[Permission.storage]!.isGranted &&
-                                    statuses[Permission.camera]!.isGranted) {
-                                  await capturaVideoFileFromCamera();
-                                  setState(() {
-                                    imageFile;
-                                  });
+                                // Map<Permission, PermissionStatus> statuses =
+                                //     await [
+                                //   Permission.storage,
+                                //   Permission.camera,
+                                // ].request();
+                                // if (statuses[Permission.storage]!.isGranted &&
+                                //     statuses[Permission.camera]!.isGranted) {
+                                //   await capturaVideoFileFromCamera();
+                                //   setState(() {
+                                //     imageFile;
+                                //   });
+                                // } else {
+                                //   print('Permissão negada!');
+                                // }
+                                await storageCheck();
+
+                                if (isStoragePermission &&
+                                    isVideosPermission &&
+                                    isPhotosPermission) {
                                 } else {
-                                  print('Permissão negada!');
+                                  await capturaVideoFileFromCamera();
+                                  setState(
+                                    () {
+                                      imageFile;
+                                    },
+                                  );
                                 }
                               },
                             ),
@@ -558,6 +693,7 @@ class CustomPickerState extends State<CustomPicker> {
 
   capturaVideoFileFromCamera() async {
     imageFile = await ImagePicker().pickVideo(source: ImageSource.camera);
+    await compressVideo();
     if (imageFile != null) {
       await compressVideo();
     }
