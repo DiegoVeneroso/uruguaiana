@@ -59,7 +59,6 @@ class NotificationController extends GetxController
     loaderListener(_loading);
     messageListener(_message);
     foundNotification.value = notificationList;
-    //showNotificationPush();
 
     super.onInit();
   }
@@ -137,23 +136,6 @@ class NotificationController extends GetxController
       print(' erro ao enviar notificação!');
       return false;
     }
-  }
-
-  showNotificationPush() {
-    FirebaseMessaging.onMessage.listen((message) async {
-      print(message.data.values
-          .toString()); //recebe o valor dos dados personalidados da notificação
-
-      if (message.notification != null) {
-        _message(
-          MessageModel(
-            title: message.notification!.title.toString(),
-            message: message.notification!.body.toString(),
-            type: MessageType.success,
-          ),
-        );
-      }
-    });
   }
 
   Future<void> filternotifications(String notificationsName) async {

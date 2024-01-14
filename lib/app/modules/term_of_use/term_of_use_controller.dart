@@ -115,23 +115,6 @@ class TermOfUseController extends GetxController
     }
   }
 
-  showNotificationPush() {
-    FirebaseMessaging.onMessage.listen((message) async {
-      print(message.data.values
-          .toString()); //recebe o valor dos dados personalidados da notificação
-
-      if (message.notification != null) {
-        _message(
-          MessageModel(
-            title: message.notification!.title.toString(),
-            message: message.notification!.body.toString(),
-            type: MessageType.success,
-          ),
-        );
-      }
-    });
-  }
-
   pickImageFileFromGalery() async {
     imageFile = await ImagePicker()
         .pickImage(source: ImageSource.gallery, imageQuality: 50);

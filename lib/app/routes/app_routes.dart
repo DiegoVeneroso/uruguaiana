@@ -46,6 +46,9 @@ abstract class Routes {
 
   static const notification = _Paths.notification;
   static const notification_add = _Paths.notification_add;
+
+  static const donate = _Paths.donate;
+  static const donate_credentials = _Paths.donate_credentials;
 }
 
 abstract class _Paths {
@@ -94,4 +97,7 @@ abstract class _Paths {
 
   static const notification = '/notification';
   static const notification_add = '/notification_add';
+
+  static const donate = '/donate';
+  static const donate_credentials = '/donate_credentials';
 }

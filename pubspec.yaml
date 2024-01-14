@@ -45,7 +45,6 @@ dependencies:
   intl: ^0.18.1
   validatorless: ^1.2.1
   image_picker_plus: ^0.5.9
-  # image_picker:
   image_cropper: ^5.0.0
   permission_handler: ^11.0.1
   flutter_image_compress: ^2.0.4
@@ -68,7 +67,9 @@ dependencies:
   file_selector: ^1.0.1
   device_info_plus: ^9.0.3
   image_picker:
-  
+  dio: ^5.4.0
+  flutter_custom_tabs: ^1.2.1
+  brasil_fields: ^1.14.1
   
 dev_dependencies:
   flutter_test:

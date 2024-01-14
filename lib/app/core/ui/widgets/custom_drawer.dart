@@ -93,6 +93,17 @@ class CustomDrawer extends StatelessWidget {
                         : Get.theme.colorScheme.primary,
                   ),
                   buildDrawerItem(
+                    icon: FontAwesomeIcons.handHoldingDollar,
+                    text: 'Doações',
+                    onTap: () => navigate(9),
+                    tileColor: Get.currentRoute == '/donate'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/donate'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
                     icon: Icons.settings,
                     text: 'Administração',
                     onTap: () => navigate(6),
@@ -200,6 +211,9 @@ class CustomDrawer extends StatelessWidget {
                         },
                       ),
                     ],
+                  ),
+                  const SizedBox(
+                    height: 30,
                   ),
                   Column(
                     children: [
@@ -439,6 +453,9 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   Column(
                     children: [
                       const Row(
@@ -588,6 +605,8 @@ class CustomDrawer extends StatelessWidget {
       Get.toNamed('/proposal');
     } else if (index == 8) {
       Get.toNamed('/my_colaborate');
+    } else if (index == 9) {
+      Get.toNamed('/donate');
     }
   }
 }

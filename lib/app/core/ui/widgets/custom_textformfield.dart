@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -9,6 +11,7 @@ class CustomTextformfield extends StatelessWidget {
   final bool obscureText;
   bool visibility;
   final bool cellMask;
+  final bool moneyMask;
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChange;
   final RxBool isVisible = false.obs;
@@ -23,6 +26,7 @@ class CustomTextformfield extends StatelessWidget {
     this.obscureText = false,
     this.visibility = false,
     this.cellMask = false,
+    this.moneyMask = false,
     this.validator,
     this.onChange,
     this.maxlines = 1,
@@ -44,7 +48,15 @@ class CustomTextformfield extends StatelessWidget {
     return Obx(
       () => TextFormField(
         style: TextStyle(color: Get.theme.colorScheme.primary),
-        inputFormatters: cellMask ? [maskFormatter] : [],
+        // inputFormatters: cellMask ? [maskFormatter] : [ ],
+        inputFormatters: cellMask == true
+            ? [maskFormatter]
+            : moneyMask == true
+                ? [
+                    FilteringTextInputFormatter.digitsOnly,
+                    CentavosInputFormatter(),
+                  ]
+                : [],
         controller: controller,
         obscureText: !isVisible.value ? obscureText : false,
         validator: validator,

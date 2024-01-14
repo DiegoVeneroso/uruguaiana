@@ -60,7 +60,6 @@ class CollaborateController extends GetxController
     messageListener(_message);
     dialogListener(_dialog);
     foundCollaborate.value = collaborateList;
-    //showNotificationPush();
     getCollaborateFromStorage();
 
     super.onInit();
@@ -98,23 +97,6 @@ class CollaborateController extends GetxController
         mycollaborateList.map((value) => value.toJson()).toList();
     String jsonString = jsonEncode(collaborateAsMap);
     await storage.write('my_collaborates_list', jsonString);
-  }
-
-  showNotificationPush() {
-    FirebaseMessaging.onMessage.listen((message) async {
-      print(message.data.values
-          .toString()); //recebe o valor dos dados personalidados da notificação
-
-      if (message.notification != null) {
-        _message(
-          MessageModel(
-            title: message.notification!.title.toString(),
-            message: message.notification!.body.toString(),
-            type: MessageType.success,
-          ),
-        );
-      }
-    });
   }
 
   pickImageFileFromGalery() async {
