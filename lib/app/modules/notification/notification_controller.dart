@@ -4,11 +4,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:eu_faco_parte/app/repository/auth_repository.dart';
 import 'package:eu_faco_parte/app/routes/app_pages.dart';

@@ -7,7 +7,6 @@ import 'package:eu_faco_parte/app/core/ui/widgets/custom_floating_button.dart';
 import 'package:eu_faco_parte/app/modules/term_of_use/term_of_use_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
-import '../../core/ui/widgets/custom_player_video.dart';
 import '../../repository/auth_repository.dart';
 import '../../routes/app_pages.dart';
 import '../auth/login/login_controller.dart';

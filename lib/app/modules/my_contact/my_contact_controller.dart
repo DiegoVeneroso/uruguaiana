@@ -1,11 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
 import 'package:appwrite/models.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -13,13 +10,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:eu_faco_parte/app/repository/auth_repository.dart';
 import 'package:eu_faco_parte/app/repository/my_contact_repositories.dart';
 import 'package:eu_faco_parte/app/routes/app_pages.dart';
-import '../../core/config/api_client.dart';
-import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
 import '../../models/notification_model.dart';
-import 'package:http/http.dart' as http;
 
 class MyContactController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {

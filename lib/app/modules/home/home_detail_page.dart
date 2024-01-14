@@ -3,15 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:validatorless/validatorless.dart';
 
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
-import '../../core/ui/widgets/custom_button.dart';
-import '../../core/ui/widgets/custom_dropdown_button.dart';
-import '../../core/ui/widgets/custom_textformfield.dart';
 import 'home_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 

@@ -4,7 +4,6 @@ import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
 import '../models/about_model.dart';

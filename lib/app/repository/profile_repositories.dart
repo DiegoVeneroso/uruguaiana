@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;

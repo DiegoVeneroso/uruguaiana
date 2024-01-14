@@ -211,7 +211,7 @@ class AdminPage extends GetView<AdminController> {
                           padding: const EdgeInsets.all(4.0),
                           child: GestureDetector(
                             onTap: () {
-                              Get.toNamed(Routes.donate_credentials);
+                              Get.toNamed(Routes.donate_admin_page);
                             },
                             child: Card(
                               shape: RoundedRectangleBorder(

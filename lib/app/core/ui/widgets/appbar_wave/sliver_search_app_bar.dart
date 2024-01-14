@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:eu_faco_parte/app/core/ui/widgets/custom_drawer.dart';
 
 import '../../../colors/services/theme_service.dart';
 import 'background_wave.dart';

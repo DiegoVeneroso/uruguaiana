@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:eu_faco_parte/app/core/ui/widgets/custom_picker.dart';
 import 'package:eu_faco_parte/app/modules/about/about_controller.dart';
 import 'package:validatorless/validatorless.dart';

@@ -5,7 +5,6 @@ import 'package:appwrite/models.dart';
 import 'package:eu_faco_parte/app/models/term_model.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
-import '../models/about_model.dart';
 
 class TermOfUseRepository {
   Future<List<TermModel>> loadDataRepository() async {

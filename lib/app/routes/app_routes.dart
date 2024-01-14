@@ -49,6 +49,8 @@ abstract class Routes {
 
   static const donate = _Paths.donate;
   static const donate_credentials = _Paths.donate_credentials;
+  static const donate_add_credentials = _Paths.donate_add_credentials;
+  static const donate_admin_page = _Paths.donate_admin_page;
 }
 
 abstract class _Paths {
@@ -100,4 +102,6 @@ abstract class _Paths {
 
   static const donate = '/donate';
   static const donate_credentials = '/donate_credentials';
+  static const donate_add_credentials = '/donate_add_credentials';
+  static const donate_admin_page = '/donate_admin_page';
 }

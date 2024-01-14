@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:eu_faco_parte/app/models/term_model.dart';
 
 import 'package:eu_faco_parte/app/modules/collaborate/collaborate_controller.dart';
 import 'package:validatorless/validatorless.dart';
