@@ -2,6 +2,7 @@ import 'package:eu_faco_parte/app/modules/about/about_bindings.dart';
 import 'package:eu_faco_parte/app/modules/about/about_page.dart';
 import 'package:eu_faco_parte/app/modules/auth/recovery_password/recovery_password_bindings.dart';
 import 'package:eu_faco_parte/app/modules/auth/recovery_password/recovery_password_page.dart';
+import 'package:eu_faco_parte/app/modules/calendar/calendar_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_add_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_admin_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_bindings.dart';
@@ -46,6 +47,7 @@ import '../modules/admin/admin_page.dart';
 import '../modules/auth/login/login_bindings.dart';
 import '../modules/auth/login/login_page.dart';
 import '../modules/collaborate/collaborate_add_page.dart';
+import '../modules/donate/donate_edit_page.dart';
 import '../modules/home/home_add_page.dart';
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_edit_page.dart';
@@ -291,6 +293,18 @@ class AppPages {
     GetPage(
       name: _Paths.donate_admin_page,
       page: () => DonateAdminPage(),
+      binding: DonateBindings(),
+    ),
+    GetPage(
+      name: _Paths.donate_edit_credentials,
+      page: () => const DonateEditPage(),
+      binding: DonateBindings(),
+    ),
+
+    //calendar
+    GetPage(
+      name: _Paths.calendar,
+      page: () => const CalendarPage(),
       binding: DonateBindings(),
     ),
   ];

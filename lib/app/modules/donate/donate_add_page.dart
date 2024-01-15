@@ -1,6 +1,7 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:dio/dio.dart';
 import 'package:eu_faco_parte/app/modules/admin/admin_controller.dart';
+import 'package:eu_faco_parte/app/modules/donate/donate_controller.dart';
 
 import 'package:eu_faco_parte/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class DonateAddPage extends StatefulWidget {
   State<DonateAddPage> createState() => _DonatePageState();
 }
 
-class _DonatePageState extends AppState<DonateAddPage, AdminController> {
+class _DonatePageState extends AppState<DonateAddPage, DonateController> {
   final _formKey = GlobalKey<FormState>();
   final _nameEC = TextEditingController();
   final _valueEC = TextEditingController();
@@ -37,6 +38,8 @@ class _DonatePageState extends AppState<DonateAddPage, AdminController> {
   @override
   Widget build(BuildContext context) {
     void launchURL(BuildContext context, {required double value}) async {
+      var res = await controller.getTokenPayment();
+      String token = res.documents.first.data['value'];
       try {
         final dio = Dio();
         final response = await dio.post(
@@ -103,8 +106,7 @@ class _DonatePageState extends AppState<DonateAddPage, AdminController> {
             headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
-              'Authorization':
-                  'Bearer TEST-7757082514884448-100623-17afc7de1b829eb9c714f48759d3af28-181498122',
+              'Authorization': 'Bearer $token',
             },
           ),
         );

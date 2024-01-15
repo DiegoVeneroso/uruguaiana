@@ -39,4 +39,42 @@ class DonateRepository {
       throw (e.response['type']);
     }
   }
+
+  adminTokenEditRepository(Map map) async {
+    try {
+      var response = await ApiClient.databases.listDocuments(
+          databaseId: constants.DATABASE_ID,
+          collectionId: constants.COLLETION_CONFIG,
+          queries: [Query.equal("parameter", 'access_token')]);
+
+      String idToken = response.documents.first.$id;
+
+      await ApiClient.databases.updateDocument(
+          databaseId: constants.DATABASE_ID,
+          collectionId: constants.COLLETION_CONFIG,
+          documentId: idToken,
+          data: {
+            'value': map["value"],
+          });
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
+    }
+  }
+
+  Future<DocumentList> getTokenPaymentRepository() async {
+    try {
+      var response = await ApiClient.databases.listDocuments(
+          databaseId: constants.DATABASE_ID,
+          collectionId: constants.COLLETION_CONFIG,
+          queries: [Query.equal("parameter", 'access_token')]);
+
+      return response;
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
+    }
+  }
 }

@@ -243,6 +243,42 @@ class AdminPage extends GetView<AdminController> {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.calendar);
+                            },
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Get.theme.colorScheme.primary,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.calendar,
+                                    color: Get.theme.colorScheme.background,
+                                    size: 60,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  AutoSizeText(
+                                    minFontSize: 10,
+                                    'Agenda de visitas',
+                                    style: TextStyle(
+                                      color: Get.theme.colorScheme.background,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ]),
                 ),
               )

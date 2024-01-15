@@ -1,4 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:eu_faco_parte/app/modules/donate/donate_controller.dart';
+import 'package:eu_faco_parte/app/repository/donate_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_initicon/flutter_initicon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,6 +17,8 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController controller = LoginController(AuthRepository());
+    DonateController donateController = DonateController(
+        repository: DonateRepository(), authRepository: AuthRepository());
     return Drawer(
       width: Get.width * 0.80,
       backgroundColor: context.theme.colorScheme.background,
@@ -92,14 +96,38 @@ class CustomDrawer extends StatelessWidget {
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
+                  FutureBuilder(
+                    future: donateController.getTokenPayment(),
+                    builder: (context, snap3) {
+                      if (snap3.connectionState == ConnectionState.waiting) {
+                        return const SizedBox();
+                      }
+
+                      if (snap3.data!.documents.isEmpty) {
+                        return const SizedBox();
+                      } else {
+                        return buildDrawerItem(
+                          icon: FontAwesomeIcons.handHoldingDollar,
+                          text: 'Doações',
+                          onTap: () => navigate(9),
+                          tileColor: Get.currentRoute == '/donate'
+                              ? Get.theme.colorScheme.primary
+                              : null,
+                          textIconColor: Get.currentRoute == '/donate'
+                              ? Get.theme.colorScheme.onPrimaryContainer
+                              : Get.theme.colorScheme.primary,
+                        );
+                      }
+                    },
+                  ),
                   buildDrawerItem(
-                    icon: FontAwesomeIcons.handHoldingDollar,
-                    text: 'Doações',
-                    onTap: () => navigate(9),
-                    tileColor: Get.currentRoute == '/donate'
+                    icon: FontAwesomeIcons.calendar,
+                    text: 'Agende uma visita',
+                    onTap: () => navigate(10),
+                    tileColor: Get.currentRoute == '/calendar'
                         ? Get.theme.colorScheme.primary
                         : null,
-                    textIconColor: Get.currentRoute == '/donate'
+                    textIconColor: Get.currentRoute == '/calendar'
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
@@ -607,6 +635,8 @@ class CustomDrawer extends StatelessWidget {
       Get.toNamed('/my_colaborate');
     } else if (index == 9) {
       Get.toNamed('/donate');
+    } else if (index == 10) {
+      Get.toNamed('/calendar');
     }
   }
 }

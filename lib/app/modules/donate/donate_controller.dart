@@ -1,20 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
-import 'dart:io';
 import 'package:appwrite/appwrite.dart' hide Permission;
+import 'package:appwrite/models.dart';
 import 'package:eu_faco_parte/app/models/token_donate_model.dart';
 import 'package:eu_faco_parte/app/repository/donate_repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import 'package:eu_faco_parte/app/repository/auth_repository.dart';
 import 'package:eu_faco_parte/app/routes/app_pages.dart';
 import '../../core/config/api_client.dart';
-import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
+import '../../core/config/constants.dart' as constants;
 
 class DonateController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -77,12 +76,18 @@ class DonateController extends GetxController
       var result = await repository.loadDataRepository();
 
       if (result.documents.isEmpty) {
-        return <TokenDonateModel>[];
+        return [
+          TokenDonateModel(
+            value: 'vazio',
+          ),
+        ];
       } else {
         var listToken = result.documents
-            .map((docmodel) => TokenDonateModel(
-                  value: docmodel.data['value'],
-                ))
+            .map(
+              (docmodel) => TokenDonateModel(
+                value: docmodel.data['value'],
+              ),
+            )
             .toList();
 
         return listToken;
@@ -164,23 +169,21 @@ class DonateController extends GetxController
     }
   }
 
-  Future donateDelete(String idabout) async {
+  Future<void> donateTokenUpdate(Map map) async {
     try {
-      Get.back();
       _loading.toggle();
 
-      // await repository.aboutDeleteRepository(idabout);
+      await repository.adminTokenEditRepository(map);
 
-      _loading.toggle();
       await Future.delayed(const Duration(seconds: 1));
-
-      //manter este snackbar para mostra a resposta, o _message() não funciona!
-      Get.snackbar(
-        'Parabéns!',
-        '"Quem somos" excluído com sucesso!',
-        backgroundColor: Get.theme.colorScheme.primary,
-        colorText: Get.theme.colorScheme.onPrimaryContainer,
-        margin: const EdgeInsets.all(20),
+      _loading.toggle();
+      Get.offAndToNamed(Routes.donate_admin_page);
+      _message(
+        MessageModel(
+          title: 'Parabéns!',
+          message: 'Token atualizado com sucesso!',
+          type: MessageType.success,
+        ),
       );
     } catch (e) {
       print(e.toString());
@@ -198,22 +201,22 @@ class DonateController extends GetxController
     }
   }
 
-  Future<void> aboutUpdate(Map map) async {
+  Future<DocumentList> tokenPaymentIsEmpty() async {
     try {
-      _loading.toggle();
+      var res = await authRepository.getTokenAdminUserRepository();
 
-      // await repository.aboutUpdateRepository(map);
+      return res;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
 
-      await Future.delayed(const Duration(seconds: 1));
-      _loading.toggle();
-      Get.offAndToNamed(Routes.about);
-      _message(
-        MessageModel(
-          title: 'Parabéns!',
-          message: 'Quem somos atualizado com sucesso!',
-          type: MessageType.success,
-        ),
-      );
+  Future<DocumentList> getTokenPayment() async {
+    try {
+      var result = await repository.getTokenPaymentRepository();
+
+      return result;
     } catch (e) {
       print(e.toString());
 
@@ -224,9 +227,7 @@ class DonateController extends GetxController
           type: MessageType.error,
         ),
       );
-      await Future.delayed(const Duration(seconds: 2));
-      _loading.toggle();
-      Get.offAndToNamed(Routes.about);
+      rethrow;
     }
   }
 }

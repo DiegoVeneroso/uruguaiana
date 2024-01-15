@@ -70,6 +70,7 @@ dependencies:
   dio: ^5.4.0
   flutter_custom_tabs: ^1.2.1
   brasil_fields: ^1.14.1
+  table_calendar: ^3.0.9
   
 dev_dependencies:
   flutter_test:

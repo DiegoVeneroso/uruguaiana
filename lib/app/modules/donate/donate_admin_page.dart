@@ -40,7 +40,9 @@ class DonateAdminPage extends GetView<DonateController> {
                 child: CircularProgressIndicator(),
               ));
             }
-            if (!snapshot.hasData) {
+            if (!snapshot.hasData ||
+                snapshot.hasError ||
+                snapshot.data!.first.value == 'vazio') {
               return Column(
                 children: [
                   Padding(
@@ -157,9 +159,11 @@ class DonateAdminPage extends GetView<DonateController> {
                   ),
                   CustomButton(
                     width: Get.width * .5,
-                    label: 'ALTERAR',
+                    label: 'ALTERAR TOKEN',
                     onPressed: () {
-                      Get.toNamed(Routes.donate_credentials);
+                      Get.toNamed(Routes.donate_edit_credentials, parameters: {
+                        'token': snapshot.data!.first.value.toString(),
+                      });
                     },
                   ),
                 ],
