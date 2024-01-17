@@ -1,8 +1,7 @@
-import 'package:eu_faco_parte/app/repository/auth_repository.dart';
+import 'package:eu_faco_parte/app/modules/calendar/calendar_controller.dart';
 import 'package:get/get.dart';
-import './calendar_controller.dart';
 
-class CalendarBindings implements Bindings {
+class MyContactBindings implements Bindings {
   @override
   void dependencies() {
     Get.put(CalendarController());
