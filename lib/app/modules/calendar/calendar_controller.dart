@@ -24,6 +24,7 @@ class CalendarController extends GetxController {
 
     //Agenda do dia atual
     getProgramacaoDia(diaAtual.value);
+    getQuantidadeProgramacaoDia(diaAtual.value);
 
     super.onInit();
   }
@@ -40,13 +41,20 @@ class CalendarController extends GetxController {
     // update(['calendario', 'agenda']);
   }
 
+  //Busca a quantidade de evento agendo do dia
+  Future getQuantidadeProgramacaoDia(data) async {
+    if (data.day == 27 && data.month == 1 && data.year == 2024) {
+      return 55;
+    }
+  }
+
   //Dados Mock
   void getAgenda(DateTime data) {
     //reseta lista
     agenda.clear();
 
     //popula lista
-    if (data.day == 27) {
+    if (data.day == 27 && data.month == 1 && data.year == 2024) {
       agenda.value = [
         '09:30 : Reunião com o fulano',
         '12:30 : Reunião com o fulano2',

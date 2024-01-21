@@ -84,6 +84,7 @@ class CalendarPage extends StatelessWidget {
                   ),
                 ),
               ),
+              //lista de envetos
               Obx(() => controller.agenda.isEmpty
                   ? Container(
                       margin: const EdgeInsets.only(top: 20),
