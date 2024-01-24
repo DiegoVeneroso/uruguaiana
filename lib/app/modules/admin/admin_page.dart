@@ -283,7 +283,7 @@ class AdminPage extends GetView<AdminController> {
                           padding: const EdgeInsets.all(4.0),
                           child: GestureDetector(
                             onTap: () {
-                              Get.toNamed(Routes.question);
+                              Get.toNamed(Routes.question_add);
                             },
                             child: Card(
                               shape: RoundedRectangleBorder(

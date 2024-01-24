@@ -8,6 +8,7 @@ import 'package:eu_faco_parte/app/modules/donate/donate_admin_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_bindings.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_credentials.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_page.dart';
+import 'package:eu_faco_parte/app/modules/question/question_add_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_bindings.dart';
 import 'package:eu_faco_parte/app/modules/question/question_page.dart';
 import 'package:get/get.dart';
@@ -68,8 +69,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  // static const initial = Routes.splash;
-  static const initial = Routes.admin;
+  static const initial = Routes.splash;
+  // static const initial = Routes.admin;
 
   static final routes = [
     GetPage(
@@ -316,6 +317,11 @@ class AppPages {
     GetPage(
       name: _Paths.question,
       page: () => const QuestionPage(),
+      binding: QuestionBindings(),
+    ),
+    GetPage(
+      name: _Paths.question_add,
+      page: () => const QuestionAddPage(),
       binding: QuestionBindings(),
     ),
   ];

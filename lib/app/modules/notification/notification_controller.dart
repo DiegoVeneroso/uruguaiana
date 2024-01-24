@@ -103,10 +103,12 @@ class NotificationController extends GetxController
       "notification": {
         "title": title,
         "body": body,
+        "screen": "/proposal",
       },
       "data": {
         "title": title,
         "body": body,
+        "screen": "/proposal",
         // "click_action": 'FLUTTER_NOTIFICATION_CLICK'
       }
     };

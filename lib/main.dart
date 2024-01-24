@@ -11,9 +11,17 @@ import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
   await GetStorage.init();
-  // await FirebaseMessaging.instance.requestPermission();
+  await FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
   await initializeDateFormatting('pt_BR');
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
