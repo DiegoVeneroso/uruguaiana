@@ -57,6 +57,8 @@ abstract class Routes {
 
   static const question = _Paths.question;
   static const question_add = _Paths.question_add;
+  static const question_detail = _Paths.question_detail;
+  static const question_response = _Paths.question_response;
 }
 
 abstract class _Paths {
@@ -116,4 +118,6 @@ abstract class _Paths {
 
   static const question = '/question';
   static const question_add = '/question_add';
+  static const question_detail = '/question_detail';
+  static const question_response = '/question_response';
 }

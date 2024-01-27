@@ -1,10 +1,8 @@
 import 'package:eu_faco_parte/app/modules/question/question_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
 import 'package:eu_faco_parte/app/core/ui/widgets/custom_searchformfield.dart';
-import 'package:eu_faco_parte/app/modules/notification/notification_controller.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../core/ui/widgets/custom_floating_button.dart';
@@ -66,91 +64,42 @@ class QuestionPage extends GetView<QuestionController> {
               ),
               Expanded(
                 child: Obx(() => ListView.separated(
-                      itemCount: controller.foundNotification.value.length,
+                      itemCount: controller.foundQuestion.value.length,
                       separatorBuilder: (BuildContext context, int index) =>
                           const Divider(),
                       itemBuilder: (context, index) {
                         return ListTile(
+                          onTap: () {
+                            Get.toNamed(Routes.question_detail, parameters: {
+                              'id_question': controller
+                                  .foundQuestion.value[index].idQuestion
+                                  .toString(),
+                              'question': controller
+                                  .foundQuestion.value[index].question
+                                  .toString(),
+                              'list_options': controller
+                                  .foundQuestion.value[index].listOptions
+                                  .toString()
+                            });
+                          },
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
+                              borderRadius: BorderRadius.circular(15)),
                           tileColor: Get.theme.colorScheme.primary,
                           textColor: Get.theme.colorScheme.onPrimaryContainer,
-                          iconColor: Get.theme.colorScheme.onPrimaryContainer,
                           titleTextStyle: const TextStyle(fontSize: 16),
-                          subtitleTextStyle: const TextStyle(fontSize: 14),
                           title: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 16.0,
+                              horizontal: 8.0,
+                            ),
                             child: AutoSizeText(
                               minFontSize: 10,
-                              controller
-                                  .foundNotification.value[index].question,
+                              controller.foundQuestion.value[index].question,
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
                                 color: Get.theme.colorScheme.onPrimaryContainer,
                                 fontSize: 20,
                               ),
                             ),
-                          ),
-                          subtitle: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0, vertical: 3),
-                                child: Row(
-                                  children: [
-                                    AutoSizeText(
-                                      minFontSize: 10,
-                                      controller.foundNotification.value[index]
-                                          .question
-                                          .toString(),
-                                      style: TextStyle(
-                                        color: Get.theme.colorScheme
-                                            .onPrimaryContainer,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    AutoSizeText(
-                                      minFontSize: 10,
-                                      DateFormat(DateFormat.ABBR_MONTH_DAY,
-                                              'pt_Br')
-                                          .format(
-                                        DateTime.parse(controller
-                                            .foundNotification
-                                            .value[index]
-                                            .question
-                                            .toString()),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    AutoSizeText(
-                                      minFontSize: 10,
-                                      DateFormat(
-                                              DateFormat.HOUR24_MINUTE, 'pt_Br')
-                                          .format(
-                                        DateTime.parse(controller
-                                            .foundNotification
-                                            .value[index]
-                                            .question
-                                            .toString()),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
                           ),
                         );
                       },
@@ -168,7 +117,7 @@ class QuestionPage extends GetView<QuestionController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.notification_add_outlined,
+                          Icons.add,
                           color: Get.theme.colorScheme.background,
                           size: 25,
                         ),
@@ -177,7 +126,7 @@ class QuestionPage extends GetView<QuestionController> {
                         ),
                         AutoSizeText(
                           minFontSize: 10,
-                          'Enviar notificação',
+                          'Criar enquete',
                           style: TextStyle(
                               fontSize: 14,
                               color: Get.theme.colorScheme.background),
@@ -186,7 +135,7 @@ class QuestionPage extends GetView<QuestionController> {
                     ),
                     backgroundColor: Get.theme.colorScheme.primary,
                     onPressed: () {
-                      Get.toNamed(Routes.notification_add);
+                      Get.toNamed(Routes.question_add);
                     },
                   ),
                 )

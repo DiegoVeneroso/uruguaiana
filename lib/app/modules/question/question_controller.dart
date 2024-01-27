@@ -1,9 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:appwrite/appwrite.dart' hide Permission;
+import 'package:appwrite/models.dart';
 import 'package:eu_faco_parte/app/models/question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,9 +15,7 @@ import '../../core/config/constants.dart' as constants;
 import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
-import '../../models/notification_model.dart';
 import 'package:http/http.dart' as http;
-
 import '../../repository/question_repositories.dart';
 
 class QuestionController extends GetxController
@@ -29,7 +26,7 @@ class QuestionController extends GetxController
   final _loading = false.obs;
   final _message = Rxn<MessageModel>();
   var questionList = <QuestionModel>[].obs;
-  Rx<List<QuestionModel>> foundNotification = Rx<List<QuestionModel>>([]);
+  Rx<List<QuestionModel>> foundQuestion = Rx<List<QuestionModel>>([]);
   RxList<DropdownMenuItem<String>> listDropdown =
       <DropdownMenuItem<String>>[].obs;
 
@@ -57,7 +54,7 @@ class QuestionController extends GetxController
     getIsAdmin();
     loaderListener(_loading);
     messageListener(_message);
-    foundNotification.value = questionList;
+    foundQuestion.value = questionList;
 
     super.onInit();
   }
@@ -94,8 +91,10 @@ class QuestionController extends GetxController
     }
   }
 
-  Future<bool> sendPushNotification(
-      {required String title, required String body}) async {
+  Future<bool> sendPushQuestion(
+      {required String title,
+      required String body,
+      required String idQuestion}) async {
     const postUrl = 'https://fcm.googleapis.com/fcm/send';
     final data = {
       // "to":
@@ -104,12 +103,13 @@ class QuestionController extends GetxController
       "notification": {
         "title": title,
         "body": body,
-        "screen": "/proposal",
+        "screen": "/question_response",
       },
       "data": {
         "title": title,
         "body": body,
-        "screen": "/proposal",
+        "screen": "/question_response",
+        "id_question": idQuestion
         // "click_action": 'FLUTTER_NOTIFICATION_CLICK'
       }
     };
@@ -151,25 +151,23 @@ class QuestionController extends GetxController
               .contains(notificationsName.toLowerCase()))
           .toList();
     }
-    foundNotification.value = results;
+    foundQuestion.value = results;
   }
 
   Future<void> questionAdd(Map map) async {
     try {
       _loading.toggle();
 
-      // var sendNotification =
-      //     await sendPushNotification(title: map['title'], body: map['message']);
-
-      // if (sendNotification) {
-      //   await repository.notificationsAddRepository(map);
-      // }
-
-      await repository.questionAddRepository(map);
+      Document result = await repository.questionAddRepository(map);
+      await sendPushQuestion(
+        title: 'Uruguaiana que queremos!',
+        body: 'Participe da nossa enquete!',
+        idQuestion: result.$id.toString(),
+      );
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.notification);
+      Get.offAndToNamed(Routes.question);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -190,15 +188,66 @@ class QuestionController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.notification);
+      Get.offAndToNamed(Routes.question);
+    }
+  }
+
+  Future<void> questionResponseAdd(Map map) async {
+    try {
+      _loading.toggle();
+
+      await repository.questionResponseAddRepository(map);
+
+      await Future.delayed(const Duration(seconds: 1));
+      _loading.toggle();
+      Get.offAndToNamed(Routes.news);
+      _message(
+        MessageModel(
+          title: 'Parabéns!',
+          message:
+              'Enquete respondida com sucesso!\nAgradecemos pela participação!',
+          type: MessageType.success,
+        ),
+      );
+    } catch (e) {
+      print(e.toString());
+
+      _message(
+        MessageModel(
+          title: 'ATENÇÃO!',
+          message: e.toString(),
+          type: MessageType.error,
+        ),
+      );
+      await Future.delayed(const Duration(seconds: 2));
+      _loading.toggle();
+      Get.offAndToNamed(Routes.news);
     }
   }
 
   void loadData() async {
     try {
-      var result = await repository.loadDataRepository();
+      var result = await repository.loadDataQuestionRepository();
 
       questionList.assignAll(result);
+    } catch (e, s) {
+      _loading.toggle();
+      log(e.toString());
+      log(s.toString());
+      _message(
+        MessageModel(
+          title: 'ATENÇÃO!',
+          message: 'Erro carregar dados fsadfas!',
+          type: MessageType.error,
+        ),
+      );
+    }
+  }
+
+  Future<Document> getQuestions(String? idQuestion) async {
+    try {
+      var result = await repository.getQuestionRepository(idQuestion);
+      return result;
     } catch (e) {
       _loading.toggle();
       _message(
@@ -208,6 +257,7 @@ class QuestionController extends GetxController
           type: MessageType.error,
         ),
       );
+      rethrow;
     }
   }
 

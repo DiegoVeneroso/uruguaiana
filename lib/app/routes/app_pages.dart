@@ -7,10 +7,11 @@ import 'package:eu_faco_parte/app/modules/donate/donate_add_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_admin_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_bindings.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_credentials.dart';
-import 'package:eu_faco_parte/app/modules/donate/donate_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_add_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_bindings.dart';
+import 'package:eu_faco_parte/app/modules/question/question_detail_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_page.dart';
+import 'package:eu_faco_parte/app/modules/question/question_response_page.dart';
 import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/modules/collaborate/collaborate_bindings.dart';
 import 'package:eu_faco_parte/app/modules/collaborate/collaborate_detail_page.dart';
@@ -322,6 +323,16 @@ class AppPages {
     GetPage(
       name: _Paths.question_add,
       page: () => const QuestionAddPage(),
+      binding: QuestionBindings(),
+    ),
+    GetPage(
+      name: _Paths.question_detail,
+      page: () => const QuestionDetailPage(),
+      binding: QuestionBindings(),
+    ),
+    GetPage(
+      name: _Paths.question_response,
+      page: () => QuestionResponsePage(),
       binding: QuestionBindings(),
     ),
   ];

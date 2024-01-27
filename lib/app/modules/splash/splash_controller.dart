@@ -61,10 +61,14 @@ class SplashController extends GetxController {
   void _handleNotificationClick(RemoteMessage message) {
     final notificationData = message.data;
 
-    if (notificationData.containsKey('screen')) {
+    if (notificationData.containsKey('screen') &&
+        notificationData.containsKey('id_question')) {
       final screen = notificationData['screen'];
+      final idQuestion = notificationData['id_question'];
 
-      Get.toNamed(screen);
+      Get.toNamed(screen, parameters: {
+        'id_question': idQuestion,
+      });
     }
   }
 }

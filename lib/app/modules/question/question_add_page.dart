@@ -74,7 +74,7 @@ class _ProposalAddPageState
                     ),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 25,
                   ),
                   Center(
                     child: AutoSizeText(
@@ -96,7 +96,7 @@ class _ProposalAddPageState
                     maxlines: 3,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Center(
                     child: AutoSizeText(
@@ -146,7 +146,7 @@ class _ProposalAddPageState
                     controller: _option5,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Center(
                     child: CustomButton(
@@ -169,6 +169,9 @@ class _ProposalAddPageState
                         }
                       },
                     ),
+                  ),
+                  const SizedBox(
+                    height: 30,
                   ),
                 ],
               ),
