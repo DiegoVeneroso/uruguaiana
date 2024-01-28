@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/modules/question/question_controller.dart';
+import 'package:get_storage/get_storage.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
@@ -24,8 +25,12 @@ class _QuestionDetailPageState
 
     String str = Get.parameters['list_options'].toString();
 
-    List<String> intList =
-        str.replaceAll('[', '').replaceAll(']', '').split(',').toList();
+    List<String> intList = str
+        .replaceAll('[', '')
+        .replaceAll(']', '')
+        .replaceAll(' ', '')
+        .split(',')
+        .toList();
 
     return SafeArea(
       child: Scaffold(
@@ -129,25 +134,42 @@ class _QuestionDetailPageState
                         const SizedBox(
                           width: 10,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Get.theme.colorScheme.primary),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: RichText(
-                              text: TextSpan(
-                                text: '253',
-                                style: TextStyle(
-                                  color:
-                                      Get.theme.colorScheme.onPrimaryContainer,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                        FutureBuilder(
+                          future: controller.countResultQuestion(
+                            idQuestion:
+                                Get.parameters['id_question'].toString(),
+                            response: intList[index],
+                          ),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const SizedBox(
+                                height: 15,
+                                width: 15,
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            return Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Get.theme.colorScheme.primary),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: snapshot.data!.toString(),
+                                    style: TextStyle(
+                                      color: Get
+                                          .theme.colorScheme.onPrimaryContainer,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  textAlign: TextAlign.justify,
                                 ),
                               ),
-                              textAlign: TextAlign.justify,
-                            ),
-                          ),
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -160,55 +182,67 @@ class _QuestionDetailPageState
                   ),
                   Visibility(
                     visible: index == intList.length - 1 ? true : false,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: RichText(
-                                text: TextSpan(
-                                  text: 'TOTAL',
-                                  style: TextStyle(
-                                    color: Get.theme.colorScheme.surface,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                textAlign: TextAlign.justify,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: Get.theme.colorScheme.background),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: RichText(
-                                text: TextSpan(
-                                  text: '253',
-                                  style: TextStyle(
-                                    color:
-                                        Get.theme.colorScheme.primaryContainer,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                textAlign: TextAlign.justify,
-                              ),
-                            ),
-                          ),
-                        ],
+                    child: FutureBuilder(
+                      future: controller.totalResultQuestion(
+                        idQuestion: Get.parameters['id_question'].toString(),
                       ),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const SizedBox(
+                            height: 15,
+                            width: 15,
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: 'TOTAL',
+                                    style: TextStyle(
+                                      color: Get.theme.colorScheme.surface,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Get.theme.colorScheme.background),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: snapshot.data!.toString(),
+                                    style: TextStyle(
+                                      color: Get
+                                          .theme.colorScheme.primaryContainer,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ]),

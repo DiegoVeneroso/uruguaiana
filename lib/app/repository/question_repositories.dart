@@ -148,4 +148,48 @@ class QuestionRepository {
       throw (e.response['type']);
     }
   }
+
+  Future<int> countResultQuestionRepository(
+      {required String idQuestion, required String response}) async {
+    try {
+      var res = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_QUESTION_RESPONSE,
+        queries: [
+          Query.equal("id_question", idQuestion),
+          Query.equal("response", response),
+        ],
+      );
+      print('######');
+      print(res.documents.length);
+      var count = res.documents.length;
+
+      return count;
+      // return 222;
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
+    }
+  }
+
+  Future<int> totalResultQuestionRepository(
+      {required String idQuestion}) async {
+    try {
+      var res = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_QUESTION_RESPONSE,
+        queries: [
+          Query.equal("id_question", idQuestion),
+        ],
+      );
+      var count = res.documents.length;
+
+      return count;
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
+    }
+  }
 }

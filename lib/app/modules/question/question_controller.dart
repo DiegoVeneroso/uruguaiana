@@ -225,6 +225,29 @@ class QuestionController extends GetxController
     }
   }
 
+  Future<int> countResultQuestion(
+      {required String idQuestion, required String response}) async {
+    try {
+      var result = await repository.countResultQuestionRepository(
+          idQuestion: idQuestion, response: response);
+      return result;
+    } catch (e) {
+      print(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<int> totalResultQuestion({required String idQuestion}) async {
+    try {
+      var result = await repository.totalResultQuestionRepository(
+          idQuestion: idQuestion);
+      return result;
+    } catch (e) {
+      print(e.toString());
+      rethrow;
+    }
+  }
+
   void loadData() async {
     try {
       var result = await repository.loadDataQuestionRepository();

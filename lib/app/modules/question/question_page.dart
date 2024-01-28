@@ -83,7 +83,8 @@ class QuestionPage extends GetView<QuestionController> {
                             });
                           },
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15)),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                           tileColor: Get.theme.colorScheme.primary,
                           textColor: Get.theme.colorScheme.onPrimaryContainer,
                           titleTextStyle: const TextStyle(fontSize: 16),

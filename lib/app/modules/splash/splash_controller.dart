@@ -66,7 +66,7 @@ class SplashController extends GetxController {
       final screen = notificationData['screen'];
       final idQuestion = notificationData['id_question'];
 
-      Get.toNamed(screen, parameters: {
+      Get.offAllNamed(screen, parameters: {
         'id_question': idQuestion,
       });
     }
