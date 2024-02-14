@@ -54,6 +54,7 @@ abstract class Routes {
   static const donate_admin_page = _Paths.donate_admin_page;
 
   static const calendar = _Paths.calendar;
+  static const calendar_add = _Paths.calendar_add;
 
   static const question = _Paths.question;
   static const question_add = _Paths.question_add;
@@ -115,6 +116,7 @@ abstract class _Paths {
   static const donate_admin_page = '/donate_admin_page';
 
   static const calendar = '/calendar';
+  static const calendar_add = '/calendar_add';
 
   static const question = '/question';
   static const question_add = '/question_add';

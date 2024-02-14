@@ -50,6 +50,7 @@ import '../modules/admin/admin_bindings.dart';
 import '../modules/admin/admin_page.dart';
 import '../modules/auth/login/login_bindings.dart';
 import '../modules/auth/login/login_page.dart';
+import '../modules/calendar/calendar_add_page.dart';
 import '../modules/calendar/calendar_bindings.dart';
 import '../modules/collaborate/collaborate_add_page.dart';
 import '../modules/donate/donate_edit_page.dart';
@@ -310,7 +311,12 @@ class AppPages {
     //calendar
     GetPage(
       name: _Paths.calendar,
-      page: () => const CalendarPage(),
+      page: () => CalendarPage(),
+      binding: CalendarBindings(),
+    ),
+    GetPage(
+      name: _Paths.calendar_add,
+      page: () => const CalendarAddPage(),
       binding: CalendarBindings(),
     ),
 
@@ -332,7 +338,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.question_response,
-      page: () => QuestionResponsePage(),
+      page: () => const QuestionResponsePage(),
       binding: QuestionBindings(),
     ),
   ];

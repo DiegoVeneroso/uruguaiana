@@ -62,18 +62,18 @@ class _NewsAddPageState
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: AutoSizeText(
-                        'CADASTRAR PROPOSTA',
+                        'CADASTRAR COLABORAÇÃO',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Get.theme.colorScheme.surface,
-                          fontSize: 22,
+                          fontSize: 20,
                         ),
                         minFontSize: 10,
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
                   controller.addImageVisible.value
                       ? Obx(
