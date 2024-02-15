@@ -15,7 +15,7 @@ class SplashController extends GetxController {
   void onReady() async {
     super.onReady();
 
-    Future.delayed(const Duration(seconds: 3), () async {
+    Future.delayed(const Duration(seconds: 5), () async {
       if (storage.read('id_user') == null || storage.read('id_user') == '') {
         loginAnonymous();
         getTokeNotification();
