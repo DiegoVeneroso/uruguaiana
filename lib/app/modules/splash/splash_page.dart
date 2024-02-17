@@ -18,26 +18,17 @@ class SplashPage extends GetView<SplashController> {
           ])),
       child: Scaffold(
         // backgroundColor: Get.theme.colorScheme.background,
-        backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
+        backgroundColor: const Color(0xFFF7F7F7),
+
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: LottieBuilder.asset(
-                    'assets/lottie/splash_animate.json',
-                    repeat: false,
-                  ),
-
-                  // child: SizedBox(
-                  //   width: Get.width * .8,
-                  //   height: Get.width * .4,
-                  //   child: Image.asset(
-                  //     'assets/images/logo_splash.png',
-                  //     width: 80,
-                  //   ),
-                  // ),
+                LottieBuilder.asset(
+                  'assets/lottie/splash_animate.json',
+                  repeat: false,
                 ),
               ],
             ),
