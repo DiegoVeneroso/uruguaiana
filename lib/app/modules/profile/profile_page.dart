@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +106,7 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                               controller.imageFile;
                             });
                           } else {
-                            print('Permissão negada!');
+                            log('Permissão negada!');
                           }
                         },
                         icon: Icon(
@@ -130,7 +131,7 @@ class _HomeAddPageState extends AppState<ProfilePage, ProfileController> {
                               controller.imageFile;
                             });
                           } else {
-                            print('Permissão negada!');
+                            log('Permissão negada!');
                           }
                         },
                         icon: Icon(

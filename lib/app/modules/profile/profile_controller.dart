@@ -66,7 +66,7 @@ class ProfileController extends GetxController
   captureImageFileFromCamera() async {
     imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
     if (imageFile != null) {
-      print(imageFile!.path);
+      log(imageFile!.path);
       Get.snackbar(
           'Imagem de Perfil', 'Sucesso em selecionar imagem da camera!');
     }
@@ -103,10 +103,10 @@ class ProfileController extends GetxController
   //   try {
   //     _loading.toggle();
   //     await ApiClient.account.createAnonymousSession();
-  //     print('usuario anonimo logado!');
+  //     log('usuario anonimo logado!');
   //   } on AppwriteException catch (e) {
   //     _loading.toggle();
-  //     print(e.message);
+  //     log(e.message);
   //   }
   // }
 
@@ -172,7 +172,7 @@ class ProfileController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -204,7 +204,7 @@ class ProfileController extends GetxController
         margin: const EdgeInsets.all(20),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -236,7 +236,7 @@ class ProfileController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(

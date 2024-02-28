@@ -73,8 +73,8 @@ class NotificationController extends GetxController
     try {
       var idUser = await storage.read('id_user');
 
-      print('iduser');
-      print(idUser);
+      log('iduser');
+      log(idUser);
 
       if (idUser == '' || idUser == null) {
         isAdmin.value = false;
@@ -127,13 +127,10 @@ class NotificationController extends GetxController
     );
 
     if (response.statusCode == 200) {
-      print('notificação enviada!');
+      log('notificação enviada!');
 
       return true;
     } else {
-      print(response.statusCode);
-      print(response);
-      print(' erro ao enviar notificação!');
       return false;
     }
   }
@@ -175,7 +172,7 @@ class NotificationController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(

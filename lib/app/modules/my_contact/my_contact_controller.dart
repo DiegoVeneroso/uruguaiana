@@ -61,8 +61,8 @@ class MyContactController extends GetxController
     try {
       var idUser = await storage.read('id_user');
 
-      print('iduser');
-      print(idUser);
+      log('iduser');
+      log(idUser);
 
       if (idUser == '' || idUser == null) {
         isAdmin.value = false;
@@ -98,7 +98,7 @@ class MyContactController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(

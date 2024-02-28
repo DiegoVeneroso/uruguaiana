@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../modules/auth/login/login_controller.dart';
 import '../../../repository/auth_repository.dart';
 
+// ignore: must_be_immutable
 class CustomFloatingButton extends StatelessWidget {
   LoginController controller = LoginController(AuthRepository());
 
@@ -99,7 +100,7 @@ class CustomFloatingButton extends StatelessWidget {
     //       elevation: 0.0,
     //       backgroundColor: Colors.transparent,
     //       onPressed: () {
-    //         print(dataSnapshot?.first.get('whatsapp'));
+    //         log(dataSnapshot?.first.get('whatsapp'));
     //         // Uri url = Uri.parse(dataSnapshot?.first.get('whatsapp'));
     //         // launchUrl(url);
     //       },

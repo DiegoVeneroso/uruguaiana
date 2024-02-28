@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:dio/dio.dart';
-import 'package:eu_faco_parte/app/modules/admin/admin_controller.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_controller.dart';
 
 import 'package:eu_faco_parte/app/routes/app_pages.dart';
@@ -129,7 +130,7 @@ class _DonatePageState extends AppState<DonateAddPage, DonateController> {
         );
       } catch (e) {
         // An exception is thrown if browser app is not installed on Android device.
-        debugPrint(e.toString());
+        log(e.toString());
       }
     }
 

@@ -160,8 +160,6 @@ class QuestionRepository {
           Query.equal("response", response),
         ],
       );
-      print('######');
-      print(res.documents.length);
       var count = res.documents.length;
 
       return count;

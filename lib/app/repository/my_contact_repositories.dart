@@ -129,7 +129,7 @@ class MyContactRepository {
 
       return result;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -144,7 +144,7 @@ class MyContactRepository {
 
       return result;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -159,7 +159,7 @@ class MyContactRepository {
 
       return result;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }

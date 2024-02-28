@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/routes/app_pages.dart';
 
@@ -50,7 +52,7 @@ class RecoveyPasswordController extends GetxController
     } catch (e) {
       _loading.toggle();
 
-      print(e);
+      log(e.toString());
       late String text;
       switch (e) {
         case 'user_not_found':

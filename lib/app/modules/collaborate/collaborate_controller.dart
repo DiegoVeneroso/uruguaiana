@@ -208,7 +208,7 @@ class CollaborateController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -269,13 +269,11 @@ class CollaborateController extends GetxController
     );
 
     if (response.statusCode == 200) {
-      print('notificação enviada!');
+      log('notificação enviada!');
 
       return true;
     } else {
-      print(response.statusCode);
-      print(response);
-      print(' erro ao enviar notificação!');
+      log(' erro ao enviar notificação!');
       return false;
     }
   }
@@ -299,7 +297,7 @@ class CollaborateController extends GetxController
         margin: const EdgeInsets.all(20),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(

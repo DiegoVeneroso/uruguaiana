@@ -12,6 +12,7 @@ import '../../repository/auth_repository.dart';
 import '../../routes/app_pages.dart';
 import '../auth/login/login_controller.dart';
 
+// ignore: must_be_immutable
 class AboutPage extends GetView<AboutController> {
   LoginController loginController = LoginController(AuthRepository());
 

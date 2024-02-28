@@ -78,8 +78,6 @@ class CalendarController extends GetxController
         for (var event in doc.data['event']) {
           listEvent.add(Event(title: event));
         }
-        print('#############');
-        print({datetime: listEvent});
 
         selectedEvents?.addEntries({
           DateTime.parse(datetime.toString()): listEvent,
@@ -151,7 +149,7 @@ class CalendarController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -212,13 +210,10 @@ class CalendarController extends GetxController
     );
 
     if (response.statusCode == 200) {
-      print('notificação enviada!');
+      log('notificação enviada!');
 
       return true;
     } else {
-      print(response.statusCode);
-      print(response);
-      print(' erro ao enviar notificação!');
       return false;
     }
   }
@@ -227,8 +222,8 @@ class CalendarController extends GetxController
     try {
       var idUser = await storage.read('id_user');
 
-      print('iduser');
-      print(idUser);
+      log('iduser');
+      log(idUser);
 
       if (idUser == '' || idUser == null) {
         isAdmin.value = false;

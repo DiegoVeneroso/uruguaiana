@@ -311,7 +311,7 @@ class AppPages {
     //calendar
     GetPage(
       name: _Paths.calendar,
-      page: () => CalendarPage(),
+      page: () => const CalendarPage(),
       binding: CalendarBindings(),
     ),
     GetPage(

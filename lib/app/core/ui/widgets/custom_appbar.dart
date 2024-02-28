@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 
+// ignore: must_be_immutable
 class CustomAppbar extends AppBar {
+  // ignore: non_constant_identifier_names
   bool? IconBackNavigator;
   Callback? iconBackAction;
   String? titulo;

@@ -28,6 +28,7 @@ class _AboutAddPageState extends AppState<AboutEditPage, AboutController> {
 
   @override
   void initState() {
+    super.initState();
     _pickedKey.currentState?.setImageValidate('false');
     loadMidiaEditForm();
   }
@@ -251,7 +252,7 @@ class _AboutAddPageState extends AppState<AboutEditPage, AboutController> {
 //                               controller.imageFile;
 //                             });
 //                           } else {
-//                             print('Permissão negada!');
+//                             log('Permissão negada!');
 //                           }
 //                         },
 //                         icon: Icon(
@@ -276,7 +277,7 @@ class _AboutAddPageState extends AppState<AboutEditPage, AboutController> {
 //                               controller.imageFile;
 //                             });
 //                           } else {
-//                             print('Permissão negada!');
+//                             log('Permissão negada!');
 //                           }
 //                         },
 //                         icon: Icon(

@@ -1,6 +1,5 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker_plus/image_picker_plus.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashPage extends StatefulWidget {

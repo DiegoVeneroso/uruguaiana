@@ -29,8 +29,8 @@ class AuthRepository {
 
       FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
       var token = await firebaseMessaging.getToken();
-      print('token');
-      print(token);
+      log('token');
+      log(token.toString());
 
       await ApiClient.databases.createDocument(
           databaseId: constants.DATABASE_ID,
@@ -77,7 +77,7 @@ class AuthRepository {
     try {
       await ApiClient.account.deleteSession(sessionId: 'current');
     } on AppwriteException {
-      print('erro no repo');
+      log('erro no repo');
       rethrow;
     }
   }
@@ -88,9 +88,9 @@ class AuthRepository {
           email: email,
           // url: 'http://frontapp.com.br:8080',
           url: 'https://uruguaiana-91d45.web.app');
-      print('email de recuperação de senha enviado!');
+      log('email de recuperação de senha enviado!');
     } on AppwriteException catch (e) {
-      print('erro no envio do email de recuperação de senha');
+      log('erro no envio do email de recuperação de senha');
       throw (e.type.toString());
     }
   }
@@ -113,7 +113,7 @@ class AuthRepository {
         profile: user['profile'],
       );
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -127,7 +127,7 @@ class AuthRepository {
 
       return result;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -142,7 +142,7 @@ class AuthRepository {
 
       return result;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -157,7 +157,7 @@ class AuthRepository {
 
       return result;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -172,7 +172,7 @@ class AuthRepository {
 
       return result;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -189,7 +189,7 @@ class AuthRepository {
 
       return profile;
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }

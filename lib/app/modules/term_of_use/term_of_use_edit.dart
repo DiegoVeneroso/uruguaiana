@@ -6,7 +6,6 @@ import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
-import '../../core/ui/widgets/custom_picker.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -22,8 +21,6 @@ class _TermOfUseEditPagePageState
   final _formKey = GlobalKey<FormState>();
   final _descriptionEC =
       TextEditingController(text: Get.parameters['description']);
-
-  final _pickedKey = GlobalKey<CustomPickerState>();
 
   @override
   void dispose() {
@@ -222,7 +219,7 @@ class _TermOfUseEditPagePageState
 //                               controller.imageFile;
 //                             });
 //                           } else {
-//                             print('Permissão negada!');
+//                             log('Permissão negada!');
 //                           }
 //                         },
 //                         icon: Icon(
@@ -247,7 +244,7 @@ class _TermOfUseEditPagePageState
 //                               controller.imageFile;
 //                             });
 //                           } else {
-//                             print('Permissão negada!');
+//                             log('Permissão negada!');
 //                           }
 //                         },
 //                         icon: Icon(

@@ -1,6 +1,8 @@
 //base url
 // const API_END_POINT = 'https://frontapp.com.br/v1';
 // const API_END_POINT_STORAGE = 'https://frontapp.com.br/v1/storage/buckets/';
+// ignore_for_file: constant_identifier_names
+
 const API_END_POINT = 'http://173.212.201.155/v1';
 const API_END_POINT_STORAGE = 'http://173.212.201.155/v1/storage/buckets/';
 // const PROJECT_ID = '65243945bba372ff009e';

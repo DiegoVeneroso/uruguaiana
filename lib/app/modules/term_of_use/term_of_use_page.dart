@@ -11,6 +11,7 @@ import '../../repository/auth_repository.dart';
 import '../../routes/app_pages.dart';
 import '../auth/login/login_controller.dart';
 
+// ignore: must_be_immutable
 class TermOfUsePage extends GetView<TermOfUseController> {
   LoginController loginController = LoginController(AuthRepository());
 

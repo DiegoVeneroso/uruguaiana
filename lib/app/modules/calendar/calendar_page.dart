@@ -1,4 +1,6 @@
 // import 'package:calendar/event.dart';
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:developer';
 
 import 'package:appwrite/appwrite.dart';
@@ -63,8 +65,6 @@ class _CalendarPageState extends State<CalendarPage> {
       for (var event in doc.data['event']) {
         listEvent.add(Event(title: event));
       }
-      print('#############');
-      print({datetime: listEvent});
 
       selectedEvents?.addEntries({
         DateTime.parse(datetime.toString()): listEvent,
@@ -112,8 +112,8 @@ class _CalendarPageState extends State<CalendarPage> {
     try {
       var idUser = await storage.read('id_user');
 
-      print('iduser');
-      print(idUser);
+      log('iduser');
+      log(idUser);
 
       if (idUser == '' || idUser == null) {
         isAdmin.value = false;
@@ -207,7 +207,6 @@ class _CalendarPageState extends State<CalendarPage> {
                         selectedDay = selectDay;
                         focusedDay = focusDay;
                       });
-                      print(focusedDay);
                     },
                     selectedDayPredicate: (DateTime date) {
                       return isSameDay(selectedDay, date);

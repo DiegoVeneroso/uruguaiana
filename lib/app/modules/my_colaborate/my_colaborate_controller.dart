@@ -69,8 +69,8 @@ class MyCollaborateController extends GetxController
     try {
       var idUser = await storage.read('id_user');
 
-      print('iduser');
-      print(idUser);
+      log('iduser');
+      log(idUser);
 
       if (idUser == '' || idUser == null) {
         isAdmin.value = false;

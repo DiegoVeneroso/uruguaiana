@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart' hide Permission;
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -93,8 +92,8 @@ class ProposalActionsController extends GetxController
     try {
       var idUser = await storage.read('id_user');
 
-      print('iduser');
-      print(idUser);
+      log('iduser');
+      log(idUser);
 
       if (idUser == '' || idUser == null) {
         isAdmin.value = false;
@@ -115,7 +114,7 @@ class ProposalActionsController extends GetxController
 
   // notificationPush() {
   //   FirebaseMessaging.onMessage.listen((message) async {
-  //     print(message.data.values
+  //     log(message.data.values
   //         .toString()); //recebe o valor dos dados personalidados da notificação
 
   //     if (message.notification != null) {
@@ -273,10 +272,10 @@ class ProposalActionsController extends GetxController
   //   try {
   //     loading.toggle();
   //     await ApiClient.account.createAnonymousSession();
-  //     print('usuario anonimo logado!');
+  //     log('usuario anonimo logado!');
   //   } on AppwriteException catch (e) {
   //     loading.toggle();
-  //     print(e.message);
+  //     log(e.message);
   //   }
   // }
 
@@ -345,7 +344,7 @@ class ProposalActionsController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -388,7 +387,7 @@ class ProposalActionsController extends GetxController
         margin: const EdgeInsets.all(20),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -422,7 +421,7 @@ class ProposalActionsController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(

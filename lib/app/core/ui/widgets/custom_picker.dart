@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
@@ -57,9 +57,9 @@ class CustomPickerState extends State<CustomPicker> {
     }
 
     // if (isStoragePermission && isVideosPermission && isPhotosPermission) {
-    //   print('permitido');
+    //   debugPrint('permitido');
     // } else {
-    //   print(' não permitido');
+    //   debugPrint(' não permitido');
     // }
   }
 
@@ -155,7 +155,7 @@ class CustomPickerState extends State<CustomPicker> {
                                             }
 
                                             // } else {
-                                            //   print('Permissão negada!');
+                                            //   debugPrint('Permissão negada!');
                                             // }
                                           },
                                         ),
@@ -212,7 +212,7 @@ class CustomPickerState extends State<CustomPicker> {
                                               //     imageFile;
                                               //   });
                                               // } else {
-                                              //   print('Permissão negada!');
+                                              //   debugPrint('Permissão negada!');
                                               // }
                                             },
                                           ),
@@ -239,7 +239,7 @@ class CustomPickerState extends State<CustomPicker> {
                                               //     imageFile;
                                               //   });
                                               // } else {
-                                              //   print('Permissão negada!');
+                                              //   debugPrint('Permissão negada!');
                                               // }
 
                                               await storageCheck();
@@ -280,7 +280,7 @@ class CustomPickerState extends State<CustomPicker> {
                                               //     imageFile;
                                               //   });
                                               // } else {
-                                              //   print('Permissão negada!');
+                                              //   debugPrint('Permissão negada!');
                                               // }
 
                                               await storageCheck();
@@ -392,7 +392,7 @@ class CustomPickerState extends State<CustomPicker> {
                                 //     imageFile;
                                 //   });
                                 // } else {
-                                //   print('Permissão negada!');
+                                //   debugPrint('Permissão negada!');
                                 // }
                                 await storageCheck();
 
@@ -432,7 +432,7 @@ class CustomPickerState extends State<CustomPicker> {
                                 //     imageFile;
                                 //   });
                                 // } else {
-                                //   print('Permissão negada!');
+                                //   debugPrint('Permissão negada!');
                                 // }
                                 await storageCheck();
 
@@ -469,7 +469,7 @@ class CustomPickerState extends State<CustomPicker> {
                                 //     imageFile;
                                 //   });
                                 // } else {
-                                //   print('Permissão negada!');
+                                //   debugPrint('Permissão negada!');
                                 // }
                                 await storageCheck();
 
@@ -506,7 +506,7 @@ class CustomPickerState extends State<CustomPicker> {
                                 //     imageFile;
                                 //   });
                                 // } else {
-                                //   print('Permissão negada!');
+                                //   debugPrint('Permissão negada!');
                                 // }
                                 await storageCheck();
 
@@ -752,11 +752,11 @@ class CustomPickerState extends State<CustomPicker> {
 
     setState(() => compressedVideoInfo = info);
 
-    // print('size');
-    // print(compressedVideoInfo?.filesize);
+    // debugPrint('size');
+    // debugPrint(compressedVideoInfo?.filesize);
 
-    // print('compress');
-    // print(compressedVideoInfo?.path.toString());
+    // debugPrint('compress');
+    // debugPrint(compressedVideoInfo?.path.toString());
     imageFile = XFile(compressedVideoInfo!.path.toString());
     Navigator.of(context).pop();
   }

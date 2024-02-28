@@ -10,6 +10,7 @@ import '../auth/login/login_controller.dart';
 import 'home_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+// ignore: must_be_immutable
 class HomePage extends GetView<HomeController> {
   LoginController loginController = LoginController(AuthRepository());
 

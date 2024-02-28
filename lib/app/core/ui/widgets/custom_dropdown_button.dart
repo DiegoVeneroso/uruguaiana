@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eu_faco_parte/app/modules/home/home_controller.dart';
 
+// ignore: must_be_immutable
 class CustomDropdownButton extends GetView<HomeController> {
   final String? label;
   final String? value;

@@ -1,7 +1,8 @@
+import 'dart:developer';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:eu_faco_parte/app/routes/app_pages.dart';
@@ -22,7 +23,7 @@ class SplashController extends GetxController {
         Get.offAllNamed(Routes.news);
         onClickBackgroundNotification();
       } else {
-        print('usuario anonimo logado admin!');
+        log('usuario anonimo logado admin!');
         getTokeNotification();
         Get.offAllNamed(Routes.news);
         onClickBackgroundNotification();
@@ -38,9 +39,9 @@ class SplashController extends GetxController {
   loginAnonymous() async {
     try {
       await ApiClient.account.createAnonymousSession();
-      print('usuario anonimo logado!');
+      log('usuario anonimo logado!');
     } on AppwriteException catch (e) {
-      print(e.message);
+      log(e.message.toString());
     }
   }
 
@@ -52,8 +53,7 @@ class SplashController extends GetxController {
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      debugPrint(
-          'onMessageOpenedApp: ${message.notification!.title.toString()}');
+      log('onMessageOpenedApp: ${message.notification!.title.toString()}');
       _handleNotificationClick(message);
     });
   }
@@ -77,11 +77,12 @@ getTokeNotification() async {
   try {
     FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
     var token = await firebaseMessaging.getToken();
+    // ignore: unused_local_variable
     var subs =
         await firebaseMessaging.subscribeToTopic("br.com.frontapp.uruguaiana");
-    print('token');
-    print(token);
+    log('token');
+    log(token.toString());
   } on FirebaseException catch (e) {
-    print(e.message);
+    log(e.message.toString());
   }
 }

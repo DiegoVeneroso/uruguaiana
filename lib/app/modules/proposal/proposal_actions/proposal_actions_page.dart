@@ -10,6 +10,7 @@ import '../../auth/login/login_controller.dart';
 import 'proposal_actions_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+// ignore: must_be_immutable
 class ProposalActionPage extends GetView<ProposalActionsController> {
   LoginController loginController = LoginController(AuthRepository());
 

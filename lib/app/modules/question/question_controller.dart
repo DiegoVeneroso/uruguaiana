@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 import 'package:appwrite/appwrite.dart' hide Permission;
 import 'package:appwrite/models.dart';
 import 'package:eu_faco_parte/app/models/question_model.dart';
@@ -71,8 +70,8 @@ class QuestionController extends GetxController
     try {
       var idUser = await storage.read('id_user');
 
-      print('iduser');
-      print(idUser);
+      log('iduser');
+      log(idUser);
 
       if (idUser == '' || idUser == null) {
         isAdmin.value = false;
@@ -128,13 +127,10 @@ class QuestionController extends GetxController
     );
 
     if (response.statusCode == 200) {
-      print('notificação enviada!');
+      log('notificação enviada!');
 
       return true;
     } else {
-      print(response.statusCode);
-      print(response);
-      print(' erro ao enviar notificação!');
       return false;
     }
   }
@@ -177,7 +173,7 @@ class QuestionController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -210,7 +206,7 @@ class QuestionController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -232,7 +228,7 @@ class QuestionController extends GetxController
           idQuestion: idQuestion, response: response);
       return result;
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
       rethrow;
     }
   }
@@ -243,7 +239,7 @@ class QuestionController extends GetxController
           idQuestion: idQuestion);
       return result;
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
       rethrow;
     }
   }

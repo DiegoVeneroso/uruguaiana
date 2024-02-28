@@ -10,6 +10,7 @@ import '../../repository/auth_repository.dart';
 import '../auth/login/login_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+// ignore: must_be_immutable
 class CollaboratePage extends GetView<CollaborateController> {
   LoginController loginController = LoginController(AuthRepository());
 

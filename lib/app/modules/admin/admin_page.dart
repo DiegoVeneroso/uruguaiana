@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -57,7 +59,7 @@ class AdminPage extends GetView<AdminController> {
                           padding: const EdgeInsets.all(4.0),
                           child: GestureDetector(
                             onTap: () {
-                              print('object');
+                              log('object');
                             },
                             child: GestureDetector(
                               onTap: () => Get.toNamed(Routes.collaborate),

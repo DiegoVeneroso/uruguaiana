@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/modules/question/question_controller.dart';
-import 'package:get_storage/get_storage.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
@@ -20,8 +19,6 @@ class _QuestionDetailPageState
   Widget build(BuildContext context) {
     // final List<String> finalList = List<String>.from(
     //     json.decode(Get.parameters['list_options'].toString()));
-
-    print(Get.parameters['list_options']);
 
     String str = Get.parameters['list_options'].toString();
 

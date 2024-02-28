@@ -3,6 +3,7 @@ import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class CustomViewNews extends StatefulWidget {
   Uri videoUri;
   CustomViewNews({
@@ -87,6 +88,7 @@ class _CustomPlayerVideoState extends State<CustomViewNews> {
       isLoading = true;
     });
     VideoPlayerController videoPlayerController;
+    // ignore: unnecessary_null_comparison, unrelated_type_equality_checks
     if (widget.videoUri != null || widget.videoUri != '') {
       videoPlayerController = VideoPlayerController.networkUrl(widget.videoUri)
         ..initialize().then((value) {
@@ -104,7 +106,7 @@ class _CustomPlayerVideoState extends State<CustomViewNews> {
         // thumbnailWidget: Center(
         //   child: IconButton(
         //       onPressed: () {
-        //         print('play');
+        //         log('play');
         //       },
         //       icon: Icon(
         //         Icons.play_arrow,

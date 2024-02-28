@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -106,7 +107,7 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                               controller.imageFile;
                             });
                           } else {
-                            print('Permissão negada!');
+                            log('Permissão negada!');
                           }
                         },
                         icon: Icon(
@@ -131,7 +132,7 @@ class _HomeAddPageState extends AppState<HomeAddPage, HomeController> {
                               controller.imageFile;
                             });
                           } else {
-                            print('Permissão negada!');
+                            log('Permissão negada!');
                           }
                         },
                         icon: Icon(

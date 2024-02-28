@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:developer';
 
 import 'package:appwrite/appwrite.dart';
@@ -94,8 +96,8 @@ class ProposalActionsRepository {
         var urlImage =
             '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
 
-        print('fileName');
-        print(fileName);
+        log('fileName');
+        log(fileName);
 
         await ApiClient.storage.createFile(
           bucketId: constants.STORAGE_BUCKETS,

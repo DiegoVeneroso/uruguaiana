@@ -107,7 +107,7 @@ class TermOfUseController extends GetxController
         aboutIsEmpty.value = false;
       }
     } on AppwriteException catch (e) {
-      print(e);
+      log(e.toString());
       rethrow;
     }
   }
@@ -237,7 +237,7 @@ class TermOfUseController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -271,7 +271,7 @@ class TermOfUseController extends GetxController
         margin: const EdgeInsets.all(20),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -303,7 +303,7 @@ class TermOfUseController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(

@@ -29,6 +29,7 @@ class _ProposalActionsEditPageState
 
   @override
   void initState() {
+    super.initState();
     _pickedKey.currentState?.setImageValidate('false');
     loadMidiaEditForm();
   }

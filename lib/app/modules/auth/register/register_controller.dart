@@ -1,3 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:developer';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:eu_faco_parte/app/modules/auth/login/login_controller.dart';
@@ -70,7 +74,7 @@ class RegisterController extends GetxController
       );
       await loginController.login(email: email, password: password);
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
       _loading.toggle();
 
       switch (e) {

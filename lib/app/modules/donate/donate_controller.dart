@@ -4,16 +4,13 @@ import 'package:appwrite/appwrite.dart' hide Permission;
 import 'package:appwrite/models.dart';
 import 'package:eu_faco_parte/app/models/token_donate_model.dart';
 import 'package:eu_faco_parte/app/repository/donate_repositories.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:eu_faco_parte/app/repository/auth_repository.dart';
 import 'package:eu_faco_parte/app/routes/app_pages.dart';
-import '../../core/config/api_client.dart';
 import '../../core/mixins/dialog_mixin.dart';
 import '../../core/mixins/loader_mixin.dart';
 import '../../core/mixins/messages_mixin.dart';
-import '../../core/config/constants.dart' as constants;
 
 class DonateController extends GetxController
     with LoaderMixin, MessagesMixin, DialogMixin {
@@ -122,7 +119,7 @@ class DonateController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -154,7 +151,7 @@ class DonateController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -186,7 +183,7 @@ class DonateController extends GetxController
         ),
       );
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
 
       _message(
         MessageModel(
@@ -218,7 +215,26 @@ class DonateController extends GetxController
 
       return result;
     } catch (e) {
-      print(e.toString());
+      log(e.toString());
+
+      _message(
+        MessageModel(
+          title: 'ATENÇÃO!',
+          message: e.toString(),
+          type: MessageType.error,
+        ),
+      );
+      rethrow;
+    }
+  }
+
+  Future<DocumentList> getAdminUser() async {
+    try {
+      var result = await repository.getAdminUserRepository();
+
+      return result;
+    } catch (e) {
+      log(e.toString());
 
       _message(
         MessageModel(
