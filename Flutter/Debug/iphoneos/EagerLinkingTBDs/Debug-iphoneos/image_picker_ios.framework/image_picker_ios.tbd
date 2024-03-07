@@ -1,0 +1,17 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ arm64-ios ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/image_picker_ios.framework/image_picker_ios'
+exports:
+  - targets:         [ arm64-ios ]
+    symbols:         [ _FLTImagePickerApiGetCodec, _SetUpFLTImagePickerApi, _image_picker_iosVersionNumber, 
+                       _image_picker_iosVersionString, _kFLTImagePickerDefaultSuffix, 
+                       _kFLTImagePickerMIMETypeDefault ]
+    objc-classes:    [ FLTImagePickerApiCodecReader, FLTImagePickerApiCodecReaderWriter, 
+                       FLTImagePickerApiCodecWriter, FLTImagePickerImageUtil, FLTImagePickerMetaDataUtil, 
+                       FLTImagePickerMethodCallContext, FLTImagePickerPhotoAssetUtil, 
+                       FLTImagePickerPlugin, FLTMaxSize, FLTMediaSelectionOptions, 
+                       FLTPHPickerSaveImageToPathOperation, FLTSourceCameraBox, FLTSourceSpecification, 
+                       FLTSourceTypeBox, GIFInfo, PodsDummy_image_picker_ios ]
+...

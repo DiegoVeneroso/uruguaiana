@@ -8,7 +8,7 @@ class VideoCompressHelper {
     try {
       await VideoCompress.setLogLevel(0);
       return VideoCompress.compressVideo(file.path,
-          quality: VideoQuality.LowQuality,
+          quality: VideoQuality.Res640x480Quality,
           includeAudio: true,
           deleteOrigin: true);
     } catch (e) {

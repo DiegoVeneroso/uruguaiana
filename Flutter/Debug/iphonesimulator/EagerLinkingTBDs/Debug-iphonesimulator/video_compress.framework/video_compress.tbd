@@ -1,0 +1,52 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/video_compress.framework/video_compress'
+swift-abi-version: 7
+exports:
+  - targets:         [ x86_64-ios-simulator ]
+    symbols:         [ _Swift51Overrides, __Z34_swiftoverride_class_getSuperclassPKN5swift14TargetMetadataINS_9InProcessEEE, 
+                       __ZN5swift39swift51override_conformsToSwiftProtocolEPKNS_14TargetMetadataINS_9InProcessEEEPKNS_24TargetProtocolDescriptorIS1_EEN7__swift9__runtime4llvm9StringRefEPFPKNS_35TargetProtocolConformanceDescriptorIS1_EES4_S8_SC_E ]
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ '_$s14video_compress12AvControllerC13getVideoAssetySo10AVURLAssetC10Foundation3URLVF', 
+                       '_$s14video_compress12AvControllerC13getVideoAssetySo10AVURLAssetC10Foundation3URLVFTq', 
+                       '_$s14video_compress12AvControllerC16getMetaDataByTag_3keySSSo7AVAssetC_SStF', 
+                       '_$s14video_compress12AvControllerC16getMetaDataByTag_3keySSSo7AVAssetC_SStFTq', 
+                       '_$s14video_compress12AvControllerC19getVideoOrientationySiSgSSF', 
+                       '_$s14video_compress12AvControllerC19getVideoOrientationySiSgSSFTq', 
+                       '_$s14video_compress12AvControllerC8getTrackySo07AVAssetF0CSgSo10AVURLAssetCF', 
+                       '_$s14video_compress12AvControllerC8getTrackySo07AVAssetF0CSgSo10AVURLAssetCFTq', 
+                       '_$s14video_compress12AvControllerCACycfC', '_$s14video_compress12AvControllerCACycfc', 
+                       '_$s14video_compress12AvControllerCMa', '_$s14video_compress12AvControllerCMn', 
+                       '_$s14video_compress12AvControllerCN', '_$s14video_compress12AvControllerCfD', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC16getMediaInfoJsonySDySSypSgGSSFTj', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC16getMediaInfoJsonySDySSypSgGSSFTq', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctFTj', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctFTq', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC7channelACSo20FlutterMethodChannelC_tcfC', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC7channelACSo20FlutterMethodChannelC_tcfCTj', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC7channelACSo20FlutterMethodChannelC_tcfCTq', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC7channelACSo20FlutterMethodChannelC_tcfc', 
+                       '_$s14video_compress24SwiftVideoCompressPluginC8register4withySo07FlutterF9Registrar_p_tFZ', 
+                       '_$s14video_compress24SwiftVideoCompressPluginCACycfC', '_$s14video_compress24SwiftVideoCompressPluginCACycfc', 
+                       '_$s14video_compress24SwiftVideoCompressPluginCMa', '_$s14video_compress24SwiftVideoCompressPluginCMn', 
+                       '_$s14video_compress24SwiftVideoCompressPluginCMo', '_$s14video_compress24SwiftVideoCompressPluginCMu', 
+                       '_$s14video_compress24SwiftVideoCompressPluginCN', '_$s14video_compress24SwiftVideoCompressPluginCfD', 
+                       '_$s14video_compress7UtilityC10deleteFile_5clearySS_SbtFZ', 
+                       '_$s14video_compress7UtilityC10deleteFile_5clearySS_SbtFZfA0_', 
+                       '_$s14video_compress7UtilityC10getPathUrly10Foundation3URLVSSFZ', 
+                       '_$s14video_compress7UtilityC11fileManagerSo06NSFileE0Cvau', 
+                       '_$s14video_compress7UtilityC11fileManagerSo06NSFileE0CvgZ', 
+                       '_$s14video_compress7UtilityC11fileManagerSo06NSFileE0CvpZ', 
+                       '_$s14video_compress7UtilityC11getFileNameyS2SFZ', '_$s14video_compress7UtilityC14keyValueToJsonySSSDySSypSgGFZ', 
+                       '_$s14video_compress7UtilityC15excludeEncodingyS2SFZ', '_$s14video_compress7UtilityC18stripFileExtensionyS2SFZ', 
+                       '_$s14video_compress7UtilityC19excludeFileProtocolyS2SFZ', 
+                       '_$s14video_compress7UtilityC8basePathSSyFZ', '_$s14video_compress7UtilityCACycfC', 
+                       '_$s14video_compress7UtilityCACycfc', '_$s14video_compress7UtilityCMa', 
+                       '_$s14video_compress7UtilityCMn', '_$s14video_compress7UtilityCN', 
+                       '_$s14video_compress7UtilityCfD', _video_compressVersionNumber, 
+                       _video_compressVersionString ]
+    objc-classes:    [ PodsDummy_video_compress, VideoCompressPlugin, _TtC14video_compress12AvController, 
+                       _TtC14video_compress24SwiftVideoCompressPlugin, _TtC14video_compress7Utility ]
+...

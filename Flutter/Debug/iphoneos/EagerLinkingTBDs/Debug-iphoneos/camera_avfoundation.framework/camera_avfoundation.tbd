@@ -1,0 +1,20 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ arm64-ios ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/camera_avfoundation.framework/camera_avfoundation'
+exports:
+  - targets:         [ arm64-ios ]
+    symbols:         [ _FLTCaptureSessionQueueSpecific, _FLTEnsureToRunOnMainQueue, 
+                       _FLTGetAVCaptureFlashModeForFLTFlashMode, _FLTGetFLTExposureModeForString, 
+                       _FLTGetFLTFlashModeForString, _FLTGetFLTFocusModeForString, 
+                       _FLTGetFLTResolutionPresetForString, _FLTGetStringForFLTExposureMode, 
+                       _FLTGetStringForFLTFocusMode, _FLTGetStringForUIDeviceOrientation, 
+                       _FLTGetUIDeviceOrientationForString, _FLTGetVideoFormatFromString, 
+                       _FLTRequestAudioPermissionWithCompletionHandler, _FLTRequestCameraPermissionWithCompletionHandler, 
+                       _FLTRequestPermission, _camera_avfoundationVersionNumber, 
+                       _camera_avfoundationVersionString, _errorMethod ]
+    objc-classes:    [ CameraPlugin, FLTCam, FLTImageStreamHandler, FLTSavePhotoDelegate, 
+                       FLTThreadSafeEventChannel, FLTThreadSafeFlutterResult, FLTThreadSafeMethodChannel, 
+                       FLTThreadSafeTextureRegistry, PodsDummy_camera_avfoundation ]
+...

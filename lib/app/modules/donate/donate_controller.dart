@@ -110,7 +110,7 @@ class DonateController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.toNamed(Routes.admin);
+      Get.toNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -130,7 +130,7 @@ class DonateController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.admin);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -142,11 +142,11 @@ class DonateController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.toNamed(Routes.about);
+      Get.toNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
-          message: 'Quem somos adicionado com sucesso!',
+          message: 'Token adicionado com sucesso!',
           type: MessageType.success,
         ),
       );
@@ -162,7 +162,7 @@ class DonateController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.about);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -174,7 +174,7 @@ class DonateController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.donate_admin_page);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',

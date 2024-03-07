@@ -118,6 +118,8 @@ class HomeController extends GetxController
   _cropImage(File imgFile) async {
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
+        compressFormat: ImageCompressFormat.png,
+        compressQuality: 50,
         aspectRatioPresets: Platform.isAndroid
             ? [
                 // CropAspectRatioPreset.square,

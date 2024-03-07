@@ -118,8 +118,14 @@ class MyCollaborateController extends GetxController
 
   void loadData() async {
     try {
-      jsonDecode(storage.read('my_collaborates_list').toString())
-          .forEach((e) => mycollaborateList.add(CollaborateModel.fromJson(e)));
+      String myColab = storage.read('my_collaborates_list').toString();
+
+      if (myColab == '[]') {
+        mycollaborateList.isEmpty;
+      } else {
+        jsonDecode(myColab).forEach(
+            (e) => mycollaborateList.add(CollaborateModel.fromJson(e)));
+      }
     } catch (e, s) {
       log(e.toString());
       log(s.toString());
@@ -127,7 +133,6 @@ class MyCollaborateController extends GetxController
       _message(
         MessageModel(
           title: 'ATENÇÃO!',
-          // message: e.toString(),
           message: 'Erro carregar dados!',
           type: MessageType.error,
         ),

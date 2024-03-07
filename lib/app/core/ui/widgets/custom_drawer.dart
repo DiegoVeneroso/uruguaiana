@@ -132,31 +132,16 @@ class CustomDrawer extends StatelessWidget {
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
-                  FutureBuilder(
-                    future: donateController.getAdminUser(),
-                    builder: (context, snap4) {
-                      if (snap4.connectionState == ConnectionState.waiting) {
-                        return const SizedBox();
-                      }
-
-                      if (snap4.data!.documents.isEmpty ||
-                          snap4.data!.documents.first.data['value'] ==
-                              'false') {
-                        return const SizedBox();
-                      } else {
-                        return buildDrawerItem(
-                          icon: Icons.settings,
-                          text: 'Administração',
-                          onTap: () => navigate(6),
-                          tileColor: Get.currentRoute == '/login'
-                              ? Get.theme.colorScheme.primary
-                              : null,
-                          textIconColor: Get.currentRoute == '/login'
-                              ? Get.theme.colorScheme.onPrimaryContainer
-                              : Get.theme.colorScheme.primary,
-                        );
-                      }
-                    },
+                  buildDrawerItem(
+                    icon: Icons.settings,
+                    text: 'Administração',
+                    onTap: () => navigate(6),
+                    tileColor: Get.currentRoute == '/login'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/login'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
                   ),
                   const SizedBox(
                     height: 20,

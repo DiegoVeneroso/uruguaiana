@@ -1,0 +1,44 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name appinio_social_share
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import FBSDKCoreKit
+import FBSDKShareKit
+import Flutter
+import Foundation
+import LinkPresentation
+import MobileCoreServices
+import Photos
+import Social
+import Swift
+import TikTokOpenSDK
+import UIKit
+import _Concurrency
+import _StringProcessing
+@_exported import appinio_social_share
+@_hasMissingDesignatedInitializers public class ShareUtil {
+  final public let SUCCESS: Swift.String
+  final public let ERROR_APP_NOT_AVAILABLE: Swift.String
+  final public let ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSON: Swift.String
+  final public let ERROR: Swift.String
+  final public let NOT_IMPLEMENTED: Swift.String
+  public func getInstalledApps(result: @escaping Flutter.FlutterResult)
+  public func canOpenUrl(appName: Swift.String) -> Swift.Bool
+  public func shareToInstagramFeed(args: [Swift.String : Any?], result: @escaping Flutter.FlutterResult)
+  public func shareToTiktok(args: [Swift.String : Any?], result: @escaping Flutter.FlutterResult)
+  public func shareToSystem(args: [Swift.String : Any?], result: @escaping Flutter.FlutterResult)
+  public func shareToInstagramDirect(args: [Swift.String : Any?], result: @escaping Flutter.FlutterResult)
+  public func shareToMessenger(args: [Swift.String : Any?], result: @escaping Flutter.FlutterResult)
+  public func shareToSms(args: [Swift.String : Any?], result: @escaping Flutter.FlutterResult)
+  public func shareToFacebookStory(args: [Swift.String : Any?], result: @escaping Flutter.FlutterResult)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class SwiftAppinioSocialSharePlugin : ObjectiveC.NSObject, Flutter.FlutterPlugin, FBSDKShareKit.SharingDelegate {
+  @objc public static func register(with registrar: any Flutter.FlutterPluginRegistrar)
+  @objc public func handle(_ call: Flutter.FlutterMethodCall, result: @escaping Flutter.FlutterResult)
+  @objc public func sharer(_ sharer: any FBSDKShareKit.Sharing, didCompleteWithResults results: [Swift.String : Any])
+  @objc public func sharer(_ sharer: any FBSDKShareKit.Sharing, didFailWithError error: any Swift.Error)
+  @objc public func sharerDidCancel(_ sharer: any FBSDKShareKit.Sharing)
+  @objc override dynamic public init()
+  @objc deinit
+}

@@ -1,0 +1,10 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/device_info_plus.framework/device_info_plus'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _device_info_plusVersionNumber, _device_info_plusVersionString ]
+    objc-classes:    [ FPPDeviceInfoPlusPlugin, PodsDummy_device_info_plus ]
+...

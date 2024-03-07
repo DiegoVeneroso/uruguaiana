@@ -262,7 +262,7 @@ class ProposalController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -282,7 +282,7 @@ class ProposalController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -316,7 +316,7 @@ class ProposalController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -328,7 +328,7 @@ class ProposalController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -348,7 +348,7 @@ class ProposalController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 }

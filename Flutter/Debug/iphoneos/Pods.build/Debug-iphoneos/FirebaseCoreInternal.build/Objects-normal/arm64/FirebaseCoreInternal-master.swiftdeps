@@ -1,0 +1,29 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "305f214e0af8f51970510aa8650c448a09cbd1893b17066be8e3d53ed3dba71d"
+build_start_time: [1709757390, 160501000]
+build_end_time: [1709757395, 46995000]
+inputs:
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Heartbeat.swift"
+  : [1709755854, 862875885]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatController.swift"
+  : [1709755854, 865828606]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatLoggingTestUtils.swift"
+  : [1709755854, 867616195]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatStorage.swift"
+  : [1709755854, 868852587]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsBundle.swift"
+  : [1709755854, 870115288]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsPayload.swift"
+  : [1709755854, 873615024]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/RingBuffer.swift"
+  : [1709755854, 863736270]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Storage.swift"
+  : [1709755854, 861701887]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/StorageFactory.swift"
+  : [1709755854, 874586403]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/WeakContainer.swift"
+  : [1709755854, 872707529]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatController.swift"
+  : [1709755854, 864862265]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatsPayload.swift"
+  : [1709755854, 866745470]

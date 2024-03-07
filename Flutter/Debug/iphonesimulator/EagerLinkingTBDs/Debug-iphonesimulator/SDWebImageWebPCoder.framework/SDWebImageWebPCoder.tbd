@@ -1,0 +1,21 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/SDWebImageWebPCoder.framework/SDWebImageWebPCoder'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _ConvertCSPMode, _SDImageCoderEncodeWebPAlphaCompression, 
+                       _SDImageCoderEncodeWebPAlphaFiltering, _SDImageCoderEncodeWebPAlphaQuality, 
+                       _SDImageCoderEncodeWebPAutofilter, _SDImageCoderEncodeWebPFilterSharpness, 
+                       _SDImageCoderEncodeWebPFilterStrength, _SDImageCoderEncodeWebPFilterType, 
+                       _SDImageCoderEncodeWebPLossless, _SDImageCoderEncodeWebPLowMemory, 
+                       _SDImageCoderEncodeWebPMethod, _SDImageCoderEncodeWebPPartitionLimit, 
+                       _SDImageCoderEncodeWebPPartitions, _SDImageCoderEncodeWebPPass, 
+                       _SDImageCoderEncodeWebPPreprocessing, _SDImageCoderEncodeWebPSegments, 
+                       _SDImageCoderEncodeWebPShowCompressed, _SDImageCoderEncodeWebPSnsStrength, 
+                       _SDImageCoderEncodeWebPTargetPSNR, _SDImageCoderEncodeWebPThreadLevel, 
+                       _SDImageCoderEncodeWebPUseSharpYuv, _SDWebImageWebPCoderVersionNumber, 
+                       _SDWebImageWebPCoderVersionString ]
+    objc-classes:    [ PodsDummy_SDWebImageWebPCoder, SDImageWebPCoder, SDWebPCoderFrame ]
+...

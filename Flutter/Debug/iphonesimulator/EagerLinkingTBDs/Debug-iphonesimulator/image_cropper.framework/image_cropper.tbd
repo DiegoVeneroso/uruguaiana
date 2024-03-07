@@ -1,0 +1,10 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/image_cropper.framework/image_cropper'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _image_cropperVersionNumber, _image_cropperVersionString ]
+    objc-classes:    [ FLTImageCropperPlugin, PodsDummy_image_cropper ]
+...

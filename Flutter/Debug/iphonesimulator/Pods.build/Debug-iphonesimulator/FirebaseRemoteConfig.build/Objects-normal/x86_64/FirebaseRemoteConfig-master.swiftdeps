@@ -1,0 +1,15 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "d8ed7bdd6b4f5bd094f81682cb2a8684e1ff2c38b380fb8b7185f4adedc15472"
+build_start_time: [1709757613, 265346000]
+build_end_time: [1709757616, 172225000]
+inputs:
+  "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Swift/Codable.swift": [1709755855, 229505241]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Swift/FirebaseRemoteConfigValueDecoderHelper.swift"
+  : [1709755855, 228637814]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Swift/PropertyWrapper/RemoteConfigProperty.swift"
+  : [1709755855, 232698442]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Swift/PropertyWrapper/RemoteConfigValueObservable.swift"
+  : [1709755855, 231798229]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Swift/SPMSwiftHeaderWorkaround.swift"
+  : [1709755855, 230489997]
+  "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Swift/Value.swift": [1709755855, 233519152]

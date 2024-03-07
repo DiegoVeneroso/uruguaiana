@@ -1,0 +1,16 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/photo_manager.framework/photo_manager'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _PMMD5HashFromPath, _photo_managerVersionNumber, _photo_managerVersionString ]
+    objc-classes:    [ AssetEntity, PMAssetEntity, PMAssetPathEntity, PMCacheContainer, 
+                       PMConvertUtils, PMConverter, PMCustomFilterOption, PMDateOption, 
+                       PMFileHelper, PMFilterOption, PMFilterOptionGroup, PMFolderUtils, 
+                       PMImageUtil, PMLogUtils, PMMD5Utils, PMManager, PMNotificationManager, 
+                       PMPathFilterOption, PMPlugin, PMProgressHandler, PMRequestTypeUtils, 
+                       PMThumbLoadOption, PhotoChangeObserver, PhotoManagerPlugin, 
+                       PodsDummy_photo_manager, Reply, ResultHandler ]
+...

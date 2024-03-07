@@ -1,0 +1,18 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/video_player_avfoundation.framework/video_player_avfoundation'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _FVPAVFoundationVideoPlayerApiGetCodec, _FVPGetStandardizedTransformForTrack, 
+                       _SetUpFVPAVFoundationVideoPlayerApi, _TIME_UNSET, _video_player_avfoundationVersionNumber, 
+                       _video_player_avfoundationVersionString ]
+    objc-classes:    [ FVPAVFoundationVideoPlayerApiCodecReader, FVPAVFoundationVideoPlayerApiCodecReaderWriter, 
+                       FVPAVFoundationVideoPlayerApiCodecWriter, FVPCreateMessage, 
+                       FVPDefaultAVFactory, FVPDefaultDisplayLinkFactory, FVPDisplayLink, 
+                       FVPDisplayLinkTarget, FVPFrameUpdater, FVPLoopingMessage, 
+                       FVPMixWithOthersMessage, FVPPlaybackSpeedMessage, FVPPositionMessage, 
+                       FVPTextureMessage, FVPVideoPlayer, FVPVideoPlayerPlugin, FVPVolumeMessage, 
+                       PodsDummy_video_player_avfoundation ]
+...

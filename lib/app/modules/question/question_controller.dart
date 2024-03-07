@@ -163,7 +163,7 @@ class QuestionController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.question);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -184,7 +184,7 @@ class QuestionController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.question);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 

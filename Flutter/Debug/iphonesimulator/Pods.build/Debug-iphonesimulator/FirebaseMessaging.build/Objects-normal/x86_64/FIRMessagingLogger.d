@@ -1,0 +1,23 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/FirebaseMessaging.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingLogger.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseMessaging/Sources/FIRMessagingCode.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRComponent.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRDependency.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIRLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseMessaging/FirebaseCore/Extension/FIROptionsInternal.h

@@ -1,0 +1,9 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "b17cd5af61927a5799f952bd9c7e40217c7cd04b73b4d0a0c48d159f13d2a826"
+build_start_time: [1709757606, 593302000]
+build_end_time: [1709757613, 127818000]
+inputs:
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseSharedSwift/FirebaseSharedSwift/Sources/FirebaseRemoteConfigValueDecoding.swift"
+  : [1709755855, 296265765]
+  ? "/Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseSharedSwift/FirebaseSharedSwift/Sources/third_party/FirebaseDataEncoder/FirebaseDataEncoder.swift"
+  : [1709755855, 295101247]

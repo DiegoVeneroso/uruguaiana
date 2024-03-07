@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "193b1ae2fb6cceb59825bfb26aa6f7fcf166c09004eeaab3544acaa749d4b523"
+build_start_time: [1709757633, 24266000]
+build_end_time: [1709757633, 93007000]
+inputs:
+  "/Users/diego/.pub-cache/hosted/pub.dev/flutter_custom_tabs-1.2.1/ios/Classes/CustomTabsPlugin.swift": !private [1709082230, 702123116]
+  "/Users/diego/.pub-cache/hosted/pub.dev/flutter_custom_tabs-1.2.1/ios/Classes/SFSafariViewController+Factory.swift": !private [1709082230, 698186151]

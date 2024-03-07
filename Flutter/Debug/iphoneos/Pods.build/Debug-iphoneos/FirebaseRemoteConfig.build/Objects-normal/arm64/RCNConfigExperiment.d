@@ -1,0 +1,33 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseRemoteConfig.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigExperiment.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigExperiment.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseABTesting/Sources/Private/FirebaseABTestingInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseABTesting.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/FirebaseABTesting/FirebaseABTesting-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseABTesting/FirebaseABTesting/Sources/Public/FirebaseABTesting/FirebaseABTesting.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseABTesting/FirebaseABTesting/Sources/Public/FirebaseABTesting/FIRExperimentController.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseABTesting/FirebaseABTesting/Sources/Public/FirebaseABTesting/FIRLifecycleEvents.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseABTesting/Sources/Private/ABTExperimentPayload.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseCore.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRComponent.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRDependency.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIROptionsInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigDBManager.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigContent.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/Public/FirebaseRemoteConfig/FIRRemoteConfig.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigDefines.h

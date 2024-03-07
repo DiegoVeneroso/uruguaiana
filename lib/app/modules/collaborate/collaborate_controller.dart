@@ -219,7 +219,7 @@ class CollaborateController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.collaborate);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
@@ -46,21 +45,21 @@ class CustomPickerState extends State<CustomPicker> {
   }
 
   Future<void> storageCheck() async {
-    // Only check for storage < Android 13
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    if (androidInfo.version.sdkInt >= 33) {
+
+    if (Platform.isAndroid) {
+      if (androidInfo.version.sdkInt >= 33) {
+        isVideosPermission = await Permission.videos.status.isGranted;
+        isPhotosPermission = await Permission.photos.status.isGranted;
+      } else {
+        isStoragePermission = await Permission.storage.status.isGranted;
+      }
+    } else {
       isVideosPermission = await Permission.videos.status.isGranted;
       isPhotosPermission = await Permission.photos.status.isGranted;
-    } else {
       isStoragePermission = await Permission.storage.status.isGranted;
     }
-
-    // if (isStoragePermission && isVideosPermission && isPhotosPermission) {
-    //   debugPrint('permitido');
-    // } else {
-    //   debugPrint(' não permitido');
-    // }
   }
 
   @override
@@ -81,7 +80,6 @@ class CustomPickerState extends State<CustomPicker> {
                 color: Get.theme.colorScheme.onPrimaryContainer,
               ),
               child: Center(
-                // padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -124,22 +122,6 @@ class CustomPickerState extends State<CustomPicker> {
                                           width: Get.width * .50,
                                           onPressed: () async {
                                             Get.back();
-                                            // Map<Permission, PermissionStatus>
-                                            //     statuses = await [
-                                            //   Permission.storage,
-                                            //   Permission.camera,
-                                            // ].request();
-
-                                            // if (statuses[Permission.storage]!
-                                            //         .isGranted &&
-                                            //     statuses[Permission.camera]!
-                                            //         .isGranted) {
-                                            //   await pickImageFileFromGalery();
-                                            //   setState(
-                                            //     () {
-                                            //       imageFile;
-                                            //     },
-                                            //   );
                                             await storageCheck();
 
                                             if (isStoragePermission &&
@@ -153,10 +135,6 @@ class CustomPickerState extends State<CustomPicker> {
                                                 },
                                               );
                                             }
-
-                                            // } else {
-                                            //   debugPrint('Permissão negada!');
-                                            // }
                                           },
                                         ),
                                       ],
@@ -197,23 +175,6 @@ class CustomPickerState extends State<CustomPicker> {
                                                   },
                                                 );
                                               }
-
-                                              // Map<Permission, PermissionStatus>
-                                              //     statuses = await [
-                                              //   Permission.storage,
-                                              //   Permission.camera,
-                                              // ].request();
-                                              // if (statuses[Permission.storage]!
-                                              //         .isGranted &&
-                                              //     statuses[Permission.camera]!
-                                              //         .isGranted) {
-                                              //   await pickVideoFileFromGalery();
-                                              //   setState(() {
-                                              //     imageFile;
-                                              //   });
-                                              // } else {
-                                              //   debugPrint('Permissão negada!');
-                                              // }
                                             },
                                           ),
                                           const SizedBox(
@@ -225,22 +186,6 @@ class CustomPickerState extends State<CustomPicker> {
                                             width: Get.width * .50,
                                             onPressed: () async {
                                               Get.back();
-                                              // Map<Permission, PermissionStatus>
-                                              //     statuses = await [
-                                              //   Permission.storage,
-                                              //   Permission.camera,
-                                              // ].request();
-                                              // if (statuses[Permission.storage]!
-                                              //         .isGranted &&
-                                              //     statuses[Permission.camera]!
-                                              //         .isGranted) {
-                                              //   await captureImageFileFromCamera();
-                                              //   setState(() {
-                                              //     imageFile;
-                                              //   });
-                                              // } else {
-                                              //   debugPrint('Permissão negada!');
-                                              // }
 
                                               await storageCheck();
 
@@ -266,22 +211,6 @@ class CustomPickerState extends State<CustomPicker> {
                                             width: Get.width * .50,
                                             onPressed: () async {
                                               Get.back();
-                                              // Map<Permission, PermissionStatus>
-                                              //     statuses = await [
-                                              //   Permission.storage,
-                                              //   Permission.camera,
-                                              // ].request();
-                                              // if (statuses[Permission.storage]!
-                                              //         .isGranted &&
-                                              //     statuses[Permission.camera]!
-                                              //         .isGranted) {
-                                              //   await capturaVideoFileFromCamera();
-                                              //   setState(() {
-                                              //     imageFile;
-                                              //   });
-                                              // } else {
-                                              //   debugPrint('Permissão negada!');
-                                              // }
 
                                               await storageCheck();
 
@@ -379,21 +308,6 @@ class CustomPickerState extends State<CustomPicker> {
                               label: 'Imagem da Galeria',
                               height: 40,
                               onPressed: () async {
-                                // Get.back();
-                                // Map<Permission, PermissionStatus> statuses =
-                                //     await [
-                                //   Permission.storage,
-                                //   Permission.camera,
-                                // ].request();
-                                // if (statuses[Permission.storage]!.isGranted &&
-                                //     statuses[Permission.camera]!.isGranted) {
-                                //   await pickImageFileFromGalery();
-                                //   setState(() {
-                                //     imageFile;
-                                //   });
-                                // } else {
-                                //   debugPrint('Permissão negada!');
-                                // }
                                 await storageCheck();
 
                                 if (isStoragePermission &&
@@ -420,20 +334,7 @@ class CustomPickerState extends State<CustomPicker> {
                               height: 40,
                               onPressed: () async {
                                 Get.back();
-                                // Map<Permission, PermissionStatus> statuses =
-                                //     await [
-                                //   Permission.storage,
-                                //   Permission.camera,
-                                // ].request();
-                                // if (statuses[Permission.storage]!.isGranted &&
-                                //     statuses[Permission.camera]!.isGranted) {
-                                //   await captureImageFileFromCamera();
-                                //   setState(() {
-                                //     imageFile;
-                                //   });
-                                // } else {
-                                //   debugPrint('Permissão negada!');
-                                // }
+
                                 await storageCheck();
 
                                 if (isStoragePermission &&
@@ -457,20 +358,7 @@ class CustomPickerState extends State<CustomPicker> {
                               height: 40,
                               onPressed: () async {
                                 Get.back();
-                                // Map<Permission, PermissionStatus> statuses =
-                                //     await [
-                                //   Permission.storage,
-                                //   Permission.camera,
-                                // ].request();
-                                // if (statuses[Permission.storage]!.isGranted &&
-                                //     statuses[Permission.camera]!.isGranted) {
-                                //   await pickVideoFileFromGalery();
-                                //   setState(() {
-                                //     imageFile;
-                                //   });
-                                // } else {
-                                //   debugPrint('Permissão negada!');
-                                // }
+
                                 await storageCheck();
 
                                 if (isStoragePermission &&
@@ -494,20 +382,7 @@ class CustomPickerState extends State<CustomPicker> {
                               height: 40,
                               onPressed: () async {
                                 Get.back();
-                                // Map<Permission, PermissionStatus> statuses =
-                                //     await [
-                                //   Permission.storage,
-                                //   Permission.camera,
-                                // ].request();
-                                // if (statuses[Permission.storage]!.isGranted &&
-                                //     statuses[Permission.camera]!.isGranted) {
-                                //   await capturaVideoFileFromCamera();
-                                //   setState(() {
-                                //     imageFile;
-                                //   });
-                                // } else {
-                                //   debugPrint('Permissão negada!');
-                                // }
+
                                 await storageCheck();
 
                                 if (isStoragePermission &&
@@ -739,24 +614,10 @@ class CustomPickerState extends State<CustomPicker> {
       ),
     );
 
-    // showDialog(
-    //   context: context,
-    //   barrierDismissible: false,
-
-    //   builder: (context) => const Dialog(
-    //     child: CustomProgressDialog(),
-    //   ),
-    // );
-
     final info = await VideoCompressHelper.compressVideo(File(imageFile!.path));
 
     setState(() => compressedVideoInfo = info);
 
-    // debugPrint('size');
-    // debugPrint(compressedVideoInfo?.filesize);
-
-    // debugPrint('compress');
-    // debugPrint(compressedVideoInfo?.path.toString());
     imageFile = XFile(compressedVideoInfo!.path.toString());
     Navigator.of(context).pop();
   }
@@ -764,14 +625,10 @@ class CustomPickerState extends State<CustomPicker> {
   _cropImage(File imgFile) async {
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
+        compressFormat: ImageCompressFormat.png,
+        compressQuality: 50,
         aspectRatioPresets: Platform.isAndroid
             ? [
-                // CropAspectRatioPreset.original,
-                // CropAspectRatioPreset.ratio16x9,
-                // CropAspectRatioPreset.ratio7x5,
-                // CropAspectRatioPreset.ratio4x3,
-                // CropAspectRatioPreset.ratio5x3,
-                // CropAspectRatioPreset.ratio3x2,
                 CropAspectRatioPreset.ratio5x4,
               ]
             : [CropAspectRatioPreset.ratio5x4],

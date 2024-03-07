@@ -147,6 +147,8 @@ class TermOfUseController extends GetxController
   _cropImage(File imgFile) async {
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
+        compressFormat: ImageCompressFormat.png,
+        compressQuality: 50,
         aspectRatioPresets: Platform.isAndroid
             ? [
                 CropAspectRatioPreset.ratio4x3,
@@ -228,7 +230,7 @@ class TermOfUseController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.toNamed(Routes.term_of_use);
+      Get.toNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -248,7 +250,7 @@ class TermOfUseController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.about);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -282,7 +284,7 @@ class TermOfUseController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.about);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -294,7 +296,7 @@ class TermOfUseController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.term_of_use);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -314,7 +316,7 @@ class TermOfUseController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.about);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 

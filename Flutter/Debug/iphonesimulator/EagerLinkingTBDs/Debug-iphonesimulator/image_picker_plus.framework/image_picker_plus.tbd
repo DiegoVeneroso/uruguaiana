@@ -1,0 +1,10 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/image_picker_plus.framework/image_picker_plus'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _image_picker_plusVersionNumber, _image_picker_plusVersionString ]
+    objc-classes:    [ ImageCropPlugin, PodsDummy_image_picker_plus ]
+...

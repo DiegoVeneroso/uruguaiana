@@ -1,0 +1,53 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseInstallations.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallations.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallations.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromises.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/PromisesObjC.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/PromisesObjC/PromisesObjC-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+All.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromiseError.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Always.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Any.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Async.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Await.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Catch.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Delay.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Do.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Race.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Recover.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Reduce.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Retry.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Testing.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Then.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Timeout.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Validate.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Wrap.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseCore.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRComponent.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRDependency.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIRLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseCore/Extension/FIROptionsInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallationsAuthTokenResultInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsAuthTokenResult.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Errors/FIRInstallationsErrorUtil.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsErrors.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallationsItem.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsStatus.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallationsLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsIDController.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStoredAuthToken.h

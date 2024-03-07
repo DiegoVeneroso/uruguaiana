@@ -1,0 +1,412 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "flutter_custom_tabs"
+      },
+      {
+        "kind": "Import",
+        "name": "SafariServices",
+        "printedName": "SafariServices",
+        "declKind": "Import",
+        "moduleName": "flutter_custom_tabs"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "flutter_custom_tabs"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CustomTabsPlugin",
+        "printedName": "CustomTabsPlugin",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "Flutter.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_custom_tabs@objc(cs)CustomTabsPlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s19flutter_custom_tabs16CustomTabsPluginC8register4withySo07FlutterF9Registrar_p_tFZ",
+            "moduleName": "flutter_custom_tabs",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(_:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodCall",
+                "printedName": "Flutter.FlutterMethodCall",
+                "usr": "c:objc(cs)FlutterMethodCall"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@flutter_custom_tabs@objc(cs)CustomTabsPlugin(im)handleMethodCall:result:",
+            "mangledName": "$s19flutter_custom_tabs16CustomTabsPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF",
+            "moduleName": "flutter_custom_tabs",
+            "isOpen": true,
+            "objc_name": "handleMethodCall:result:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CustomTabsPlugin",
+                "printedName": "flutter_custom_tabs.CustomTabsPlugin",
+                "usr": "c:@M@flutter_custom_tabs@objc(cs)CustomTabsPlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@flutter_custom_tabs@objc(cs)CustomTabsPlugin(im)init",
+            "mangledName": "$s19flutter_custom_tabs16CustomTabsPluginCACycfc",
+            "moduleName": "flutter_custom_tabs",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@flutter_custom_tabs@objc(cs)CustomTabsPlugin",
+        "mangledName": "$s19flutter_custom_tabs16CustomTabsPluginC",
+        "moduleName": "flutter_custom_tabs",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SafariServices",
+        "printedName": "SafariServices",
+        "declKind": "Import",
+        "moduleName": "flutter_custom_tabs"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "flutter_custom_tabs"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SFSafariViewController",
+        "printedName": "SFSafariViewController",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "make",
+            "printedName": "make(url:option:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SFSafariViewController",
+                "printedName": "SafariServices.SFSafariViewController",
+                "usr": "c:objc(cs)SFSafariViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:So22SFSafariViewControllerC19flutter_custom_tabsE4make3url6optionAB10Foundation3URLV_SDySSypGtFZ",
+            "mangledName": "$sSo22SFSafariViewControllerC19flutter_custom_tabsE4make3url6optionAB10Foundation3URLV_SDySSypGtFZ",
+            "moduleName": "flutter_custom_tabs",
+            "static": true,
+            "declAttributes": [
+              "Custom",
+              "Final"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)SFSafariViewController",
+        "moduleName": "SafariServices",
+        "isOpen": true,
+        "intro_iOS": "9.0",
+        "objc_name": "SFSafariViewController",
+        "declAttributes": [
+          "Custom",
+          "Available",
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)UIViewController",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIViewController",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/CustomTabsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 72,
+      "length": 5,
+      "value": "\"url\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/CustomTabsPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 102,
+      "length": 16,
+      "value": "\"safariVCOption\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/SFSafariViewController+Factory.swift",
+      "kind": "StringLiteral",
+      "offset": 75,
+      "length": 23,
+      "value": "\"preferredBarTintColor\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/SFSafariViewController+Factory.swift",
+      "kind": "StringLiteral",
+      "offset": 142,
+      "length": 27,
+      "value": "\"preferredControlTintColor\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/SFSafariViewController+Factory.swift",
+      "kind": "StringLiteral",
+      "offset": 208,
+      "length": 22,
+      "value": "\"barCollapsingEnabled\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/SFSafariViewController+Factory.swift",
+      "kind": "StringLiteral",
+      "offset": 272,
+      "length": 25,
+      "value": "\"entersReaderIfAvailable\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/SFSafariViewController+Factory.swift",
+      "kind": "StringLiteral",
+      "offset": 334,
+      "length": 20,
+      "value": "\"dismissButtonStyle\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/flutter_custom_tabs-1.2.1\/ios\/Classes\/SFSafariViewController+Factory.swift",
+      "kind": "StringLiteral",
+      "offset": 395,
+      "length": 24,
+      "value": "\"modalPresentationStyle\""
+    }
+  ]
+}

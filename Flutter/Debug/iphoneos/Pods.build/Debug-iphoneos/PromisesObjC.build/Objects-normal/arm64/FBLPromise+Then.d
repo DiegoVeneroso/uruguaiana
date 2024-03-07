@@ -1,0 +1,8 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/PromisesObjC.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/FBLPromise+Then.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Then.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromiseError.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromisePrivate.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/PromisesObjC/Sources/FBLPromises/include/FBLPromise+Testing.h

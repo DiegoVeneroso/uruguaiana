@@ -1,0 +1,13 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/file_selector_ios.framework/file_selector_ios'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _FFSFileSelectorApiGetCodec, _SetUpFFSFileSelectorApi, _file_selector_iosVersionNumber, 
+                       _file_selector_iosVersionString ]
+    objc-classes:    [ FFSFileSelectorApiCodecReader, FFSFileSelectorApiCodecReaderWriter, 
+                       FFSFileSelectorApiCodecWriter, FFSFileSelectorConfig, FFSFileSelectorPlugin, 
+                       PodsDummy_file_selector_ios ]
+...

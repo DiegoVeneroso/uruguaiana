@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "9b1e902f3c182a741a722a22933fd5455396c5e6a94f5d21e3e3827a2481ffc0"
+build_start_time: [1709757503, 383332000]
+build_end_time: [1709757524, 36381000]
+inputs:
+  "/Users/diego/.pub-cache/hosted/pub.dev/appinio_social_share-0.2.6/ios/Classes/MyActivityItemSource.swift": [1709082231, 285835437]
+  "/Users/diego/.pub-cache/hosted/pub.dev/appinio_social_share-0.2.6/ios/Classes/ShareUtil.swift": [1709082231, 271798983]
+  "/Users/diego/.pub-cache/hosted/pub.dev/appinio_social_share-0.2.6/ios/Classes/SwiftAppinioSocialSharePlugin.swift": [1709082231, 293477649]

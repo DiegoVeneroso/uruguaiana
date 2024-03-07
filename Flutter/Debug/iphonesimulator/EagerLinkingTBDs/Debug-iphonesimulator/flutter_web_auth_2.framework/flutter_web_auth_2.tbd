@@ -1,0 +1,34 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/flutter_web_auth_2.framework/flutter_web_auth_2'
+swift-abi-version: 7
+exports:
+  - targets:         [ x86_64-ios-simulator ]
+    symbols:         [ _Swift51Overrides, __Z34_swiftoverride_class_getSuperclassPKN5swift14TargetMetadataINS_9InProcessEEE, 
+                       __ZN5swift39swift51override_conformsToSwiftProtocolEPKNS_14TargetMetadataINS_9InProcessEEEPKNS_24TargetProtocolDescriptorIS1_EEN7__swift9__runtime4llvm9StringRefEPFPKNS_35TargetProtocolConformanceDescriptorIS1_EES4_S8_SC_E ]
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC11application_8continue18restorationHandlerSbSo13UIApplicationC_So14NSUserActivityCySayypGctFTj', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC11application_8continue18restorationHandlerSbSo13UIApplicationC_So14NSUserActivityCySayypGctFTq', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC17completionHandlery10Foundation3URLVSg_s5Error_pSgtcSgvMTj', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC17completionHandlery10Foundation3URLVSg_s5Error_pSgtcSgvMTq', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC17completionHandlery10Foundation3URLVSg_s5Error_pSgtcSgvgTj', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC17completionHandlery10Foundation3URLVSg_s5Error_pSgtcSgvgTq', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC17completionHandlery10Foundation3URLVSg_s5Error_pSgtcSgvpMV', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC17completionHandlery10Foundation3URLVSg_s5Error_pSgtcSgvsTj', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC17completionHandlery10Foundation3URLVSg_s5Error_pSgtcSgvsTq', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC6handle_6resultySo0E10MethodCallC_yypSgctFTj', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC6handle_6resultySo0E10MethodCallC_yypSgctFTq', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginC8register4withySo0eH9Registrar_p_tFZ', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCACycfC', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCACycfc', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCMa', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCMn', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCMo', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCMu', 
+                       '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCN', '_$s18flutter_web_auth_226SwiftFlutterWebAuth2PluginCfD', 
+                       '_$sSo21FlutterViewControllerC18flutter_web_auth_2E18presentationAnchor3forSo8UIWindowCSo26ASWebAuthenticationSessionC_tF', 
+                       _flutter_web_auth_2VersionNumber, _flutter_web_auth_2VersionString ]
+    objc-classes:    [ FlutterWebAuth2Plugin, PodsDummy_flutter_web_auth_2, _TtC18flutter_web_auth_226SwiftFlutterWebAuth2Plugin ]
+...

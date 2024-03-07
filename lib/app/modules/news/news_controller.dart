@@ -96,13 +96,6 @@ class NewsController extends GetxController
 
   showNotificationPush() {
     FirebaseMessaging.onMessage.listen((message) async {
-      log('############');
-      log(message.data.values
-          .toString()); //recebe o valor dos dados personalidados da notificação
-
-      log(message.data['title']);
-      log(message.data['body']);
-
       if (message.notification != null) {
         _message(
           MessageModel(
@@ -149,6 +142,8 @@ class NewsController extends GetxController
   _cropImage(File imgFile) async {
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
+        compressFormat: ImageCompressFormat.png,
+        compressQuality: 50,
         aspectRatioPresets: Platform.isAndroid
             ? [CropAspectRatioPreset.ratio16x9]
             : [CropAspectRatioPreset.ratio16x9],
@@ -269,7 +264,7 @@ class NewsController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.news);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -289,7 +284,7 @@ class NewsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.news);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -323,7 +318,7 @@ class NewsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.news);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -335,7 +330,7 @@ class NewsController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.news);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -355,7 +350,7 @@ class NewsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.news);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 

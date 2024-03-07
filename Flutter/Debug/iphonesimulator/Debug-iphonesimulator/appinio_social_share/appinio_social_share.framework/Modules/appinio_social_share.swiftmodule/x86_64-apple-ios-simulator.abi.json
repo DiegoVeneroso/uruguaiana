@@ -1,0 +1,3782 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "LinkPresentation",
+        "printedName": "LinkPresentation",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MyActivityItemSource",
+        "printedName": "MyActivityItemSource",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "title",
+            "printedName": "title",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share20MyActivityItemSourceC5titleSSvp",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC5titleSSvp",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "fixedbinaryorder": 0,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC5titleSSvg",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC5titleSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC5titleSSvs",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC5titleSSvs",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC5titleSSvM",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC5titleSSvM",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "text",
+            "printedName": "text",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share20MyActivityItemSourceC4textSSvp",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC4textSSvp",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "fixedbinaryorder": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC4textSSvg",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC4textSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC4textSSvs",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC4textSSvs",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC4textSSvM",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC4textSSvM",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "filePath",
+            "printedName": "filePath",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share20MyActivityItemSourceC8filePathSSvp",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC8filePathSSvp",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "fixedbinaryorder": 2,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC8filePathSSvg",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC8filePathSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC8filePathSSvs",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC8filePathSSvs",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share20MyActivityItemSourceC8filePathSSvM",
+                "mangledName": "$s20appinio_social_share20MyActivityItemSourceC8filePathSSvM",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(title:text:filePath:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MyActivityItemSource",
+                "printedName": "appinio_social_share.MyActivityItemSource",
+                "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:20appinio_social_share20MyActivityItemSourceC5title4text8filePathACSS_S2Stcfc",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC5title4text8filePathACSS_S2Stcfc",
+            "moduleName": "appinio_social_share",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "activityViewControllerPlaceholderItem",
+            "printedName": "activityViewControllerPlaceholderItem(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ProtocolComposition",
+                "printedName": "Any"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIActivityViewController",
+                "printedName": "UIKit.UIActivityViewController",
+                "usr": "c:objc(cs)UIActivityViewController"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource(im)activityViewControllerPlaceholderItem:",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC033activityViewControllerPlaceholderF0yypSo010UIActivityiJ0CF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "activityViewControllerPlaceholderItem:",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "activityViewController",
+            "printedName": "activityViewController(_:itemForActivityType:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Any?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIActivityViewController",
+                "printedName": "UIKit.UIActivityViewController",
+                "usr": "c:objc(cs)UIActivityViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIActivity.ActivityType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ActivityType",
+                    "printedName": "UIKit.UIActivity.ActivityType",
+                    "usr": "c:@T@UIActivityType"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource(im)activityViewController:itemForActivityType:",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC22activityViewController_07itemForE4TypeypSgSo010UIActivityiJ0C_So0nM0aSgtF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "activityViewController:itemForActivityType:",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "activityViewController",
+            "printedName": "activityViewController(_:subjectForActivityType:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIActivityViewController",
+                "printedName": "UIKit.UIActivityViewController",
+                "usr": "c:objc(cs)UIActivityViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIActivity.ActivityType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ActivityType",
+                    "printedName": "UIKit.UIActivity.ActivityType",
+                    "usr": "c:@T@UIActivityType"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource(im)activityViewController:subjectForActivityType:",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC22activityViewController_010subjectForE4TypeSSSo010UIActivityiJ0C_So0nM0aSgtF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "activityViewController:subjectForActivityType:",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "activityViewControllerLinkMetadata",
+            "printedName": "activityViewControllerLinkMetadata(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LPLinkMetadata",
+                "printedName": "LinkPresentation.LPLinkMetadata",
+                "usr": "c:objc(cs)LPLinkMetadata"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIActivityViewController",
+                "printedName": "UIKit.UIActivityViewController",
+                "usr": "c:objc(cs)UIActivityViewController"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource(im)activityViewControllerLinkMetadata:",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceC34activityViewControllerLinkMetadataySo06LPLinkL0CSo010UIActivityiJ0CF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "activityViewControllerLinkMetadata:",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MyActivityItemSource",
+                "printedName": "appinio_social_share.MyActivityItemSource",
+                "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource(im)init",
+            "mangledName": "$s20appinio_social_share20MyActivityItemSourceCACycfc",
+            "moduleName": "appinio_social_share",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@appinio_social_share@objc(cs)MyActivityItemSource",
+        "mangledName": "$s20appinio_social_share20MyActivityItemSourceC",
+        "moduleName": "appinio_social_share",
+        "isOpen": true,
+        "intro_iOS": "13",
+        "declAttributes": [
+          "Available",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "FBSDKCoreKit",
+        "printedName": "FBSDKCoreKit",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "FBSDKShareKit",
+        "printedName": "FBSDKShareKit",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "Social",
+        "printedName": "Social",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "TikTokOpenSDK",
+        "printedName": "TikTokOpenSDK",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "MobileCoreServices",
+        "printedName": "MobileCoreServices",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ShareUtil",
+        "printedName": "ShareUtil",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "SUCCESS",
+            "printedName": "SUCCESS",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC7SUCCESSSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC7SUCCESSSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC7SUCCESSSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC7SUCCESSSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "ERROR_APP_NOT_AVAILABLE",
+            "printedName": "ERROR_APP_NOT_AVAILABLE",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC23ERROR_APP_NOT_AVAILABLESSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC23ERROR_APP_NOT_AVAILABLESSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC23ERROR_APP_NOT_AVAILABLESSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC23ERROR_APP_NOT_AVAILABLESSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSON",
+            "printedName": "ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSON",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC43ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSONSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC43ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSONSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC43ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSONSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC43ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSONSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "ERROR",
+            "printedName": "ERROR",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC5ERRORSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC5ERRORSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC5ERRORSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC5ERRORSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "NOT_IMPLEMENTED",
+            "printedName": "NOT_IMPLEMENTED",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC15NOT_IMPLEMENTEDSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC15NOT_IMPLEMENTEDSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC15NOT_IMPLEMENTEDSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC15NOT_IMPLEMENTEDSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argAttributionURL",
+            "printedName": "argAttributionURL",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC17argAttributionURLSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC17argAttributionURLSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC17argAttributionURLSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC17argAttributionURLSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argImagePath",
+            "printedName": "argImagePath",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC12argImagePathSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC12argImagePathSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC12argImagePathSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC12argImagePathSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argbackgroundImage",
+            "printedName": "argbackgroundImage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC18argbackgroundImageSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC18argbackgroundImageSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC18argbackgroundImageSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC18argbackgroundImageSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argMessage",
+            "printedName": "argMessage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC10argMessageSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC10argMessageSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC10argMessageSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC10argMessageSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argTitle",
+            "printedName": "argTitle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC8argTitleSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC8argTitleSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC8argTitleSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC8argTitleSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argstickerImage",
+            "printedName": "argstickerImage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC15argstickerImageSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC15argstickerImageSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC15argstickerImageSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC15argstickerImageSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argAppId",
+            "printedName": "argAppId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC8argAppIdSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC8argAppIdSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC8argAppIdSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC8argAppIdSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argBackgroundTopColor",
+            "printedName": "argBackgroundTopColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC21argBackgroundTopColorSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC21argBackgroundTopColorSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC21argBackgroundTopColorSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC21argBackgroundTopColorSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argBackgroundBottomColor",
+            "printedName": "argBackgroundBottomColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC24argBackgroundBottomColorSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC24argBackgroundBottomColorSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC24argBackgroundBottomColorSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC24argBackgroundBottomColorSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argImages",
+            "printedName": "argImages",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC9argImagesSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC9argImagesSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC9argImagesSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC9argImagesSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "argVideoFile",
+            "printedName": "argVideoFile",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share9ShareUtilC12argVideoFileSSvp",
+            "mangledName": "$s20appinio_social_share9ShareUtilC12argVideoFileSSvp",
+            "moduleName": "appinio_social_share",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share9ShareUtilC12argVideoFileSSvg",
+                "mangledName": "$s20appinio_social_share9ShareUtilC12argVideoFileSSvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "getInstalledApps",
+            "printedName": "getInstalledApps(result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC16getInstalledApps6resultyyypSgc_tF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC16getInstalledApps6resultyyypSgc_tF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "canOpenUrl",
+            "printedName": "canOpenUrl(appName:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC10canOpenUrl7appNameSbSS_tF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC10canOpenUrl7appNameSbSS_tF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToInstagramFeed",
+            "printedName": "shareToInstagramFeed(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C15ToInstagramFeed4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C15ToInstagramFeed4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "isImage",
+            "printedName": "isImage(filePath:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC7isImage8filePathSbSS_tF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC7isImage8filePathSbSS_tF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToTiktok",
+            "printedName": "shareToTiktok(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C8ToTiktok4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C8ToTiktok4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareVideoToInstagramFeed",
+            "printedName": "shareVideoToInstagramFeed(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C20VideoToInstagramFeed4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C20VideoToInstagramFeed4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareImageToInstagramFeed",
+            "printedName": "shareImageToInstagramFeed(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C20ImageToInstagramFeed4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C20ImageToInstagramFeed4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getLibraryPermissionIfNecessary",
+            "printedName": "getLibraryPermissionIfNecessary(completionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC31getLibraryPermissionIfNecessary17completionHandleryySbc_tF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC31getLibraryPermissionIfNecessary17completionHandleryySbc_tF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToSystem",
+            "printedName": "shareToSystem(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C8ToSystem4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C8ToSystem4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "copyToClipboard",
+            "printedName": "copyToClipboard(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC15copyToClipboard4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC15copyToClipboard4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToWhatsApp",
+            "printedName": "shareToWhatsApp(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C10ToWhatsApp4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C10ToWhatsApp4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToFacebookPost",
+            "printedName": "shareToFacebookPost(args:result:delegate:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SharingDelegate",
+                "printedName": "FBSDKShareKit.SharingDelegate",
+                "usr": "c:@M@FBSDKShareKit@objc(pl)FBSDKSharingDelegate"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C14ToFacebookPost4args6result8delegateySDySSypSgG_yAHc13FBSDKShareKit15SharingDelegate_ptF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C14ToFacebookPost4args6result8delegateySDySSypSgG_yAHc13FBSDKShareKit15SharingDelegate_ptF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToTelegram",
+            "printedName": "shareToTelegram(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C10ToTelegram4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C10ToTelegram4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToInstagramDirect",
+            "printedName": "shareToInstagramDirect(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C17ToInstagramDirect4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C17ToInstagramDirect4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToMessenger",
+            "printedName": "shareToMessenger(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C11ToMessenger4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C11ToMessenger4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToSms",
+            "printedName": "shareToSms(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C5ToSms4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C5ToSms4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToFacebookStory",
+            "printedName": "shareToFacebookStory(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C15ToFacebookStory4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C15ToFacebookStory4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToTwitter",
+            "printedName": "shareToTwitter(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C9ToTwitter4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C9ToTwitter4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shareToInstagramStory",
+            "printedName": "shareToInstagramStory(args:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20appinio_social_share9ShareUtilC0C16ToInstagramStory4args6resultySDySSypSgG_yAGctF",
+            "mangledName": "$s20appinio_social_share9ShareUtilC0C16ToInstagramStory4args6resultySDySSypSgG_yAGctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ShareUtil",
+                "printedName": "appinio_social_share.ShareUtil",
+                "usr": "s:20appinio_social_share9ShareUtilC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:20appinio_social_share9ShareUtilCACycfc",
+            "mangledName": "$s20appinio_social_share9ShareUtilCACycfc",
+            "moduleName": "appinio_social_share",
+            "implicit": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:20appinio_social_share9ShareUtilC",
+        "mangledName": "$s20appinio_social_share9ShareUtilC",
+        "moduleName": "appinio_social_share",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TransparentViewController",
+        "printedName": "TransparentViewController",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "viewDidLoad",
+            "printedName": "viewDidLoad()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)TransparentViewController(im)viewDidLoad",
+            "mangledName": "$s20appinio_social_share25TransparentViewControllerC11viewDidLoadyyF",
+            "moduleName": "appinio_social_share",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "viewDidLoad",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(nibName:bundle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TransparentViewController",
+                "printedName": "appinio_social_share.TransparentViewController",
+                "usr": "c:@M@appinio_social_share@objc(cs)TransparentViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Bundle?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@appinio_social_share@objc(cs)TransparentViewController(im)initWithNibName:bundle:",
+            "mangledName": "$s20appinio_social_share25TransparentViewControllerC7nibName6bundleACSSSg_So8NSBundleCSgtcfc",
+            "moduleName": "appinio_social_share",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithNibName:bundle:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "appinio_social_share.TransparentViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TransparentViewController",
+                    "printedName": "appinio_social_share.TransparentViewController",
+                    "usr": "c:@M@appinio_social_share@objc(cs)TransparentViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@appinio_social_share@objc(cs)TransparentViewController(im)initWithCoder:",
+            "mangledName": "$s20appinio_social_share25TransparentViewControllerC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "appinio_social_share",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@appinio_social_share@objc(cs)TransparentViewController",
+        "mangledName": "$s20appinio_social_share25TransparentViewControllerC",
+        "moduleName": "appinio_social_share",
+        "isOpen": true,
+        "declAttributes": [
+          "Custom",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIViewController",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIViewController",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "FBSDKCoreKit",
+        "printedName": "FBSDKCoreKit",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "FBSDKShareKit",
+        "printedName": "FBSDKShareKit",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "appinio_social_share"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SwiftAppinioSocialSharePlugin",
+        "printedName": "SwiftAppinioSocialSharePlugin",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shareUtil",
+            "printedName": "shareUtil",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ShareUtil",
+                "printedName": "appinio_social_share.ShareUtil",
+                "usr": "s:20appinio_social_share9ShareUtilC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0Cvp",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0Cvp",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ShareUtil",
+                    "printedName": "appinio_social_share.ShareUtil",
+                    "usr": "s:20appinio_social_share9ShareUtilC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0Cvg",
+                "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0Cvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ShareUtil",
+                    "printedName": "appinio_social_share.ShareUtil",
+                    "usr": "s:20appinio_social_share9ShareUtilC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0Cvs",
+                "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0Cvs",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0CvM",
+                "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC0C4UtilAA0gI0CvM",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "flutterResult",
+            "printedName": "flutterResult",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ImplicitlyUnwrappedOptional",
+                "printedName": "((Any?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Any?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Any?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvp",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvp",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "((Any?) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Any?) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Any?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "ProtocolComposition",
+                                "printedName": "Any"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvg",
+                "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvg",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "((Any?) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Any?) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Any?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "ProtocolComposition",
+                                "printedName": "Any"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvs",
+                "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvs",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvM",
+                "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC13flutterResultyypSgcSgvM",
+                "moduleName": "appinio_social_share",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "Flutter.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC8register4withySo07FlutterH9Registrar_p_tFZ",
+            "moduleName": "appinio_social_share",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(_:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodCall",
+                "printedName": "Flutter.FlutterMethodCall",
+                "usr": "c:objc(cs)FlutterMethodCall"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin(im)handleMethodCall:result:",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "handleMethodCall:result:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sharer",
+            "printedName": "sharer(_:didCompleteWithResults:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Sharing",
+                "printedName": "FBSDKShareKit.Sharing",
+                "usr": "c:@M@FBSDKShareKit@objc(pl)FBSDKSharing"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin(im)sharer:didCompleteWithResults:",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC6sharer_22didCompleteWithResultsy13FBSDKShareKit7Sharing_p_SDySSypGtF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "sharer:didCompleteWithResults:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sharer",
+            "printedName": "sharer(_:didFailWithError:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Sharing",
+                "printedName": "FBSDKShareKit.Sharing",
+                "usr": "c:@M@FBSDKShareKit@objc(pl)FBSDKSharing"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Error",
+                "printedName": "Swift.Error",
+                "usr": "s:s5ErrorP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin(im)sharer:didFailWithError:",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC6sharer_16didFailWithErrory13FBSDKShareKit7Sharing_p_s0M0_ptF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "sharer:didFailWithError:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sharerDidCancel",
+            "printedName": "sharerDidCancel(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Sharing",
+                "printedName": "FBSDKShareKit.Sharing",
+                "usr": "c:@M@FBSDKShareKit@objc(pl)FBSDKSharing"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin(im)sharerDidCancel:",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC15sharerDidCancelyy13FBSDKShareKit7Sharing_pF",
+            "moduleName": "appinio_social_share",
+            "isOpen": true,
+            "objc_name": "sharerDidCancel:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SwiftAppinioSocialSharePlugin",
+                "printedName": "appinio_social_share.SwiftAppinioSocialSharePlugin",
+                "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin(im)init",
+            "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginCACycfc",
+            "moduleName": "appinio_social_share",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@appinio_social_share@objc(cs)SwiftAppinioSocialSharePlugin",
+        "mangledName": "$s20appinio_social_share29SwiftAppinioSocialSharePluginC",
+        "moduleName": "appinio_social_share",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "SharingDelegate",
+            "printedName": "SharingDelegate",
+            "usr": "c:@M@FBSDKShareKit@objc(pl)FBSDKSharingDelegate",
+            "mangledName": "$s13FBSDKShareKit15SharingDelegateP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "UIApplication",
+        "printedName": "UIApplication",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "topViewController",
+            "printedName": "topViewController(controller:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:So13UIApplicationC20appinio_social_shareE17topViewController10controllerSo06UIViewG0CSgAH_tFZ",
+            "mangledName": "$sSo13UIApplicationC20appinio_social_shareE17topViewController10controllerSo06UIViewG0CSgAH_tFZ",
+            "moduleName": "appinio_social_share",
+            "static": true,
+            "isOpen": true,
+            "declAttributes": [
+              "Custom"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)UIApplication",
+        "moduleName": "UIKit",
+        "isOpen": true,
+        "intro_iOS": "2.0",
+        "objc_name": "UIApplication",
+        "declAttributes": [
+          "Available",
+          "ObjC",
+          "NonSendable",
+          "Custom",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)UIResponder",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/MyActivityItemSource.swift",
+      "kind": "StringLiteral",
+      "offset": 176,
+      "length": 20,
+      "value": "\"appinio_social_share.MyActivityItemSource\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 181,
+      "length": 9,
+      "value": "\"SUCCESS\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 240,
+      "length": 25,
+      "value": "\"ERROR_APP_NOT_AVAILABLE\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 335,
+      "length": 45,
+      "value": "\"ERROR_FEATURE_NOT_AVAILABLE_FOR_THIS_VERSON\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 412,
+      "length": 7,
+      "value": "\"ERROR\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 461,
+      "length": 17,
+      "value": "\"NOT_IMPLEMENTED\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 517,
+      "length": 16,
+      "value": "\"attributionURL\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 567,
+      "length": 11,
+      "value": "\"imagePath\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 618,
+      "length": 17,
+      "value": "\"backgroundImage\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 667,
+      "length": 9,
+      "value": "\"message\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 706,
+      "length": 7,
+      "value": "\"title\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 750,
+      "length": 14,
+      "value": "\"stickerImage\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 794,
+      "length": 7,
+      "value": "\"appId\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 844,
+      "length": 20,
+      "value": "\"backgroundTopColor\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 910,
+      "length": 23,
+      "value": "\"backgroundBottomColor\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 964,
+      "length": 8,
+      "value": "\"images\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/ShareUtil.swift",
+      "kind": "StringLiteral",
+      "offset": 1006,
+      "length": 11,
+      "value": "\"videoFile\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 216,
+      "length": 18,
+      "value": "\"instagram_direct\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 279,
+      "length": 19,
+      "value": "\"instagram_stories\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 340,
+      "length": 16,
+      "value": "\"instagram_post\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 392,
+      "length": 10,
+      "value": "\"facebook\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 439,
+      "length": 18,
+      "value": "\"facebook_stories\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 487,
+      "length": 11,
+      "value": "\"messenger\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 534,
+      "length": 10,
+      "value": "\"whatsapp\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 579,
+      "length": 9,
+      "value": "\"twitter\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 619,
+      "length": 5,
+      "value": "\"sms\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 664,
+      "length": 14,
+      "value": "\"system_share\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 723,
+      "length": 19,
+      "value": "\"copy_to_clipboard\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 778,
+      "length": 10,
+      "value": "\"telegram\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 827,
+      "length": 13,
+      "value": "\"tiktok_post\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 881,
+      "length": 15,
+      "value": "\"tiktok_status\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/appinio_social_share-0.2.6\/ios\/Classes\/SwiftAppinioSocialSharePlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 938,
+      "length": 16,
+      "value": "\"installed_apps\""
+    }
+  ]
+}

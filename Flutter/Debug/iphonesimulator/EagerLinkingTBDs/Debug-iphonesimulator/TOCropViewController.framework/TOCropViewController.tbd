@@ -1,0 +1,12 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/TOCropViewController.framework/TOCropViewController'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _TOCropViewControllerVersionNumber, _TOCropViewControllerVersionString ]
+    objc-classes:    [ PodsDummy_TOCropViewController, TOActivityCroppedImageProvider, 
+                       TOCropOverlayView, TOCropScrollView, TOCropToolbar, TOCropView, 
+                       TOCropViewController, TOCropViewControllerTransitioning, TOCroppedImageAttributes ]
+...

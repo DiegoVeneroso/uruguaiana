@@ -1,0 +1,17 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name video_compress
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import Flutter
+import MobileCoreServices
+import Swift
+import _Concurrency
+import _StringProcessing
+@_exported import video_compress
+@objc @_hasMissingDesignatedInitializers public class SwiftVideoCompressPlugin : ObjectiveC.NSObject, Flutter.FlutterPlugin {
+  @objc public static func register(with registrar: any Flutter.FlutterPluginRegistrar)
+  @objc public func handle(_ call: Flutter.FlutterMethodCall, result: @escaping Flutter.FlutterResult)
+  public func getMediaInfoJson(_ path: Swift.String) -> [Swift.String : Any?]
+  @objc deinit
+}

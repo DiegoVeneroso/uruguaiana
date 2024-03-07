@@ -1,0 +1,17 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/FirebaseAuth.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/SystemService/FIRAuthStoredUserManager.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/SystemService/FIRAuthStoredUserManager.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRUser.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuth.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthAPNSTokenType.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthErrors.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthDataResult.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactor.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorAssertion.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorInfo.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorSession.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRUserInfo.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Storage/FIRAuthKeychainServices.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Storage/FIRAuthUserDefaults.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/User/FIRUser_Internal.h

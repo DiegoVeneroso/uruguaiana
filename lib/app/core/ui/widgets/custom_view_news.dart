@@ -58,13 +58,14 @@ class _CustomPlayerVideoState extends State<CustomViewNews> {
               decoration: BoxDecoration(
                 border: Border.symmetric(
                   horizontal: BorderSide(
-                    color: Get.theme.colorScheme.primary,
+                    // color: Get.theme.colorScheme.primary,
+                    color: Get.theme.colorScheme.background,
                     width: 1,
                   ),
                 ),
                 boxShadow: [
                   BoxShadow(
-                      color: Get.theme.colorScheme.primary,
+                      color: Get.theme.colorScheme.background,
                       blurRadius: 3.0,
                       offset: const Offset(0.0, 0.5))
                 ],

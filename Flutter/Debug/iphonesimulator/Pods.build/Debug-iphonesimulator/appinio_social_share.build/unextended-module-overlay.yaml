@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Debug-iphonesimulator/appinio_social_share/appinio_social_share.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/appinio_social_share.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Debug-iphonesimulator/appinio_social_share/appinio_social_share.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "appinio_social_share-Swift.h",
+      'external-contents': "/Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/appinio_social_share.build/unextended-interface-header.h",
+    }]
+    }]
+}

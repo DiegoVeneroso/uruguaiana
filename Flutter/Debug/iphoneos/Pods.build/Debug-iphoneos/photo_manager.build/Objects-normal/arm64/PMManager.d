@@ -1,0 +1,41 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphoneos/Pods.build/Debug-iphoneos/photo_manager.build/module.modulemap \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMManager.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/photo_manager/photo_manager-prefix.pch \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/NSString+PM_COMMON.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PHAsset+PM_COMMON.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMLogUtils.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PHAssetCollection+PM_COMMON.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PHAssetResource+PM_COMMON.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMAssetPathEntity.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMCacheContainer.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMConvertUtils.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMBaseFilter.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMFolderUtils.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMImageUtil.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMThumbLoadOption.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMManager.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMFileHelper.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/PMImport.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Modules/module.modulemap \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/Flutter.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterAppDelegate.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterMacros.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterPlugin.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterBinaryMessenger.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterChannels.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterCodecs.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterPlatformViews.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterTexture.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterCallbackCache.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterDartProject.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterEngine.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterEngineGroup.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
+  /Users/diego/Documents/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64/Flutter.framework/Headers/FlutterViewController.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMProgressHandlerProtocol.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMResultHandler.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMConvertProtocol.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMMD5Utils.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMPathFilterOption.h

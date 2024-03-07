@@ -89,7 +89,7 @@ class MyContactController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.my_contact);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -109,7 +109,7 @@ class MyContactController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.my_contact);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 

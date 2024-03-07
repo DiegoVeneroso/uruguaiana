@@ -163,7 +163,7 @@ class NotificationController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       _loading.toggle();
-      Get.offAndToNamed(Routes.notification);
+      Get.offAndToNamed(Routes.splash);
       _message(
         MessageModel(
           title: 'Parabéns!',
@@ -183,7 +183,7 @@ class NotificationController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       _loading.toggle();
-      Get.offAndToNamed(Routes.notification);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 

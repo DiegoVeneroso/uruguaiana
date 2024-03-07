@@ -74,86 +74,141 @@ class MyColaboratePage extends GetView<MyCollaborateController> {
                   ),
                 ),
               ),
-              Expanded(
-                child: Obx(() => ListView.separated(
-                      itemCount: controller.foundCollaborate.value.length,
-                      separatorBuilder: (BuildContext context, int index) =>
-                          const Divider(),
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          onTap: () {
-                            Get.toNamed(
-                              'my_collaborate_detail',
-                              parameters: {
-                                'idMyCollaborate': controller
-                                    .mycollaborateList[index].idCollaborate
-                                    .toString(),
-                                'name': controller.mycollaborateList[index].name
-                                    .toString(),
-                                'phone': controller
-                                    .mycollaborateList[index].phone
-                                    .toString(),
-                                'url_image': controller
-                                    .mycollaborateList[index].urlImage
-                                    .toString(),
-                                'description': controller
-                                    .mycollaborateList[index].description
-                                    .toString(),
-                                'date_time_created': controller
-                                    .mycollaborateList[index].dateTimeCreated
-                                    .toString(),
-                              },
-                            );
-                          },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          tileColor: Get.theme.colorScheme.primary,
-                          textColor: Get.theme.colorScheme.onPrimaryContainer,
-                          iconColor: Get.theme.colorScheme.onPrimaryContainer,
-                          titleTextStyle: const TextStyle(fontSize: 16),
-                          subtitleTextStyle: const TextStyle(fontSize: 14),
-                          leadingAndTrailingTextStyle:
-                              const TextStyle(fontSize: 50),
-                          title: AutoSizeText(
-                              minFontSize: 10,
-                              controller.foundCollaborate.value[index].name),
-                          subtitle: Row(
-                            children: [
-                              AutoSizeText(
-                                minFontSize: 10,
-                                controller.foundCollaborate.value[index].phone
-                                    .toString(),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              AutoSizeText(
-                                minFontSize: 10,
-                                DateFormat(DateFormat.ABBR_MONTH_DAY, 'pt_Br')
-                                    .format(
-                                  DateTime.parse(controller.foundCollaborate
-                                      .value[index].dateTimeCreated
-                                      .toString()),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              AutoSizeText(
-                                minFontSize: 10,
-                                DateFormat(DateFormat.HOUR24_MINUTE, 'pt_Br')
-                                    .format(
-                                  DateTime.parse(controller.foundCollaborate
-                                      .value[index].dateTimeCreated
-                                      .toString()),
-                                ),
-                              ),
-                            ],
+              FutureBuilder(
+                  future: Future(() => controller.mycollaborateList),
+                  builder: (context, snapshot) {
+                    if (snapshot.data!.isEmpty) {
+                      return Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Get.theme.colorScheme.secondary,
                           ),
-                        );
-                      },
-                    )),
-              ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 32.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Center(
+                                    child: AutoSizeText(
+                                      minFontSize: 10,
+                                      'Nenhuma colaboração cadastrada!',
+                                      style: Get.textTheme.titleLarge?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Get.theme.colorScheme.primary,
+                                          fontSize: 18),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Expanded(
+                        child: Obx(() => ListView.separated(
+                              itemCount:
+                                  controller.foundCollaborate.value.length,
+                              separatorBuilder:
+                                  (BuildContext context, int index) =>
+                                      const Divider(),
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  onTap: () {
+                                    Get.toNamed(
+                                      'my_collaborate_detail',
+                                      parameters: {
+                                        'idMyCollaborate': controller
+                                            .mycollaborateList[index]
+                                            .idCollaborate
+                                            .toString(),
+                                        'name': controller
+                                            .mycollaborateList[index].name
+                                            .toString(),
+                                        'phone': controller
+                                            .mycollaborateList[index].phone
+                                            .toString(),
+                                        'url_image': controller
+                                            .mycollaborateList[index].urlImage
+                                            .toString(),
+                                        'description': controller
+                                            .mycollaborateList[index]
+                                            .description
+                                            .toString(),
+                                        'date_time_created': controller
+                                            .mycollaborateList[index]
+                                            .dateTimeCreated
+                                            .toString(),
+                                      },
+                                    );
+                                  },
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  tileColor: Get.theme.colorScheme.primary,
+                                  textColor:
+                                      Get.theme.colorScheme.onPrimaryContainer,
+                                  iconColor:
+                                      Get.theme.colorScheme.onPrimaryContainer,
+                                  titleTextStyle: const TextStyle(fontSize: 16),
+                                  subtitleTextStyle:
+                                      const TextStyle(fontSize: 14),
+                                  leadingAndTrailingTextStyle:
+                                      const TextStyle(fontSize: 50),
+                                  title: AutoSizeText(
+                                      minFontSize: 10,
+                                      controller
+                                          .foundCollaborate.value[index].name),
+                                  subtitle: Row(
+                                    children: [
+                                      AutoSizeText(
+                                        minFontSize: 10,
+                                        controller
+                                            .foundCollaborate.value[index].phone
+                                            .toString(),
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      AutoSizeText(
+                                        minFontSize: 10,
+                                        DateFormat(DateFormat.ABBR_MONTH_DAY,
+                                                'pt_Br')
+                                            .format(
+                                          DateTime.parse(controller
+                                              .foundCollaborate
+                                              .value[index]
+                                              .dateTimeCreated
+                                              .toString()),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      AutoSizeText(
+                                        minFontSize: 10,
+                                        DateFormat(DateFormat.HOUR24_MINUTE,
+                                                'pt_Br')
+                                            .format(
+                                          DateTime.parse(controller
+                                              .foundCollaborate
+                                              .value[index]
+                                              .dateTimeCreated
+                                              .toString()),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            )),
+                      );
+                    }
+                  }),
             ],
           ),
         ),

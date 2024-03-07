@@ -1,0 +1,25 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/Mantle.framework/Mantle'
+exports:
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ _MTLBooleanValueTransformerName, _MTLEqualObjects, _MTLJSONAdapterErrorDomain, 
+                       _MTLJSONAdapterErrorExceptionThrown, _MTLJSONAdapterErrorInvalidJSONDictionary, 
+                       _MTLJSONAdapterErrorInvalidJSONMapping, _MTLJSONAdapterErrorNoClassFound, 
+                       _MTLJSONAdapterThrownExceptionErrorKey, _MTLSelectorWithCapitalizedKeyPattern, 
+                       _MTLSelectorWithKeyPattern, _MTLTransformerErrorHandlingErrorDomain, 
+                       _MTLTransformerErrorHandlingErrorInvalidInput, _MTLTransformerErrorHandlingInputValueErrorKey, 
+                       _MTLURLValueTransformerName, _MTLUUIDValueTransformerName, 
+                       _MantleVersionNumber, _MantleVersionString, _mtl_addMethods, 
+                       _mtl_addMethodsFromClass, _mtl_classBeforeSuperclass, _mtl_classIsKindOfClass, 
+                       _mtl_copyClassList, _mtl_copyClassListConformingToProtocol, 
+                       _mtl_copyPropertyAttributes, _mtl_copySubclassList, _mtl_executeCleanupBlock, 
+                       _mtl_getImmediateInstanceMethod, _mtl_getPropertyAccessorsForClass, 
+                       _mtl_injectMethods, _mtl_injectMethodsFromClass, _mtl_loadSpecialProtocol, 
+                       _mtl_removeMethod, _mtl_replaceMethods, _mtl_replaceMethodsFromClass, 
+                       _mtl_specialProtocolReadyForInjection, _mtl_stringFromTypedBytes ]
+    objc-classes:    [ MTLJSONAdapter, MTLModel, MTLReversibleValueTransformer, MTLValueTransformer, 
+                       PodsDummy_Mantle ]
+...

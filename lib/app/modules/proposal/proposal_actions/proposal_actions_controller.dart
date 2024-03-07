@@ -212,6 +212,8 @@ class ProposalActionsController extends GetxController
   _cropImage(File imgFile) async {
     final croppedFile = await ImageCropper().cropImage(
         sourcePath: imgFile.path,
+        compressFormat: ImageCompressFormat.png,
+        compressQuality: 50,
         aspectRatioPresets: Platform.isAndroid
             ? [CropAspectRatioPreset.ratio16x9]
             : [CropAspectRatioPreset.ratio16x9],
@@ -331,7 +333,7 @@ class ProposalActionsController extends GetxController
       await Future.delayed(const Duration(seconds: 1));
       loadingMessage.toggle();
 
-      Get.offAllNamed(Routes.proposal);
+      Get.offAllNamed(Routes.splash);
 
       // Get.offAndToNamed(Routes.proposal_actions, parameters: {
       //   'proposal_pilar_name': map['proposal_pilar_name'],
@@ -356,7 +358,7 @@ class ProposalActionsController extends GetxController
       await Future.delayed(const Duration(seconds: 2));
       loadingMessage.toggle();
 
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
 
       // Get.offAndToNamed(Routes.proposal_actions,
       //     parameters: {'proposal_pilar_name': map['proposal_pilar_name']});
@@ -398,7 +400,7 @@ class ProposalActionsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 
@@ -410,7 +412,7 @@ class ProposalActionsController extends GetxController
 
       await Future.delayed(const Duration(seconds: 1));
       loading.toggle();
-      Get.toNamed(Routes.proposal_actions, parameters: {
+      Get.toNamed(Routes.splash, parameters: {
         'proposal_pilar_name': map['proposal_pilar_name'].toString(),
       });
       _message(
@@ -432,7 +434,7 @@ class ProposalActionsController extends GetxController
       );
       await Future.delayed(const Duration(seconds: 2));
       loading.toggle();
-      Get.offAndToNamed(Routes.proposal);
+      Get.offAndToNamed(Routes.splash);
     }
   }
 

@@ -1,0 +1,61 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/FirebaseRemoteConfig.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigRealtime.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigRealtime.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/Private/RCNConfigFetch.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/Public/FirebaseRemoteConfig/FIRRemoteConfig.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/Interop/Analytics/Public/FIRAnalyticsInterop.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/GoogleUtilities.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/GoogleUtilities/GoogleUtilities-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/GULAppDelegateSwizzler.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/GULApplication.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/GULSceneDelegateSwizzler.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULAppEnvironmentUtil.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorable.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorage.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorageUserDefaults.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainStorage.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainUtils.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULNetworkInfo.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULSecureCoding.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULURLSessionDataResponse.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/NSURLSession+GULPromises.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLoggerLevel.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/Public/GoogleUtilities/GULNSData+zlib.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULMutableDictionary.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetwork.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkConstants.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkLoggerProtocol.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkMessageCode.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkURLSession.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/Reachability/Public/GoogleUtilities/GULReachabilityChecker.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/GoogleUtilities/GoogleUtilities/UserDefaults/Public/GoogleUtilities/GULUserDefaults.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRComponent.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRDependency.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIRLogger.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseCore/Extension/FIROptionsInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseInstallations/Source/Library/Private/FirebaseInstallationsInternal.h \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/FirebaseInstallations.build/module.modulemap \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/FirebaseInstallations/FirebaseInstallations-umbrella.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FirebaseInstallations.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallations.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsAuthTokenResult.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsErrors.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/Private/RCNConfigSettings.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNConfigConstants.h \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Sources/RCNDevice.h

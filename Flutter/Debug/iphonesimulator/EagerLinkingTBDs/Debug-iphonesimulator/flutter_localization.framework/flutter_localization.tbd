@@ -1,0 +1,26 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/flutter_localization.framework/flutter_localization'
+swift-abi-version: 7
+exports:
+  - targets:         [ x86_64-ios-simulator ]
+    symbols:         [ _Swift51Overrides, __Z34_swiftoverride_class_getSuperclassPKN5swift14TargetMetadataINS_9InProcessEEE, 
+                       __ZN5swift39swift51override_conformsToSwiftProtocolEPKNS_14TargetMetadataINS_9InProcessEEEPKNS_24TargetProtocolDescriptorIS1_EEN7__swift9__runtime4llvm9StringRefEPFPKNS_35TargetProtocolConformanceDescriptorIS1_EES4_S8_SC_E ]
+  - targets:         [ x86_64-ios-simulator, arm64-ios-simulator ]
+    symbols:         [ '_$s20flutter_localization30SwiftFlutterLocalizationPluginC6handle_6resultySo0D10MethodCallC_yypSgctFTj', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginC6handle_6resultySo0D10MethodCallC_yypSgctFTq', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginC8register4withySo0dF9Registrar_p_tFZ', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCACycfC', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCACycfc', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCMa', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCMn', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCMo', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCMu', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCN', 
+                       '_$s20flutter_localization30SwiftFlutterLocalizationPluginCfD', 
+                       _flutter_localizationVersionNumber, _flutter_localizationVersionString ]
+    objc-classes:    [ FlutterLocalizationPlugin, PodsDummy_flutter_localization, 
+                       _TtC20flutter_localization30SwiftFlutterLocalizationPlugin ]
+...
