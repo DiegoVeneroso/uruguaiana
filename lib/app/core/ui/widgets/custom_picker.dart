@@ -44,16 +44,6 @@ class CustomPickerState extends State<CustomPicker> {
     });
   }
 
-  Future<void> checkPermission(
-      Permission permission, BuildContext context) async {
-    final status = await permission.request();
-    if (status.isGranted) {
-      Get.snackbar('Atenção', 'Permitido');
-    } else {
-      Get.snackbar('Atenção', 'Não Permitido');
-    }
-  }
-
   Future<void> storageCheck() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
