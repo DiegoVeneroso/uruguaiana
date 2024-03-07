@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "a7b6da6a30f8ada62755cf7b01137512414dd56e96aaf09c51a47f4310644296"
+build_start_time: [1709757674, 911195000]
+build_end_time: [1709757676, 98389000]
+inputs:
+  "/Users/diego/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.5/darwin/Classes/SharedPreferencesPlugin.swift": [1709082237, 835431546]
+  "/Users/diego/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.5/darwin/Classes/messages.g.swift": [1709082237, 816167721]

@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "c0e78ccd60ad37b2be7725973e4d46ab1522fc66d01b3581fc95553c4b1630dd"
+build_start_time: [1709757669, 525244000]
+build_end_time: [1709757670, 874618000]
+inputs:
+  "/Users/diego/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.2/darwin/Classes/PathProviderPlugin.swift": [1709082234, 925478091]
+  "/Users/diego/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.2/darwin/Classes/messages.g.swift": [1709082234, 916059134]

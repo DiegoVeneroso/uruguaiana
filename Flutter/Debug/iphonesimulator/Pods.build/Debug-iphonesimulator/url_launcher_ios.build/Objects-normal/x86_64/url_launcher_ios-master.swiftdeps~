@@ -1,0 +1,9 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "9f78286fb8c8188b75d8dd451d12211e03ac74ce7308cfc8d19b6c02ed455422"
+build_start_time: [1709757676, 358210000]
+build_end_time: [1709757676, 456230000]
+inputs:
+  "/Users/diego/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.4/ios/Classes/Launcher.swift": !private [1709082236, 218606459]
+  "/Users/diego/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.4/ios/Classes/URLLaunchSession.swift": !private [1709082236, 235732224]
+  "/Users/diego/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.4/ios/Classes/URLLauncherPlugin.swift": !private [1709082236, 340588885]
+  "/Users/diego/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.4/ios/Classes/messages.g.swift": !private [1709082236, 264942545]

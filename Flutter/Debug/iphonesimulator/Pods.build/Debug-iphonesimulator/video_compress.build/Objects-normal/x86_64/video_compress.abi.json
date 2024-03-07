@@ -1,0 +1,946 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "video_compress"
+      },
+      {
+        "kind": "Import",
+        "name": "MobileCoreServices",
+        "printedName": "MobileCoreServices",
+        "declKind": "Import",
+        "moduleName": "video_compress"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AvController",
+        "printedName": "AvController",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "getVideoAsset",
+            "printedName": "getVideoAsset(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AVURLAsset",
+                "printedName": "AVFoundation.AVURLAsset",
+                "usr": "c:objc(cs)AVURLAsset"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress12AvControllerC13getVideoAssetySo10AVURLAssetC10Foundation3URLVF",
+            "mangledName": "$s14video_compress12AvControllerC13getVideoAssetySo10AVURLAssetC10Foundation3URLVF",
+            "moduleName": "video_compress",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getTrack",
+            "printedName": "getTrack(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "AVFoundation.AVAssetTrack?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AVAssetTrack",
+                    "printedName": "AVFoundation.AVAssetTrack",
+                    "usr": "c:objc(cs)AVAssetTrack"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AVURLAsset",
+                "printedName": "AVFoundation.AVURLAsset",
+                "usr": "c:objc(cs)AVURLAsset"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress12AvControllerC8getTrackySo07AVAssetF0CSgSo10AVURLAssetCF",
+            "mangledName": "$s14video_compress12AvControllerC8getTrackySo07AVAssetF0CSgSo10AVURLAssetCF",
+            "moduleName": "video_compress",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getVideoOrientation",
+            "printedName": "getVideoOrientation(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress12AvControllerC19getVideoOrientationySiSgSSF",
+            "mangledName": "$s14video_compress12AvControllerC19getVideoOrientationySiSgSSF",
+            "moduleName": "video_compress",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getMetaDataByTag",
+            "printedName": "getMetaDataByTag(_:key:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AVAsset",
+                "printedName": "AVFoundation.AVAsset",
+                "usr": "c:objc(cs)AVAsset"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress12AvControllerC16getMetaDataByTag_3keySSSo7AVAssetC_SStF",
+            "mangledName": "$s14video_compress12AvControllerC16getMetaDataByTag_3keySSSo7AVAssetC_SStF",
+            "moduleName": "video_compress",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AvController",
+                "printedName": "video_compress.AvController",
+                "usr": "c:@M@video_compress@objc(cs)AvController"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@video_compress@objc(cs)AvController(im)init",
+            "mangledName": "$s14video_compress12AvControllerCACycfc",
+            "moduleName": "video_compress",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@video_compress@objc(cs)AvController",
+        "mangledName": "$s14video_compress12AvControllerC",
+        "moduleName": "video_compress",
+        "isOpen": true,
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "video_compress"
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "video_compress"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SwiftVideoCompressPlugin",
+        "printedName": "SwiftVideoCompressPlugin",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(channel:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SwiftVideoCompressPlugin",
+                "printedName": "video_compress.SwiftVideoCompressPlugin",
+                "usr": "c:@M@video_compress@objc(cs)SwiftVideoCompressPlugin"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodChannel",
+                "printedName": "Flutter.FlutterMethodChannel",
+                "usr": "c:objc(cs)FlutterMethodChannel"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:14video_compress24SwiftVideoCompressPluginC7channelACSo20FlutterMethodChannelC_tcfc",
+            "mangledName": "$s14video_compress24SwiftVideoCompressPluginC7channelACSo20FlutterMethodChannelC_tcfc",
+            "moduleName": "video_compress",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "Flutter.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@video_compress@objc(cs)SwiftVideoCompressPlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s14video_compress24SwiftVideoCompressPluginC8register4withySo07FlutterF9Registrar_p_tFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(_:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodCall",
+                "printedName": "Flutter.FlutterMethodCall",
+                "usr": "c:objc(cs)FlutterMethodCall"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@video_compress@objc(cs)SwiftVideoCompressPlugin(im)handleMethodCall:result:",
+            "mangledName": "$s14video_compress24SwiftVideoCompressPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF",
+            "moduleName": "video_compress",
+            "isOpen": true,
+            "objc_name": "handleMethodCall:result:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getMediaInfoJson",
+            "printedName": "getMediaInfoJson(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress24SwiftVideoCompressPluginC16getMediaInfoJsonySDySSypSgGSSF",
+            "mangledName": "$s14video_compress24SwiftVideoCompressPluginC16getMediaInfoJsonySDySSypSgGSSF",
+            "moduleName": "video_compress",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SwiftVideoCompressPlugin",
+                "printedName": "video_compress.SwiftVideoCompressPlugin",
+                "usr": "c:@M@video_compress@objc(cs)SwiftVideoCompressPlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@video_compress@objc(cs)SwiftVideoCompressPlugin(im)init",
+            "mangledName": "$s14video_compress24SwiftVideoCompressPluginCACycfc",
+            "moduleName": "video_compress",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@video_compress@objc(cs)SwiftVideoCompressPlugin",
+        "mangledName": "$s14video_compress24SwiftVideoCompressPluginC",
+        "moduleName": "video_compress",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Utility",
+        "printedName": "Utility",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "fileManager",
+            "printedName": "fileManager",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FileManager",
+                "printedName": "Foundation.FileManager",
+                "usr": "c:objc(cs)NSFileManager"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:14video_compress7UtilityC11fileManagerSo06NSFileE0CvpZ",
+            "mangledName": "$s14video_compress7UtilityC11fileManagerSo06NSFileE0CvpZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FileManager",
+                    "printedName": "Foundation.FileManager",
+                    "usr": "c:objc(cs)NSFileManager"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:14video_compress7UtilityC11fileManagerSo06NSFileE0CvgZ",
+                "mangledName": "$s14video_compress7UtilityC11fileManagerSo06NSFileE0CvgZ",
+                "moduleName": "video_compress",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "basePath",
+            "printedName": "basePath()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC8basePathSSyFZ",
+            "mangledName": "$s14video_compress7UtilityC8basePathSSyFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stripFileExtension",
+            "printedName": "stripFileExtension(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC18stripFileExtensionyS2SFZ",
+            "mangledName": "$s14video_compress7UtilityC18stripFileExtensionyS2SFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getFileName",
+            "printedName": "getFileName(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC11getFileNameyS2SFZ",
+            "mangledName": "$s14video_compress7UtilityC11getFileNameyS2SFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getPathUrl",
+            "printedName": "getPathUrl(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC10getPathUrly10Foundation3URLVSSFZ",
+            "mangledName": "$s14video_compress7UtilityC10getPathUrly10Foundation3URLVSSFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "excludeFileProtocol",
+            "printedName": "excludeFileProtocol(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC19excludeFileProtocolyS2SFZ",
+            "mangledName": "$s14video_compress7UtilityC19excludeFileProtocolyS2SFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "excludeEncoding",
+            "printedName": "excludeEncoding(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC15excludeEncodingyS2SFZ",
+            "mangledName": "$s14video_compress7UtilityC15excludeEncodingyS2SFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "keyValueToJson",
+            "printedName": "keyValueToJson(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any?]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC14keyValueToJsonySSSDySSypSgGFZ",
+            "mangledName": "$s14video_compress7UtilityC14keyValueToJsonySSSDySSypSgGFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "deleteFile",
+            "printedName": "deleteFile(_:clear:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:14video_compress7UtilityC10deleteFile_5clearySS_SbtFZ",
+            "mangledName": "$s14video_compress7UtilityC10deleteFile_5clearySS_SbtFZ",
+            "moduleName": "video_compress",
+            "static": true,
+            "declAttributes": [
+              "Final"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Utility",
+                "printedName": "video_compress.Utility",
+                "usr": "c:@M@video_compress@objc(cs)Utility"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@video_compress@objc(cs)Utility(im)init",
+            "mangledName": "$s14video_compress7UtilityCACycfc",
+            "moduleName": "video_compress",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@video_compress@objc(cs)Utility",
+        "mangledName": "$s14video_compress7UtilityC",
+        "moduleName": "video_compress",
+        "isOpen": true,
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/video_compress-3.1.2\/ios\/Classes\/SwiftVideoCompressPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 131,
+      "length": 16,
+      "value": "\"video_compress\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/video_compress-3.1.2\/ios\/Classes\/SwiftVideoCompressPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 232,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/video_compress-3.1.2\/ios\/Classes\/SwiftVideoCompressPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 49,
+      "length": 24,
+      "value": "\"video_compress.SwiftVideoCompressPlugin\""
+    },
+    {
+      "filePath": "\/Users\/diego\/.pub-cache\/hosted\/pub.dev\/video_compress-3.1.2\/ios\/Classes\/Utility.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1668,
+      "length": 5,
+      "value": "false"
+    }
+  ]
+}

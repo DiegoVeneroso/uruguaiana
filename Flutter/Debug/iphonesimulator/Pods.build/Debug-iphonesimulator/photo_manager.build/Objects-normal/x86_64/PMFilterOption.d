@@ -1,0 +1,9 @@
+dependencies: \
+  /Users/diego/Documents/projetos/uruguaiana/Flutter/Debug/iphonesimulator/Pods.build/Debug-iphonesimulator/photo_manager.build/module.modulemap \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMFilterOption.m \
+  /Users/diego/Documents/projetos/uruguaiana/ios/Pods/Target\ Support\ Files/photo_manager/photo_manager-prefix.pch \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMFilterOption.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMBaseFilter.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMRequestTypeUtils.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/NSString+PM_COMMON.h \
+  /Users/diego/.pub-cache/hosted/pub.dev/photo_manager-2.8.1/ios/Classes/core/PMLogUtils.h

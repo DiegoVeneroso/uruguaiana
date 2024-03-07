@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "6f6037dcf401eedb036cc93972f49c32a0a90ca7b1941aafc387fd2273b4e29d"
+build_start_time: [1709757661, 37298000]
+build_end_time: [1709757661, 115856000]
+inputs:
+  "/Users/diego/.pub-cache/hosted/pub.dev/flutter_web_auth_2-2.2.1/ios/Classes/SwiftFlutterWebAuth2Plugin.swift": !private [1709082241, 593680221]
