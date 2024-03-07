@@ -96,7 +96,7 @@ class MyColaboratePage extends GetView<MyCollaborateController> {
                                   child: Center(
                                     child: AutoSizeText(
                                       minFontSize: 10,
-                                      'Nenhuma colaboração cadastrada!',
+                                      'Sem colaborações.',
                                       style: Get.textTheme.titleLarge?.copyWith(
                                           fontWeight: FontWeight.bold,
                                           color: Get.theme.colorScheme.primary,

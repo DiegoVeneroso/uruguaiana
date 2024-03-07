@@ -46,9 +46,9 @@ class CustomPickerState extends State<CustomPicker> {
 
   Future<void> storageCheck() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
 
     if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
       if (androidInfo.version.sdkInt >= 33) {
         isVideosPermission = await Permission.videos.status.isGranted;
         isPhotosPermission = await Permission.photos.status.isGranted;
