@@ -54,6 +54,11 @@ import '../modules/calendar/calendar_add_page.dart';
 import '../modules/calendar/calendar_bindings.dart';
 import '../modules/collaborate/collaborate_add_page.dart';
 import '../modules/donate/donate_edit_page.dart';
+import '../modules/finance/finance_add_page.dart';
+import '../modules/finance/finance_bindings.dart';
+import '../modules/finance/finance_detail_page.dart';
+import '../modules/finance/finance_edit_page.dart';
+import '../modules/finance/finance_page.dart';
 import '../modules/home/home_add_page.dart';
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_edit_page.dart';
@@ -340,6 +345,28 @@ class AppPages {
       name: _Paths.question_response,
       page: () => const QuestionResponsePage(),
       binding: QuestionBindings(),
+    ),
+
+    //finance
+    GetPage(
+      name: _Paths.finance,
+      page: () => FinancePage(),
+      binding: FinanceBindings(),
+    ),
+    GetPage(
+      name: _Paths.finance_add,
+      page: () => const FinanceAddPage(),
+      binding: FinanceBindings(),
+    ),
+    GetPage(
+      name: _Paths.finance_detail,
+      page: () => const FinanceDetailPage(),
+      binding: FinanceBindings(),
+    ),
+    GetPage(
+      name: _Paths.finance_edit,
+      page: () => const FinanceEditPage(),
+      binding: FinanceBindings(),
     ),
   ];
 }

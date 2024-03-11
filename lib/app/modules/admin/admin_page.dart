@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -306,6 +308,150 @@ class AdminPage extends GetView<AdminController> {
                                   AutoSizeText(
                                     minFontSize: 10,
                                     'Enquete',
+                                    style: TextStyle(
+                                      color: Get.theme.colorScheme.background,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.finance);
+                            },
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Get.theme.colorScheme.primary,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.dollarSign,
+                                    color: Get.theme.colorScheme.background,
+                                    size: 60,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  AutoSizeText(
+                                    minFontSize: 10,
+                                    'Finanças',
+                                    style: TextStyle(
+                                      color: Get.theme.colorScheme.background,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.collaborators);
+                            },
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Get.theme.colorScheme.primary,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.peopleGroup,
+                                    color: Get.theme.colorScheme.background,
+                                    size: 60,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  AutoSizeText(
+                                    minFontSize: 10,
+                                    'Recusos Humanos',
+                                    style: TextStyle(
+                                      color: Get.theme.colorScheme.background,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.activities);
+                            },
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Get.theme.colorScheme.primary,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.listCheck,
+                                    color: Get.theme.colorScheme.background,
+                                    size: 60,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  AutoSizeText(
+                                    minFontSize: 10,
+                                    'Atividades',
+                                    style: TextStyle(
+                                      color: Get.theme.colorScheme.background,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(Routes.question);
+                            },
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              color: Get.theme.colorScheme.primary,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.personCircleCheck,
+                                    color: Get.theme.colorScheme.background,
+                                    size: 60,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  AutoSizeText(
+                                    minFontSize: 10,
+                                    'Demandas cidadãos',
                                     style: TextStyle(
                                       color: Get.theme.colorScheme.background,
                                       fontSize: 18,

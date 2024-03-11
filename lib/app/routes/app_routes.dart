@@ -62,6 +62,21 @@ abstract class Routes {
   static const question_add = _Paths.question_add;
   static const question_detail = _Paths.question_detail;
   static const question_response = _Paths.question_response;
+
+  static const finance = _Paths.finance;
+  static const finance_add = _Paths.finance_add;
+  static const finance_detail = _Paths.finance_detail;
+  static const finance_edit = _Paths.finance_edit;
+
+  static const collaborators = _Paths.collaborators;
+  static const collaborators_add = _Paths.collaborators_add;
+  static const collaborators_detail = _Paths.collaborators_detail;
+  static const collaborators_edit = _Paths.collaborators_edit;
+
+  static const activities = _Paths.activities;
+  static const activities_add = _Paths.activities_add;
+  static const activities_detail = _Paths.activities_detail;
+  static const activities_edit = _Paths.activities_edit;
 }
 
 abstract class _Paths {
@@ -124,4 +139,19 @@ abstract class _Paths {
   static const question_add = '/question_add';
   static const question_detail = '/question_detail';
   static const question_response = '/question_response';
+
+  static const finance = '/finance';
+  static const finance_add = '/finance_add';
+  static const finance_detail = '/finance_detail';
+  static const finance_edit = '/finance_edit';
+
+  static const collaborators = '/collaborators';
+  static const collaborators_add = '/collaborators_add';
+  static const collaborators_detail = '/collaborators_detail';
+  static const collaborators_edit = '/collaborators_edit';
+
+  static const activities = '/activities';
+  static const activities_add = '/activities_add';
+  static const activities_detail = '/activities_detail';
+  static const activities_edit = '/activities_edit';
 }
