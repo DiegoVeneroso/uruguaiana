@@ -767,7 +767,7 @@ class _FinancePageState extends State<FinancePage> {
                                                                         8.0),
                                                                 child: Icon(
                                                                   FontAwesomeIcons
-                                                                      .circlePlus,
+                                                                      .circleMinus,
                                                                   color: Get
                                                                       .theme
                                                                       .colorScheme
