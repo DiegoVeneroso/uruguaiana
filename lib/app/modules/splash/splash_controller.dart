@@ -17,17 +17,18 @@ class SplashController extends GetxController {
     super.onReady();
 
     Future.delayed(const Duration(seconds: 5), () async {
-      if (storage.read('id_user') == null || storage.read('id_user') == '') {
-        loginAnonymous();
-        getTokeNotification();
-        Get.offAllNamed(Routes.news);
-        onClickBackgroundNotification();
-      } else {
-        log('usuario anonimo logado admin!');
-        getTokeNotification();
-        Get.offAllNamed(Routes.news);
-        onClickBackgroundNotification();
-      }
+      Get.toNamed(Routes.jobs);
+      // if (storage.read('id_user') == null || storage.read('id_user') == '') {
+      //   loginAnonymous();
+      //   getTokeNotification();
+      //   Get.offAllNamed(Routes.news);
+      //   onClickBackgroundNotification();
+      // } else {
+      //   log('usuario anonimo logado admin!');
+      //   getTokeNotification();
+      //   Get.offAllNamed(Routes.news);
+      //   onClickBackgroundNotification();
+      // }
     });
 
     var collaboratesStorage = await storage.read('my_collaborates_list');

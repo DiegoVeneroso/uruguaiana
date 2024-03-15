@@ -9,54 +9,99 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
-import '../models/news_model.dart';
+import '../models/jobs_model.dart';
 
-class NewsRepository {
+class JobsRepository {
   RealtimeSubscription? subscription;
-  RxList<NewsModel> listItem = <NewsModel>[].obs;
+  RxList<JobsModel> listItem = <JobsModel>[].obs;
   RxString? search = ''.obs;
   GetStorage storage = GetStorage();
 
-  Future<List<NewsModel>> loadDataRepository() async {
+  Future<List<JobsModel>> loadDataRepository() async {
     try {
-      DocumentList response;
+      // DocumentList response;
 
-      if (search?.value != '') {
-        response = await ApiClient.databases.listDocuments(
-          databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
-          queries: [Query.search("title", search!.value.toString())],
-        );
+      // if (search?.value != '') {
+      //   response = await ApiClient.databases.listDocuments(
+      //     databaseId: constants.DATABASE_ID,
+      //     collectionId: constants.COLLETION_NEWS_ID,
+      //     queries: [Query.search("title", search!.value.toString())],
+      //   );
 
-        var items = response.documents.reversed
-            .map((docmodel) => NewsModel(
-                  idNews: docmodel.data['idNews'],
-                  title: docmodel.data['title'],
-                  urlImage: docmodel.data['url_image'],
-                  description: docmodel.data['description'],
-                  date: docmodel.data['date'],
-                ))
-            .toList();
+      //   var items = response.documents.reversed
+      //       .map((docmodel) => JobsModel(
+      //             idJob: docmodel.data['idJob'],
+      //             name: docmodel.data['name'],
+      //             cpf: docmodel.data['cpf'],
+      //             phone: docmodel.data['phone'],
+      //             pix: docmodel.data['pix'],
+      //             dateOld: docmodel.data['dateOld'],
+      //           ))
+      //       .toList();
 
-        return items;
-      } else {
-        response = await ApiClient.databases.listDocuments(
-          databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
-        );
+      //   return items;
+      // } else {
+      //   response = await ApiClient.databases.listDocuments(
+      //     databaseId: constants.DATABASE_ID,
+      //     collectionId: constants.COLLETION_NEWS_ID,
+      //   );
 
-        var items = response.documents.reversed
-            .map((docmodel) => NewsModel(
-                  idNews: docmodel.data['idNews'],
-                  title: docmodel.data['title'],
-                  urlImage: docmodel.data['url_image'],
-                  description: docmodel.data['description'],
-                  date: docmodel.data['date'],
-                ))
-            .toList();
+      //   var items = response.documents.reversed
+      //       .map((docmodel) => JobsModel(
+      //             idJob: docmodel.data['idJob'],
+      //             name: docmodel.data['name'],
+      //             cpf: docmodel.data['cpf'],
+      //             phone: docmodel.data['phone'],
+      //             pix: docmodel.data['pix'],
+      //             dateOld: docmodel.data['dateOld'],
+      //           ))
+      //       .toList();
 
-        return items;
-      }
+      //   return items;
+      // }
+
+      return Future.delayed(const Duration(seconds: 2))
+          .then((value) => <JobsModel>[
+                JobsModel(
+                  name: 'Diego Veneroso Pereira da Silva',
+                  phone: '(55) 984598383',
+                  address: 'Rua Eustaquio Ormazabal, 3234, bairro nova espenca',
+                  cpf: '00641810067',
+                  rg: '4081810378',
+                  old: '38',
+                  dateInitJob: 'pix',
+                  urlDocument: 'fdasf dsa fdsaf dsf asdf sd',
+                  urlAvatar: 'assets/images/profile_avatar.png',
+                  pix: '00641810067',
+                  function: 'Auxiliar de marketing individualizado',
+                ),
+                JobsModel(
+                  name: 'Diego Veneroso Pereira da Silva',
+                  phone: '(55) 984598383',
+                  address: 'Rua Eustaquio Ormazabal, 3234, bairro nova espenca',
+                  cpf: '00641810067',
+                  rg: '4081810378',
+                  old: '38',
+                  dateInitJob: 'pix',
+                  urlDocument: 'fdasf dsa fdsaf dsf asdf sd',
+                  urlAvatar: 'assets/images/profile_avatar.png',
+                  pix: '00641810067',
+                  function: 'Planfetagem',
+                ),
+                JobsModel(
+                  name: 'Diego Veneroso Pereira da Silva',
+                  phone: '(55) 984598383',
+                  address: 'Rua Eustaquio Ormazabal, 3234, bairro nova espenca',
+                  cpf: '00641810067',
+                  rg: '4081810378',
+                  old: '38',
+                  dateInitJob: 'pix',
+                  urlDocument: 'fdasf dsa fdsaf dsf asdf sd',
+                  urlAvatar: 'assets/images/profile_avatar.png',
+                  pix: '00641810067',
+                  function: 'Planfetagem2',
+                ),
+              ]);
     } on AppwriteException catch (e) {
       log(e.response['type']);
 
@@ -72,7 +117,7 @@ class NewsRepository {
     return response;
   }
 
-  newsAddRepository(Map map) async {
+  jobsAddRepository(Map map) async {
     try {
       final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -81,8 +126,6 @@ class NewsRepository {
 
       var urlImage =
           '${constants.API_END_POINT_STORAGE}${constants.STORAGE_BUCKETS}/files/$idUnique/view?project=${constants.PROJECT_ID}';
-
-  
 
       await ApiClient.storage.createFile(
         bucketId: constants.STORAGE_BUCKETS,
@@ -98,7 +141,7 @@ class NewsRepository {
           collectionId: constants.COLLETION_NEWS_ID,
           documentId: idUnique,
           data: {
-            'idNews': idUnique,
+            'idJobs': idUnique,
             'title': map["title"],
             'url_image': urlImage,
             'description': map["description"],
@@ -115,17 +158,17 @@ class NewsRepository {
     }
   }
 
-  newsDeleteRepository(String idNews) async {
+  jobsDeleteRepository(String idJobs) async {
     try {
       await ApiClient.storage.deleteFile(
         bucketId: constants.STORAGE_BUCKETS,
-        fileId: idNews,
+        fileId: idJobs,
       );
 
       await ApiClient.databases.deleteDocument(
         databaseId: constants.DATABASE_ID,
         collectionId: constants.COLLETION_NEWS_ID,
-        documentId: idNews,
+        documentId: idJobs,
       );
     } on AppwriteException catch (e) {
       log(e.response['type']);
@@ -134,13 +177,13 @@ class NewsRepository {
     }
   }
 
-  newsUpdateRepository(Map map) async {
+  jobsUpdateRepository(Map map) async {
     try {
       if (map["url_image"] == '') {
         await ApiClient.databases.updateDocument(
             databaseId: constants.DATABASE_ID,
             collectionId: constants.COLLETION_NEWS_ID,
-            documentId: map["idNews"],
+            documentId: map["idJobs"],
             data: {
               'title': map["title"],
               'description': map["description"],
@@ -150,10 +193,10 @@ class NewsRepository {
       } else {
         await ApiClient.storage.deleteFile(
           bucketId: constants.STORAGE_BUCKETS,
-          fileId: map["idNews"],
+          fileId: map["idJobs"],
         );
 
-        final idUnique = map["idNews"];
+        final idUnique = map["idJobs"];
 
         String fileName = "$idUnique."
             "${map["url_image"].toString().split(".").last}";
@@ -173,7 +216,7 @@ class NewsRepository {
         await ApiClient.databases.updateDocument(
             databaseId: constants.DATABASE_ID,
             collectionId: constants.COLLETION_NEWS_ID,
-            documentId: map["idNews"],
+            documentId: map["idJobs"],
             data: {
               'title': map["title"],
               'url_image': urlImage,

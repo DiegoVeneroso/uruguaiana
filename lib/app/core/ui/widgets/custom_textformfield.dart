@@ -13,6 +13,7 @@ class CustomTextformfield extends StatelessWidget {
   bool visibility;
   final bool cellMask;
   final bool moneyMask;
+  final bool dateMask;
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChange;
   final RxBool isVisible = false.obs;
@@ -28,6 +29,7 @@ class CustomTextformfield extends StatelessWidget {
     this.visibility = false,
     this.cellMask = false,
     this.moneyMask = false,
+    this.dateMask = false,
     this.validator,
     this.onChange,
     this.maxlines = 1,
@@ -37,6 +39,11 @@ class CustomTextformfield extends StatelessWidget {
 
   var maskFormatter = MaskTextInputFormatter(
       mask: '(##) #####-####',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
+
+  var dateFormatter = MaskTextInputFormatter(
+      mask: '##/##/####',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 
@@ -57,7 +64,9 @@ class CustomTextformfield extends StatelessWidget {
                     FilteringTextInputFormatter.digitsOnly,
                     CentavosInputFormatter(),
                   ]
-                : [],
+                : dateMask == true
+                    ? [dateFormatter]
+                    : [],
         controller: controller,
         obscureText: !isVisible.value ? obscureText : false,
         validator: validator,

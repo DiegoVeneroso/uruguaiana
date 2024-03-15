@@ -359,7 +359,7 @@ class AdminPage extends GetView<AdminController> {
                           padding: const EdgeInsets.all(4.0),
                           child: GestureDetector(
                             onTap: () {
-                              Get.toNamed(Routes.collaborators);
+                              Get.toNamed(Routes.jobs);
                             },
                             child: Card(
                               shape: RoundedRectangleBorder(

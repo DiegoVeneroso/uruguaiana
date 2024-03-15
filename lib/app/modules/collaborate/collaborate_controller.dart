@@ -103,7 +103,9 @@ class CollaborateController extends GetxController
         .pickImage(source: ImageSource.gallery, imageQuality: 50);
 
     if (imageFile != null) {
-      await _cropImage(File(imageFile!.path));
+      imageFile = await _cropImage(File(imageFile!.path));
+      print('####leg');
+      print(imageFile?.length());
       _message(
         MessageModel(
           title: 'Parabéns!',

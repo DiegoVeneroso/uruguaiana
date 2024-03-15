@@ -7,6 +7,11 @@ import 'package:eu_faco_parte/app/modules/donate/donate_add_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_admin_page.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_bindings.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_credentials.dart';
+import 'package:eu_faco_parte/app/modules/jobs/jobs_add_page.dart';
+import 'package:eu_faco_parte/app/modules/jobs/jobs_bindings.dart';
+import 'package:eu_faco_parte/app/modules/jobs/jobs_detail_page.dart';
+import 'package:eu_faco_parte/app/modules/jobs/jobs_edit_page.dart';
+import 'package:eu_faco_parte/app/modules/jobs/jobs_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_add_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_bindings.dart';
 import 'package:eu_faco_parte/app/modules/question/question_detail_page.dart';
@@ -350,7 +355,7 @@ class AppPages {
     //finance
     GetPage(
       name: _Paths.finance,
-      page: () => FinancePage(),
+      page: () => const FinancePage(),
       binding: FinanceBindings(),
     ),
     GetPage(
@@ -367,6 +372,28 @@ class AppPages {
       name: _Paths.finance_edit,
       page: () => const FinanceEditPage(),
       binding: FinanceBindings(),
+    ),
+
+    //jobs
+    GetPage(
+      name: _Paths.jobs,
+      page: () => const JobsPage(),
+      binding: JobsBindings(),
+    ),
+    GetPage(
+      name: _Paths.jobs_add,
+      page: () => const JobsAddPage(),
+      binding: JobsBindings(),
+    ),
+    GetPage(
+      name: _Paths.jobs_edit,
+      page: () => const JobsEditPage(),
+      binding: JobsBindings(),
+    ),
+    GetPage(
+      name: _Paths.jobs_detail,
+      page: () => JobsDetailPage(),
+      binding: JobsBindings(),
     ),
   ];
 }

@@ -68,10 +68,10 @@ abstract class Routes {
   static const finance_detail = _Paths.finance_detail;
   static const finance_edit = _Paths.finance_edit;
 
-  static const collaborators = _Paths.collaborators;
-  static const collaborators_add = _Paths.collaborators_add;
-  static const collaborators_detail = _Paths.collaborators_detail;
-  static const collaborators_edit = _Paths.collaborators_edit;
+  static const jobs = _Paths.jobs;
+  static const jobs_add = _Paths.jobs_add;
+  static const jobs_detail = _Paths.jobs_detail;
+  static const jobs_edit = _Paths.jobs_edit;
 
   static const activities = _Paths.activities;
   static const activities_add = _Paths.activities_add;
@@ -145,10 +145,10 @@ abstract class _Paths {
   static const finance_detail = '/finance_detail';
   static const finance_edit = '/finance_edit';
 
-  static const collaborators = '/collaborators';
-  static const collaborators_add = '/collaborators_add';
-  static const collaborators_detail = '/collaborators_detail';
-  static const collaborators_edit = '/collaborators_edit';
+  static const jobs = '/jobs';
+  static const jobs_add = '/jobs_add';
+  static const jobs_detail = '/jobs_detail';
+  static const jobs_edit = '/jobs_edit';
 
   static const activities = '/activities';
   static const activities_add = '/activities_add';

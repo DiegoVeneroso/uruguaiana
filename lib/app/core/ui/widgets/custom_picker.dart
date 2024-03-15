@@ -1,7 +1,13 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,8 +21,20 @@ import 'package:video_compress/video_compress.dart';
 import 'custom_player_video.dart';
 
 class CustomPicker extends StatefulWidget {
-  const CustomPicker({
+  String label;
+  String validatorMesssage;
+  bool pickerImageGalery;
+  bool pickerImageCamera;
+  bool pickerVideoGalery;
+  bool pickerVideoCamera;
+  CustomPicker({
     Key? key,
+    this.label = 'Adicionar',
+    this.validatorMesssage = 'Mídia é obrigatória',
+    this.pickerImageGalery = false,
+    this.pickerVideoGalery = false,
+    this.pickerImageCamera = false,
+    this.pickerVideoCamera = false,
   }) : super(key: key);
 
   @override
@@ -116,26 +134,29 @@ class CustomPickerState extends State<CustomPicker> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        CustomButton(
-                                          label: 'Foto da Galeria',
-                                          height: 40,
-                                          width: Get.width * .50,
-                                          onPressed: () async {
-                                            Get.back();
-                                            await storageCheck();
+                                        Visibility(
+                                          visible: widget.pickerImageGalery,
+                                          child: CustomButton(
+                                            label: 'Foto da Galeria',
+                                            height: 40,
+                                            width: Get.width * .50,
+                                            onPressed: () async {
+                                              Get.back();
+                                              await storageCheck();
 
-                                            if (isStoragePermission &&
-                                                isVideosPermission &&
-                                                isPhotosPermission) {
-                                            } else {
-                                              await pickImageFileFromGalery();
-                                              setState(
-                                                () {
-                                                  imageFile;
-                                                },
-                                              );
-                                            }
-                                          },
+                                              if (isStoragePermission &&
+                                                  isVideosPermission &&
+                                                  isPhotosPermission) {
+                                              } else {
+                                                await pickImageFileFromGalery();
+                                                setState(
+                                                  () {
+                                                    imageFile;
+                                                  },
+                                                );
+                                              }
+                                            },
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -155,77 +176,86 @@ class CustomPickerState extends State<CustomPicker> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          CustomButton(
-                                            label: 'Video da Galeria',
-                                            height: 40,
-                                            width: Get.width * .50,
-                                            onPressed: () async {
-                                              Get.back();
+                                          Visibility(
+                                            visible: widget.pickerVideoGalery,
+                                            child: CustomButton(
+                                              label: 'Video da Galeria',
+                                              height: 40,
+                                              width: Get.width * .50,
+                                              onPressed: () async {
+                                                Get.back();
 
-                                              await storageCheck();
+                                                await storageCheck();
 
-                                              if (isStoragePermission &&
-                                                  isVideosPermission &&
-                                                  isPhotosPermission) {
-                                              } else {
-                                                await pickVideoFileFromGalery();
-                                                setState(
-                                                  () {
-                                                    imageFile;
-                                                  },
-                                                );
-                                              }
-                                            },
+                                                if (isStoragePermission &&
+                                                    isVideosPermission &&
+                                                    isPhotosPermission) {
+                                                } else {
+                                                  await pickVideoFileFromGalery();
+                                                  setState(
+                                                    () {
+                                                      imageFile;
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                            ),
                                           ),
                                           const SizedBox(
                                             height: 15,
                                           ),
-                                          CustomButton(
-                                            label: 'Tirar Foto',
-                                            height: 40,
-                                            width: Get.width * .50,
-                                            onPressed: () async {
-                                              Get.back();
+                                          Visibility(
+                                            visible: widget.pickerImageCamera,
+                                            child: CustomButton(
+                                              label: 'Tirar Foto',
+                                              height: 40,
+                                              width: Get.width * .50,
+                                              onPressed: () async {
+                                                Get.back();
 
-                                              await storageCheck();
+                                                await storageCheck();
 
-                                              if (isStoragePermission &&
-                                                  isVideosPermission &&
-                                                  isPhotosPermission) {
-                                              } else {
-                                                await captureImageFileFromCamera();
-                                                setState(
-                                                  () {
-                                                    imageFile;
-                                                  },
-                                                );
-                                              }
-                                            },
+                                                if (isStoragePermission &&
+                                                    isVideosPermission &&
+                                                    isPhotosPermission) {
+                                                } else {
+                                                  await captureImageFileFromCamera();
+                                                  setState(
+                                                    () {
+                                                      imageFile;
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                            ),
                                           ),
                                           const SizedBox(
                                             height: 15,
                                           ),
-                                          CustomButton(
-                                            label: 'Gravar video',
-                                            height: 40,
-                                            width: Get.width * .50,
-                                            onPressed: () async {
-                                              Get.back();
+                                          Visibility(
+                                            visible: widget.pickerVideoCamera,
+                                            child: CustomButton(
+                                              label: 'Gravar video',
+                                              height: 40,
+                                              width: Get.width * .50,
+                                              onPressed: () async {
+                                                Get.back();
 
-                                              await storageCheck();
+                                                await storageCheck();
 
-                                              if (isStoragePermission &&
-                                                  isVideosPermission &&
-                                                  isPhotosPermission) {
-                                              } else {
-                                                await capturaVideoFileFromCamera();
-                                                setState(
-                                                  () {
-                                                    imageFile;
-                                                  },
-                                                );
-                                              }
-                                            },
+                                                if (isStoragePermission &&
+                                                    isVideosPermission &&
+                                                    isPhotosPermission) {
+                                                } else {
+                                                  await capturaVideoFileFromCamera();
+                                                  setState(
+                                                    () {
+                                                      imageFile;
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -245,7 +275,7 @@ class CustomPickerState extends State<CustomPicker> {
                             padding: const EdgeInsets.all(8.0),
                             child: AutoSizeText(
                               minFontSize: 10,
-                              'Adicionar',
+                              widget.label.toString(),
                               style: TextStyle(
                                   color: Get.theme.colorScheme.primary,
                                   fontSize: 16),
@@ -533,7 +563,7 @@ class CustomPickerState extends State<CustomPicker> {
                 children: [
                   AutoSizeText(
                     minFontSize: 10,
-                    'midia é obrigatória',
+                    widget.validatorMesssage.toString(),
                     style: TextStyle(
                       color: Get.theme.colorScheme.error,
                       fontSize: 12,
@@ -548,12 +578,29 @@ class CustomPickerState extends State<CustomPicker> {
     );
   }
 
+  Future<File> compressFile(File file) async {
+    File compressedFile = await FlutterNativeImage.compressImage(
+      file.path,
+      quality: 5,
+    );
+    return compressedFile;
+  }
+
   pickImageFileFromGalery() async {
     imageFile = await ImagePicker()
-        .pickImage(source: ImageSource.gallery, imageQuality: 30);
+        .pickImage(source: ImageSource.gallery, imageQuality: 20);
+
+    // imageFile = compressFile(File(imageFile!.path));
 
     if (imageFile != null) {
-      await _cropImage(File(imageFile!.path));
+      File compressedFile = await FlutterNativeImage.compressImage(
+          imageFile!.path,
+          quality: 20,
+          percentage: 50);
+      print('#### tamanho da imagem compactada');
+      print(compressedFile.path.length);
+
+      await _cropImage(File(compressedFile.path));
     }
   }
 
