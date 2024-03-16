@@ -595,6 +595,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   flutter_native_image:
     dependency: "direct main"
     description:
@@ -603,6 +604,16 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.6+1"
+=======
+  flutter_lorem:
+    dependency: "direct main"
+    description:
+      name: flutter_lorem
+      sha256: "004e1af5b030b632628d8cc1eb2f90451f48b6c0080f43069f69baa4959e9fe5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+>>>>>>> 4fe6624 (house 16/03)
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -1101,6 +1112,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.7.4"
+<<<<<<< HEAD
   rxdart:
     dependency: transitive
     description:
@@ -1109,6 +1121,16 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
+=======
+  read_more_text:
+    dependency: "direct main"
+    description:
+      name: read_more_text
+      sha256: "769750959f26a71408eb912e1b1e714713f72bf3efcc3f89e53c31b11101376c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
+>>>>>>> 4fe6624 (house 16/03)
   shared_preferences:
     dependency: transitive
     description:

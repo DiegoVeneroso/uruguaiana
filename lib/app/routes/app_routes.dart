@@ -77,6 +77,9 @@ abstract class Routes {
   static const activities_add = _Paths.activities_add;
   static const activities_detail = _Paths.activities_detail;
   static const activities_edit = _Paths.activities_edit;
+
+  static const view_people = _Paths.view_people;
+  static const view_people_add = _Paths.view_people_add;
 }
 
 abstract class _Paths {
@@ -154,4 +157,7 @@ abstract class _Paths {
   static const activities_add = '/activities_add';
   static const activities_detail = '/activities_detail';
   static const activities_edit = '/activities_edit';
+
+  static const view_people = '/view_people';
+  static const view_people_add = '/view_people_add';
 }

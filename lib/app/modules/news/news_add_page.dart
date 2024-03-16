@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/core/ui/widgets/custom_picker.dart';

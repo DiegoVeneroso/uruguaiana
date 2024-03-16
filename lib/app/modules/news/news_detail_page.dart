@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/modules/news/news_controller.dart';
@@ -38,11 +40,11 @@ class _NewsDetailPageState extends AppState<NewsDetailPage, NewsController> {
                 builder: ((context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Container(
-                      height: Get.size.height * 0.35,
-                      width: double.infinity,
+                      height: context.height * 0.35,
+                      width: context.width,
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Get.theme.colorScheme.primary,
+                          color: Get.theme.colorScheme.onPrimaryContainer,
                         ),
                         // borderRadius: BorderRadius.circular(10),
                         color: Get.theme.colorScheme.onPrimaryContainer,

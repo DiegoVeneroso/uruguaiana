@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:appinio_social_share/appinio_social_share.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -158,14 +160,19 @@ class NewsPage extends GetView<NewsController> {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
                               return Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    CircularProgressIndicator(
-                                      color: Get.theme.colorScheme.primary,
-                                    ),
-                                  ],
+                                child: SizedBox(
+                                  height: context.height * 0.3,
+                                  width: context.width,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      CircularProgressIndicator(
+                                        color: Get.theme.colorScheme.primary,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             }

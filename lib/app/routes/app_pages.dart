@@ -17,6 +17,8 @@ import 'package:eu_faco_parte/app/modules/question/question_bindings.dart';
 import 'package:eu_faco_parte/app/modules/question/question_detail_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_page.dart';
 import 'package:eu_faco_parte/app/modules/question/question_response_page.dart';
+import 'package:eu_faco_parte/app/modules/view_peaple/view_peaple_bindings.dart';
+import 'package:eu_faco_parte/app/modules/view_peaple/view_peaple_page.dart';
 import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/modules/collaborate/collaborate_bindings.dart';
 import 'package:eu_faco_parte/app/modules/collaborate/collaborate_detail_page.dart';
@@ -76,6 +78,7 @@ import '../modules/proposal/proposal_home/proposal_edit_page.dart';
 import '../modules/proposal/proposal_home/proposal_page.dart';
 import '../modules/splash/splash_binding.dart';
 import '../modules/splash/splash_page.dart';
+import '../modules/view_peaple/view_peaple_add_page.dart';
 part 'app_routes.dart';
 
 class AppPages {
@@ -392,7 +395,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.jobs_detail,
-      page: () => JobsDetailPage(),
+      page: () => const JobsDetailPage(),
       binding: JobsBindings(),
     ),
   ];

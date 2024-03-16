@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -222,8 +224,8 @@ class AboutPage extends GetView<AboutController> {
                                   if (snapshot.connectionState ==
                                       ConnectionState.waiting) {
                                     return Container(
-                                      height: Get.size.height * 0.35,
-                                      width: double.infinity,
+                                      height: context.height * 0.35,
+                                      width: context.width,
                                       decoration: BoxDecoration(
                                         border: Border.all(
                                           color: Get.theme.colorScheme
@@ -235,8 +237,7 @@ class AboutPage extends GetView<AboutController> {
                                       ),
                                       child: Center(
                                         child: CircularProgressIndicator(
-                                          color: Get.theme.colorScheme
-                                              .onPrimaryContainer,
+                                          color: Get.theme.colorScheme.primary,
                                         ),
                                       ),
                                     );

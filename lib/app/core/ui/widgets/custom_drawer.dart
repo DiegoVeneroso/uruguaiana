@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eu_faco_parte/app/modules/donate/donate_controller.dart';
 import 'package:eu_faco_parte/app/repository/donate_repositories.dart';
@@ -43,7 +45,18 @@ class CustomDrawer extends StatelessWidget {
                     color: Get.theme.colorScheme.secondary,
                   ),
                   buildDrawerItem(
-                    icon: Icons.home,
+                    icon: FontAwesomeIcons.eye,
+                    text: "Uruguaiana que o povo vê",
+                    onTap: () => navigate(11),
+                    tileColor: Get.currentRoute == '/view_people'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/view_people'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
+                    icon: FontAwesomeIcons.newspaper,
                     text: "Notícias",
                     onTap: () => navigate(5),
                     tileColor: Get.currentRoute == '/news'
@@ -308,6 +321,17 @@ class CustomDrawer extends StatelessWidget {
                         ? Get.theme.colorScheme.primary
                         : null,
                     textIconColor: Get.currentRoute == '/news'
+                        ? Get.theme.colorScheme.onPrimaryContainer
+                        : Get.theme.colorScheme.primary,
+                  ),
+                  buildDrawerItem(
+                    icon: FontAwesomeIcons.eye,
+                    text: "Uruguaiana que o povo vê",
+                    onTap: () => navigate(11),
+                    tileColor: Get.currentRoute == '/view_people'
+                        ? Get.theme.colorScheme.primary
+                        : null,
+                    textIconColor: Get.currentRoute == '/view_people'
                         ? Get.theme.colorScheme.onPrimaryContainer
                         : Get.theme.colorScheme.primary,
                   ),
@@ -638,6 +662,8 @@ class CustomDrawer extends StatelessWidget {
       Get.toNamed('/donate');
     } else if (index == 10) {
       Get.toNamed('/calendar');
+    } else if (index == 11) {
+      Get.toNamed('/view_people');
     }
   }
 }
