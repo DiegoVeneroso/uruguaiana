@@ -89,24 +89,5 @@ class CustomFloatingButton extends StatelessWidget {
             );
           }
         });
-
-    // return Align(
-    //   alignment: const Alignment(0.9, 0.9),
-    //   heightFactor: 0.0,
-    //   child: SizedBox(
-    //     height: MediaQuery.of(context).size.width * 0.2,
-    //     width: MediaQuery.of(context).size.width * 0.2,
-    //     child: FloatingActionButton(
-    //       elevation: 0.0,
-    //       backgroundColor: Colors.transparent,
-    //       onPressed: () {
-    //         log(dataSnapshot?.first.get('whatsapp'));
-    //         // Uri url = Uri.parse(dataSnapshot?.first.get('whatsapp'));
-    //         // launchUrl(url);
-    //       },
-    //       child: LottieBuilder.asset('assets/lottie/whats.json'),
-    //     ),
-    //   ),
-    // );
   }
 }

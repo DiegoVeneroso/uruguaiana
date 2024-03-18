@@ -398,5 +398,16 @@ class AppPages {
       page: () => const JobsDetailPage(),
       binding: JobsBindings(),
     ),
+    //view_peaple
+    GetPage(
+      name: _Paths.view_people,
+      page: () => const ViewPeaplePage(),
+      binding: ViewPeapleBindings(),
+    ),
+    GetPage(
+      name: _Paths.view_people_add,
+      page: () => const ViewPeapleAddPage(),
+      binding: ViewPeapleBindings(),
+    ),
   ];
 }

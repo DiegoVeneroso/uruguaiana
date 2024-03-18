@@ -4,7 +4,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eu_faco_parte/app/modules/view_peaple/view_peaple_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:validatorless/validatorless.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/app_state.dart';
@@ -12,6 +11,8 @@ import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_button.dart';
 import '../../core/ui/widgets/custom_picker.dart';
 import '../../core/ui/widgets/custom_textformfield.dart';
+import '../../repository/auth_repository.dart';
+import '../../repository/view_peaple_repositories.dart';
 
 class ViewPeapleAddPage extends StatefulWidget {
   const ViewPeapleAddPage({Key? key}) : super(key: key);
@@ -23,17 +24,26 @@ class ViewPeapleAddPage extends StatefulWidget {
 class _NewsAddPageState
     extends AppState<ViewPeapleAddPage, ViewPeapleController> {
   RxBool acceptTerms = false.obs;
+  @override
+  ViewPeapleController controller = ViewPeapleController(
+    repository: ViewPeapleRepository(),
+    authRepository: AuthRepository(),
+  );
 
   final _formKey = GlobalKey<FormState>();
   final _pickedKey = GlobalKey<CustomPickerState>();
   final _nameEC = TextEditingController();
   final _phoneEC = TextEditingController();
+  final _bairroEC = TextEditingController();
+  final _titleEC = TextEditingController();
   final _descriptionEC = TextEditingController();
 
   @override
   void dispose() {
     _nameEC.dispose();
     _phoneEC.dispose();
+    _bairroEC.dispose();
+    _titleEC.dispose();
     _descriptionEC.dispose();
     super.dispose();
   }
@@ -83,6 +93,10 @@ class _NewsAddPageState
                             visible: controller.addImageVisible.value,
                             child: CustomPicker(
                               key: _pickedKey,
+                              label: 'Adicionar imagem',
+                              pickerImageGalery: true,
+                              pickerImageCamera: true,
+                              validatorMesssage: "Imagem é obrigatória",
                             ),
                           ),
                         )
@@ -164,7 +178,7 @@ class _NewsAddPageState
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      'Adicionar imagem ou video',
+                                      'Adicionar imagem',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.normal),
@@ -193,19 +207,36 @@ class _NewsAddPageState
                     height: 10,
                   ),
                   CustomTextformfield(
-                    label: 'Whatsapp',
+                    label: 'Telefone',
                     controller: _phoneEC,
-                    validator: Validatorless.required('Whatsapp é obrigatório'),
+                    validator: Validatorless.required('Telefone é obrigatório'),
                     cellMask: true,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   CustomTextformfield(
-                    label: 'Descrição da proposta',
+                    label: 'Bairro',
+                    controller: _bairroEC,
+                    validator: Validatorless.required('Bairro é obrigatório'),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Título',
+                    controller: _titleEC,
+                    validator: Validatorless.required('Título é obrigatório'),
+                    maxlines: 2,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextformfield(
+                    label: 'Descrição',
                     controller: _descriptionEC,
-                    validator: Validatorless.required(
-                        'Descrição da proposta é obrigatório'),
+                    validator:
+                        Validatorless.required('Descrição é obrigatório'),
                     maxlines: 4,
                   ),
                   Padding(
@@ -385,15 +416,16 @@ class _NewsAddPageState
                                 _pickedKey.currentState
                                     ?.setImageValidate(pickerValid.toString());
 
-                                // if (formValid & pickerValid) { // valida a midia
                                 if (formValid) {
-                                  // controller.collaboratesAdd({
-                                  //   'name': _nameEC.text,
-                                  //   'phone': _phoneEC.text,
-                                  //   'url_image': _pickedKey
-                                  //       .currentState?.imageFile?.path,
-                                  //   'description': _descriptionEC.text,
-                                  // });
+                                  controller.viewAdd({
+                                    'name': _nameEC.text,
+                                    'phone': _phoneEC.text,
+                                    'bairro': _bairroEC.text,
+                                    'title': _titleEC.text,
+                                    'url_image': _pickedKey
+                                        .currentState?.imageFile?.path,
+                                    'description': _descriptionEC.text,
+                                  });
                                 }
                               },
                       ),

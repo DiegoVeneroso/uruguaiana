@@ -1,40 +1,39 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:developer';
-
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import '../core/config/api_client.dart';
 import '../core/config/constants.dart' as constants;
-import '../models/news_model.dart';
+import '../models/view_model.dart';
 
 class ViewPeapleRepository {
   RealtimeSubscription? subscription;
-  RxList<NewsModel> listItem = <NewsModel>[].obs;
-  RxString? search = ''.obs;
   GetStorage storage = GetStorage();
 
-  Future<List<NewsModel>> loadDataRepository() async {
+  Future<List<ViewModel>> loadDataRepository(String? search) async {
     try {
       DocumentList response;
-
-      if (search?.value != '') {
+      if (search != '') {
         response = await ApiClient.databases.listDocuments(
           databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
-          queries: [Query.search("title", search!.value.toString())],
+          collectionId: constants.COLLETION_VIEW,
+          queries: [Query.search("title", search.toString())],
         );
 
         var items = response.documents.reversed
-            .map((docmodel) => NewsModel(
-                  idNews: docmodel.data['idNews'],
+            .map((docmodel) => ViewModel(
+                  idView: docmodel.data['idView'],
                   title: docmodel.data['title'],
-                  urlImage: docmodel.data['url_image'],
                   description: docmodel.data['description'],
                   date: docmodel.data['date'],
+                  nameUser: docmodel.data['name'],
+                  phone: docmodel.data['phone'],
+                  bairro: docmodel.data['bairro'],
+                  urlImage: docmodel.data['url_image'],
+                  status: docmodel.data['status'],
                 ))
             .toList();
 
@@ -42,21 +41,41 @@ class ViewPeapleRepository {
       } else {
         response = await ApiClient.databases.listDocuments(
           databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
+          collectionId: constants.COLLETION_VIEW,
+          queries: [Query.equal("status", "true")],
         );
 
         var items = response.documents.reversed
-            .map((docmodel) => NewsModel(
-                  idNews: docmodel.data['idNews'],
+            .map((docmodel) => ViewModel(
+                  idView: docmodel.data['idView'],
                   title: docmodel.data['title'],
-                  urlImage: docmodel.data['url_image'],
                   description: docmodel.data['description'],
                   date: docmodel.data['date'],
+                  nameUser: docmodel.data['name'],
+                  phone: docmodel.data['phone'],
+                  bairro: docmodel.data['bairro'],
+                  urlImage: docmodel.data['url_image'],
+                  status: docmodel.data['status'],
                 ))
             .toList();
 
         return items;
       }
+    } on AppwriteException catch (e) {
+      log(e.response['type']);
+
+      throw (e.response['type']);
+    }
+  }
+
+  Future<DocumentList> getTermOfUseRepository() async {
+    try {
+      var response = await ApiClient.databases.listDocuments(
+        databaseId: constants.DATABASE_ID,
+        collectionId: constants.COLLETION_TERM_OF_USE,
+      );
+
+      return response;
     } on AppwriteException catch (e) {
       log(e.response['type']);
 
@@ -72,7 +91,7 @@ class ViewPeapleRepository {
     return response;
   }
 
-  newsAddRepository(Map map) async {
+  viewsAddRepository(Map map) async {
     try {
       final idUnique = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -93,18 +112,20 @@ class ViewPeapleRepository {
 
       await ApiClient.databases.createDocument(
           databaseId: constants.DATABASE_ID,
-          collectionId: constants.COLLETION_NEWS_ID,
+          collectionId: constants.COLLETION_VIEW,
           documentId: idUnique,
           data: {
-            'idNews': idUnique,
+            'idView': idUnique,
             'title': map["title"],
-            'url_image': urlImage,
             'description': map["description"],
             'date': DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br')
                 .format(DateTime.now())
                 .toString(),
-            'created_by': storage.read('id_user').toString(),
-            'date_time_created': DateTime.now().toString(),
+            'name': map["name"],
+            'phone': map["phone"],
+            'bairro': map["bairro"],
+            'url_image': urlImage,
+            'status': 'false',
           });
     } on AppwriteException catch (e) {
       log(e.response['type']);

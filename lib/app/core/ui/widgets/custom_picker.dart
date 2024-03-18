@@ -21,19 +21,19 @@ import 'package:video_compress/video_compress.dart';
 import 'custom_player_video.dart';
 
 class CustomPicker extends StatefulWidget {
-  String label;
-  String validatorMesssage;
-  bool pickerImageGalery;
-  bool pickerImageCamera;
-  bool pickerVideoGalery;
-  bool pickerVideoCamera;
+  String? label;
+  String? validatorMesssage;
+  bool? pickerImageGalery;
+  bool? pickerImageCamera;
+  bool? pickerVideoGalery;
+  bool? pickerVideoCamera;
   CustomPicker({
     Key? key,
-    this.label = 'Adicionar',
-    this.validatorMesssage = 'Mídia é obrigatória',
-    this.pickerImageGalery = false,
+    this.label = 'Adicionar Imagem',
+    this.validatorMesssage = 'Imagem é obrigatória',
+    this.pickerImageGalery = true,
     this.pickerVideoGalery = false,
-    this.pickerImageCamera = false,
+    this.pickerImageCamera = true,
     this.pickerVideoCamera = false,
   }) : super(key: key);
 
@@ -135,7 +135,8 @@ class CustomPickerState extends State<CustomPicker> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Visibility(
-                                          visible: widget.pickerImageGalery,
+                                          visible:
+                                              widget.pickerImageGalery as bool,
                                           child: CustomButton(
                                             label: 'Foto da Galeria',
                                             height: 40,
@@ -177,7 +178,8 @@ class CustomPickerState extends State<CustomPicker> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Visibility(
-                                            visible: widget.pickerVideoGalery,
+                                            visible: widget.pickerVideoGalery
+                                                as bool,
                                             child: CustomButton(
                                               label: 'Video da Galeria',
                                               height: 40,
@@ -205,7 +207,8 @@ class CustomPickerState extends State<CustomPicker> {
                                             height: 15,
                                           ),
                                           Visibility(
-                                            visible: widget.pickerImageCamera,
+                                            visible: widget.pickerImageCamera
+                                                as bool,
                                             child: CustomButton(
                                               label: 'Tirar Foto',
                                               height: 40,
@@ -233,7 +236,8 @@ class CustomPickerState extends State<CustomPicker> {
                                             height: 15,
                                           ),
                                           Visibility(
-                                            visible: widget.pickerVideoCamera,
+                                            visible: widget.pickerVideoCamera
+                                                as bool,
                                             child: CustomButton(
                                               label: 'Gravar video',
                                               height: 40,
@@ -468,7 +472,7 @@ class CustomPickerState extends State<CustomPicker> {
                 videoUri: Uri.parse(imageFile?.path ?? ''),
               ),
               Positioned(
-                right: 15,
+                right: 60,
                 top: 15,
                 child: GestureDetector(
                   onTap: () {
@@ -522,7 +526,7 @@ class CustomPickerState extends State<CustomPicker> {
                 ),
               ),
               Positioned(
-                right: 15,
+                right: 60,
                 top: 15,
                 child: GestureDetector(
                   onTap: () {

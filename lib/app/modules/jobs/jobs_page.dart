@@ -1,13 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:eu_faco_parte/app/models/jobs_model.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/colors/services/theme_service.dart';
-import '../../core/helpers/formatter_helper.dart';
 import '../../core/ui/widgets/custom_appbar.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../routes/app_pages.dart';
