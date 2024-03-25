@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:appinio_social_share/appinio_social_share.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:eu_faco_parte/app/modules/view_peaple/view_peaple_controller.dart';
@@ -10,19 +9,19 @@ import 'package:get/get.dart';
 import 'package:eu_faco_parte/app/core/ui/widgets/custom_appbar.dart';
 import 'package:eu_faco_parte/app/core/ui/widgets/custom_searchformfield.dart';
 import 'package:read_more_text/read_more_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/colors/services/theme_service.dart';
 import '../../core/ui/widgets/custom_drawer.dart';
 import '../../core/ui/widgets/custom_view_responsive_card.dart';
 import '../../repository/auth_repository.dart';
-import '../../routes/app_pages.dart';
 import '../auth/login/login_controller.dart';
 import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
-class ViewPeaplePage extends GetView<ViewPeapleController> {
+class AdminViewPeaplePage extends GetView<ViewPeapleController> {
   LoginController loginController = LoginController(AuthRepository());
 
-  ViewPeaplePage({super.key});
+  AdminViewPeaplePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +53,7 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
               child: Center(
                 child: AutoSizeText(
                   minFontSize: 10,
-                  'URUGUAIANA QUE O POVO VÊ',
+                  'APROVAR CADASTRO DE VISÃO',
                   style: Get.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Get.theme.colorScheme.surface,
@@ -77,7 +76,7 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
             ),
             Expanded(
               child: Obx(() => ListView.builder(
-                    itemCount: controller.foundNews.value.length,
+                    itemCount: controller.adminFoundNews.value.length,
                     itemBuilder: (context, index) {
                       return Column(children: [
                         CustomViewResponsiveCard(
@@ -94,7 +93,25 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Bairro: ${toBeginningOfSentenceCase(controller.viewsList[index].bairro).toString()}',
+                                  'Nome: ${controller.adminViewsList[index].nameUser}',
+                                  style: TextStyle(
+                                      color: Get.theme.colorScheme.primary,
+                                      fontSize: 12),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Telefone: ${controller.adminViewsList[index].phone}',
+                                  style: TextStyle(
+                                      color: Get.theme.colorScheme.primary,
+                                      fontSize: 12),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Bairro: ${toBeginningOfSentenceCase(controller.adminViewsList[index].bairro).toString()}',
                                   style: TextStyle(
                                       color: Get.theme.colorScheme.primary,
                                       fontSize: 12),
@@ -103,7 +120,7 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(
-                                  controller.viewsList[index].date,
+                                  controller.adminViewsList[index].date,
                                   style: TextStyle(
                                       color: Get.theme.colorScheme.primary,
                                       fontSize: 12),
@@ -115,8 +132,8 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 16.0),
                                   child: Text(
-                                    toBeginningOfSentenceCase(
-                                            controller.viewsList[index].title)
+                                    toBeginningOfSentenceCase(controller
+                                            .adminViewsList[index].title)
                                         .toString(),
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -128,8 +145,8 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                             ],
                           ),
                           subTitle: ReadMoreText(
-                            toBeginningOfSentenceCase(
-                                    controller.viewsList[index].description)
+                            toBeginningOfSentenceCase(controller
+                                    .adminViewsList[index].description)
                                 .toString(),
                             numLines: 2,
                             readMoreText: 'Ler mais',
@@ -146,7 +163,7 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                           leading: GestureDetector(
                             onTap: () {
                               final imageProvider = Image.network(controller
-                                      .viewsList[index].urlImage
+                                      .adminViewsList[index].urlImage
                                       .toString())
                                   .image;
                               showImageViewer(context, imageProvider,
@@ -157,7 +174,8 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15),
                               child: Image.network(
-                                controller.viewsList[index].urlImage.toString(),
+                                controller.adminViewsList[index].urlImage
+                                    .toString(),
                                 fit: BoxFit.cover,
                                 width: context.width,
                                 height: context.height * 0.3,
@@ -194,122 +212,70 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                             top: 5,
                             child: Row(
                               children: [
-                                Visibility(
-                                  visible: controller.getIsAdmin() == true,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      minimumSize: const Size(80, 30),
-                                      side: BorderSide(
-                                        width: 1.0,
-                                        color: Get.theme.colorScheme
-                                            .onPrimaryContainer,
+                                GestureDetector(
+                                  onTap: () async {
+                                    controller.getDialog(
+                                      idView: controller
+                                          .adminViewsList[index].idView
+                                          .toString(),
+                                      name: controller
+                                          .adminViewsList[index].nameUser
+                                          .toString(),
+                                      title: 'Atenção!',
+                                      message:
+                                          'Deseja aprovar a publicação de\n${controller.adminViewsList[index].nameUser.toString()}',
+                                      label: 'Aprovar',
+                                      onPressed: () {
+                                        controller.setAprovedViewPeaple({
+                                          "idView": controller
+                                              .adminViewsList[index].idView
+                                              .toString()
+                                        });
+                                      },
+                                    );
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      width: 100,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: Get.theme.colorScheme.shadow,
                                       ),
-                                      backgroundColor: Colors.transparent,
-                                      textStyle: TextStyle(
-                                        color: Get.theme.colorScheme
-                                            .onPrimaryContainer,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      'Aprovar',
-                                      style: TextStyle(
-                                        color: Get.theme.colorScheme
-                                            .onPrimaryContainer,
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          'Aprovar',
+                                          style: TextStyle(
+                                            color: Get.theme.colorScheme
+                                                .onPrimaryContainer,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                                 GestureDetector(
                                   onTap: () async {
-                                    Get.defaultDialog(
-                                      title: 'Compartilhar',
-                                      titleStyle: TextStyle(
-                                        color: Get.theme.colorScheme.primary,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      content: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          IconButton(
-                                            onPressed: () async {
-                                              var pathImageUrl =
-                                                  await controller
-                                                      .getImageXFileByUrl(
-                                                          controller
-                                                              .viewsList[index]
-                                                              .urlImage
-                                                              .toString());
-
-                                              String message =
-                                                  '${controller.viewsList[index].title.toString()}\n\n${controller.viewsList[index].description.toString()}';
-
-                                              AppinioSocialShare()
-                                                  .shareToWhatsapp(message,
-                                                      filePath: pathImageUrl);
-                                            },
-                                            icon: Icon(
-                                              FontAwesomeIcons.whatsapp,
-                                              size: 40,
-                                              color:
-                                                  Get.theme.colorScheme.primary,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          IconButton(
-                                            onPressed: () async {
-                                              var pathImageUrl =
-                                                  await controller
-                                                      .getImageXFileByUrl(
-                                                          controller
-                                                              .viewsList[index]
-                                                              .urlImage
-                                                              .toString());
-
-                                              String message =
-                                                  '${controller.viewsList[index].title.toString()}\n\n${controller.viewsList[index].description.toString()}';
-
-                                              AppinioSocialShare()
-                                                  .shareToFacebook(
-                                                      message, pathImageUrl);
-                                            },
-                                            icon: Icon(
-                                              FontAwesomeIcons.facebook,
-                                              size: 40,
-                                              color:
-                                                  Get.theme.colorScheme.primary,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          IconButton(
-                                            onPressed: () async {
-                                              var pathImageUrl =
-                                                  await controller
-                                                      .getImageXFileByUrl(
-                                                          controller
-                                                              .viewsList[index]
-                                                              .urlImage
-                                                              .toString());
-
-                                              AppinioSocialShare()
-                                                  .shareToInstagramFeed(
-                                                      pathImageUrl);
-                                            },
-                                            icon: Icon(
-                                              FontAwesomeIcons.instagram,
-                                              size: 40,
-                                              color:
-                                                  Get.theme.colorScheme.primary,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    controller.getDialog(
+                                      idView: controller
+                                          .adminViewsList[index].idView
+                                          .toString(),
+                                      name: controller
+                                          .adminViewsList[index].nameUser
+                                          .toString(),
+                                      title: 'Atenção!',
+                                      message:
+                                          'Deseja excluir a publicação de\n${controller.adminViewsList[index].nameUser.toString()}',
+                                      label: 'Excluir',
+                                      onPressed: () {
+                                        controller.deleteViewPeaple({
+                                          "idView": controller
+                                              .adminViewsList[index].idView
+                                              .toString()
+                                        });
+                                      },
                                     );
                                   },
                                   child: Padding(
@@ -322,7 +288,36 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                                         color: Get.theme.colorScheme.shadow,
                                       ),
                                       child: Icon(
-                                        Icons.share,
+                                        FontAwesomeIcons.trash,
+                                        color: Get.theme.colorScheme.background,
+                                        size: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () async {
+                                    var phone = controller
+                                        .adminViewsList[index].phone
+                                        .toString()
+                                        .toString()
+                                        .replaceAll(RegExp('[^0-9]'), '');
+
+                                    Uri url = Uri.parse(
+                                        'https://api.whatsapp.com/send?phone=$phone');
+                                    launchUrl(url);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      width: 40,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: Get.theme.colorScheme.shadow,
+                                      ),
+                                      child: Icon(
+                                        FontAwesomeIcons.whatsapp,
                                         color: Get.theme.colorScheme.background,
                                         size: 22,
                                       ),
@@ -334,7 +329,7 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                           ),
                         ),
                         Visibility(
-                          visible: index == controller.viewsList.length - 1
+                          visible: index == controller.adminViewsList.length - 1
                               ? true
                               : false,
                           child: SizedBox(
@@ -346,46 +341,6 @@ class ViewPeaplePage extends GetView<ViewPeapleController> {
                   )),
             ),
           ],
-        ),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: FloatingActionButton.extended(
-            label: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.add,
-                  color: Get.theme.colorScheme.background,
-                  size: 30,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      AutoSizeText(
-                        minFontSize: 10,
-                        'ADICIONAR O',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Get.theme.colorScheme.background),
-                      ),
-                      AutoSizeText(
-                        minFontSize: 10,
-                        'QUE VOCÊ VÊ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Get.theme.colorScheme.background),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            backgroundColor: Get.theme.colorScheme.primary,
-            onPressed: () {
-              Get.toNamed(Routes.view_people_add);
-            },
-          ),
         ),
       ),
     );

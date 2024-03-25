@@ -8,14 +8,14 @@ class CustomAppbar extends AppBar {
   bool? IconBackNavigator;
   Callback? iconBackAction;
   String? titulo;
-  List<IconButton>? actionsList;
+  List<Widget>? actionsList;
   CustomAppbar({Key? key, double elevation = 2, this.titulo, this.actionsList})
       : super(
           toolbarHeight: Get.height * .12,
           key: key,
           backgroundColor: Get.theme.colorScheme.secondary,
           elevation: 2,
-          iconTheme: IconThemeData(color: Get.theme.colorScheme.background),
+          iconTheme: IconThemeData(color: Get.theme.colorScheme.surface),
           actions: actionsList,
           title: Padding(
             padding: const EdgeInsets.only(top: 15.0),

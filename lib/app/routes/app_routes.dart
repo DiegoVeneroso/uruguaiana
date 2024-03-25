@@ -79,6 +79,7 @@ abstract class Routes {
   static const activities_edit = _Paths.activities_edit;
 
   static const view_people = _Paths.view_people;
+  static const admin_view_people = _Paths.admin_view_people;
   static const view_people_add = _Paths.view_people_add;
 }
 
@@ -159,5 +160,6 @@ abstract class _Paths {
   static const activities_edit = '/activities_edit';
 
   static const view_people = '/view_people';
+  static const admin_view_people = '/admin_view_people';
   static const view_people_add = '/view_people_add';
 }

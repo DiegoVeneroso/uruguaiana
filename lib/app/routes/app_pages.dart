@@ -78,6 +78,7 @@ import '../modules/proposal/proposal_home/proposal_edit_page.dart';
 import '../modules/proposal/proposal_home/proposal_page.dart';
 import '../modules/splash/splash_binding.dart';
 import '../modules/splash/splash_page.dart';
+import '../modules/view_peaple/admin_view_peaple_page.dart';
 import '../modules/view_peaple/view_peaple_add_page.dart';
 part 'app_routes.dart';
 
@@ -401,12 +402,17 @@ class AppPages {
     //view_peaple
     GetPage(
       name: _Paths.view_people,
-      page: () => const ViewPeaplePage(),
+      page: () => ViewPeaplePage(),
       binding: ViewPeapleBindings(),
     ),
     GetPage(
       name: _Paths.view_people_add,
       page: () => const ViewPeapleAddPage(),
+      binding: ViewPeapleBindings(),
+    ),
+    GetPage(
+      name: _Paths.admin_view_people,
+      page: () => AdminViewPeaplePage(),
       binding: ViewPeapleBindings(),
     ),
   ];
